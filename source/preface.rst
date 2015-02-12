@@ -1,5 +1,10 @@
+*******
 Preface
-=======
+*******
+
+.. contents::
+   :local:
+   :depth: 2
 
 .. include::
    preface_d/auth_and_contrib.rst

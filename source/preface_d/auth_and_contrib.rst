@@ -1,5 +1,5 @@
 Authors and Contributors
-------------------------
+========================
 
 This book represents a joint intense collaborative effort between Cisco's
 Engineering, Technical Support, Advanced Services and Sales employees over a

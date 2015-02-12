@@ -1,8 +1,8 @@
 Organization of this Book
--------------------------
+=========================
 
 **Section 1: Introduction to ACI Troubleshooting**
-++++++++++++++++++++++++++++++++++++++++++++++++++
+--------------------------------------------------
 
 The introduction covers basic concepts, terms and models while introducing the
 tools that will be used in troubleshooting. Also covered are the
@@ -10,7 +10,7 @@ troubleshooting, verification and resolution methodologies used in later
 sections that cover the actual problems being documented.
 
 **Section 2: Sample Reference Topology**
-++++++++++++++++++++++++++++++++++++++++
+----------------------------------------
 
 This section sets the baseline sample topology used throughout all of the
 troubleshooting exercises that are documented later in the book. Logical
@@ -24,7 +24,7 @@ being examined may be re-illustrated in the text of the troubleshooting
 scenario.
 
 **Section 3: Troubleshooting Application Centric Infrastructure**
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+-----------------------------------------------------------------
 
 The Troubleshooting ACI section goes through specific problem descriptions as
 it relates to the fabric. For each iterative problem, there will be a problem

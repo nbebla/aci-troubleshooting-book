@@ -1,5 +1,5 @@
 Distinguished Contributors
-++++++++++++++++++++++++++
+==========================
 
 |     Giuseppe Andreello
 |     Pavan Bassetty

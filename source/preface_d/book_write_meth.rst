@@ -1,5 +1,5 @@
 Book Writing Methodology
-------------------------
+========================
 
 The Book Sprint (www.booksprints.net) methodology was used for writing this
 book. The Book Sprint methodology is an innovative new style of cooperative

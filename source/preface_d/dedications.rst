@@ -1,5 +1,5 @@
 Dedications
-+++++++++++
+===========
 
 "For Olga and Victoria, my love and happiness, hoping for a world that
 continues to strive in providing more effective solutions to all problems

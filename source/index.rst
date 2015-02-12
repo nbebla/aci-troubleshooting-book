@@ -1,10 +1,6 @@
-.. ACI Troubleshooting Book documentation master file, created by
-   sphinx-quickstart on Wed Feb 11 15:46:49 2015.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
+########################################################
 Troubleshooting Cisco Application Centric Infrastructure
-========================================================
+########################################################
 
 Table of Contents:
 
@@ -13,6 +9,7 @@ Table of Contents:
 
    Preface <preface>
    Application Centric Infrastructure <aci>
+   ACI Policy Model <aci_policy_model>
    Troubleshooting Tools <tools>
    Troubleshooting Methodology <ts_methodology>
    Sample Reference Topology <topology>

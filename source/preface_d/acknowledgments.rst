@@ -1,5 +1,5 @@
 Acknowledgments
-+++++++++++++++
+===============
 
 While this book was produced and written in a single week, the knowledge and
 experience leading to it are the result of hard work and dedication of many
