@@ -2,6 +2,10 @@
 Troubleshooting
 ***************
 
+.. contents::
+   :local:
+   :depth: 2
+
 Naming Conventions
 ==================
 
