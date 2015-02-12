@@ -11,7 +11,7 @@ is built for eventual possibility, the trend is to overbuild the
 infrastructure configuration to a fairly significant amount. When this is
 done, fragility and complexity increase with every eventuality included.
 
-.. image:: /images/traditional policy.jpg
+.. image:: /images/traditionalpolicy.jpg
    :width: 750 px
    :align: center
 
@@ -34,7 +34,7 @@ becomes difficult to understand which ones can be removed without the whole
 stack tumbling down. This is one of the possible things that can happen when
 things are built on an imperative model.
 
-.. image:: /images/policy model theory.jpg
+.. image:: /images/policymodeltheory.jpg
    :width: 750 px
    :align: center
 
