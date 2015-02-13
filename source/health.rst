@@ -33,23 +33,23 @@ switches and the number of endpoints learnt on the leafs. Similarly, health
 score the tenant is calculated based on the health score of the resources used
 by the tenant on leafs and the number of endpoints learned on those leafs.
 
-To describe the stages of the fault lifecycle in more detail, a soaking fault
-is the beginning state for a fault when it is first detected. During this
-state, depending on the type of fault, it may expire if it is a non-persistent
-fault or it will continue to persist in the system. When a fault enters the
-soaking-clearing state, that fault condition has been resolved at the end of a
-soaking interval.
+To describe the stages of the fault lifecycle in more detail, a **soaking**
+fault is the beginning state for a fault when it is first detected. During
+this state, depending on the type of fault, it may expire if it is a
+non-persistent fault or it will continue to persist in the system. When a
+fault enters the **soaking-clearing** state, that fault condition has been
+resolved at the end of a soaking interval.
 
 If a fault has not been cleared by the time the soaking interval has been
-reached, it will enter the raised state, and potentially have its severity
+reached, it will enter the **raised** state, and potentially have its severity
 increased. The new severity is defined by the policy for the particular fault
 class, and will remain in the raised state until the fault condition is
 cleared.
 
-Once a fault condition has been cleared, it will enter the raised-clearing
+Once a fault condition has been cleared, it will enter the **raised-clearing**
 state. At this point a clearing interval begins, after which if the fault has
-not returned it will enter the retaining state, which leaves the fault visible
-so that it can be inspected after an issue has been resolved.
+not returned it will enter the **retaining** state, which leaves the fault
+visible so that it can be inspected after an issue has been resolved.
 
 At any point during which a fault is created, changes state or is cleared, a
 fault event log is generated to keep a record of the state change.

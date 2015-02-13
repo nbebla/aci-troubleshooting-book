@@ -32,13 +32,13 @@ the associated fragmented management challenges.
 The controller is responsible for all aspects of configuration. This includes
 configuration for a number of key areas:
 
-* Policy: defines how applications communicate, security zoning rules, quality
-  of service attributes, service insertion and routing/switching
-* Operation: protocols on the fabric for management and monitoring,
-  integration with L4-7 services and virtual networking
-* Hardware: maintaining fabric switch inventory and both physical and
-  virtual interfaces
-* Software: firmware revisions on switches and controllers
+    * Policy: defines how applications communicate, security zoning rules,
+      quality of service attributes, service insertion and routing/switching
+    * Operation: protocols on the fabric for management and monitoring,
+      integration with L4-7 services and virtual networking
+    * Hardware: maintaining fabric switch inventory and both physical and
+      virtual interfaces
+    * Software: firmware revisions on switches and controllers
 
 With these pieces natively reflected in the object model, it is possible to
 change these through the REST API, further simplifying the process by
@@ -131,8 +131,8 @@ from the MIT.
 
 The following types of queries are supported:
 
-* Class-level query: Search the MIT for objects of a specific class
-* Object-level query: Search the MIT for a specific Dn
+    * Class-level query: Search the MIT for objects of a specific class
+    * Object-level query: Search the MIT for a specific Dn
 
 Each of these query types supports a plethora of filtering and subtree
 options, but the primary difference is how each type is utilized.
@@ -229,14 +229,16 @@ For JSON, encoding requires definition of certain entities to reflect the tree
 based hierarchy, however is repeated at all levels of the tree, so is fairly
 simple once initially understood.
 
-All objects are described as JSON dictionaries, where the key is the name of
-the package and class, and the value is another nested dictionary with two
-keys: attribute and children. The attribute key contains a further nested
-dictionary describing key/value pairs defining attributes on the object The
-children key contains a list that defines all of the child objects. The
-children in this list will be dictionaries containing any nested objects, that
-are defined as described in (a) The following example shows the XML defined
-above, in JSON format.
+    a. All objects are described as JSON dictionaries, where the key is the
+       name of the package and class, and the value is another nested
+       dictionary with two keys: attribute and children.
+    #. The attribute key contains a further nested dictionary describing
+       key/value pairs defining attributes on the object The children key
+       contains a list that defines all of the child objects.
+    #. The children in this list will be dictionaries containing any nested
+       objects, that are defined as described in (a)
+
+The following example shows the XML defined above, in JSON format.
 
 JSON Managed Object Definition:
 
@@ -761,8 +763,9 @@ By default port HTTP is disabled on the APICs and HTTPS is enabled.
 Resolution
 ^^^^^^^^^^
 
-HTTPS can be used or the communication policy can be changed to enable HTTP.
-However, please be aware that that APIC ships in the most secure mode possible.
+    * HTTPS can be used or the communication policy can be changed to enable
+      HTTP. However, please be aware that that APIC ships in the most secure
+      mode possible.
 
 Symptom 2
 ^^^^^^^^^

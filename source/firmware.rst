@@ -18,16 +18,16 @@ APIC Controller and Switch Software
 
 There are three types of software images in the fabric that can be upgraded:
 
-* The APIC software image.
-* The switch software image — software running on leafs and spines of the ACI
-  fabric.
-* The Catalog image — the catalog contains information about the capabilities
-  of different models of hardware supported in the fabric, compatibility
-  across different versions of software, and hardware and diagnostic
-  utilities. The Catalog image is implicitly upgraded with the controller
-  image. Occasionally, it may be required to upgrade the Catalog image only to
-  include newly qualified hardware components into the fabric or add new
-  diagnostic utilities.
+    #. The APIC software image.
+    #. The switch software image — software running on leafs and spines of the
+       ACI fabric.
+    #. The Catalog image — the catalog contains information about the
+       capabilities of different models of hardware supported in the fabric,
+       compatibility across different versions of software, and hardware and
+       diagnostic utilities. The Catalog image is implicitly upgraded with the
+       controller image. Occasionally, it may be required to upgrade the
+       Catalog image only to include newly qualified hardware components into
+       the fabric or add new diagnostic utilities.
 
 You must upgrade the switch software image for all the spine and leaf switches
 in the fabric first. After that upgrade is successfully completed, upgrade the
@@ -38,21 +38,22 @@ Firmware Management
 
 There are five components within the context of firmware management:
 
-* Firmware Repository is used to store of images that have been downloaded to
-  the APIC. Images are transferred into the firmware repository from external
-  source locations over HTTP or SCP protocols. The source locations are
-  configurable via the firmware source policy. Once an image has been copied
-  from its source location, it is replicated across all controllers within the
-  cluster. The switch nodes will retrieve images from the controller as
-  required during the beginning of the upgrade process.
-* Firmware Policy is the policy which specifies the desired firmware image
-  version.
-* Firmware Group is the configured group of nodes that share the same
-  firmware policy.
-* Maintenance Policy is the maintenance policy which specifies a schedule
-  for upgrade.
-* Maintenance Group is the group of nodes that share the same maintenance
-  policy.
+    #. Firmware Repository is used to store of images that have been downloaded
+       to the APIC. Images are transferred into the firmware repository from
+       external source locations over HTTP or SCP protocols. The source
+       locations are configurable via the firmware source policy. Once an image
+       has been copied from its source location, it is replicated across all
+       controllers within the cluster. The switch nodes will retrieve images
+       from the controller as required during the beginning of the upgrade
+       process.
+    #. Firmware Policy is the policy which specifies the desired firmware image
+       version.
+    #. Firmware Group is the configured group of nodes that share the same
+       firmware policy.
+    #. Maintenance Policy is the maintenance policy which specifies a schedule
+       for upgrade.
+    #. Maintenance Group is the group of nodes that share the same maintenance
+       policy.
 
 By default, all controllers are part of a predefined firmware group and a
 predefined maintenance group. Membership within the firmware and maintenance
@@ -71,27 +72,27 @@ The ACI fabric can have up to 3 different versions of compatible switch
 software images to be simultaneously active in a fabric. There are three
 different levels of “compatibility” checks:
 
-* Image level compatibility - Controllers use the Catalog image to check for
-  compatibility across software images that can interoperate in the fabric.
-  The controller will ensure image compatibility is satisfied before allowing
-  for upgrade and downgrade.
-* Card level compatibility - Within a spine modular chassis, the supervisor
-  software must be compatible with line card, fabric card and system
-  controller software. Similarly all the connected FEXes within the leaf
-  switch must be compatible with software running in the leaf. If a card or a
-  FEX connected to the system contains incompatible software with the
-  supervisor module of a spine or a leaf, the supervisor module of the spine
-  or the leaf will ensure compatibility by pushing down a compatible version
-  of card or FEX software.
-* Feature level compatibility - Given a set of disparate image versions
-  running in the fabric, these images may have image level compatibility and
-  can be simultaneously available within the fabric. However, they may not
-  support the same set of software features. As a result, feature and hardware
-  level compatibility is encoded in the object model such that the controller
-  can identify feature incompatibility at the point of configuration by
-  administrator. Administrator will be prompted or configuration will result
-  in failure when enabling such features in a mixed hardware and software
-  version environment.
+    #. Image level compatibility - Controllers use the Catalog image to check
+       for compatibility across software images that can interoperate in the
+       fabric. The controller will ensure image compatibility is satisfied
+       before allowing for upgrade and downgrade.
+    #. Card level compatibility - Within a spine modular chassis, the
+       supervisor software must be compatible with line card, fabric card and
+       system controller software. Similarly all the connected FEXes within the
+       leaf switch must be compatible with software running in the leaf. If a
+       card or a FEX connected to the system contains incompatible software
+       with the supervisor module of a spine or a leaf, the supervisor module
+       of the spine or the leaf will ensure compatibility by pushing down a
+       compatible version of card or FEX software.
+    #. Feature level compatibility - Given a set of disparate image versions
+       running in the fabric, these images may have image level compatibility
+       and can be simultaneously available within the fabric. However, they may
+       not support the same set of software features. As a result, feature and
+       hardware level compatibility is encoded in the object model such that
+       the controller can identify feature incompatibility at the point of
+       configuration by administrator. Administrator will be prompted or
+       configuration will result in failure when enabling such features in a
+       mixed hardware and software version environment.
 
 Firmware Upgrade Verification
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

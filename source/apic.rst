@@ -116,6 +116,8 @@ Under System->Controller-Faults, verify the existence of the following fault:
    :width: 750 px
    :align: center
 
+|
+
 The fault message indicates that APIC3 cannot join the fabric before APIC2
 joins the fabric. The problem will be resolved once APIC2 is brought up, then
 APIC3 will be able to join the cluster.
@@ -142,11 +144,15 @@ of "Unavailable"
    :width: 750 px
    :align: center
 
+|
+
 When trying to create a new policy, the following status message is seen:
 
 .. image:: /images/minority.png
    :width: 750 px
    :align: center
+
+|
 
 These symptoms indicated that APIC1 is in the minority state and it thinks
 that APIC2 and APIC3 are still online, but APIC1 lost connectivity to both of
