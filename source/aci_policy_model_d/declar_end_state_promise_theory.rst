@@ -15,6 +15,8 @@ done, fragility and complexity increase with every eventuality included.
    :width: 750 px
    :align: center
 
+|
+
 Similar to what is illustrated above, if configuration must be made on a
 single port for an ESXi host, it must be configured to trunk all information
 for all of the possible VLANs that might get used by a vSwitch or DVS on the
@@ -38,6 +40,8 @@ things are built on an imperative model.
    :width: 750 px
    :align: center
 
+|
+
 On the other hand, a declarative mode allows a system to describe the
 “end-state” expectations system-wide as depicted above, and allows the system
 to utilize its knowledge of the integrated hardware and automation tools to
@@ -51,6 +55,8 @@ needed, the system knows this and removes that configuration.
    :width: 750 px
    :align: center
 
+|
+
 Promise Theory is built on the principles that allow for systems to be
 designed based on the declarative model. It’s built on voluntary execution by
 autonomous agents which provide and consume services from one another based on
@@ -63,4 +69,3 @@ equilibrium, nor scale-in the management without integrated agent-based
 automation. This is why Cisco ACI, as a system built on promise theory, is a
 purpose-built system for addressing scale problems that are delivery
 challenges with traditional models.
-

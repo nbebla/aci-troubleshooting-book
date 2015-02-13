@@ -16,6 +16,8 @@ with a couple of examples.
    :width: 750 px
    :align: center
 
+|
+
 The general structure of the REST API commands is seen at the top. Below the
 general structure two specific examples of what can done with this structured
 URI.

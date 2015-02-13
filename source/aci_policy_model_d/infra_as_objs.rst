@@ -22,6 +22,8 @@ transmits traffic.
    :width: 750 px
    :align: center
 
+|
+
 The purpose-built hardware providing the intelligent resolution of policy
 configuration is built on a spine-leaf architecture providing consistent
 network forwarding and deterministic latency. The hardware is also able to
@@ -69,3 +71,5 @@ APIC, and each element could be directly manipulated via REST API.
 .. image:: /images/network_constructs.jpg
    :width: 750 px
    :align: center
+
+|

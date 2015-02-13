@@ -22,6 +22,8 @@ dMIT in a hierarchical tree, as shown below:
    :width: 750 px
    :align: center
 
+|
+
 All of the configurable elements shown in this diagram are represented as
 classes, and the classes define the items that get instantiated as MOs, which
 are used to fully describe the entity including its configuration, state,
@@ -37,6 +39,7 @@ of the tree. Relationships exist between objects in the tree.
    :width: 750 px
    :align: center
 
+|
 
 Objects include a class, which describes the type of object such as a port,
 module or network path, VLAN, Bridge Domain, or EPG. Packages identify the
