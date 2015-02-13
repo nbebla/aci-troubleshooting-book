@@ -27,6 +27,7 @@ Table of Contents:
    Bridged Connectivity to External Networks <bridged2ext>
    Routed Connectivity to External Networks <routed2ext>
    Virtual Machine Manager and UCS <vmm_ucs>
+   L4-L7 Service Insertion <l4l7.rst>
    ACI Fabric Node and Process Crash Troubleshooting <fn_crash_ts>
    APIC Process Crash Troubleshooting <apic_crash_ts>
    Appendix <appendix>
