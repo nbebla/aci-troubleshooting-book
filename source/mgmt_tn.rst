@@ -57,7 +57,7 @@ NXOS/IOS command or output structure related. As an example, to view the
 interface oobmgmt configuration, connect to the APIC CLI, enter the command ip
 add show dev oobmgmt. The dev keyword is more of a Linux context moniker for
 “device” and the order of the command is different from a traditional Cisco
-show command. Below is the output produced from the ip add show dev oobmgmt
+show command. Below is the output produced from the **ip add show dev oobmgmt**
 command:
 
 .. code-block:: console
@@ -161,6 +161,7 @@ command:
 
 .. code-block:: console 
 
+
    admin@fab2_apic1:~> ip add show bond0.10
    116: bond0.10@bond0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1496 qdisc noqueue state UP
            link/ether 64:12:25:a7:df:3f brd ff:ff:ff:ff:ff:ff
@@ -193,11 +194,11 @@ multiple routing tables used to implement routing on the controllers. When
 both inband and out-of-band management are configured, the APIC uses the
 following forwarding logic:
 
-#. Packets that come in an interface, go out that same interface
-#. Packets sourced from the APIC, destined to a directly connected network, go
-   out the directly connected interface
-#. Packets sourced from the APIC, destined to a remote network, prefer inband,
-   followed by out-of-band
+    #. Packets that come in an interface, go out that same interface
+    #. Packets sourced from the APIC, destined to a directly connected network,
+       go out the directly connected interface
+    #. Packets sourced from the APIC, destined to a remote network, prefer
+       inband, followed by out-of-band
 
 An APIC controller always prefers the in-band management interface to the
 out-of-band management interface as long as in-band is available. This
@@ -276,7 +277,7 @@ Fabric Node (Switch) Routing
 Routing on the fabric nodes (switches) is split between Linux and NX-OS.
 Unlike the APIC configuration, the routing table segregation on the fabric
 nodes is implemented using multiple VRF instances. The configured VRFs on a
-fabric node can be viewed by using the show vrf command:
+fabric node can be viewed by using the **show vrf** command:
 
 .. code-block:: console
 
@@ -294,8 +295,8 @@ nodes, the Linux configuration does not use multiple routing tables and the
 content of the main routing table is only populated by the out-of-band network
 configuration.
 
-To view the contents of each VRF routing table in NX-OS, use the show ip route
-vrf <vrf> command. For example:
+To view the contents of each VRF routing table in NX-OS, use the **show ip
+route vrf <vrf>** command. For example:
 
 .. code-block:: console
 
@@ -363,12 +364,13 @@ Out of Band Verification
 """"""""""""""""""""""""
 
 The first step is to verify the configuration of the oobmgmt interface on the
-APIC using the command ip addr show dev oobmgmt on all three APIC's. The
+APIC using the command **ip addr show dev oobmgmt** on all three APIC's. The
 interfaces need to be in the up state and the expected IP addresses need to be
 assigned with the proper masks. To connect to the various fabric nodes, there
 are several options but if once logged into at least one of the APIC's use the
-output of show fabric membership to see which node-names and VTEP IP addresses
-can be used to connect via SSH in order to verify operations.
+output of **show fabric membership** to see which node-names and VTEP IP
+addresses can be used to connect via SSH in order to verify operations.
+
 
 Verification of the oobmgmt interface address assignment and interface status
 on RTP_Apic1:
@@ -466,8 +468,8 @@ Verification of the OOB management interface (eth0) on fabric node rtp_leaf3:
     valid_lft forever preferred_lft forever
    rtp_leaf3#
 
-When looking at the spine, the command used is show interface mgmt0 to ensure
-the proper ip address and netmask is assigned. Verification of the OOB
+When looking at the spine, the command used is **show interface mgmt0** to
+ensure the proper ip address and netmask is assigned. Verification of the OOB
 management interface on rtp_spine1:
 
 .. code-block:: console
@@ -498,7 +500,7 @@ management interface on rtp_spine1:
    rtp_spine1#
 
 To verify that the spine has the proper default gateway configuration, use the
-command ip route show as seen here for rtp_spine1:
+command **ip route show** as seen here for rtp_spine1:
 
 .. code-block:: console
 
@@ -572,10 +574,10 @@ our sample reference topology, one for out-of-band management and one for the
 overlay.
 
 The next output to verify is the out-of-band management routing table entries
-using the command ip route show table oobmgmt. There should be a default route
-pointed at the default gateway IP address and out-of-band management interface
-(dev oobmgmt) with a source IP address that matches the IP address of the
-out-of-band management interface.
+using the command **ip route show table oobmgmt** . There should be a default
+route pointed at the default gateway IP address and out-of-band management
+interface (dev oobmgmt) with a source IP address that matches the IP address
+of the out-of-band management interface.
 
 .. code-block:: console
 
@@ -585,7 +587,7 @@ out-of-band management interface.
    169.254.254.0/24 dev lxcbr0 scope link
    admin@RTP_Apic1:~>
    
-The next output to verify is the output of ip rule show which shows how the
+The next output to verify is the output of **ip rule show** which shows how the
 APIC chooses which routing table is used for the lookup:
 
 .. code-block:: console
@@ -671,11 +673,11 @@ scan against a fabric node:
    Service detection performed. Please report any incorrect results at http://nmap.org/submit/ .
    Nmap done: 1 IP address (1 host up) scanned in 16.61 seconds
 
-* The output shows that only bgp and https ports are open, but not ssh on this
-  fabric node. This indicates that the policy has not been fully pushed down
-  to the fabric nodes.
-* Reviewing the policy on the APIC reveals that the subnet is missing from the
-  External Network Instance Profile:
+    * The output shows that only bgp and https ports are open, but not ssh on
+      this fabric node. This indicates that the policy has not been fully
+      pushed down to the fabric nodes.
+    * Reviewing the policy on the APIC reveals that the subnet is missing from
+      the External Network Instance Profile:
 
 .. image:: /images/Missing_subnet_ENIP_1.png
    :width: 750 px

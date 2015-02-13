@@ -93,7 +93,7 @@ example, the output below shows the result of typing **show lldp neighbors**
 <esc> <esc>:
 
 .. code-block:: console
-   :emphasize-lines: 1
+
    
    admin@RTP_Apic1:~> <b>show lldp neighbors</b>
     node        Fabric node
@@ -107,7 +107,6 @@ Based on the option provided in the contextual help output above, now extending
 the command to  show lldp neighbors node produces the following output:
 
 .. code-block:: console
-   :emphasize-lines: 1
 
    admin@RTP_Apic1:~> show lldp neighbors node
     101  Specify Fabric Node id
@@ -121,7 +120,6 @@ displays all the LLDP Neighbors adjacent to "rtp_leaf1". The output shows that
 this leaf is connected to two different APICs and two spines.
 
 .. code-block:: console
-   :emphasize-lines: 1
 
    admin@RTP_Apic1:~> show lldp neighbors rtp_leaf1
    # Executing command: 'cat /aci/fabric/inventory/pod-1/rtp_leaf1/protocols/lldp/neighbors/summary'
@@ -136,7 +134,6 @@ this leaf is connected to two different APICs and two spines.
 This command may also be run directly on the leaf as shown below:
 
 .. code-block:: console
-   :emphasize-lines: 1
 
    rtp_leaf1# show lldp neighbors
    Capability codes:
@@ -154,7 +151,6 @@ quickest way to determine if each node is active, and a TEP address has been
 assigned.
 
 .. code-block:: console
-   :emphasize-lines: 1,5
 
    admin@RTP_Apic1:~> acidiag fnvread
    
@@ -176,7 +172,6 @@ is commissioned, registered, and active, and the health is equal to 255 which
 signifies the appliance is "fully fit".
 
 .. code-block:: console
-   :emphasize-lines: 1,4
 
    admin@RTP_Apic1:~> acidiag avread
    Local appliance ID=1 ADDRESS=172.16.0.1 TEP ADDRESS=172.16.0.0/16 CHASSIS_ID=a5945f3c-53c8-11e4-bde2-ebe6f6cfeb58
@@ -233,7 +228,6 @@ Verification
       the CLI. The following message should appear on the screen:
 
 .. code-block:: console
-   :emphasize-lines: 3
 
    User Access Verification
    
@@ -248,7 +242,6 @@ Use the command show lldp neighbor to verify if the Leaf is connected to the
 spine or APIC. If this is a spine, it should be connected to the leaves.
 
 .. code-block:: console
-   :emphasize-lines: 1
 
    (none)# show lldp neighbor
    Capability codes:
@@ -265,7 +258,6 @@ If presented with the (none)# prompt, use the command show interface brief to
 verify what the status the interfaces are in.
  
 .. code-block:: console
-   :emphasize-lines: 1,12
 
    (none)# show interface brief
    --------------------------------------------------------------------------------
@@ -293,7 +285,6 @@ Alternatively, this information can also be found with the command
 **(none)#** prompt to verify if there is any wiring issue:
 
 .. code-block:: console
-   :emphasize-lines: 1,23
 
    (none)# cat /mit/sys/lldp/inst/if-\[eth1--60\]/summary
    
@@ -334,7 +325,6 @@ is not supported by the current APIC version. The command “acidiag fnvread” 
 the APIC CLI will help to verify all nodes in the fabric.
 
 .. code-block:: console
-   :emphasize-lines: 1,4,7,8,9,10
 
    admin@RTP_Apic1:~> acidiag fnvread
          ID             Name    Serial Number         IP Address    Role        State   LastUpdMsgId
@@ -362,7 +352,6 @@ The switch state shows “unknown”. The state can be corroborated by use of th
 acidiag fnvread command in the APIC CLI.
 
 .. code-block:: console
-   :emphasize-lines: 1,4
 
    admin@RTP_Apic1:~> acidiag fnvread
          ID             Name    Serial Number         IP Address    Role        State   LastUpdMsgId
@@ -379,7 +368,6 @@ There are a few causes that could cause this switch state:
   the device:
 
 .. code-block:: console
-   :emphasize-lines: 2
 
    (none)# cat /mit/sys/summary | grep serial
    serial       : SAL1819SAN6
@@ -413,7 +401,6 @@ Use the **cat /mit/sys/summary** CLI command to verify the state of the leaf or
 spine:
 
 .. code-block:: console
-   :emphasize-lines: 1,21
 
    leaf101# cat /mit/sys/summary
    # System
@@ -446,7 +433,6 @@ a possible cause could be a switch certificate issue. Verify that the switch
 is able to communicate with APIC via TCP port 12183.
 
 .. code-block:: console
-   :emphasize-lines: 1
 
    leaf101# netstat -a |grep 12183
    tcp        0      0 leaf101:12183           *:*                     LISTEN

@@ -101,7 +101,6 @@ Using the CLI interface on the leaf, execute the show interface command.  The
 output of the command will show the interface as “out-of-service”.
 
 .. code-block:: console
-   :emphasize-lines: 1,2
 
    rtp_leaf1# show interface ethernet 1/16
    Ethernet1/16 is up (out-of-service)
@@ -116,7 +115,6 @@ The “show lldp neighbors” output will identify this leaf port is connected t
 another leaf port.
 
 .. code-block:: console
-   :emphasize-lines: 1,8
 
    rtp_leaf1# show lldp neighbors
    Capability codes:
@@ -141,7 +139,6 @@ Fabric-->Inventory-->Pod_1--><leaf node>
 This same fault can also be viewed in the CLI.
 
 .. code-block:: console
-   :emphasize-lines: 1,4,6
 
    admin@RTP_Apic1:if-[eth1--16]> faults
    Severity  Code   Cause                Ack  Last Transition      Dn
@@ -156,7 +153,6 @@ This same fault can also be viewed in the CLI.
 The fault can also be viewed in the APIC CLI. The full path is shown below.
 
 .. code-block:: console
-   :emphasize-lines: 1,2
 
    admin@RTP_Apic1:if-[eth1--16]> pwd
    /home/admin/mit/topology/pod-1/node-101/sys/lldp/inst/if-[eth1--16]
