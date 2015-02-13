@@ -1,6 +1,10 @@
 Appendix
 ========
 
+.. contents::
+   :local:
+   :depth: 2
+
 Overview
 --------
 

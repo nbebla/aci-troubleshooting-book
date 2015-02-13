@@ -1,6 +1,10 @@
 Firmware and Image Management
 =============================
 
+.. contents::
+   :local:
+   :depth: 2
+
 Overview
 
 This chapter covers firmware and image management for the ACI fabric hardware components. It will cover the overview of objects and policies that make up firmware and image management in the context of software upgrades, followed by the verification steps used to confirm a successful upgrade process.

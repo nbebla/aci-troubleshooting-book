@@ -1,6 +1,10 @@
 Faults / Health Scores
 ======================
 
+.. contents::
+   :local:
+   :depth: 2
+
 Faults / Health Scores
 
 Overview

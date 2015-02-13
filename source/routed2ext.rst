@@ -1,6 +1,10 @@
 Routed Connectivity to External Networks
 ========================================
 
+.. contents::
+   :local:
+   :depth: 2
+
 Overview
 
 External network connectivity is an essential component to a useful fabric deployment.  To accommodate for connections to external network entities, the ACI fabric provides the ability to automate provisioning of external network connections through the policy model, and this chapter provides an overview and troubleshooting related to external network connection methods.

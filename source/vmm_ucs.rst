@@ -1,6 +1,10 @@
 Virtual Machine Manager and UCS
 ===============================
 
+.. contents::
+   :local:
+   :depth: 2
+
 Overview
 
 Virtual Machine Manager integration allows for the fabric to extend network policy and policy group definitions into virtual switches residing on a hypervisor. This integration automates critical network plumbing steps that typically stand as delays in the deployment of virtual and compute resources, by automatically configuring the required fabric side and hypervisor virtual switch encapsulation.

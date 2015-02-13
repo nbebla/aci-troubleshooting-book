@@ -1,6 +1,10 @@
 REST Interface
 ==============
 
+.. contents::
+   :local:
+   :depth: 2
+
 Overview
 
 This chapter will explain the basic concepts necessary to begin effectively utilizing ACI programmatic features for troubleshooting. This begins with recapitulating an overview the ACI Object Model, which describes how the system interprets configuration and represents state to internal and external entities. The REST API provides the means necessary to manipulate the object store, which contains the configured state of APIC using the object model as the metadata definition. The APIC SDK leverages the REST API to read and write the configuration of APIC, using the object model to describe the current and desired state.

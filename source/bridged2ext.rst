@@ -1,6 +1,10 @@
 Bridged Connectivity to External Networks
 =========================================
 
+.. contents::
+   :local:
+   :depth: 2
+
 Overview
 
 This chapter covers potential issues that could occur with Bridged Connectivity to External Networks, starting with an overview of how bridged connectivity to external networks should function and the verification steps used to confirm a working layer 2 bridged network for the example reference topology fabric.  The displays taken on a working fabric can then be used as an aid in troubleshooting issues with external Layer 2 connectivity. 
