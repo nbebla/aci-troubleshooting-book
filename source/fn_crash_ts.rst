@@ -52,39 +52,17 @@ system. This can help in understanding which log files to reference when
 troubleshooting a particular process or understand the impact to the system if
 a process crashed:
 
-.. todo::
-
-   Need a table here
-   
-Process
-
-Function
-
-policyelem
-
-Policy Element: Process logical MO from APIC and push concrete model to the switch
-
-eventmgr
-
-Event Manager: Processes local faults, events, health score
-
-opflexelem
-
-Opflex Element: Opflex server on switch
-
-observerelem
-
-Observer Element: Process local stats sent to APIC
-
-dbgrelem
-
-Debugger Element: Core handler
-
-nginx
-
-Web server handling traffic between the switch and APIC
-
- 
+============ =======================================================
+Process      Function
+============ =======================================================
+policyelem   Policy Element: Process logical MO from APIC and push
+             concrete model to the switch
+eventmgr     Event Manager: Processes local faults, events, health score
+opflexelem   Opflex Element: Opflex server on switch
+observerelem Observer Element: Process local stats sent to APIC
+dbgrelem     Debugger Element: Core handler
+nginx        Web server handling traffic between the switch and APIC
+============ =======================================================
 
 Identify When a Process Crashes:
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -93,7 +71,9 @@ When a process crashes and a core file is generated, a fault as well as an
 event is generated. The fault for the particular process is shown as a
 "process-crash" as shown in this syslog output from the APIC:
 
-Oct 16 03:54:35 apic3 %LOG_LOCAL7-3-SYSTEM_MSG [E4208395][process-crash][major][subj-[dbgs/cores/node-102-card-1-svc-policyelem-ts-2014-10-16T03:54:55.000+00:00]/rec-12884905092]Process policyelem cored
+.. code-block:: console
+
+       Oct 16 03:54:35 apic3 %LOG_LOCAL7-3-SYSTEM_MSG [E4208395][process-crash][major][subj-[dbgs/cores/node-102-card-1-svc-policyelem-ts-2014-10-16T03:54:55.000+00:00]/rec-12884905092]Process policyelem cored
 
 When the process on the switch crashes, the core file is compressed and copied
 to the APIC. The syslog message notification comes from the APIC.
@@ -157,9 +137,11 @@ Depending on which process crashes, the impact of the process core will vary.
 When a non-DME process crashes, this will typical lead to a HAP reset as seen
 on the console:
 
-[ 1130.593388] nvram_klm wrote rr=16 rr_str=ntp hap reset to nvram
-[ 1130.599990] obfl_klm writing reset reason 16, ntp hap reset
-[ 1130.612558] Collected 8 ext4 filesystems
+.. code-block:: console
+
+   [ 1130.593388] nvram_klm wrote rr=16 rr_str=ntp hap reset to nvram
+   [ 1130.599990] obfl_klm writing reset reason 16, ntp hap reset
+   [ 1130.612558] Collected 8 ext4 filesystems
 
 Check the appropriate process log:
 """"""""""""""""""""""""""""""""""

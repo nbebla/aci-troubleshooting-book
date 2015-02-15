@@ -32,8 +32,8 @@ in System->Controllers->Processes as shown here:
 
 |
 
-Using the CLI, the processes and the process ID are found in the summary file
-at /aci/system/controllers/1/processes (for APIC1):
+Using the CLI, the processes and the process ID are found in the **summary**
+file at **/aci/system/controllers/1/processes** (for APIC1):
 
 .. code-block:: console
 
@@ -68,91 +68,37 @@ at /aci/system/controllers/1/processes (for APIC1):
 
 Each of the processes running on the APIC writes to a log file on the system.
 These log files can be bundled as part of the APIC techsupport file but can
-also be observed through SSH shell access in /var/log/dme/log. For example,
+also be observed through SSH shell access in **/var/log/dme/log**. For example,
 the Policy Manager process log output is written into
-/var/log/dme/log/svc_ifc_policymgr.bin.log.
+**/var/log/dme/log/svc_ifc_policymgr.bin.log**.
 
 The following is a brief description of the processes running on the system.
 This can help in understanding which log files to reference when
 troubleshooting a particular process or understand the impact to the system if
 a process crashed:
 
-.. todo::
-
-   Need to finish this table
-
-Process
-
-Function
-
-KERNEL
-
-Linux kernel
-
-dhcpd
-
-DHCP process running for APIC to assign infra addresses
-
-vmmmgr
-
-Handles process between APIC and Hypervisors
-
-neo
-
-Shell CLI Interpreter
-
-ae
-
-Handles the state and inventory of local APIC appliance
-
-eventmgr
-
-Handles all events and faults on the system
-
-bootmgr
-
-Controls boot and firmware updates on fabric nodes
-
-snoopy
-
-Shell CLI help, tab command completion
-
-scripthandler
-
-Handles the L4-L7 device scripts and communication
-
-dbgr
-
-Generates core files when process crashes
-
-nginx
-
-Web service handling GUI and REST API access
-
-appliancedirector
-
-Handles formation and control of APIC cluster
-
-sshd
-
-Enabled SSH access into the APIC
-
-perfwatch
-
-Monitors Linux cgroup resource usage
-
-observer
-
-Monitors the fabric system and data handling of state, stats, health
-
-lldpad
-
-LLDP Agent
-
-topomgr
-
-Maintains fabric topology and inventory
-
+================= =======================================================
+Process           Function
+================= =======================================================
+KERNEL            Linux kernel
+dhcpd             DHCP process running for APIC to assign infra addresses
+vmmmgr            Handles process between APIC and Hypervisors
+neo               Shell CLI Interpreter
+ae                Handles the state and inventory of local APIC appliance
+eventmgr          Handles all events and faults on the system
+bootmgr           Controls boot and firmware updates on fabric nodes
+snoopy            Shell CLI help, tab command completion
+scripthandler     Handles the L4-L7 device scripts and communication
+dbgr Generates    core files when process crashes
+nginx             Web service handling GUI and REST API access
+appliancedirector Handles formation and control of APIC cluster
+sshd              Enabled SSH access into the APIC
+perfwatch         Monitors Linux cgroup resource usage
+observer          Monitors the fabric system and data handling of state,
+                  stats, health
+lldpad            LLDP Agent
+topomgr           Maintains fabric topology and inventory
+================= =======================================================
 
 
 How to Identify When a Process Crashes:
@@ -285,8 +231,8 @@ When a process fails to restart automatically on an APIC, the recommended
 method is to restart the APIC to allow all the processes to come up
 organically.
 
-The processes can be started as well through the APIC shell command acidiag
-restart mgmt. This will restart the essential APIC processes but it will cause
+The processes can be started as well through the APIC shell command **acidiag
+restart mgmt**. This will restart the essential APIC processes but it will cause
 all processes to restart, not just bringing up the process which is not
 running.
 
@@ -324,7 +270,7 @@ Check the appropriate process log:
 
 The process which crashes should have at some level of log output prior to the
 crash. The output of the logs for that APIC that the process is not running is
-found in/var/log/dme/log when logged in via SSH access. The process name will
+found in **/var/log/dme/log** when logged in via SSH access. The process name will
 be part of the file name. For example vmmmgr is svc_ifc_vmmmgr.bin.log.
 
 .. code-block:: console
@@ -355,8 +301,8 @@ Check what activity occurred at the time of the process crash:
 Typically, a process which has been running successfully would have to
 experience some change which caused it to crash. In many cases the changes may
 have been some configuration activity on the system. What activity occurred on
-the system can be found in FABRIC->Pod 1 in the HISTORY tab and then the AUDIT
-LOG subtab.
+the system can be found in **FABRIC->Pod 1** in the **HISTORY** tab and then the
+AUDIT LOG subtab.
 
 In this example, the policymgr process crashed several times leading to the
 process not being up. On further investigation, during the time of the first
