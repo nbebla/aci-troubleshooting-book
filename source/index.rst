@@ -2,10 +2,21 @@
 Troubleshooting Cisco Application Centric Infrastructure
 ########################################################
 
+.. _cover:
+
+.. image:: /images/cover.png
+   :width: 750 px
+   :align: center
+
+|
+
+.. _toc: 
+
+
 Table of Contents:
 
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 3
 
    Preface <preface>
    Application Centric Infrastructure <aci>

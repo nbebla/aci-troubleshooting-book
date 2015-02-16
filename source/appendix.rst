@@ -38,7 +38,7 @@ that if one part of a transaction fails the entire transaction fails.
 **AEP**: Attach Entity Profile – this is a configuration profile of the
 interface that gets applied when an entity attaches to the fabric. An AEP
 represents a group of external entities with similar infrastructure policy
-requirements. 
+requirements.
 
 **ALE**: Application Leaf Engine, an ASIC on a leaf switch.
 
