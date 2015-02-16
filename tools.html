@@ -1,0 +1,549 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Troubleshooting Tools &mdash; ACI Troubleshooting Book 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="ACI Troubleshooting Book 0.0.1 documentation" href="index.html"/>
+        <link rel="next" title="Troubleshooting Methodology" href="ts_methodology.html"/>
+        <link rel="prev" title="ACI Policy Model" href="aci_policy_model.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="index.html" class="fa fa-home"> ACI Troubleshooting Book</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="preface.html">Preface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#authors-and-contributors">Authors and Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#authors">Authors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#distinguished-contributors">Distinguished Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#dedications">Dedications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#acknowledgments">Acknowledgments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#book-writing-methodology">Book Writing Methodology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#who-should-read-this-book">Who Should Read This Book?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#organization-of-this-book">Organization of this Book</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="aci.html">Application Centric Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aci_policy_model.html">ACI Policy Model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#abstraction-model">Abstraction Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#everything-is-an-object">Everything is an Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#relevant-objects-and-relationships">Relevant Objects and Relationships</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#hierarchical-aci-object-model-and-the-infrastructure">Hierarchical ACI Object Model and the Infrastructure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#infrastructure-as-objects">Infrastructure as Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#build-object-use-object-to-build-policy-reuse-policy">Build object, use object to build policy, reuse policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#rest-api-just-exposes-the-object-model">REST API just exposes the object model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#logical-model-resolved-model-concrete-model">Logical model, Resolved model, concrete model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#formed-and-unformed-relationships">Formed and Unformed Relationships</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#declarative-end-state-and-promise-theory">Declarative End State and Promise Theory</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Troubleshooting Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#apic-access-methods">APIC Access Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#programmatic-configuration-python">Programmatic Configuration (Python)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fabric-node-access-methods">Fabric Node Access Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exporting-information-from-the-fabric">Exporting information from the Fabric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#external-data-collection-syslog-snmp-call-home">External Data Collection – Syslog, SNMP, Call-Home</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#health-scores">Health Scores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#atomic-counters">Atomic Counters</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ts_methodology.html">Troubleshooting Methodology</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ts_methodology.html#overall-methodology">Overall Methodology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="topology.html">Sample Reference Topology</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="topology.html#physical-fabric-topology">Physical Fabric Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="topology.html#logical-application-topology">Logical Application Topology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#naming-conventions">Naming Conventions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hw_bringup.html">Initial Hardware Bringup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="hw_bringup.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw_bringup.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw_bringup.html#id2">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fabric_init.html">Fabric Initialization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fabric_init.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fabric_init.html#fabric-verification">Fabric Verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fabric_init.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="apic.html">Application Policy Infrastructure Controller (APIC) High Availability and Clustering</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#cluster-formation">Cluster Formation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#majority-and-minority-handling-clustering-split-brains">Majority and Minority - Handling Clustering Split Brains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id1">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id4">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id6">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id9">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id12">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id15">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="firmware.html">Firmware and Image Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html#id1">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html#id5">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="health.html">Faults / Health Scores</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="health.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="health.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="health.html#id1">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rest.html">REST Interface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rest.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rest.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mgmt_tn.html">Management Tenant</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mgmt_tn.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mgmt_tn.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mgmt_tn.html#id1">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="common.html">Common Network Services</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="common.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common.html#id15">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="unicast.html">Unicast Data Plane Forwarding and Reachability</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="unicast.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unicast.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unicast.html#id1">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pol_cntr.html">Policies and Contracts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pol_cntr.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pol_cntr.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bridged2ext.html">Bridged Connectivity to External Networks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="bridged2ext.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bridged2ext.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bridged2ext.html#id3">Problem Description:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bridged2ext.html#id5">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="routed2ext.html">Routed Connectivity to External Networks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#fabric-verification">Fabric Verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#problem-description">Problem description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#id1">Problem description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#id3">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vmm_ucs.html">Virtual Machine Manager and UCS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#id2">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#id6">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#id9">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="l4l7.html">L4-L7 Service Insertion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="l4l7.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="l4l7.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fn_crash_ts.html">ACI Fabric Node and Process Crash Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fn_crash_ts.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fn_crash_ts.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="apic_crash_ts.html">APIC Process Crash Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="apic_crash_ts.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic_crash_ts.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix.html#overview">Overview</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">ACI Troubleshooting Book</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div></div>
+          <div role="main" class="document">
+            
+  <div class="section" id="troubleshooting-tools">
+<h1>Troubleshooting Tools<a class="headerlink" href="#troubleshooting-tools" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#apic-access-methods" id="id1">APIC Access Methods</a><ul>
+<li><a class="reference internal" href="#gui" id="id2">GUI</a></li>
+<li><a class="reference internal" href="#api" id="id3">API</a></li>
+<li><a class="reference internal" href="#cli" id="id4">CLI</a><ul>
+<li><a class="reference internal" href="#cli-modes" id="id5">CLI MODES:</a></li>
+<li><a class="reference internal" href="#navigating-the-cli" id="id6">Navigating the CLI:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#programmatic-configuration-python" id="id7">Programmatic Configuration (Python)</a></li>
+<li><a class="reference internal" href="#fabric-node-access-methods" id="id8">Fabric Node Access Methods</a></li>
+<li><a class="reference internal" href="#exporting-information-from-the-fabric" id="id9">Exporting information from the Fabric</a></li>
+<li><a class="reference internal" href="#external-data-collection-syslog-snmp-call-home" id="id10">External Data Collection – Syslog, SNMP, Call-Home</a></li>
+<li><a class="reference internal" href="#health-scores" id="id11">Health Scores</a></li>
+<li><a class="reference internal" href="#atomic-counters" id="id12">Atomic Counters</a></li>
+</ul>
+</div>
+<p>This section is intended to provide an overview of the tools that could be
+used during troubleshooting efforts on an ACI fabric. This is not intended to
+be a complete reference list of all possible tools, but rather a high level
+list of the most common tools used.</p>
+<a class="reference internal image-reference" href="_images/tools.jpg"><img alt="_images/tools.jpg" class="align-center" src="_images/tools.jpg" style="width: 750px;" /></a>
+<div class="section" id="apic-access-methods">
+<h2><a class="toc-backref" href="#id1">APIC Access Methods</a><a class="headerlink" href="#apic-access-methods" title="Permalink to this headline">¶</a></h2>
+<p>There are multiple ways to connect to and manage the ACI fabric and object
+model. An administrator can use the built-in Graphical User Interface (GUI),
+programmatic methods using an Application Programming Interface (API), or
+standard Command Line Interface (CLI). While there are multiple ways to access
+the APIC, the APIC is still the single point of truth. All of these access
+methods - the GUI, CLI and REST API - are just interfaces resolving to the
+API, which is the abstraction of the object model managed by the DME.</p>
+<div class="section" id="gui">
+<h3><a class="toc-backref" href="#id2">GUI</a><a class="headerlink" href="#gui" title="Permalink to this headline">¶</a></h3>
+<p>One of the primary ways to configure, verify and monitor the ACI fabric is
+through the APIC GUI. The APIC GUI is a browser-based HTML5 application that
+provides a representation of the object model and would be the most likely
+default interface that people would start with. GUI access is accessible
+through a browser at the URL <a class="reference external" href="https:/">https:/</a>/&lt;APIC IP&gt;
+The GUI does not expose the underlying policy object model. One of the
+available tools for browsing the MIT in addition to leveraging the CLI is
+called “visore” and is available on the APIC and nodes. Visore supports
+querying by class and object, as well as easily navigating the hierarchy of
+the tree. Visore is accessible through a browser at the URL <a class="reference external" href="https:/">https:/</a>/&lt;APIC
+IP&gt;/visore.html</p>
+</div>
+<div class="section" id="api">
+<h3><a class="toc-backref" href="#id3">API</a><a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h3>
+<p>The APIC supports REST API connections via HTTP/HTTPS for processing of
+XML/JSON documents for rapid configuration. The API can also be used to verify
+the configured policy on the system. This is covered in details in the REST
+API chapter.</p>
+<p>A common tool used to query the system is a web browser based APP that runs on
+Google Chrome (tm) web browser called &#8220;Postman&#8221;.</p>
+</div>
+<div class="section" id="cli">
+<h3><a class="toc-backref" href="#id4">CLI</a><a class="headerlink" href="#cli" title="Permalink to this headline">¶</a></h3>
+<p>The CLI can be used in configuring the APIC. It can be used extensively in
+troubleshooting the system as it allows real-time visibility of the
+configuration, faults, and statistics of the system or alternatively as an
+object model browser. Typically the CLI is accessed via SSH with the
+appropriate administrative level credentials. The APIC CLI can be accessed as
+well through the CIMC KVM (Cisco Integrated Management Console Keyboard Video
+Mouse interface).</p>
+<p>CLI access is also available for troubleshooting the fabric nodes either
+through SSH or the console.</p>
+<p>The APIC and fabric nodes are based on a Linux kernel but there are some ACI
+specific commands and modes of access that will be used in this book.</p>
+<div class="section" id="cli-modes">
+<h4><a class="toc-backref" href="#id5">CLI MODES:</a><a class="headerlink" href="#cli-modes" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="apic">
+<h5>APIC:<a class="headerlink" href="#apic" title="Permalink to this headline">¶</a></h5>
+<p>The APIC has fundamentally only one CLI access mode. The commands used in this
+book are assuming admininistrave level access to the APIC by use of the admin
+user account.</p>
+</div>
+<div class="section" id="fabric-node">
+<h5>Fabric Node:<a class="headerlink" href="#fabric-node" title="Permalink to this headline">¶</a></h5>
+<p>The switch running ACI software has several different modes that can be used
+to access different levels of information on the system:</p>
+<ul class="simple">
+<li>CLI - The CLI will be used to run NX-OS and Bash shell commands to check the
+concrete models on the switch. For example show vlan, show endpoint, etc. In
+some documentation this may have been referred to as Bash, iBash, or iShell.</li>
+<li>vsh_lc - This is the line card shell and it will be used to check line card
+processes and forwarding tables specific to the Application Leaf Engine (ALE)
+ASIC.</li>
+<li>Broadcom Shell - This shell is used to view information on the Broadcom
+ASIC. The shell will not be covered as it falls outside the scope of this
+book as its assumed troubleshooting at a Broadcom Shell level should be
+performed with assistance of Cisco Technical Assistance Center (TAC). Virtual
+Shell</li>
+<li>(VSH): Provides deprecated NX-OS CLI shell access to the switch. This mode
+can provide output on a switch in ACI mode that could be inaccurate. This
+mode is not recommended, not supported, and commands that provide useful
+output should be available from the normal CLI access mode.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="navigating-the-cli">
+<h4><a class="toc-backref" href="#id6">Navigating the CLI:</a><a class="headerlink" href="#navigating-the-cli" title="Permalink to this headline">¶</a></h4>
+<p>There are some common commands as well as some unique differences than might
+be seen in NX-OS on a fabric node. On the APIC, the command structure has
+common commands as well as some unique differences compared to Linux Bash.
+This section will present a highlight of a few of these commands but is not
+meant to replace existing external documentation on Linux, Bash, ACI, and
+NX-OS.</p>
+<div class="section" id="common-bash-commands">
+<h5>Common Bash commands:<a class="headerlink" href="#common-bash-commands" title="Permalink to this headline">¶</a></h5>
+<p>When using the CLI, some basic understanding of Linux and Bash is necessary.
+These commands include:</p>
+<ul class="simple">
+<li><strong>man</strong> – prints the online manual pages. For example, man cd will display</li>
+<li><strong>what</strong> the command cd does</li>
+<li><strong>ls</strong> – list directory contents</li>
+<li><strong>cd</strong> – change directory</li>
+<li><strong>cat</strong> – print the contents of a file less – simple navigation tool for
+displaying the contents of a file</li>
+<li><strong>grep</strong> – print out a matching line from a file</li>
+<li><strong>ps</strong> – show current running processes – typically used with the options
+<strong>ps –ef</strong></li>
+<li><strong>netstat</strong> – display network connection status.  <strong>netstat –a</strong> will display
+active and ports which the system is listening on</li>
+<li><strong>ip route show</strong> – displays the kernel route table. This is useful on the
+APIC but not on the fabric node</li>
+<li><strong>pwd</strong> – print the current directory</li>
+</ul>
+</div>
+<div class="section" id="common-cli-commands">
+<h5>Common CLI commands:<a class="headerlink" href="#common-cli-commands" title="Permalink to this headline">¶</a></h5>
+<p>Beyond the normal NX-OS commands on a fabric node, there are several more that
+are specific commands to ACI. Some CLI commands referenced in this guide are
+listed below:</p>
+<ul class="simple">
+<li><strong>acidiag</strong> - Specifically <strong>acidiag avread</strong> and <strong>acidiag fnvread</strong> are two
+common commands to check the status of the controllers and the fabric nodes</li>
+<li><strong>techsupport</strong> – CLI command to collect the techsupport files from the
+device</li>
+<li><strong>attach</strong> – From the APIC, opens up a ssh session to the names node. For
+example <strong>attach rtp_leaf1</strong></li>
+<li><strong>iping</strong>/<strong>itraceroute</strong> – Fabric node command used in place of
+ping/traceroute which provides similar functionality against an fabric device
+address and VRF. Note that the Bash ping and traceroute commands do work but
+are effective only for the switch OOB access.</li>
+</ul>
+</div>
+<div class="section" id="help">
+<h5>Help:<a class="headerlink" href="#help" title="Permalink to this headline">¶</a></h5>
+<p>When navigating around the APIC CLI, there are some differences when
+compared to NX-OS.</p>
+<ul class="simple">
+<li>&lt;ESC&gt;&lt;ESC&gt; - similar to NX-OS “?” to get a list of command options and
+keywords.</li>
+<li>&lt;TAB&gt; - autocomplete of the command. For example <strong>show int**&lt;TAB&gt; will
+complete to **show interface</strong>.</li>
+<li><strong>man</strong> &lt;command&gt; - displays the manual and usage output for the command.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="programmatic-configuration-python">
+<h2><a class="toc-backref" href="#id7">Programmatic Configuration (Python)</a><a class="headerlink" href="#programmatic-configuration-python" title="Permalink to this headline">¶</a></h2>
+<p>A popular modern programming language is Python, which provides simple
+object-oriented semantics in interpreted easy-to-write code. The APIC can be
+configured through the use of Python through an available APIC Software
+Development Kit (SDK) or via the REST API.</p>
+</div>
+<div class="section" id="fabric-node-access-methods">
+<h2><a class="toc-backref" href="#id8">Fabric Node Access Methods</a><a class="headerlink" href="#fabric-node-access-methods" title="Permalink to this headline">¶</a></h2>
+<p>CLI In general, most work within ACI will be done through the APIC using the
+access methods listed above. There are, however, times in which one must
+directly access the individual fabric nodes (switches). Fabric nodes can be
+accessed via SSH using the fabric administrative level credentials. The CLI is
+not used for configuration but is used extensively for troubleshooting
+purposes. The fabric nodes have a Linux shell along with a CLI interpreter to
+run show level commands. The CLI can be accessed through the console port as
+well.</p>
+<p>Faults The APICs automatically detect issues on the system and records these
+as faults. Faults are displayed in the GUI until the underlying issue is
+cleared. After faults are cleared, they are retained until they are
+acknowledged or until the retaining timer has expired. The fault is composed
+of system parameters, which are used to indicate the reason for the failure,
+and where the fault is located. Fault messages link to help to understand
+possible actions in some cases.</p>
+</div>
+<div class="section" id="exporting-information-from-the-fabric">
+<h2><a class="toc-backref" href="#id9">Exporting information from the Fabric</a><a class="headerlink" href="#exporting-information-from-the-fabric" title="Permalink to this headline">¶</a></h2>
+<p>Techsupport The Techsupport files in ACI capture application logs, system and
+services logs, version information, faults, event and audit logs, debug
+counters and other command output, then bundle all of that into one file on
+the system. This is presented in a single compressed file (tarball) that can
+be exported to an external location for off-system processing. Techsupport is
+similar to functionality available on other Cisco products that allow for a
+simple collection of copious amounts of relevant data from the system. This
+collection can be initiated through the GUI or through the CLI using the
+command techsupport.</p>
+<p>Core Files A process crash on the ACI fabric will generate a core file, which
+can be used to determine the reason for why the process crashed. This
+information can be exported from the APIC for decoding by Cisco support and
+engineering teams.</p>
+</div>
+<div class="section" id="external-data-collection-syslog-snmp-call-home">
+<h2><a class="toc-backref" href="#id10">External Data Collection – Syslog, SNMP, Call-Home</a><a class="headerlink" href="#external-data-collection-syslog-snmp-call-home" title="Permalink to this headline">¶</a></h2>
+<p>There are a variety of external collectors that can be configured to collect a
+variety of system data. The call-home feature can be configured to relay
+information via emails through an SMTP server, for a network engineer or to
+Cisco Smart Call Home to generate a case with the TAC.</p>
+</div>
+<div class="section" id="health-scores">
+<h2><a class="toc-backref" href="#id11">Health Scores</a><a class="headerlink" href="#health-scores" title="Permalink to this headline">¶</a></h2>
+<p>The APIC manages and automates the underlying forwarding components and Layer
+4 to Layer 7 service devices. Using visibility into both the virtual and
+physical infrastructure, as well as the knowledge of the application
+end-to-end based on the application profile, the APIC can calculate an
+application health score. This health score represents the network health of
+the application across virtual and physical resources, including Layer 4 to
+Layer 7 devices. The score includes failures, packet drops, and other
+indicators of system health.</p>
+<p>The health score provides enhanced visibility on both application and tenant
+levels. The health score can drive further value by being used to trigger
+automated events at specific thresholds. This ability allows the network to
+respond automatically to application health by making changes before users are
+impacted.</p>
+</div>
+<div class="section" id="atomic-counters">
+<h2><a class="toc-backref" href="#id12">Atomic Counters</a><a class="headerlink" href="#atomic-counters" title="Permalink to this headline">¶</a></h2>
+<p>Atomic counters can be configured to monitor endpoint/EPG to endpoint/EPG
+traffic within a tenant for identifying and isolating traffic loss. Once
+configured, the packet counters on a configured policy are updated every 30
+seconds. Atomic counters are valid when endpoints reside on different leaf
+nodes.</p>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ts_methodology.html" class="btn btn-neutral float-right" title="Troubleshooting Methodology">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="aci_policy_model.html" class="btn btn-neutral" title="ACI Policy Model"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Andres Vega, Bryan Deaver, Jerry Ye, Kannan Ponnuswamy, Loy Evans, Mike Timm, Paul Lesiak and Paul Raytick.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

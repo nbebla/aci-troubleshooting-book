@@ -1,0 +1,590 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Appendix &mdash; ACI Troubleshooting Book 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="ACI Troubleshooting Book 0.0.1 documentation" href="index.html"/>
+        <link rel="prev" title="APIC Process Crash Troubleshooting" href="apic_crash_ts.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="index.html" class="fa fa-home"> ACI Troubleshooting Book</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="preface.html">Preface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#authors-and-contributors">Authors and Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#authors">Authors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#distinguished-contributors">Distinguished Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#dedications">Dedications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#acknowledgments">Acknowledgments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#book-writing-methodology">Book Writing Methodology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#who-should-read-this-book">Who Should Read This Book?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#organization-of-this-book">Organization of this Book</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="aci.html">Application Centric Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aci_policy_model.html">ACI Policy Model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#abstraction-model">Abstraction Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#everything-is-an-object">Everything is an Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#relevant-objects-and-relationships">Relevant Objects and Relationships</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#hierarchical-aci-object-model-and-the-infrastructure">Hierarchical ACI Object Model and the Infrastructure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#infrastructure-as-objects">Infrastructure as Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#build-object-use-object-to-build-policy-reuse-policy">Build object, use object to build policy, reuse policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#rest-api-just-exposes-the-object-model">REST API just exposes the object model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#logical-model-resolved-model-concrete-model">Logical model, Resolved model, concrete model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#formed-and-unformed-relationships">Formed and Unformed Relationships</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#declarative-end-state-and-promise-theory">Declarative End State and Promise Theory</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Troubleshooting Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#apic-access-methods">APIC Access Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#programmatic-configuration-python">Programmatic Configuration (Python)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#fabric-node-access-methods">Fabric Node Access Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#exporting-information-from-the-fabric">Exporting information from the Fabric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#external-data-collection-syslog-snmp-call-home">External Data Collection – Syslog, SNMP, Call-Home</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#health-scores">Health Scores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#atomic-counters">Atomic Counters</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ts_methodology.html">Troubleshooting Methodology</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ts_methodology.html#overall-methodology">Overall Methodology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="topology.html">Sample Reference Topology</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="topology.html#physical-fabric-topology">Physical Fabric Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="topology.html#logical-application-topology">Logical Application Topology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#naming-conventions">Naming Conventions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hw_bringup.html">Initial Hardware Bringup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="hw_bringup.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw_bringup.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw_bringup.html#id2">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fabric_init.html">Fabric Initialization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fabric_init.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fabric_init.html#fabric-verification">Fabric Verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fabric_init.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="apic.html">Application Policy Infrastructure Controller (APIC) High Availability and Clustering</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#cluster-formation">Cluster Formation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#majority-and-minority-handling-clustering-split-brains">Majority and Minority - Handling Clustering Split Brains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id1">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id4">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id6">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id9">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id12">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id15">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="firmware.html">Firmware and Image Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html#id1">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html#id5">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="health.html">Faults / Health Scores</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="health.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="health.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="health.html#id1">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rest.html">REST Interface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rest.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rest.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mgmt_tn.html">Management Tenant</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mgmt_tn.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mgmt_tn.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mgmt_tn.html#id1">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="common.html">Common Network Services</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="common.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common.html#id15">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="unicast.html">Unicast Data Plane Forwarding and Reachability</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="unicast.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unicast.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unicast.html#id1">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pol_cntr.html">Policies and Contracts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pol_cntr.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pol_cntr.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bridged2ext.html">Bridged Connectivity to External Networks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="bridged2ext.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bridged2ext.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bridged2ext.html#id3">Problem Description:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bridged2ext.html#id5">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="routed2ext.html">Routed Connectivity to External Networks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#fabric-verification">Fabric Verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#problem-description">Problem description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#id1">Problem description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#id3">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vmm_ucs.html">Virtual Machine Manager and UCS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#id2">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#id6">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#id9">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="l4l7.html">L4-L7 Service Insertion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="l4l7.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="l4l7.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fn_crash_ts.html">ACI Fabric Node and Process Crash Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fn_crash_ts.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fn_crash_ts.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="apic_crash_ts.html">APIC Process Crash Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="apic_crash_ts.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic_crash_ts.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Appendix</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">ACI Troubleshooting Book</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div></div>
+          <div role="main" class="document">
+            
+  <div class="section" id="appendix">
+<h1>Appendix<a class="headerlink" href="#appendix" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#overview" id="id1">Overview</a><ul>
+<li><a class="reference internal" href="#a" id="id2">A</a></li>
+<li><a class="reference internal" href="#b" id="id3">B</a></li>
+<li><a class="reference internal" href="#c" id="id4">C</a></li>
+<li><a class="reference internal" href="#d" id="id5">D</a></li>
+<li><a class="reference internal" href="#e" id="id6">E</a></li>
+<li><a class="reference internal" href="#f" id="id7">F</a></li>
+<li><a class="reference internal" href="#g" id="id8">G</a></li>
+<li><a class="reference internal" href="#h" id="id9">H</a></li>
+<li><a class="reference internal" href="#i" id="id10">I</a></li>
+<li><a class="reference internal" href="#j" id="id11">J</a></li>
+<li><a class="reference internal" href="#l" id="id12">L</a></li>
+<li><a class="reference internal" href="#m" id="id13">M</a></li>
+<li><a class="reference internal" href="#o" id="id14">O</a></li>
+<li><a class="reference internal" href="#p" id="id15">P</a></li>
+<li><a class="reference internal" href="#r" id="id16">R</a></li>
+<li><a class="reference internal" href="#s" id="id17">S</a></li>
+<li><a class="reference internal" href="#t" id="id18">T</a></li>
+<li><a class="reference internal" href="#v" id="id19">V</a></li>
+<li><a class="reference internal" href="#x" id="id20">X</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="overview">
+<h2><a class="toc-backref" href="#id1">Overview</a><a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>This section is designed to provide a high level description of terms and
+concepts that get brought up in this book. While ACI does not change how
+packets are transmitted on a wire, there are some new terms and concepts
+employed, and understanding those new terms and concepts will help those
+working on ACI communicate with one another about the constructs used in ACI
+used to transmit those bits. Associated new acronyms are also provided.</p>
+<p>This is not meant to be an exhaustive list nor a completely detailed dictionary
+of all of the terms and concepts, only the key ones that may not be a part of
+the common vernacular or which would be relevant to the troubleshooting
+exercises that were covered in the troubleshooting scenarios discussed.</p>
+<div class="section" id="a">
+<h3><a class="toc-backref" href="#id2">A</a><a class="headerlink" href="#a" title="Permalink to this headline">¶</a></h3>
+<p><strong>AAA</strong>: acronym for Authentication, Authorization, and Accounting.</p>
+<p><strong>ACI External Connectivity</strong>: Any connectivity to and from the fabric that
+uses an external routed or switched intermediary system, where endpoints fall
+outside of the managed scope of the fabric.</p>
+<p><strong>ACID transactions</strong>: ACID is an acrronym for Atomicity, Consistency,
+Isolation, Durability – properties of transactions that ensure consistency in
+database transactions. Transactions to APIC devices in an ACI cluster are
+considered ACID, to ensure that database consistency is maintained. This means
+that if one part of a transaction fails the entire transaction fails.</p>
+<p><strong>AEP</strong>: Attach Entity Profile – this is a configuration profile of the
+interface that gets applied when an entity attaches to the fabric. An AEP
+represents a group of external entities with similar infrastructure policy
+requirements.</p>
+<p><strong>ALE</strong>: Application Leaf Engine, an ASIC on a leaf switch.</p>
+<p><strong>APIC</strong>: Application Infrastructure Controller is a centralized policy
+management controller cluster. The APIC configures the intended state of the
+policy to the fabric.</p>
+<p><strong>API</strong>: Application Programming Interface used for programmable extensibility.</p>
+<p><strong>Application Profile</strong>: Term used to reference an application profile managed
+object reference that models the logical components of an application and how
+those components communicate. The AP is the key object used to represent an
+application and is also the anchor point for the automated infrastructure
+management in an ACI fabric.</p>
+<p><strong>ASE</strong>: Application Spine Engine, an ASIC on a Spine switch.</p>
+</div>
+<div class="section" id="b">
+<h3><a class="toc-backref" href="#id3">B</a><a class="headerlink" href="#b" title="Permalink to this headline">¶</a></h3>
+<p><strong>BGP</strong>: Border Gateway Protocol, on the ACI fabric BGP is used to distribute
+reachability information within the fabric.</p>
+<p><strong>Bridge Domain</strong>: A unique layer 2 forwarding domain that contains one or more
+subnets.</p>
+</div>
+<div class="section" id="c">
+<h3><a class="toc-backref" href="#id4">C</a><a class="headerlink" href="#c" title="Permalink to this headline">¶</a></h3>
+<p><strong>Clos fabric</strong>: A multi-tier nonblocking leaf-spine architecture network.</p>
+<p><strong>Cluster</strong>: Set of devices that work together as a single system to provide an
+identical or similar set of functions.</p>
+<p><strong>Contracts</strong>: A logical container for the subjects which relate to the filters
+that govern the rules for communication between endpoint groups.  ACI works on
+a white list policy model.  Without a contract, the default forwarding policy
+is to not allow any communication between EPGs but communication within an EPG
+is allowed.</p>
+<p><strong>Context</strong>: A layer 3 forwarding domain, equivalent to a VRF.  Every bridge
+domain needs to be associated with a context.</p>
+</div>
+<div class="section" id="d">
+<h3><a class="toc-backref" href="#id5">D</a><a class="headerlink" href="#d" title="Permalink to this headline">¶</a></h3>
+<p><strong>DLB</strong>: Dynamic Load Balancing – a network traffic load balancing mechanism
+in the ACI fabric based on flowlet switching.</p>
+<p><strong>DME</strong>: Data Management Engine, a service that runs on the APIC that manages
+data for the data model.</p>
+<p><strong>dMIT</strong>: distributed Management Information Tree, a representation of the ACI
+object model with the root of the tree at the top and the leaves of the tree
+at the bottom.  The tree contains all aspects of the object model that
+represent an ACI fabric.</p>
+<p><strong>Dn</strong>: Distinguished name – a fully qualified name that represents a specific
+object within the ACI management information tree as well as the specific
+location information in the tree. It is made up of a concatenation of all of
+the relative names from itself back to the root of the tree. As an example, if
+policy object of type Application Profile is created named commerceworkspace
+within a Tenant named Prod, the dn would be expressed as
+uni/tn-Prod/ap-commerceworkspace.</p>
+</div>
+<div class="section" id="e">
+<h3><a class="toc-backref" href="#id6">E</a><a class="headerlink" href="#e" title="Permalink to this headline">¶</a></h3>
+<p><strong>EP</strong>: Endpoint - Any logical or physical device connected directly or
+indirectly to a port on a leaf switch that is not a fabric facing port.
+Endpoints have specific properties like an address, location, or potentially
+some other attribute, which is used to identify the endpoint. Examples include
+virtual-machines, servers, storage devices, etc.</p>
+<p><strong>EPG</strong>: A collection of endpoints that can be grouped based on common
+requirements for a common policy. Endpoint groups can be dynamic or static.</p>
+</div>
+<div class="section" id="f">
+<h3><a class="toc-backref" href="#id7">F</a><a class="headerlink" href="#f" title="Permalink to this headline">¶</a></h3>
+<p><strong>Fault</strong>: When a failure occurs or an alarm is raised, the system creates a
+fault managed object for the fault. A fault contains the conditions,
+information about the operational state of the affected object, and potential
+resolutions for the problem.</p>
+<p><strong>Fabric</strong>: Topology of network nodes.</p>
+<p><strong>Filters</strong>: Filters define the rules outlining the layer 2 to layer 4 fields
+that will be matched by a contract.</p>
+<p><strong>Flowlet switching</strong>:  An optimized multipath load balancing methodology
+based on research from MIT in 2004. Flowlet Switching is a way to use TCP’s
+own bursty nature to more efficiently forward TCP flows by dynamically
+splitting flows into flowlets and splitting traffic across multiple parallel
+paths without requiring packet reordering.</p>
+</div>
+<div class="section" id="g">
+<h3><a class="toc-backref" href="#id8">G</a><a class="headerlink" href="#g" title="Permalink to this headline">¶</a></h3>
+<p><strong>GUI</strong>: Graphical User Interface.</p>
+</div>
+<div class="section" id="h">
+<h3><a class="toc-backref" href="#id9">H</a><a class="headerlink" href="#h" title="Permalink to this headline">¶</a></h3>
+<p><strong>HTML</strong>: HyperText Markup Language, a markup language that focuses on the
+formatting of web pages.</p>
+<p><strong>Hypervisor</strong>: Software that abstracts the hardware on a host machine and
+allows the host machine to run multiple virtual machines.</p>
+<p><strong>Hypervisor integration</strong>: Extension of ACI Fabric connectivity to a
+virtualization manager to provide the APIC controller with a mechanism for
+virtual machine visibility and policy enforcement.</p>
+</div>
+<div class="section" id="i">
+<h3><a class="toc-backref" href="#id10">I</a><a class="headerlink" href="#i" title="Permalink to this headline">¶</a></h3>
+<p><strong>IFM</strong>: Intra-Fabric Messages, Used for communication between different
+devices on the ACI fabric.</p>
+<p><strong>Inband Management (INB)</strong>: Inband Management. Connectivity using an inband
+management configuration. This uses a front panel (data plane) port of a leaf
+switch for external management connectivity for the fabric and APICs.</p>
+<p><strong>IS-IS</strong>: Link local routing protocol leveraged by the fabric for
+infrastructure topology. Loopback and VTEP addresses are internally advertised
+over IS-IS. IS-IS announces the creation of tunnels from leaf nodes to all
+other nodes in fabric.</p>
+</div>
+<div class="section" id="j">
+<h3><a class="toc-backref" href="#id11">J</a><a class="headerlink" href="#j" title="Permalink to this headline">¶</a></h3>
+<p><strong>JSON</strong>: JavaScript Object Notation, a data encapsulation format that uses
+human readable text to encapsulate data objects in attribute and value pairs.</p>
+</div>
+<div class="section" id="l">
+<h3><a class="toc-backref" href="#id12">L</a><a class="headerlink" href="#l" title="Permalink to this headline">¶</a></h3>
+<p><strong>Layer 2 Out (l2out)</strong>: Layer 2 connectivity to an external network that
+exists outside of the ACI fabric.</p>
+<p><strong>Layer 3 Out (l3out)</strong>: Layer 3 connectivity to an external network that
+exists outside of the ACI fabric.</p>
+<p><strong>L4-L7 Service Insertion</strong>: The insertion of a service like a firewall and a
+load balancer into the flow of traffic. Service nodes operate between Layers
+4 and 7 of the OSI model, where as networking elements (i.e. the fabric)
+operate at layers 1-3).</p>
+<p><strong>Labels</strong>: Used for classifying which objects can and cannot communicate with
+each other.</p>
+<p><strong>Leaf</strong>: Network node in fabric providing host and border connectivity. Leafs
+connect only to hosts and spines. Leafs never connect to each other.</p>
+</div>
+<div class="section" id="m">
+<h3><a class="toc-backref" href="#id13">M</a><a class="headerlink" href="#m" title="Permalink to this headline">¶</a></h3>
+<p><strong>MO</strong>: Managed Object – every configurable component of the ACI policy model
+managed in the MIT is called a MO.</p>
+<p><strong>Model</strong>: A model is a concept which represents entities and the
+relationships that exist between them.</p>
+<p><strong>Multi-tier Application</strong>: Client–server architecture in which presentation,
+application logic, and database management functions are physically separated
+and require networking functions to communicate with the other tiers for
+application functionality.</p>
+</div>
+<div class="section" id="o">
+<h3><a class="toc-backref" href="#id14">O</a><a class="headerlink" href="#o" title="Permalink to this headline">¶</a></h3>
+<p><strong>Object Model</strong>: A collection of objects and classes are used to examine and
+manipulate the configuration and running state of the system that is exposing
+that object model. In ACI the object model is represented as a tree known as
+the distributed management information tree (dMIT).</p>
+<p><strong>Out of Band management (OOBM)</strong>: External connectivity using a specific
+out-of-band management interface on every switch and APIC.</p>
+</div>
+<div class="section" id="p">
+<h3><a class="toc-backref" href="#id15">P</a><a class="headerlink" href="#p" title="Permalink to this headline">¶</a></h3>
+<p><strong>Port Channel</strong>: Port link aggregation technology that binds multiple
+physical interfaces into a single logical interface and provides more
+aggregate bandwidth and link failure redundancy.</p>
+</div>
+<div class="section" id="r">
+<h3><a class="toc-backref" href="#id16">R</a><a class="headerlink" href="#r" title="Permalink to this headline">¶</a></h3>
+<p><strong>RBAC</strong>: Role Based Access Control, which is a method of managing secure
+access to infrastructure by assigning roles to users, then using those roles
+in the process of granting or denying access to devices, objects and privilege
+levels.</p>
+<p><strong>REpresentational State Transfer (REST)</strong>: a stateless protocol usually run
+over HTTP that allows a client to access a service.  The location that the
+client access usually defines the data the client is trying to access from the
+service.  Data is usually accessed and returned in either XML or JSON format.</p>
+<p><strong>RESTful</strong>: An API that uses REST, or Representational State Transfer.</p>
+<p><strong>Rn</strong>: Relative name, a name of a specific object within the ACI management
+information tree that is not fully qualified. A Rn is significant to the
+individual object, but without context, it’s not very useful in navigation. A
+Rn would need to be concatenated with all the relative names from itself back
+up to the root to make a distinguished name, which then becomes useful for
+navigation. As an example, if an Application Profile object is created named
+&#8220;commerceworkspace&#8221;, the Rn would be &#8220;ap-commerceworkspace&#8221; because
+Application Profile relative names are all prefaced with the letters &#8220;ap-&#8221;.
+See also the Dn definition.</p>
+</div>
+<div class="section" id="s">
+<h3><a class="toc-backref" href="#id17">S</a><a class="headerlink" href="#s" title="Permalink to this headline">¶</a></h3>
+<p><strong>Service graph</strong>: Cisco ACI treats services as an integral part of an
+application. Any services that are required are treated as a service graph that
+is instantiated on the ACI fabric from the APIC. Service graphs identify the
+set of network or service functions that are needed by the application, and
+represent each function as a node. A service graph is represented as two or
+more tiers of an application with the appropriate service function inserted
+between.</p>
+<p><strong>Spine</strong>: Network node in fabric carrying aggregate host traffic from leafs,
+connected only to leafs in the fabric and no other device types.</p>
+<p><strong>Spine Leaf topology</strong>: A clos-based fabric topology in which spine nodes
+connect to leaf nodes, leaf nodes connect to hosts and external networks.</p>
+<p><strong>Subnets</strong>: Contained by a bridge domain, a subnet defines the IP address
+range that can be used within the bridge domain.</p>
+<p><strong>Subjects</strong>: Contained by contracts and create the relationship between
+filters and contracts.</p>
+<p><strong>Supervisor</strong>: Switch module/line card that provides the processing engine.</p>
+</div>
+<div class="section" id="t">
+<h3><a class="toc-backref" href="#id18">T</a><a class="headerlink" href="#t" title="Permalink to this headline">¶</a></h3>
+<p><strong>Tenants</strong>: The logical container to group all policies for application
+policies. This allows isolation from a policy perspective. For service
+providers this would be a customer. In an enterprise or organization this
+would allow the organization to define policy separation in a way that suits
+their needs.  There are three pre-defined tenants on every ACI fabric:</p>
+<ul class="simple">
+<li><strong>common</strong>: policies in this tenant are shared by all tenants. Usually these
+are used for shared services or L4-L7 services.</li>
+<li><strong>infra</strong>: policies in this tenant are used to influence the operation of the
+fabric overlay</li>
+<li><strong>mgmt</strong>: policies in this tenant are used to define access to the inband and
+out-of-band management and virtual machine controllers.</li>
+</ul>
+</div>
+<div class="section" id="v">
+<h3><a class="toc-backref" href="#id19">V</a><a class="headerlink" href="#v" title="Permalink to this headline">¶</a></h3>
+<p><strong>Virtualization</strong>: application of technology used to abstract hardware
+resources into virtual representations and allowing software configurability.</p>
+<p><strong>vPC</strong>: virtual Port Channel, in which a port channel is created for link
+aggregation, but is spread across multiple physical switches.</p>
+<p><strong>VRF</strong>: Virtual Routing and Forwarding - A L3 namespace isolation methodology
+to allow for multiple L3 contexts to be deployed on a single device or
+infrastructure.</p>
+<p><strong>VXLAN</strong>: VXLAN is a Layer 2 overlay scheme transported across a Layer 3
+network. A 24-bit VXLAN segment ID (SID) or VXLAN network identifier (VNID) is
+included in the encapsulation to provide up to 16 million VXLAN segments for
+traffic isolation or segmentation. Each segment represents a unique Layer 2
+broadcast domain. An ACI VXLAN header is used to identify the policy attributes
+if the application endpoint within the fabric, and every packet carries these
+policy attributes.</p>
+</div>
+<div class="section" id="x">
+<h3><a class="toc-backref" href="#id20">X</a><a class="headerlink" href="#x" title="Permalink to this headline">¶</a></h3>
+<p><strong>XML</strong>: eXtensible Markup Language, a markup language that focuses on encoding
+data for documents rather than the formatting of the data for those documents.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="apic_crash_ts.html" class="btn btn-neutral" title="APIC Process Crash Troubleshooting"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Andres Vega, Bryan Deaver, Jerry Ye, Kannan Ponnuswamy, Loy Evans, Mike Timm, Paul Lesiak and Paul Raytick.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,550 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Firmware and Image Management &mdash; ACI Troubleshooting Book 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="ACI Troubleshooting Book 0.0.1 documentation" href="index.html"/>
+        <link rel="next" title="Faults / Health Scores" href="health.html"/>
+        <link rel="prev" title="APIC High Availablity and Clustering" href="apic.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="index.html" class="fa fa-home"> ACI Troubleshooting Book</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="preface.html">Preface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#authors-and-contributors">Authors and Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#authors">Authors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#distinguished-contributors">Distinguished Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#dedications">Dedications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#acknowledgments">Acknowledgments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#book-writing-methodology">Book Writing Methodology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#who-should-read-this-book">Who Should Read This Book?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#organization-of-this-book">Organization of this Book</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="aci.html">Application Centric Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aci_policy_model.html">ACI Policy Model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#abstraction-model">Abstraction Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#everything-is-an-object">Everything is an Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#relevant-objects-and-relationships">Relevant Objects and Relationships</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#hierarchical-aci-object-model-and-the-infrastructure">Hierarchical ACI Object Model and the Infrastructure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#infrastructure-as-objects">Infrastructure as Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#build-object-use-object-to-build-policy-reuse-policy">Build object, use object to build policy, reuse policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#rest-api-just-exposes-the-object-model">REST API just exposes the object model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#logical-model-resolved-model-concrete-model">Logical model, Resolved model, concrete model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#formed-and-unformed-relationships">Formed and Unformed Relationships</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#declarative-end-state-and-promise-theory">Declarative End State and Promise Theory</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Troubleshooting Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#apic-access-methods">APIC Access Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#programmatic-configuration-python">Programmatic Configuration (Python)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#fabric-node-access-methods">Fabric Node Access Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#exporting-information-from-the-fabric">Exporting information from the Fabric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#external-data-collection-syslog-snmp-call-home">External Data Collection – Syslog, SNMP, Call-Home</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#health-scores">Health Scores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#atomic-counters">Atomic Counters</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ts_methodology.html">Troubleshooting Methodology</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ts_methodology.html#overall-methodology">Overall Methodology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="topology.html">Sample Reference Topology</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="topology.html#physical-fabric-topology">Physical Fabric Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="topology.html#logical-application-topology">Logical Application Topology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#naming-conventions">Naming Conventions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hw_bringup.html">Initial Hardware Bringup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="hw_bringup.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw_bringup.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw_bringup.html#id2">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fabric_init.html">Fabric Initialization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fabric_init.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fabric_init.html#fabric-verification">Fabric Verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fabric_init.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="apic.html">Application Policy Infrastructure Controller (APIC) High Availability and Clustering</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#cluster-formation">Cluster Formation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#majority-and-minority-handling-clustering-split-brains">Majority and Minority - Handling Clustering Split Brains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id1">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id4">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id6">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id9">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id12">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id15">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Firmware and Image Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="health.html">Faults / Health Scores</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="health.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="health.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="health.html#id1">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rest.html">REST Interface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rest.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rest.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mgmt_tn.html">Management Tenant</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mgmt_tn.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mgmt_tn.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mgmt_tn.html#id1">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="common.html">Common Network Services</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="common.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common.html#id15">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="unicast.html">Unicast Data Plane Forwarding and Reachability</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="unicast.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unicast.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unicast.html#id1">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pol_cntr.html">Policies and Contracts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pol_cntr.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pol_cntr.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bridged2ext.html">Bridged Connectivity to External Networks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="bridged2ext.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bridged2ext.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bridged2ext.html#id3">Problem Description:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bridged2ext.html#id5">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="routed2ext.html">Routed Connectivity to External Networks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#fabric-verification">Fabric Verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#problem-description">Problem description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#id1">Problem description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#id3">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vmm_ucs.html">Virtual Machine Manager and UCS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#id2">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#id6">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#id9">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="l4l7.html">L4-L7 Service Insertion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="l4l7.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="l4l7.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fn_crash_ts.html">ACI Fabric Node and Process Crash Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fn_crash_ts.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fn_crash_ts.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="apic_crash_ts.html">APIC Process Crash Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="apic_crash_ts.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic_crash_ts.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix.html#overview">Overview</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">ACI Troubleshooting Book</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div></div>
+          <div role="main" class="document">
+            
+  <div class="section" id="firmware-and-image-management">
+<h1>Firmware and Image Management<a class="headerlink" href="#firmware-and-image-management" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#overview" id="id9">Overview</a><ul>
+<li><a class="reference internal" href="#apic-controller-and-switch-software" id="id10">APIC Controller and Switch Software</a></li>
+<li><a class="reference internal" href="#firmware-management" id="id11">Firmware Management</a></li>
+<li><a class="reference internal" href="#compatibility-check" id="id12">Compatibility Check</a></li>
+<li><a class="reference internal" href="#firmware-upgrade-verification" id="id13">Firmware Upgrade Verification</a></li>
+<li><a class="reference internal" href="#verifying-the-firmware-version-and-the-upgrade-status-by-of-use-of-the-rest-api" id="id14">Verifying the Firmware Version and the Upgrade Status by of use of the REST API</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#problem-description" id="id15">Problem Description</a><ul>
+<li><a class="reference internal" href="#symptom" id="id16">Symptom</a></li>
+<li><a class="reference internal" href="#verification" id="id17">Verification</a></li>
+<li><a class="reference internal" href="#resolution" id="id18">Resolution</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id1" id="id19">Problem Description</a><ul>
+<li><a class="reference internal" href="#id2" id="id20">Symptom</a></li>
+<li><a class="reference internal" href="#id3" id="id21">Verification</a></li>
+<li><a class="reference internal" href="#id4" id="id22">Resolution</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id5" id="id23">Problem Description</a><ul>
+<li><a class="reference internal" href="#id6" id="id24">Symptom</a></li>
+<li><a class="reference internal" href="#id7" id="id25">Verification</a></li>
+<li><a class="reference internal" href="#id8" id="id26">Resolution</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="overview">
+<h2><a class="toc-backref" href="#id9">Overview</a><a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>This chapter covers firmware and image management for the ACI fabric hardware
+components. It will cover the overview of objects and policies that make up
+firmware and image management in the context of software upgrades, followed by
+the verification steps used to confirm a successful upgrade process.</p>
+<div class="section" id="apic-controller-and-switch-software">
+<h3><a class="toc-backref" href="#id10">APIC Controller and Switch Software</a><a class="headerlink" href="#apic-controller-and-switch-software" title="Permalink to this headline">¶</a></h3>
+<p>There are three types of software images in the fabric that can be upgraded:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>The APIC software image.</li>
+<li>The switch software image — software running on leafs and spines of the
+ACI fabric.</li>
+<li>The Catalog image — the catalog contains information about the
+capabilities of different models of hardware supported in the fabric,
+compatibility across different versions of software, and hardware and
+diagnostic utilities. The Catalog image is implicitly upgraded with the
+controller image. Occasionally, it may be required to upgrade the
+Catalog image only to include newly qualified hardware components into
+the fabric or add new diagnostic utilities.</li>
+</ol>
+</div></blockquote>
+<p>You must upgrade the switch software image for all the spine and leaf switches
+in the fabric first. After that upgrade is successfully completed, upgrade the
+APIC controller software image.</p>
+</div>
+<div class="section" id="firmware-management">
+<h3><a class="toc-backref" href="#id11">Firmware Management</a><a class="headerlink" href="#firmware-management" title="Permalink to this headline">¶</a></h3>
+<p>There are five components within the context of firmware management:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Firmware Repository is used to store of images that have been downloaded
+to the APIC. Images are transferred into the firmware repository from
+external source locations over HTTP or SCP protocols. The source
+locations are configurable via the firmware source policy. Once an image
+has been copied from its source location, it is replicated across all
+controllers within the cluster. The switch nodes will retrieve images
+from the controller as required during the beginning of the upgrade
+process.</li>
+<li>Firmware Policy is the policy which specifies the desired firmware image
+version.</li>
+<li>Firmware Group is the configured group of nodes that share the same
+firmware policy.</li>
+<li>Maintenance Policy is the maintenance policy which specifies a schedule
+for upgrade.</li>
+<li>Maintenance Group is the group of nodes that share the same maintenance
+policy.</li>
+</ol>
+</div></blockquote>
+<p>By default, all controllers are part of a predefined firmware group and a
+predefined maintenance group. Membership within the firmware and maintenance
+groups is not modifiable. However, both the controller firmware policy and the
+controller maintenance policy are modifiable to select a desired version to
+upgrade to.</p>
+<p>Before the administrator can upgrade switches, a firmware group must be
+created for all the switches and and one or more maintenance groups should be
+created to contain all the switches within the ACI fabric.</p>
+</div>
+<div class="section" id="compatibility-check">
+<h3><a class="toc-backref" href="#id12">Compatibility Check</a><a class="headerlink" href="#compatibility-check" title="Permalink to this headline">¶</a></h3>
+<p>The ACI fabric can have up to 3 different versions of compatible switch
+software images to be simultaneously active in a fabric. There are three
+different levels of “compatibility” checks:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Image level compatibility - Controllers use the Catalog image to check
+for compatibility across software images that can interoperate in the
+fabric. The controller will ensure image compatibility is satisfied
+before allowing for upgrade and downgrade.</li>
+<li>Card level compatibility - Within a spine modular chassis, the
+supervisor software must be compatible with line card, fabric card and
+system controller software. Similarly all the connected FEXes within the
+leaf switch must be compatible with software running in the leaf. If a
+card or a FEX connected to the system contains incompatible software
+with the supervisor module of a spine or a leaf, the supervisor module
+of the spine or the leaf will ensure compatibility by pushing down a
+compatible version of card or FEX software.</li>
+<li>Feature level compatibility - Given a set of disparate image versions
+running in the fabric, these images may have image level compatibility
+and can be simultaneously available within the fabric. However, they may
+not support the same set of software features. As a result, feature and
+hardware level compatibility is encoded in the object model such that
+the controller can identify feature incompatibility at the point of
+configuration by administrator. Administrator will be prompted or
+configuration will result in failure when enabling such features in a
+mixed hardware and software version environment.</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="firmware-upgrade-verification">
+<h3><a class="toc-backref" href="#id13">Firmware Upgrade Verification</a><a class="headerlink" href="#firmware-upgrade-verification" title="Permalink to this headline">¶</a></h3>
+<p>Once a controller image is upgraded, it will disconnect itself from the
+cluster and reboots with the newer version while the other APIC controllers in
+the cluster are still operational. Once the controller is rebooted, it joins
+the cluster again. Then the cluster converges, and the next controller image
+will start the upgrade process. If the cluster does not immediately converge
+and is not fully fit, the upgrade will wait until the cluster converges and is
+&#8220;Fully Fit&#8221;. During this period, a Waiting for Cluster Convergence message is
+displayed.</p>
+<p>For the switches, the administrator can also verify that the switches in the
+fabric have been upgraded from the APIC GUI navigation pane, by clicking
+Fabric Node Firmware. In the Work pane, view all the switches listed. In the
+Current Firmware column view the upgrade image details listed against each
+switch.</p>
+<a class="reference internal image-reference" href="_images/firmwaredownloadsuccess2.png"><img alt="_images/firmwaredownloadsuccess2.png" class="align-center" src="_images/firmwaredownloadsuccess2.png" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="verifying-the-firmware-version-and-the-upgrade-status-by-of-use-of-the-rest-api">
+<h3><a class="toc-backref" href="#id14">Verifying the Firmware Version and the Upgrade Status by of use of the REST API</a><a class="headerlink" href="#verifying-the-firmware-version-and-the-upgrade-status-by-of-use-of-the-rest-api" title="Permalink to this headline">¶</a></h3>
+<p>For the upgrade status of controllers and switches. An administrator can query
+the upgrade status with the following URL:</p>
+<p><a class="reference external" href="https:/">https:/</a>/&lt;ip address&gt;/api/node/class/maintUpgJob.xml</p>
+<p>An administrator can query the current running firmware version on controllers:</p>
+<p><a class="reference external" href="https:/">https:/</a>/&lt;ip address&gt;/api/node/class/firmwareCtrlrRunning.xml</p>
+<p>An administrator can also query the currently operating firmware version on
+switches:</p>
+<p><a class="reference external" href="https:/">https:/</a>/&lt;ip address&gt;/api/node/class/firmwareRunning.xml</p>
+</div>
+</div>
+<div class="section" id="problem-description">
+<h2><a class="toc-backref" href="#id15">Problem Description</a><a class="headerlink" href="#problem-description" title="Permalink to this headline">¶</a></h2>
+<p>Failing to copy firmware files to APIC through a download task</p>
+<div class="section" id="symptom">
+<h3><a class="toc-backref" href="#id16">Symptom</a><a class="headerlink" href="#symptom" title="Permalink to this headline">¶</a></h3>
+<p>After configuring an APIC download task policy, the download keeps failing and
+will not download the firmware from the home directory of the user.</p>
+</div>
+<div class="section" id="verification">
+<h3><a class="toc-backref" href="#id17">Verification</a><a class="headerlink" href="#verification" title="Permalink to this headline">¶</a></h3>
+<p>The following screen is observed:</p>
+<a class="reference internal image-reference" href="_images/firmwaredownloadfail1.png"><img alt="_images/firmwaredownloadfail1.png" class="align-center" src="_images/firmwaredownloadfail1.png" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<a class="reference internal image-reference" href="_images/firmwaredownloadfail2.png"><img alt="_images/firmwaredownloadfail2.png" class="align-center" src="_images/firmwaredownloadfail2.png" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="resolution">
+<h3><a class="toc-backref" href="#id18">Resolution</a><a class="headerlink" href="#resolution" title="Permalink to this headline">¶</a></h3>
+<p>Since the APIC is using standard Linux distribution, the SCP command needs to
+follow the standard Linux SCP format. For example, if the IP address is
+171.70.42.180 and the absolute path is
+/full_path_from_root/release/image_name. The following illustrations show the
+successful download of the APIC software via SCP.</p>
+<a class="reference internal image-reference" href="_images/firmwaredownloadsuccess1.png"><img alt="_images/firmwaredownloadsuccess1.png" class="align-center" src="_images/firmwaredownloadsuccess1.png" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<a class="reference internal image-reference" href="_images/firmwaredownloadsuccess2.png"><img alt="_images/firmwaredownloadsuccess2.png" class="align-center" src="_images/firmwaredownloadsuccess2.png" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2><a class="toc-backref" href="#id19">Problem Description</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>The APIC cluster fails to upgrade.</p>
+<div class="section" id="id2">
+<h3><a class="toc-backref" href="#id20">Symptom</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>Policy upgrade status showing &#8220;Waiting for Cluster Convergence&#8221;.</p>
+</div>
+<div class="section" id="id3">
+<h3><a class="toc-backref" href="#id21">Verification</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>When upgrading Controllers, the Controller Upgrade Firmware Policy will not
+proceed unless the APIC Cluster has a status &#8220;Fully Fit&#8221;. The upgrade status
+may show &#8220;Waiting for Cluster Convergence&#8221; and will not proceed with upgrade.</p>
+<p>This &#8220;Waiting for Cluster Convergence&#8221; status can be caused due to a policy or
+process that has crashed. If the cluster is not in a &#8220;Fully Fit&#8221; state, check
+the list of running processes for each APIC, for example evidence of such a
+problem would be the presence of core dump files in a Controller.</p>
+</div>
+<div class="section" id="id4">
+<h3><a class="toc-backref" href="#id22">Resolution</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>While the administrator can recover the APIC from the &#8220;Waiting for Cluster
+Convergence&#8221; state by restarting the affected APIC to allow all processes to
+start up normally, in the presence of core dump files the Cisco Technical
+Assistance Center should be contacted immediately to analyze and troubleshoot
+further.</p>
+</div>
+</div>
+<div class="section" id="id5">
+<h2><a class="toc-backref" href="#id23">Problem Description</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>Policy upgrade is paused.</p>
+<div class="section" id="id6">
+<h3><a class="toc-backref" href="#id24">Symptom</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>Upgrade is paused for either an APIC or a switch.</p>
+</div>
+<div class="section" id="id7">
+<h3><a class="toc-backref" href="#id25">Verification</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>The administrator can verify the fault to see if there is a fault code F1432 -
+Maintenance scheduler is paused for group policyName. One or more members of
+the group failed to upgrade or the user manually paused the scheduler being
+generated.</p>
+</div>
+<div class="section" id="id8">
+<h3><a class="toc-backref" href="#id26">Resolution</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p>The administrator should look for other faults indicating why the upgrade
+failed. Once all the faults are resolved, the administrator can delete
+failed/paused policy and re-initiate a new policy upgrade.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="health.html" class="btn btn-neutral float-right" title="Faults / Health Scores">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="apic.html" class="btn btn-neutral" title="APIC High Availablity and Clustering"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Andres Vega, Bryan Deaver, Jerry Ye, Kannan Ponnuswamy, Loy Evans, Mike Timm, Paul Lesiak and Paul Raytick.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,1028 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Routed Connectivity to External Networks &mdash; ACI Troubleshooting Book 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="ACI Troubleshooting Book 0.0.1 documentation" href="index.html"/>
+        <link rel="next" title="Virtual Machine Manager and UCS" href="vmm_ucs.html"/>
+        <link rel="prev" title="Bridged Connectivity to External Networks" href="bridged2ext.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="index.html" class="fa fa-home"> ACI Troubleshooting Book</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="preface.html">Preface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#authors-and-contributors">Authors and Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#authors">Authors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#distinguished-contributors">Distinguished Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#dedications">Dedications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#acknowledgments">Acknowledgments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#book-writing-methodology">Book Writing Methodology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#who-should-read-this-book">Who Should Read This Book?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#organization-of-this-book">Organization of this Book</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="aci.html">Application Centric Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aci_policy_model.html">ACI Policy Model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#abstraction-model">Abstraction Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#everything-is-an-object">Everything is an Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#relevant-objects-and-relationships">Relevant Objects and Relationships</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#hierarchical-aci-object-model-and-the-infrastructure">Hierarchical ACI Object Model and the Infrastructure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#infrastructure-as-objects">Infrastructure as Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#build-object-use-object-to-build-policy-reuse-policy">Build object, use object to build policy, reuse policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#rest-api-just-exposes-the-object-model">REST API just exposes the object model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#logical-model-resolved-model-concrete-model">Logical model, Resolved model, concrete model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#formed-and-unformed-relationships">Formed and Unformed Relationships</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#declarative-end-state-and-promise-theory">Declarative End State and Promise Theory</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Troubleshooting Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#apic-access-methods">APIC Access Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#programmatic-configuration-python">Programmatic Configuration (Python)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#fabric-node-access-methods">Fabric Node Access Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#exporting-information-from-the-fabric">Exporting information from the Fabric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#external-data-collection-syslog-snmp-call-home">External Data Collection – Syslog, SNMP, Call-Home</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#health-scores">Health Scores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#atomic-counters">Atomic Counters</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ts_methodology.html">Troubleshooting Methodology</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ts_methodology.html#overall-methodology">Overall Methodology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="topology.html">Sample Reference Topology</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="topology.html#physical-fabric-topology">Physical Fabric Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="topology.html#logical-application-topology">Logical Application Topology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#naming-conventions">Naming Conventions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hw_bringup.html">Initial Hardware Bringup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="hw_bringup.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw_bringup.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw_bringup.html#id2">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fabric_init.html">Fabric Initialization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fabric_init.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fabric_init.html#fabric-verification">Fabric Verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fabric_init.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="apic.html">Application Policy Infrastructure Controller (APIC) High Availability and Clustering</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#cluster-formation">Cluster Formation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#majority-and-minority-handling-clustering-split-brains">Majority and Minority - Handling Clustering Split Brains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id1">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id4">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id6">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id9">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id12">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id15">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="firmware.html">Firmware and Image Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html#id1">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html#id5">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="health.html">Faults / Health Scores</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="health.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="health.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="health.html#id1">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rest.html">REST Interface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rest.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rest.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mgmt_tn.html">Management Tenant</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mgmt_tn.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mgmt_tn.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mgmt_tn.html#id1">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="common.html">Common Network Services</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="common.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common.html#id15">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="unicast.html">Unicast Data Plane Forwarding and Reachability</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="unicast.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unicast.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unicast.html#id1">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pol_cntr.html">Policies and Contracts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pol_cntr.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pol_cntr.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bridged2ext.html">Bridged Connectivity to External Networks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="bridged2ext.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bridged2ext.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bridged2ext.html#id3">Problem Description:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bridged2ext.html#id5">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Routed Connectivity to External Networks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fabric-verification">Fabric Verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#problem-description">Problem description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">Problem description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vmm_ucs.html">Virtual Machine Manager and UCS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#id2">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#id6">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#id9">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="l4l7.html">L4-L7 Service Insertion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="l4l7.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="l4l7.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fn_crash_ts.html">ACI Fabric Node and Process Crash Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fn_crash_ts.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fn_crash_ts.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="apic_crash_ts.html">APIC Process Crash Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="apic_crash_ts.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic_crash_ts.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix.html#overview">Overview</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">ACI Troubleshooting Book</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div></div>
+          <div role="main" class="document">
+            
+  <div class="section" id="routed-connectivity-to-external-networks">
+<h1>Routed Connectivity to External Networks<a class="headerlink" href="#routed-connectivity-to-external-networks" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#overview" id="id7">Overview</a><ul>
+<li><a class="reference internal" href="#external-route-distribution-inside-fabric" id="id8">External Route Distribution Inside Fabric</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#fabric-verification" id="id9">Fabric Verification</a><ul>
+<li><a class="reference internal" href="#output-from-spine-1" id="id10"><strong>Output from Spine 1</strong></a></li>
+<li><a class="reference internal" href="#output-from-spine-2" id="id11"><strong>Output from Spine 2</strong></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#problem-description" id="id12">Problem description</a><ul>
+<li><a class="reference internal" href="#symptom" id="id13">Symptom</a></li>
+<li><a class="reference internal" href="#verification-resolution" id="id14">Verification/Resolution</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id1" id="id15">Problem description</a><ul>
+<li><a class="reference internal" href="#symptom-1" id="id16">Symptom 1</a></li>
+<li><a class="reference internal" href="#verification-1" id="id17">Verification 1</a></li>
+<li><a class="reference internal" href="#resolution" id="id18">Resolution</a></li>
+<li><a class="reference internal" href="#verification-2" id="id19">Verification 2</a></li>
+<li><a class="reference internal" href="#resolution-1" id="id20">Resolution 1</a></li>
+<li><a class="reference internal" href="#resolution-2" id="id21">Resolution 2</a></li>
+<li><a class="reference internal" href="#symptom-2" id="id22">Symptom 2</a></li>
+<li><a class="reference internal" href="#verification" id="id23">Verification</a></li>
+<li><a class="reference internal" href="#id2" id="id24">Resolution</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id3" id="id25">Problem Description</a><ul>
+<li><a class="reference internal" href="#id4" id="id26">Symptom</a></li>
+<li><a class="reference internal" href="#id5" id="id27">Verification</a></li>
+<li><a class="reference internal" href="#id6" id="id28">Resolution</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="overview">
+<h2><a class="toc-backref" href="#id7">Overview</a><a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>External network connectivity is an essential component to a useful fabric
+deployment. To accommodate for connections to external network entities, the
+ACI fabric provides the ability to automate provisioning of external network
+connections through the policy model, and this chapter provides an overview
+and troubleshooting related to external network connection methods.</p>
+<p>Routed external network connectivity is provided by the association of an
+external routed domain to a special EPG in a tenant. This EPG expresses the
+routed network reachability into an ACI fabric as an object that can be
+managed and manipulated like any other object. Within the Layer 3 External
+network, configurable routing protocols are BGP, OSPF or static routes.
+Configuration of this object involves switch-specific configuration and
+interface-specific configuration.</p>
+<p>The Layer 3 External Instance Profile EPG exposes the external EPG to tenant
+EPGs through a contract.</p>
+<p>As of ACI software version 1.0.(1k), there is one operational caveat that
+dictates that only one outside network can be configured per leaf switch.
+However, the outside network configuration can easily be reused for multiple
+nodes by associating multiple nodes with the L3 External Node Profile.</p>
+<div class="section" id="external-route-distribution-inside-fabric">
+<h3><a class="toc-backref" href="#id8">External Route Distribution Inside Fabric</a><a class="headerlink" href="#external-route-distribution-inside-fabric" title="Permalink to this headline">¶</a></h3>
+<p>Multiprotocol Border Gateway Protocol (MP-BGP) is the routing protocol running
+internal to the fabric. A border leaf (an ACI leaf that provides host, fabric,
+and external network connections) can peer with external networks and
+redistribute external routes into the internal MP-BGP. The fabric leverages
+MP-BGP to distribute external routes to other leaf switches. External routes
+are propagated to leaf switches where there are end points attached for a
+given tenant.</p>
+<p>Route distribution does not occur by default as MP-BGP has to be enabled by
+configuration. To configure Route Distribution, MP-BGP has to be turned on by
+assigning a BGP AS number and configuring spine nodes as BGP route reflectors.
+As a result the APIC will configure all leaf nodes as MP-BGP route reflector
+clients. APIC will also automate the provisioning of BGP components to provide
+this functionality - BGP session setup, Route Distinguishers, import and
+export targets, VPNv4 address family and route-maps for redistribution.
+Sessions are established between TEP IPs of leafs and route reflector
+functions running on spines. The MP-BGP process will be contained to the
+overlay-1 VRF part of the infra tenant. It is important to highlight MP-BGP
+will not carry Endpoint tables (Endpoint MAC and IP entries). While BGP
+leverages the TEP IPs for session establishment, IS-IS is leveraged for
+reachability of TEP IPs of nodes.</p>
+<p>Border leafs advertise tenant public subnets to external routers. Transit
+routing is currently not supported, while the border leafs inject external
+routes to MP-BGP, external routes learned by a border leaf are not advertised
+back outside of the fabric. External routes distributed to non-border leafs
+are installed with next hop as the overlay VRF TEP address of the border leaf
+where it was learned from</p>
+</div>
+</div>
+<div class="section" id="fabric-verification">
+<h2><a class="toc-backref" href="#id9">Fabric Verification</a><a class="headerlink" href="#fabric-verification" title="Permalink to this headline">¶</a></h2>
+<p>The BGP Process is started once the BGP object has a valid ASN.</p>
+<div class="section" id="output-from-spine-1">
+<h3><a class="toc-backref" href="#id10"><strong>Output from Spine 1</strong></a><a class="headerlink" href="#output-from-spine-1" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">rtp_spine1# cat /mit/sys/bgp/inst/summary</span>
+<span class="gp">#</span> BGP Instance
+<span class="go">activateTs   : 2014-10-15T13:11:25.669-04:00</span>
+<span class="go">adminSt      : enabled</span>
+<span class="go">asPathDbSz   : 0</span>
+<span class="go">asn          : 10</span>
+<span class="go">attribDbSz   : 736</span>
+<span class="go">childAction  :</span>
+<span class="go">createTs     : 2014-10-15T13:11:24.415-04:00</span>
+<span class="go">ctrl         :</span>
+<span class="go">dn           : sys/bgp/inst</span>
+<span class="go">lcOwn        : local</span>
+<span class="go">memAlert     : normal</span>
+<span class="go">modTs        : 2014-10-15T13:11:19.746-04:00</span>
+<span class="go">monPolDn     : uni/fabric/monfab-default</span>
+<span class="go">name         : default</span>
+<span class="go">numAsPath    : 0</span>
+<span class="go">numRtAttrib  : 8</span>
+<span class="go">operErr      :</span>
+<span class="go">rn           : inst</span>
+<span class="go">snmpTrapSt   : disable</span>
+<span class="go">status       :</span>
+<span class="go">syslogLvl    : err</span>
+<span class="go">ver          : v4</span>
+<span class="go">waitDoneTs   : 2014-10-15T13:11:36.640-04:00</span>
+<span class="go">rtp_spine1# show vrf</span>
+<span class="go"> VRF-Name                           VRF-ID State    Reason</span>
+<span class="go"> black-hole                              3 Up       --</span>
+<span class="go"> management                              2 Up       --</span>
+<span class="go"> overlay-1                               4 Up       --</span>
+</pre></div>
+</div>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">rtp_spine1# show bgp sessions vrf overlay-1</span>
+<span class="go">Total peers 3, established peers 3</span>
+<span class="go">ASN 10</span>
+<span class="go">VRF overlay-1, local ASN 10</span>
+<span class="go">peers 3, established peers 3, local router-id 172.16.136.93</span>
+<span class="go">State: I-Idle, A-Active, O-Open, E-Established, C-Closing, S-Shutdown</span>
+
+<span class="go">Neighbor        ASN    Flaps LastUpDn|LastRead|LastWrit St Port(L/R)  Notif(S/R)</span>
+<span class="go">172.16.136.92    10 0     00:00:20|never   |never    E  179/36783  0/0</span>
+<span class="go">172.16.136.95    10 0     00:00:20|never   |never    E  179/49138  0/0</span>
+<span class="go">172.16.136.91    10 0     00:00:19|never   |never    E  179/56262  0/0</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="output-from-spine-2">
+<h3><a class="toc-backref" href="#id11"><strong>Output from Spine 2</strong></a><a class="headerlink" href="#output-from-spine-2" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">rtp_spine2#  cat /mit/sys/bgp/inst/summary</span>
+<span class="gp">#</span> BGP Instance
+<span class="go">activateTs   : 2014-10-15T13:11:26.594-04:00</span>
+<span class="go">adminSt      : enabled</span>
+<span class="go">asPathDbSz   : 0</span>
+<span class="go">asn          : 10</span>
+<span class="go">attribDbSz   : 736</span>
+<span class="go">childAction  :</span>
+<span class="go">createTs     : 2014-10-15T13:11:25.363-04:00</span>
+<span class="go">ctrl         :</span>
+<span class="go">dn           : sys/bgp/inst</span>
+<span class="go">lcOwn        : local</span>
+<span class="go">memAlert     : normal</span>
+<span class="go">modTs        : 2014-10-15T13:11:19.746-04:00</span>
+<span class="go">monPolDn     : uni/fabric/monfab-default</span>
+<span class="go">name         : default</span>
+<span class="go">numAsPath    : 0</span>
+<span class="go">numRtAttrib  : 8</span>
+<span class="go">operErr      :</span>
+<span class="go">rn           : inst</span>
+<span class="go">snmpTrapSt   : disable</span>
+<span class="go">status       :</span>
+<span class="go">syslogLvl    : err</span>
+<span class="go">ver          : v4</span>
+<span class="go">waitDoneTs   : 2014-10-15T13:11:32.901-04:00</span>
+</pre></div>
+</div>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">rtp_spine2# show bgp sessions vrf overlay-1</span>
+<span class="go">Total peers 3, established peers 3</span>
+<span class="go">ASN 10</span>
+<span class="go">VRF overlay-1, local ASN 10</span>
+<span class="go">peers 3, established peers 3, local router-id 172.16.136.94</span>
+<span class="go">State: I-Idle, A-Active, O-Open, E-Established, C-Closing, S-Shutdown</span>
+
+<span class="go">Neighbor        ASN    Flaps LastUpDn|LastRead|LastWrit St Port(L/R)  Notif(S/R)</span>
+<span class="go">172.16.136.91    10 0     00:05:15|never   |never    E  179/49429  0/0</span>
+<span class="go">172.16.136.95    10 0     00:05:14|never   |never    E  179/47068  0/0</span>
+<span class="go">172.16.136.92    10 0     00:05:14|never   |never    E  179/32889  0/0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="problem-description">
+<h2><a class="toc-backref" href="#id12">Problem description</a><a class="headerlink" href="#problem-description" title="Permalink to this headline">¶</a></h2>
+<p>External routes are not reachable from the fabric.</p>
+<div class="section" id="symptom">
+<h3><a class="toc-backref" href="#id13">Symptom</a><a class="headerlink" href="#symptom" title="Permalink to this headline">¶</a></h3>
+<p>When checking routing table entries for a given VRF on a leaf, no BGP routes
+are shown or directly connected routes are not distributed to other leafs.</p>
+</div>
+<div class="section" id="verification-resolution">
+<h3><a class="toc-backref" href="#id14">Verification/Resolution</a><a class="headerlink" href="#verification-resolution" title="Permalink to this headline">¶</a></h3>
+<p>Verification of the route tables can be confirmed on the spine by running the
+command <strong>show bgp session vrf all</strong>:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">rtp_spine1# show bgp session vrf all</span>
+
+<span class="go">Note: BGP process currently not running</span>
+</pre></div>
+</div>
+<p>Route reflector configuration includes modifying the default Fabric Pod policy
+to include a Policy Group with a relationship to the default BGP Route
+Reflector policy. The BGP Route Reflector needs to have a defined BGP AS
+number with two spines selected as the route reflectors.</p>
+<p>Other troubleshooting commands:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">show bgp sessions vrf  &lt;name | all&gt;</span>
+<span class="go">show bgp ipv4 unicast vrf &lt;name | all&gt;</span>
+<span class="go">show bgp vpnv4 unicast vrf  &lt;name | all&gt;</span>
+<span class="go">show ip bgp neighbors vrf &lt;name | all&gt;</span>
+<span class="go">show ip bgp neighbors &lt;a.b.c.d&gt; vrf &lt;name | all&gt;</span>
+<span class="go">show ip bgp nexthop-database vrf &lt;name | all&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2><a class="toc-backref" href="#id15">Problem description</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>Devices that should be reachable via OSPF in ACI fabric are unreachable.</p>
+<p>For this example, the reference toplogy is used. Endpoint IPs within ACI
+fabric are in most cases expected to be routable and reachable from the
+external/outside network. For this the reference topology, leaf1 and leaf3 are
+acting as border routers peering with external Nexus 7000 devices using OSPF.
+For this use case, pinging the DB Endpoint IP of 10.1.3.31 from the Nexus 7Ks.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">N7K-2-50-N7K2# ping 10.1.3.31</span>
+<span class="go">PING 10.1.3.31 (10.1.3.31): 56 data bytes</span>
+<span class="go">Request 0 timed out</span>
+<span class="go">Request 1 timed out</span>
+<span class="go">Request 2 timed out</span>
+<span class="go">Request 3 timed out</span>
+<span class="go">Request 4 timed out</span>
+
+<span class="go">--- 10.1.3.31 ping statistics ---</span>
+<span class="go">5 packets transmitted, 0 packets received, 100.00% packet loss</span>
+<span class="go">N7K-2-50-N7K2#</span>
+</pre></div>
+</div>
+<div class="section" id="symptom-1">
+<h3><a class="toc-backref" href="#id16">Symptom 1</a><a class="headerlink" href="#symptom-1" title="Permalink to this headline">¶</a></h3>
+<p>OSPF routes are missing, neighbor relationships not established.</p>
+<p>The following are some common problems that can be seen when getting Open
+Shortest Path First (OSPF) neighbors to become fully adjacent between ACI and
+external devices. In a successful formation of OSPF adjacency, OSPF neighbors
+will attain the FULL neighbor state.</p>
+</div>
+<div class="section" id="verification-1">
+<h3><a class="toc-backref" href="#id17">Verification 1</a><a class="headerlink" href="#verification-1" title="Permalink to this headline">¶</a></h3>
+<p>Mismatched OSPF Area Type</p>
+<p>At the time of this writing, border leaf switches only support OSPF Not So
+Stubby Areas (NSSA). This implies that the ACI border leaf switches will not
+be in area 0 and will not provide Area Border Router (ABR) functionality.
+Although the APIC GUI and object model for OSPF don’t provide area-type
+configurations, users need to set the area type on the external routers to be
+a NSSA in order to bring up OSPF adjacency.</p>
+<p>In this example, N7K2 has not been configured for NSSA and the neighbors
+missing from the leaf:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">rtp_leaf1# show ip ospf neighbors vrf all</span>
+<span class="go"> OSPF Process ID default VRF Prod:Prod</span>
+<span class="go"> Total number of neighbors: 1</span>
+<span class="go"> Neighbor ID     Pri State            Up Time  Address         Interface</span>
+<span class="go"> 4.4.4.1           1 FULL/BDR         05:45:58 10.0.0.1        Eth1/41.14</span>
+<span class="go"> OSPF Process ID default VRF Test:Test</span>
+<span class="go"> Total number of neighbors: 1</span>
+<span class="go"> Neighbor ID     Pri State            Up Time  Address         Interface</span>
+<span class="go"> 4.4.4.1           1 FULL/DR          00:18:30 10.0.1.1        Eth1/41.24</span>
+</pre></div>
+</div>
+<p>On ACI Leafs, checking the properties of the area will reveal not only the
+area type, but also other settings such as reference bandwidth need to be made
+sure so that overall OSPF design is in line with best practices.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">rtp_leaf1# show ip ospf vrf Prod:Prod</span>
+<span class="go">Routing Process default with ID 10.0.0.101 VRF Prod:Prod</span>
+<span class="go">Stateful High Availability enabled</span>
+<span class="go">Supports only single TOS(TOS0) routes</span>
+<span class="go">Supports opaque LSA</span>
+<span class="go">Redistributing External Routes from</span>
+<span class="go">  static</span>
+<span class="go">Administrative distance 110</span>
+<span class="go">Reference Bandwidth is 40000 Mbps</span>
+<span class="go">SPF throttling delay time of 200.000 msecs,</span>
+<span class="go">  SPF throttling hold time of 1000.000 msecs,</span>
+<span class="go">  SPF throttling maximum wait time of 5000.000 msecs</span>
+<span class="go">LSA throttling start time of 0.000 msecs,</span>
+<span class="go">  LSA throttling hold interval of 5000.000 msecs,</span>
+<span class="go">  LSA throttling maximum wait time of 5000.000 msecs</span>
+<span class="go">Minimum LSA arrival 1000.000 msec</span>
+<span class="go">LSA group pacing timer 10 secs</span>
+<span class="go">Maximum paths to destination 8</span>
+<span class="go">Number of external LSAs 0, checksum sum 0x0</span>
+<span class="go">Number of opaque AS LSAs 0, checksum sum 0x0</span>
+<span class="go">Number of areas is 1, 0 normal, 0 stub, 1 nssa</span>
+<span class="go">Number of active areas is 1, 0 normal, 0 stub, 1 nssa</span>
+<span class="go">  Area (0.0.0.100)</span>
+<span class="go">       Area has existed for 19:46:14</span>
+<span class="go">       Interfaces in this area: 3 Active interfaces: 3</span>
+<span class="go">       Passive interfaces: 1  Loopback interfaces: 1</span>
+<span class="go">       This area is a NSSA area</span>
+<span class="go">       Perform type-7/type-5 LSA translation</span>
+<span class="go">       Summarization is disabled</span>
+<span class="go">       No authentication available</span>
+<span class="go">       SPF calculation has run 40 times</span>
+<span class="go">        Last SPF ran for 0.000529s</span>
+<span class="go">       Area ranges are</span>
+<span class="go">       Number of LSAs: 10, checksum sum 0x0</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="resolution">
+<h3><a class="toc-backref" href="#id18">Resolution</a><a class="headerlink" href="#resolution" title="Permalink to this headline">¶</a></h3>
+<p>Once the following configuration is done on the N7K2,</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">router ospf 100</span>
+<span class="go">area 0.0.0.100 nssa no-summary default-information-originate</span>
+<span class="go">area 0.0.0.110 nssa no-summary default-information-originate</span>
+</pre></div>
+</div>
+<p>The neighbors are back up and operational:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">rtp_leaf1# show ip ospf neighbors vrf all</span>
+<span class="go"> OSPF Process ID default VRF Prod:Prod</span>
+<span class="go"> Total number of neighbors: 2</span>
+<span class="go"> Neighbor ID     Pri State            Up Time  Address         Interface</span>
+<span class="go"> 4.4.4.1           1 FULL/BDR         05:40:42 10.0.0.1        Eth1/41.14</span>
+<span class="go"> 4.4.4.2           1 FULL/BDR         00:14:05 10.0.0.9        Eth1/43.15</span>
+<span class="go"> OSPF Process ID default VRF Test:Test</span>
+<span class="go"> Total number of neighbors: 2</span>
+<span class="go"> Neighbor ID     Pri State            Up Time  Address         Interface</span>
+<span class="go"> 4.4.4.1           1 FULL/DR          00:13:14 10.0.1.1        Eth1/41.24</span>
+<span class="go"> 4.4.4.2           1 FULL/DR          00:12:47 10.0.1.9        Eth1/43.25</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="verification-2">
+<h3><a class="toc-backref" href="#id19">Verification 2</a><a class="headerlink" href="#verification-2" title="Permalink to this headline">¶</a></h3>
+<p><strong>Mismatched MTU</strong></p>
+<p>At FCS, ACI supports by default MTU of 9000 bytes. Since the default on N7K
+and other devices could very well deviate from this, this is a common reason
+to see neighbors stuck in exstart/exchange state.</p>
+<p>In this example, N7Ks have not been configured for MTU 9000 and the neighbors
+are stuck in EXSTART/EXCHANGE states instead of Full:</p>
+<p>In GUI:</p>
+<a class="reference internal image-reference" href="_images/3.png"><img alt="_images/3.png" class="align-center" src="_images/3.png" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>In the CLI:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">rtp_leaf1# show ip ospf nei vrf all</span>
+
+<span class="go"> OSPF Process ID default VRF Prod:Prod</span>
+<span class="go"> Total number of neighbors: 2</span>
+<span class="go"> Neighbor ID     Pri State            Up Time  Address         Interface</span>
+<span class="go"> 4.4.4.1           1 EXSTART/BDR      00:00:10 10.0.0.1        Eth1/41.14</span>
+<span class="go"> 4.4.4.2           1 EXSTART/BDR      00:07:50 10.0.0.9        Eth1/43.15</span>
+<span class="go"> OSPF Process ID default VRF Test:Test</span>
+<span class="go"> Total number of neighbors: 2</span>
+<span class="go"> Neighbor ID     Pri State            Up Time  Address         Interface</span>
+<span class="go"> 4.4.4.1           1 EXSTART/BDR      00:00:09 10.0.1.1        Eth1/41.24</span>
+<span class="go"> 4.4.4.2           1 EXSTART/BDR      00:07:50 10.0.1.9        Eth1/43.25</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="resolution-1">
+<h3><a class="toc-backref" href="#id20">Resolution 1</a><a class="headerlink" href="#resolution-1" title="Permalink to this headline">¶</a></h3>
+<p>There are two possible ways to resolve this issue. One is to set the ACI leaf
+nodes to use a smaller MTU. This is an example of setting a Leaf Interface MTU
+to 1500 bytes:</p>
+<a class="reference internal image-reference" href="_images/1.png"><img alt="_images/1.png" class="align-center" src="_images/1.png" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Change this setting from ‘inherit’ to ‘1500’</p>
+<a class="reference internal image-reference" href="_images/2.png"><img alt="_images/2.png" class="align-center" src="_images/2.png" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="resolution-2">
+<h3><a class="toc-backref" href="#id21">Resolution 2</a><a class="headerlink" href="#resolution-2" title="Permalink to this headline">¶</a></h3>
+<p>Another possible way to resolve this is to set N7K Interface MTU to 9000 bytes
+as shown below:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">!</span>
+<span class="go">interface Ethernet8/1</span>
+<span class="go">  mtu 9000</span>
+<span class="go">  ip router ospf 100 area 0.0.0.100</span>
+<span class="go">  no shutdown</span>
+<span class="go">!</span>
+<span class="go">interface Ethernet8/1.801</span>
+<span class="go">  mtu 9000</span>
+<span class="go">  encapsulation dot1q 801</span>
+<span class="go">  ip address 10.0.0.1/30</span>
+<span class="go">  ip router ospf 100 area 0.0.0.100</span>
+<span class="go">  no shutdown</span>
+<span class="go">!</span>
+</pre></div>
+</div>
+<p>With MTU set, the OSPF neighbors should be up and operational.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">rtp_leaf1# show ip ospf neighbors vrf all</span>
+<span class="go"> OSPF Process ID default VRF Prod:Prod</span>
+<span class="go"> Total number of neighbors: 2</span>
+<span class="go"> Neighbor ID     Pri State            Up Time  Address         Interface</span>
+<span class="go"> 4.4.4.1           1 FULL/BDR         05:40:42 10.0.0.1        Eth1/41.14</span>
+<span class="go"> 4.4.4.2           1 FULL/BDR         00:14:05 10.0.0.9        Eth1/43.15</span>
+<span class="go"> OSPF Process ID default VRF Test:Test</span>
+<span class="go"> Total number of neighbors: 2</span>
+<span class="go"> Neighbor ID     Pri State            Up Time  Address         Interface</span>
+<span class="go"> 4.4.4.1           1 FULL/DR          00:13:14 10.0.1.1        Eth1/41.24</span>
+<span class="go"> 4.4.4.2           1 FULL/DR          00:12:47 10.0.1.9        Eth1/43.25</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="symptom-2">
+<h3><a class="toc-backref" href="#id22">Symptom 2</a><a class="headerlink" href="#symptom-2" title="Permalink to this headline">¶</a></h3>
+<p>OSPF route learning problems, Neighbor adjacency formed</p>
+<p>In our reference topology, both N7Ks are advertising default routes to ACI
+border leafs. There are situations where either the leafs or the external
+device (N7Ks) form neighbor relationships fine, but don&#8217;t learn routes from
+each other.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">rtp_leaf1# show ip route 0.0.0.0 vrf all</span>
+<span class="go">IP Route Table for VRF &quot;Prod:Prod&quot;</span>
+<span class="go">&#39;*&#39; denotes best ucast next-hop</span>
+<span class="go">&#39;**&#39; denotes best mcast next-hop</span>
+<span class="go">&#39;[x/y]&#39; denotes [preference/metric]</span>
+<span class="go">&#39;%&lt;string&gt;&#39; in via output denotes VRF &lt;string&gt;</span>
+
+<span class="go">0.0.0.0/0, ubest/mbest: 2/0</span>
+<span class="go">    *via 10.0.0.1, eth1/41.14, [110/5], 01:40:59, ospf-default, inter</span>
+<span class="go">    *via 10.0.0.9, eth1/43.15, [110/5], 01:40:48, ospf-default, inter</span>
+
+<span class="go">IP Route Table for VRF &quot;Test:Test&quot;</span>
+<span class="go">&#39;*&#39; denotes best ucast next-hop</span>
+<span class="go">&#39;**&#39; denotes best mcast next-hop</span>
+<span class="go">&#39;[x/y]&#39; denotes [preference/metric]</span>
+<span class="go">&#39;%&lt;string&gt;&#39; in via output denotes VRF &lt;string&gt;</span>
+
+<span class="go">0.0.0.0/0, ubest/mbest: 2/0</span>
+<span class="go">    *via 10.0.1.1, eth1/41.24, [110/5], 01:41:02, ospf-default, inter</span>
+<span class="go">    *via 10.0.1.9, eth1/43.25, [110/5], 01:40:44, ospf-default, inter</span>
+
+<span class="go">rtp_leaf1#</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="verification">
+<h3><a class="toc-backref" href="#id23">Verification</a><a class="headerlink" href="#verification" title="Permalink to this headline">¶</a></h3>
+<p>External OSPF Peers are not learning routes from ACI. For this example, ACI is
+advertising the DB subnet (10.1.3.0) to the N7K. This subnet exists on Leaf2,
+while Leaf1 and Leaf3 are the border leafs. As seen below, the N7K is not
+receiving the route:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">N7K-2-50-N7K2# show ip route 10.1.3.0</span>
+<span class="go"> IP Route Table for VRF &quot;default&quot;</span>
+<span class="go"> &#39;*&#39; denotes best ucast next-hop</span>
+<span class="go"> &#39;**&#39; denotes best mcast next-hop</span>
+<span class="go"> &#39;[x/y]&#39; denotes [preference/metric]</span>
+<span class="go"> &#39;%&lt;string&gt;&#39; in via output denotes VRF &lt;string&gt;</span>
+
+<span class="go"> Route not found</span>
+<span class="go">N7K-2-50-N7K2#</span>
+</pre></div>
+</div>
+<p>ACI manages routing advertisements based on route availability, reachability
+and more importantly based on Policy. The following concepts are key to
+understand route exchange between ACI and external peers:</p>
+</div>
+<div class="section" id="id2">
+<h3><a class="toc-backref" href="#id24">Resolution</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>There are three steps involved in resolving this problem.</p>
+<p>The first step that should be looked at is the Bridge Domain The Bridge domain
+subnet needs to be marked as Public. This lets the ACI Leaf know to advertise
+the route to external peers. Even with this setting, the routes from Leaf2 are
+not learned by Leaf1 and Leaf3. This is due to only one of the three main
+conditions being met for external route advertisements.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">rtp_leaf1# show ip route 10.1.3.0 vrf Prod:Prod</span>
+<span class="go">IP Route Table for VRF &quot;Prod:Prod&quot;</span>
+<span class="go">&#39;*&#39; denotes best ucast next-hop</span>
+<span class="go">&#39;**&#39; denotes best mcast next-hop</span>
+<span class="go">&#39;[x/y]&#39; denotes [preference/metric]</span>
+<span class="go">&#39;%&lt;string&gt;&#39; in via output denotes VRF &lt;string&gt;</span>
+
+<span class="go">0.0.0.0/0, ubest/mbest: 2/0</span>
+<span class="go">    *via 10.0.0.9, eth1/43.15, [110/5], 00:46:55, ospf-default, inter</span>
+<span class="go">    *via 10.0.0.1, eth1/41.14, [110/5], 00:46:37, ospf-default, inter</span>
+<span class="go">rtp_leaf1#</span>
+</pre></div>
+</div>
+<p>The Bridge domain needs to be associated with L3 Out as shown below:</p>
+<a class="reference internal image-reference" href="_images/5.PNG"><img alt="_images/5.PNG" class="align-center" src="_images/5.PNG" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Even with this setting, the routes are not learned by Leaf1 and Leaf3 as there
+are no contracts in place specifying the communication.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">rtp_leaf1# show ip route 10.1.3.0 vrf Prod:Prod</span>
+
+<span class="go"> IP Route Table for VRF &quot;Prod:Prod&quot;</span>
+<span class="go"> &#39;*&#39; denotes best ucast next-hop</span>
+<span class="go"> &#39;**&#39; denotes best mcast next-hop</span>
+<span class="go"> &#39;[x/y]&#39; denotes [preference/metric]</span>
+<span class="go"> &#39;%&lt;string&gt;&#39; in via output denotes VRF &lt;string&gt;</span>
+
+<span class="go"> 0.0.0.0/0, ubest/mbest: 2/0</span>
+<span class="go">     *via 10.0.0.9, eth1/43.15, [110/5], 00:58:18, ospf-default, inter</span>
+<span class="go">     *via 10.0.0.1, eth1/41.14, [110/5], 00:58:00, ospf-default, inter</span>
+<span class="go">rtp_leaf1#</span>
+</pre></div>
+</div>
+<p>However, if the routes are local to Leaf1 and Leaf3, the routes are then
+advertised due to L3out association. Just for troubleshooting, this can be
+forced by having EPG association either by path or local binding on Leaf1 or
+Leaf3.</p>
+<a class="reference internal image-reference" href="_images/7.PNG"><img alt="_images/7.PNG" class="align-center" src="_images/7.PNG" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Now the N7Ks see the routes from Leaf1 but not Leaf3 as the EPG is associated
+only to Leaf1 and Leaf2.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">rtp_leaf1# show ip route 10.1.3.0 vrf Prod:Prod</span>
+<span class="go"> IP Route Table for VRF &quot;Prod:Prod&quot;</span>
+<span class="go"> &#39;*&#39; denotes best ucast next-hop</span>
+<span class="go"> &#39;**&#39; denotes best mcast next-hop</span>
+<span class="go"> &#39;[x/y]&#39; denotes [preference/metric]</span>
+<span class="go"> &#39;%&lt;string&gt;&#39; in via output denotes VRF &lt;string&gt;</span>
+
+<span class="go"> 10.1.3.0/24, ubest/mbest: 1/0, attached, direct, pervasive</span>
+<span class="go">     *via 172.16.104.65%overlay-1, [1/0], 00:00:15, static</span>
+<span class="go">rtp_leaf1#</span>
+</pre></div>
+</div>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">N7K-2-50-N7K2# show ip route 10.1.3.0</span>
+<span class="go"> IP Route Table for VRF &quot;default&quot;</span>
+<span class="go"> &#39;*&#39; denotes best ucast next-hop</span>
+<span class="go"> &#39;**&#39; denotes best mcast next-hop</span>
+<span class="go"> &#39;[x/y]&#39; denotes [preference/metric]</span>
+<span class="go"> &#39;%&lt;string&gt;&#39; in via output denotes VRF &lt;string&gt;</span>
+
+<span class="go"> 10.1.3.0/24, ubest/mbest: 1/0</span>
+<span class="go">     *via 10.0.0.10, Eth8/1.800, [110/20], 00:01:46, ospf-100, nssa type-2</span>
+<span class="go"> N7K-2-50-N7K2# ping 10.1.3.1</span>
+<span class="go"> PING 10.1.3.1 (10.1.3.1): 56 data bytes</span>
+<span class="go"> 64 bytes from 10.1.3.1: icmp_seq=0 ttl=57 time=1.24 ms</span>
+<span class="go"> 64 bytes from 10.1.3.1: icmp_seq=1 ttl=57 time=0.8 ms</span>
+<span class="go"> 64 bytes from 10.1.3.1: icmp_seq=2 ttl=57 time=0.812 ms</span>
+<span class="go"> 64 bytes from 10.1.3.1: icmp_seq=3 ttl=57 time=0.809 ms</span>
+<span class="go"> 64 bytes from 10.1.3.1: icmp_seq=4 ttl=57 time=0.538 ms</span>
+
+<span class="go"> --- 10.1.3.1 ping statistics ---</span>
+<span class="go"> 5 packets transmitted, 5 packets received, 0.00% packet loss</span>
+<span class="go"> round-trip min/avg/max = 0.538/0.839/1.24 ms</span>
+<span class="go">N7K-2-50-N7K2#</span>
+</pre></div>
+</div>
+<p>Now without a contract, why is ping successful? This is due to the fact that
+the pervasive GW address is not an endpoint within that BD/EPG. Contracts are
+needed for pinging the EP if the Context is in &#8216;enforced&#8217; mode.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">N7K-2-50-N7K2# ping 10.1.3.31</span>
+<span class="go">PING 10.1.3.31 (10.1.3.31): 56 data bytes</span>
+<span class="go">Request 0 timed out</span>
+<span class="go">Request 1 timed out</span>
+<span class="go">Request 2 timed out</span>
+<span class="go">Request 3 timed out</span>
+<span class="go">Request 4 timed out</span>
+
+<span class="go">--- 10.1.3.31 ping statistics ---</span>
+<span class="go">5 packets transmitted, 0 packets received, 100.00% packet loss</span>
+</pre></div>
+</div>
+<p>Now removing the EPG binding on Leaf1, the route would stop getting advertised
+to the Nexus 7Ks.</p>
+<p>A third part of the resolution is that the subnet being marked Public and the
+Bridge Domain associated with L3 Out, needs a contract to be defined between
+the Database EPG and L3Out.</p>
+<p>The contract needs to be defined and associated both on the L3Out Networks,
+and Database EPG. Prior to associating contract:</p>
+<a class="reference internal image-reference" href="_images/6.PNG"><img alt="_images/6.PNG" class="align-center" src="_images/6.PNG" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Associate contract:</p>
+<a class="reference internal image-reference" href="_images/8.PNG"><img alt="_images/8.PNG" class="align-center" src="_images/8.PNG" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Routes being learned on the N7K:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">N7K-2-50-N7K2# show ip route 10.1.3.0</span>
+<span class="go">IP Route Table for VRF &quot;default&quot;</span>
+<span class="go">&#39;*&#39; denotes best ucast next-hop</span>
+<span class="go">&#39;**&#39; denotes best mcast next-hop</span>
+<span class="go">&#39;[x/y]&#39; denotes [preference/metric]</span>
+<span class="go">&#39;%&lt;string&gt;&#39; in via output denotes VRF &lt;string&gt;</span>
+
+<span class="go">10.1.3.0/24, ubest/mbest: 2/0</span>
+<span class="go">    *via 10.0.0.10, Eth8/1.800, [110/20], 00:08:06, ospf-100, nssa type-2</span>
+<span class="go">    *via 10.0.0.14, Eth8/3.800, [110/20], 00:08:06, ospf-100, nssa type-2</span>
+<span class="go">N7K-2-50-N7K2#</span>
+</pre></div>
+</div>
+<p>Now with L3Out defined with associated external networks, OSPF Neighbor
+peering, routes being advertised and appropriate contract permitting the
+traffick, the ping is successful.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">N7K-2-50-N7K2# ping 10.1.3.31</span>
+<span class="go">PING 10.1.3.31 (10.1.3.31): 56 data bytes</span>
+<span class="go">64 bytes from 10.1.3.31: icmp_seq=0 ttl=126 time=1.961 ms</span>
+<span class="go">64 bytes from 10.1.3.31: icmp_seq=1 ttl=126 time=0.533 ms</span>
+<span class="go">64 bytes from 10.1.3.31: icmp_seq=2 ttl=126 time=0.577 ms</span>
+<span class="go">64 bytes from 10.1.3.31: icmp_seq=3 ttl=126 time=0.531 ms</span>
+<span class="go">64 bytes from 10.1.3.31: icmp_seq=4 ttl=126 time=0.576 ms</span>
+
+<span class="go">--- 10.1.3.31 ping statistics ---</span>
+<span class="go">5 packets transmitted, 5 packets received, 0.00% packet loss</span>
+<span class="go">round-trip min/avg/max = 0.531/0.835/1.961 ms</span>
+<span class="go">N7K-2-50-N7K2#</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id25">Problem Description</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p><strong>Inter-tenant Communications</strong></p>
+<p>This problem is a scenario where there is an endpoint in one tenant&#8217;s context
+that cannot connect to an endpoint in another tenant&#8217;s context. For this
+scenario, the Database servers in Tenant &#8220;Test&#8221; must communicate with the
+&#8220;Prod&#8221; Tenant&#8217;s Database tier.</p>
+<p>The Test-Database servers are in subnet 10.2.3.0/24, while the Prod-Database
+Servers are in 10.1.3.0/24.</p>
+<div class="section" id="id4">
+<h3><a class="toc-backref" href="#id26">Symptom</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>Communications between tenants do not work.</p>
+</div>
+<div class="section" id="id5">
+<h3><a class="toc-backref" href="#id27">Verification</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>In this case, Routes not being learned between tenant contexts. Since the
+Tenants have their respective contexts/VRF, by default the routes are not
+leaked between the contexts. Here a snippet of the status is show with
+Prod:Prod not learning 10.2.3.0 from Tenant Test:Test as shown below:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">rtp_leaf1# show ip route 10.1.3.0 vrf Prod:Prod</span>
+<span class="go">IP Route Table for VRF &quot;Prod:Prod&quot;</span>
+<span class="go">&#39;*&#39; denotes best ucast next-hop</span>
+<span class="go">&#39;**&#39; denotes best mcast next-hop</span>
+<span class="go">&#39;[x/y]&#39; denotes [preference/metric]</span>
+<span class="go">&#39;%&lt;string&gt;&#39; in via output denotes VRF &lt;string&gt;</span>
+<span class="go">10.1.3.0/24, ubest/mbest: 1/0, attached, direct, pervasive</span>
+<span class="go"> *via 172.16.104.65%overlay-1, [1/0], 00:57:55, static</span>
+<span class="go">rtp_leaf1# show ip route 10.2.3.0 vrf Prod:Prod</span>
+<span class="go">IP Route Table for VRF &quot;Prod:Prod&quot;</span>
+<span class="go">&#39;*&#39; denotes best ucast next-hop</span>
+<span class="go">&#39;**&#39; denotes best mcast next-hop</span>
+<span class="go">&#39;[x/y]&#39; denotes [preference/metric]</span>
+<span class="go">&#39;%&lt;string&gt;&#39; in via output denotes VRF &lt;string&gt;</span>
+<span class="go">0.0.0.0/0, ubest/mbest: 2/0</span>
+<span class="go">*via 10.0.0.9, eth1/43.17, [110/5], 13:18:12, ospf-default, inter</span>
+<span class="go">*via 10.0.0.1, eth1/41.16, [110/5], 13:18:09, ospf-default, inter</span>
+<span class="go">rtp_leaf1#show ip route 10.2.3.0 vrf Test:Test</span>
+
+<span class="go">IP Route Table for VRF &quot;Test:Test&quot;</span>
+<span class="go">&#39;*&#39; denotes best ucast next-hop</span>
+<span class="go">&#39;**&#39; denotes best mcast next-hop</span>
+<span class="go">&#39;[x/y]&#39; denotes [preference/metric]</span>
+<span class="go">&#39;%&lt;string&gt;&#39; in via output denotes VRF &lt;string&gt;</span>
+
+<span class="go">10.2.3.0/24, ubest/mbest: 1/0, attached, direct, pervasive</span>
+<span class="go">*via 172.16.104.65%overlay-1, [1/0], 00:58:41, static</span>
+<span class="go">rtp_leaf1#</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h3><a class="toc-backref" href="#id28">Resolution</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>The subnet address to be leaked between contexts, Tenants, in addition to
+being defined under the Bridge Domain, needs to be marked as a as a shared
+subnet under the EPG. This is the first step in the resolution of this issue.</p>
+<a class="reference internal image-reference" href="_images/10.PNG"><img alt="_images/10.PNG" class="align-center" src="_images/10.PNG" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>With the subnet defined, the route is now visible under Prod:Prod.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">rtp_leaf1# show ip route 10.2.3.0 vrf Prod:Prod</span>
+<span class="go">IP Route Table for VRF &quot;Prod:Prod&quot;</span>
+<span class="go">&#39;*&#39; denotes best ucast next-hop</span>
+<span class="go">&#39;**&#39; denotes best mcast next-hop</span>
+<span class="go">&#39;[x/y]&#39; denotes [preference/metric]</span>
+<span class="go">&#39;%&lt;string&gt;&#39; in via output denotes VRF &lt;string&gt;</span>
+
+<span class="go">10.2.3.0/24, ubest/mbest: 1/0, attached, direct, pervasive</span>
+<span class="go">*via 172.16.104.65%overlay-1, [1/0], 00:00:09, static</span>
+<span class="go">rtp_leaf1#</span>
+</pre></div>
+</div>
+<p>However, while routes are learned the Prod and Test DB endpoints are still
+unable to communicate. Contracts and Policies to allow the communication need
+to be defined for the communication to happen. To figure out the contracts,
+the PcTag for the EPG need to be known using Visore.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">DN                                                 PcTag</span>
+<span class="go">uni/tn-Test/ap-CommerceWorkspaceTest/epg-Database   5474</span>
+<span class="go">uni/tn-Prod/ap-commerceworkspace/epg-Database      32774</span>
+</pre></div>
+</div>
+<p>Verify, using GUI (Fabric -&gt; Inventory -&gt; Pod -&gt; Pools -&gt; Rules) or CLI</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">rtp_leaf1# show zoning-rule | grep 32774</span>
+<span class="go">rtp_leaf1# show zoning-rule | grep 5474</span>
+<span class="go">rtp_leaf1#</span>
+</pre></div>
+</div>
+<p>To take the second step in the resolution, a special contract needs to be
+created for inter-tenant communications with a scope of &#8216;Global&#8217; and should
+not have a scope of &#8216;Context&#8217;. The contract should also be &#8216;Exported&#8217; from one
+Tenant to the other Tenant, so that the other EPG can consume the defined
+contract as a &#8216;Consumed Contract Interface&#8217;.</p>
+<p>Once the appropriate contract configuration is done, the contract show up on
+the leafs so the data plane can allow the inter-tenant communication.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">rtp_leaf1# show zoning-rule | grep 5474</span>
+<span class="go">4146 32774 5474 default enabled 2523136 permit</span>
+<span class="go">4147 5474 32774 default enabled 2523136 permit</span>
+<span class="go">rtp_leaf1# show zoning-rule | grep 32774</span>
+<span class="go">4146 32774 5474 default enabled 2523136 permit</span>
+<span class="go">4147 5474 32774 default enabled 2523136 permit</span>
+<span class="go">rtp_leaf1#</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="vmm_ucs.html" class="btn btn-neutral float-right" title="Virtual Machine Manager and UCS">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="bridged2ext.html" class="btn btn-neutral" title="Bridged Connectivity to External Networks"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Andres Vega, Bryan Deaver, Jerry Ye, Kannan Ponnuswamy, Loy Evans, Mike Timm, Paul Lesiak and Paul Raytick.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

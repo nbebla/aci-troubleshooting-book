@@ -1,0 +1,589 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Preface &mdash; ACI Troubleshooting Book 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="ACI Troubleshooting Book 0.0.1 documentation" href="index.html"/>
+        <link rel="next" title="Application Centric Infrastructure" href="aci.html"/>
+        <link rel="prev" title="Troubleshooting Cisco Application Centric Infrastructure" href="index.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="index.html" class="fa fa-home"> ACI Troubleshooting Book</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">Preface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#authors-and-contributors">Authors and Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#authors">Authors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#distinguished-contributors">Distinguished Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dedications">Dedications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#acknowledgments">Acknowledgments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#book-writing-methodology">Book Writing Methodology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#who-should-read-this-book">Who Should Read This Book?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#organization-of-this-book">Organization of this Book</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="aci.html">Application Centric Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aci_policy_model.html">ACI Policy Model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#abstraction-model">Abstraction Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#everything-is-an-object">Everything is an Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#relevant-objects-and-relationships">Relevant Objects and Relationships</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#hierarchical-aci-object-model-and-the-infrastructure">Hierarchical ACI Object Model and the Infrastructure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#infrastructure-as-objects">Infrastructure as Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#build-object-use-object-to-build-policy-reuse-policy">Build object, use object to build policy, reuse policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#rest-api-just-exposes-the-object-model">REST API just exposes the object model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#logical-model-resolved-model-concrete-model">Logical model, Resolved model, concrete model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#formed-and-unformed-relationships">Formed and Unformed Relationships</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#declarative-end-state-and-promise-theory">Declarative End State and Promise Theory</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Troubleshooting Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#apic-access-methods">APIC Access Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#programmatic-configuration-python">Programmatic Configuration (Python)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#fabric-node-access-methods">Fabric Node Access Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#exporting-information-from-the-fabric">Exporting information from the Fabric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#external-data-collection-syslog-snmp-call-home">External Data Collection – Syslog, SNMP, Call-Home</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#health-scores">Health Scores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#atomic-counters">Atomic Counters</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ts_methodology.html">Troubleshooting Methodology</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ts_methodology.html#overall-methodology">Overall Methodology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="topology.html">Sample Reference Topology</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="topology.html#physical-fabric-topology">Physical Fabric Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="topology.html#logical-application-topology">Logical Application Topology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#naming-conventions">Naming Conventions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hw_bringup.html">Initial Hardware Bringup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="hw_bringup.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw_bringup.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw_bringup.html#id2">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fabric_init.html">Fabric Initialization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fabric_init.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fabric_init.html#fabric-verification">Fabric Verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fabric_init.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="apic.html">Application Policy Infrastructure Controller (APIC) High Availability and Clustering</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#cluster-formation">Cluster Formation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#majority-and-minority-handling-clustering-split-brains">Majority and Minority - Handling Clustering Split Brains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id1">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id4">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id6">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id9">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id12">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id15">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="firmware.html">Firmware and Image Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html#id1">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html#id5">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="health.html">Faults / Health Scores</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="health.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="health.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="health.html#id1">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rest.html">REST Interface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rest.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rest.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mgmt_tn.html">Management Tenant</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mgmt_tn.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mgmt_tn.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mgmt_tn.html#id1">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="common.html">Common Network Services</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="common.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common.html#id15">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="unicast.html">Unicast Data Plane Forwarding and Reachability</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="unicast.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unicast.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unicast.html#id1">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pol_cntr.html">Policies and Contracts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pol_cntr.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pol_cntr.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bridged2ext.html">Bridged Connectivity to External Networks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="bridged2ext.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bridged2ext.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bridged2ext.html#id3">Problem Description:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bridged2ext.html#id5">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="routed2ext.html">Routed Connectivity to External Networks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#fabric-verification">Fabric Verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#problem-description">Problem description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#id1">Problem description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#id3">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vmm_ucs.html">Virtual Machine Manager and UCS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#id2">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#id6">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#id9">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="l4l7.html">L4-L7 Service Insertion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="l4l7.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="l4l7.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fn_crash_ts.html">ACI Fabric Node and Process Crash Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fn_crash_ts.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fn_crash_ts.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="apic_crash_ts.html">APIC Process Crash Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="apic_crash_ts.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic_crash_ts.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix.html#overview">Overview</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">ACI Troubleshooting Book</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div></div>
+          <div role="main" class="document">
+            
+  <div class="section" id="preface">
+<h1>Preface<a class="headerlink" href="#preface" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#authors-and-contributors" id="id1">Authors and Contributors</a></li>
+<li><a class="reference internal" href="#authors" id="id2">Authors</a></li>
+<li><a class="reference internal" href="#distinguished-contributors" id="id3">Distinguished Contributors</a></li>
+<li><a class="reference internal" href="#dedications" id="id4">Dedications</a></li>
+<li><a class="reference internal" href="#acknowledgments" id="id5">Acknowledgments</a></li>
+<li><a class="reference internal" href="#book-writing-methodology" id="id6">Book Writing Methodology</a></li>
+<li><a class="reference internal" href="#who-should-read-this-book" id="id7">Who Should Read This Book?</a><ul>
+<li><a class="reference internal" href="#expected-audience" id="id8">Expected Audience</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#organization-of-this-book" id="id9">Organization of this Book</a><ul>
+<li><a class="reference internal" href="#section-1-introduction-to-aci-troubleshooting" id="id10"><strong>Section 1: Introduction to ACI Troubleshooting</strong></a></li>
+<li><a class="reference internal" href="#section-2-sample-reference-topology" id="id11"><strong>Section 2: Sample Reference Topology</strong></a></li>
+<li><a class="reference internal" href="#section-3-troubleshooting-application-centric-infrastructure" id="id12"><strong>Section 3: Troubleshooting Application Centric Infrastructure</strong></a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="authors-and-contributors">
+<h2><a class="toc-backref" href="#id1">Authors and Contributors</a><a class="headerlink" href="#authors-and-contributors" title="Permalink to this headline">¶</a></h2>
+<p>This book represents a joint intense collaborative effort between Cisco&#8217;s
+Engineering, Technical Support, Advanced Services and Sales employees over a
+single week in the same room at Cisco Headquarters Building 20 in San Jose,
+CA.</p>
+</div>
+<div class="section" id="authors">
+<h2><a class="toc-backref" href="#id2">Authors</a><a class="headerlink" href="#authors" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line"><strong>Andres Vega</strong> - Cisco Technical Services</div>
+<div class="line"><strong>Bryan Deaver</strong> -  Cisco Technical Services</div>
+<div class="line"><strong>Jerry Ye</strong> - Cisco Advanced Services</div>
+<div class="line"><strong>Kannan Ponnuswamy</strong> - Cisco Advanced Services</div>
+<div class="line"><strong>Loy Evans</strong> - Systems Engineering</div>
+<div class="line"><strong>Mike Timm</strong> - Cisco Technical Services</div>
+<div class="line"><strong>Paul Lesiak</strong> - Cisco Advanced Services</div>
+<div class="line"><strong>Paul Raytick</strong> -  Cisco Technical Services</div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="distinguished-contributors">
+<h2><a class="toc-backref" href="#id3">Distinguished Contributors</a><a class="headerlink" href="#distinguished-contributors" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">Giuseppe Andreello</div>
+<div class="line">Pavan Bassetty</div>
+<div class="line">Sachin Jain</div>
+<div class="line">Sri Goli</div>
+<div class="line">Contributors</div>
+<div class="line">Lucien Avramov</div>
+<div class="line">Piyush Agarwal</div>
+<div class="line">Pooja Aniker</div>
+<div class="line">Ryan Bos</div>
+<div class="line">Mike Brown</div>
+<div class="line">Robert Burns</div>
+<div class="line">Mai Cutler</div>
+<div class="line">Tomas de Leon</div>
+<div class="line">Luis Flores</div>
+<div class="line">Maurizio Portolani</div>
+<div class="line">Michael Frase</div>
+<div class="line">Mioljub Jovanovic</div>
+<div class="line">Ozden Karakok</div>
+<div class="line">Jose Martinez</div>
+<div class="line">Rafael Mueller</div>
+<div class="line">Chandra Nagarajan</div>
+<div class="line">Mike Petrinovic</div>
+<div class="line">Daniel Pita</div>
+<div class="line">Mike Ripley</div>
+<div class="line">Zach Seils</div>
+<div class="line">Ramses Smeyers</div>
+<div class="line">Steve Winters</div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="dedications">
+<h2><a class="toc-backref" href="#id4">Dedications</a><a class="headerlink" href="#dedications" title="Permalink to this headline">¶</a></h2>
+<p>&#8220;For Olga and Victoria, my love and happiness, hoping for a world that
+continues to strive in providing more effective solutions to all problems
+intrinsic to human nature.” - <strong>Andres Vega</strong></p>
+<p>&#8220;An appreciative thank you to my wife Melanie and our children Sierra and
+Jackson for their support. And also to those that I have had the opportunity
+to work with over the years on this journey with Cisco.&#8221; - <strong>Bryan Deaver</strong></p>
+<p>&#8220;For my parents, uncles, aunts, cousins, and wonderful nephews and nieces in
+the US, Australia, Hong Kong and China.&#8221; - <strong>Jerry Ye</strong></p>
+<p>&#8220;To my wife, Vanitha for her unwavering love, support and encouragement, my
+kids Kripa, Krish and Kriti for the sweet moments, my sister who provided me
+the education needed for this book, my brother for the great times, and my
+parents for their unconditional love.&#8221; - <strong>Kannan Ponnuswamy</strong></p>
+<p>&#8220;Would like to thank my amazing family, Molly, Ethan and Abby, without whom,
+none of the things I do would matter.&#8221; - <strong>Loy Evans</strong></p>
+<p>&#8220;Big thanks to my wife Morena, my daughters Elena and Mayra.  Thank you to my
+in-laws Guadalupe and Armando who helped watch my beautiful growing girls
+while I spent the time away from home working on this project.&#8221; - <strong>Michael
+Timm</strong></p>
+<p>&#8220;Dedicated to the patience, love and continual support of Amanda; my sprite
+and best friend&#8221; - <strong>Paul Lesiak</strong></p>
+<p>&#8220;For Susan, Matthew, Hanna, Brian, and all my extended family, thanks for
+your support throughout the years. Thanks as well to Cisco for the opportunity,
+it continues to be a fun ride.&#8221; - <strong>Paul Raytick</strong></p>
+</div>
+<div class="section" id="acknowledgments">
+<h2><a class="toc-backref" href="#id5">Acknowledgments</a><a class="headerlink" href="#acknowledgments" title="Permalink to this headline">¶</a></h2>
+<p>While this book was produced and written in a single week, the knowledge and
+experience leading to it are the result of hard work and dedication of many
+individual inside and outside Cisco.</p>
+<p>Special thanks to Cisco’s INSBU Executive, Technical Marketing and Engineering
+teams who supported the realization of this book. We would like to thank you
+for your continuous innovation and the value you provide to the industry.</p>
+<p>We want to thank Cisco&#8217;s Advanced Services and Technical Services leadership
+teams for the trust they conferred to this initiative and the support provided
+since the inception of the idea.</p>
+<p>In particular we want to express gratitude to the following individuals for
+their influence and support both prior and during the book sprint:</p>
+<div class="line-block">
+<div class="line">Shrey Ajmera</div>
+<div class="line">Subrata Banerjee</div>
+<div class="line">Dave Broenen</div>
+<div class="line">John Bunney</div>
+<div class="line">Luca Cafiero</div>
+<div class="line">Ravi Chamarthy</div>
+<div class="line">Mike Cohen</div>
+<div class="line">Kevin Corbin</div>
+<div class="line">Ronak Desai</div>
+<div class="line">Krishna Doddapaneni</div>
+<div class="line">Mike Dvorkin</div>
+<div class="line">Tom Edsall</div>
+<div class="line">Ken Fee</div>
+<div class="line">Vikki Fee</div>
+<div class="line">Siva Gaggara</div>
+<div class="line">Shilpa Grandhi</div>
+<div class="line">Ram Gunuganti</div>
+<div class="line">Ruben Hakopian</div>
+<div class="line">Robert Hurst</div>
+<div class="line">Donna Hutchinson</div>
+<div class="line">Fabio Ingrao</div>
+<div class="line">Saurabh Jain</div>
+<div class="line">Praveen Jain</div>
+<div class="line">Prem Jain</div>
+<div class="line">Soni Jiandani</div>
+<div class="line">Sarat Kamisetty</div>
+<div class="line">Yousuf Khan</div>
+<div class="line">Praveen Kumar</div>
+<div class="line">Tighe Kuykendall</div>
+<div class="line">Adrienne Liu</div>
+<div class="line">Anand Louis</div>
+<div class="line">Gianluca Mardente</div>
+<div class="line">Wayne McAllister</div>
+<div class="line">Rohit Mediratta</div>
+<div class="line">Munish Mehta</div>
+<div class="line">Sameer Merchant</div>
+<div class="line">Joe Onisick</div>
+<div class="line">Ignacio Orozco</div>
+<div class="line">Venkatesh Pallipadi</div>
+<div class="line">Ayas Pani</div>
+<div class="line">Amit Patel</div>
+<div class="line">Maurizio Portolani</div>
+<div class="line">Pirabhu Raman</div>
+<div class="line">Alice Saiki</div>
+<div class="line">Christy Sanders</div>
+<div class="line">Enrico Schiattarella</div>
+<div class="line">Priyanka Shah</div>
+<div class="line">Pankaj Shukla</div>
+<div class="line">Michael Smith</div>
+<div class="line">Edward Swenson</div>
+<div class="line">Srinivas Tatikonda</div>
+<div class="line">Santhosh Thodupunoori</div>
+<div class="line">Sergey Timokhin</div>
+<div class="line">Muni Tripathi</div>
+<div class="line">Bobby Vandalore</div>
+<div class="line">Sunil Verma</div>
+<div class="line">Alok Wadhwa</div>
+<div class="line">Jay Weinstein</div>
+<div class="line">Yi Xue</div>
+<div class="line"><br /></div>
+</div>
+<p>We would also like to thank the Office of the CTO and Chief Architect for
+their hospitality while working in their office space.</p>
+<p>We are truly grateful to our book sprint facilitators Laia Ros and Adam Hyde
+for carrying us throughout this collaborative knowledge production process,
+and to our illustrator Henrik van Leeuwen who took abstract ideas and was able
+to depict those ideas into clear visuals. Our first concern was how to take so
+many people from different sides of the business to complete a project that
+traditionally takes months. The book sprint team showed that this is possible
+and presents a new model for how we collaborate, extract knowledge and
+experience and present it into a single source.</p>
+</div>
+<div class="section" id="book-writing-methodology">
+<h2><a class="toc-backref" href="#id6">Book Writing Methodology</a><a class="headerlink" href="#book-writing-methodology" title="Permalink to this headline">¶</a></h2>
+<p>The Book Sprint (www.booksprints.net) methodology was used for writing this
+book. The Book Sprint methodology is an innovative new style of cooperative
+and collaborative authorship. Book Sprints are strongly facilitated and
+leverage team-oriented inspiration and motivation to rapidly deliver large
+amounts of well authored and reviewed content, and incorporate it into a
+complete narrative in a short amount of time. By leveraging the input of many
+experts, the complete book was written in a short time period of only five
+days, however involved hundreds of authoring man hours, and included thousands
+of experienced engineering hours, allowing for extremely high quality in a
+very short production time period.</p>
+</div>
+<div class="section" id="who-should-read-this-book">
+<h2><a class="toc-backref" href="#id7">Who Should Read This Book?</a><a class="headerlink" href="#who-should-read-this-book" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="expected-audience">
+<h3><a class="toc-backref" href="#id8">Expected Audience</a><a class="headerlink" href="#expected-audience" title="Permalink to this headline">¶</a></h3>
+<p>The intended audience for this book is those with a general need to understand
+how to operate and/or troubleshoot an ACI fabric. While operation engineers may
+experience the largest benefit from this content, the materials included herein
+may be of use to a much wider audience, especially given modern industry trends
+towards continuous integration and development, along with the ever growing
+need for agile DevOps oriented methodologies.</p>
+<p>There are many elements in this book that explore topics outside the typical
+job responsibilities of network administrators. For example the programmatic
+manipulation of policy models can be viewed as a development-oriented task,
+however has specific relevance to networking configuration and function,
+taking a very different approach than traditional CLI-based interface
+configuration.</p>
+</div>
+</div>
+<div class="section" id="organization-of-this-book">
+<h2><a class="toc-backref" href="#id9">Organization of this Book</a><a class="headerlink" href="#organization-of-this-book" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="section-1-introduction-to-aci-troubleshooting">
+<h3><a class="toc-backref" href="#id10"><strong>Section 1: Introduction to ACI Troubleshooting</strong></a><a class="headerlink" href="#section-1-introduction-to-aci-troubleshooting" title="Permalink to this headline">¶</a></h3>
+<p>The introduction covers basic concepts, terms and models while introducing the
+tools that will be used in troubleshooting. Also covered are the
+troubleshooting, verification and resolution methodologies used in later
+sections that cover the actual problems being documented.</p>
+</div>
+<div class="section" id="section-2-sample-reference-topology">
+<h3><a class="toc-backref" href="#id11"><strong>Section 2: Sample Reference Topology</strong></a><a class="headerlink" href="#section-2-sample-reference-topology" title="Permalink to this headline">¶</a></h3>
+<p>This section sets the baseline sample topology used throughout all of the
+troubleshooting exercises that are documented later in the book. Logical
+diagrams are provided for the abstract policy elements (the endpoint group
+objects, the application profile objects, etc) as well as the physical
+topology diagrams and any supporting documentation that is needed to
+understand the focal point of the exercises.  In each problem description in
+Section 3, references will be made to the reference topology as necessary.
+Where further examination is required, the specific aspects of the topology
+being examined may be re-illustrated in the text of the troubleshooting
+scenario.</p>
+</div>
+<div class="section" id="section-3-troubleshooting-application-centric-infrastructure">
+<h3><a class="toc-backref" href="#id12"><strong>Section 3: Troubleshooting Application Centric Infrastructure</strong></a><a class="headerlink" href="#section-3-troubleshooting-application-centric-infrastructure" title="Permalink to this headline">¶</a></h3>
+<p>The Troubleshooting ACI section goes through specific problem descriptions as
+it relates to the fabric. For each iterative problem, there will be a problem
+description, a listing of the process, some verification steps, and possible
+resolutions.</p>
+<p><strong>Chapter format</strong>: The chapters that follow in the Troubleshooting section
+document the various problems: verification of causes and possible resolutions
+are arranged in the following format.</p>
+<p><strong>Overview</strong>: Provides an introduction to the problem in focus by highlighting
+the following information:</p>
+<ul class="simple">
+<li>Theory and concepts to be covered</li>
+<li>Information of what should be happening</li>
+<li>Verification steps of a working state</li>
+</ul>
+<p><strong>Problem Description</strong>: The problem description will be a high level
+observation of the starting point for the troubleshooting actions to be
+covered. Example:  a fabric node is showing “inactive” from the APIC by
+using APIC CLI command acidiag fnvread.</p>
+<p><strong>Symptoms</strong>: Depending on the problem, various symptoms and their impacts may
+be observed. In this example, some of the symptoms and indications of issues
+around an inactive fabric node could be:</p>
+<ul class="simple">
+<li>loss of connectivity to the fabric</li>
+<li>low health score</li>
+<li>system faults</li>
+<li>inability to make changes through the APIC</li>
+</ul>
+<p>In some chapters, multiple symptoms could be observed for the same problem
+description that require different verification or resolution.</p>
+<p><strong>Verification</strong>: The logical set of steps to identify what is being observed
+will be indicated along with the appropriate tools and output. Additionally,
+some information on likely causes and resolution will be included.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="aci.html" class="btn btn-neutral float-right" title="Application Centric Infrastructure">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Troubleshooting Cisco Application Centric Infrastructure"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Andres Vega, Bryan Deaver, Jerry Ye, Kannan Ponnuswamy, Loy Evans, Mike Timm, Paul Lesiak and Paul Raytick.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

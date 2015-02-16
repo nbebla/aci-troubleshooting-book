@@ -1,0 +1,611 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ACI Fabric Node and Process Crash Troubleshooting &mdash; ACI Troubleshooting Book 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="ACI Troubleshooting Book 0.0.1 documentation" href="index.html"/>
+        <link rel="next" title="APIC Process Crash Troubleshooting" href="apic_crash_ts.html"/>
+        <link rel="prev" title="L4-L7 Service Insertion" href="l4l7.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="index.html" class="fa fa-home"> ACI Troubleshooting Book</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="preface.html">Preface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#authors-and-contributors">Authors and Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#authors">Authors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#distinguished-contributors">Distinguished Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#dedications">Dedications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#acknowledgments">Acknowledgments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#book-writing-methodology">Book Writing Methodology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#who-should-read-this-book">Who Should Read This Book?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#organization-of-this-book">Organization of this Book</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="aci.html">Application Centric Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aci_policy_model.html">ACI Policy Model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#abstraction-model">Abstraction Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#everything-is-an-object">Everything is an Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#relevant-objects-and-relationships">Relevant Objects and Relationships</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#hierarchical-aci-object-model-and-the-infrastructure">Hierarchical ACI Object Model and the Infrastructure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#infrastructure-as-objects">Infrastructure as Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#build-object-use-object-to-build-policy-reuse-policy">Build object, use object to build policy, reuse policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#rest-api-just-exposes-the-object-model">REST API just exposes the object model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#logical-model-resolved-model-concrete-model">Logical model, Resolved model, concrete model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#formed-and-unformed-relationships">Formed and Unformed Relationships</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#declarative-end-state-and-promise-theory">Declarative End State and Promise Theory</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Troubleshooting Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#apic-access-methods">APIC Access Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#programmatic-configuration-python">Programmatic Configuration (Python)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#fabric-node-access-methods">Fabric Node Access Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#exporting-information-from-the-fabric">Exporting information from the Fabric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#external-data-collection-syslog-snmp-call-home">External Data Collection – Syslog, SNMP, Call-Home</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#health-scores">Health Scores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#atomic-counters">Atomic Counters</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ts_methodology.html">Troubleshooting Methodology</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ts_methodology.html#overall-methodology">Overall Methodology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="topology.html">Sample Reference Topology</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="topology.html#physical-fabric-topology">Physical Fabric Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="topology.html#logical-application-topology">Logical Application Topology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#naming-conventions">Naming Conventions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hw_bringup.html">Initial Hardware Bringup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="hw_bringup.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw_bringup.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw_bringup.html#id2">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fabric_init.html">Fabric Initialization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fabric_init.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fabric_init.html#fabric-verification">Fabric Verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fabric_init.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="apic.html">Application Policy Infrastructure Controller (APIC) High Availability and Clustering</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#cluster-formation">Cluster Formation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#majority-and-minority-handling-clustering-split-brains">Majority and Minority - Handling Clustering Split Brains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id1">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id4">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id6">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id9">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id12">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id15">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="firmware.html">Firmware and Image Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html#id1">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html#id5">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="health.html">Faults / Health Scores</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="health.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="health.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="health.html#id1">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rest.html">REST Interface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rest.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rest.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mgmt_tn.html">Management Tenant</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mgmt_tn.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mgmt_tn.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mgmt_tn.html#id1">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="common.html">Common Network Services</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="common.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common.html#id15">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="unicast.html">Unicast Data Plane Forwarding and Reachability</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="unicast.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unicast.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unicast.html#id1">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pol_cntr.html">Policies and Contracts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pol_cntr.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pol_cntr.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bridged2ext.html">Bridged Connectivity to External Networks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="bridged2ext.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bridged2ext.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bridged2ext.html#id3">Problem Description:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bridged2ext.html#id5">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="routed2ext.html">Routed Connectivity to External Networks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#fabric-verification">Fabric Verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#problem-description">Problem description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#id1">Problem description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#id3">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vmm_ucs.html">Virtual Machine Manager and UCS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#id2">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#id6">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#id9">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="l4l7.html">L4-L7 Service Insertion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="l4l7.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="l4l7.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">ACI Fabric Node and Process Crash Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="apic_crash_ts.html">APIC Process Crash Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="apic_crash_ts.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic_crash_ts.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix.html#overview">Overview</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">ACI Troubleshooting Book</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div></div>
+          <div role="main" class="document">
+            
+  <div class="section" id="aci-fabric-node-and-process-crash-troubleshooting">
+<h1>ACI Fabric Node and Process Crash Troubleshooting<a class="headerlink" href="#aci-fabric-node-and-process-crash-troubleshooting" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#overview" id="id4">Overview</a><ul>
+<li><a class="reference internal" href="#dme-processes" id="id5">DME Processes:</a></li>
+<li><a class="reference internal" href="#cli" id="id6">CLI:</a></li>
+<li><a class="reference internal" href="#identify-when-a-process-crashes" id="id7">Identify When a Process Crashes:</a></li>
+<li><a class="reference internal" href="#collecting-the-core-files" id="id8">Collecting the Core Files:</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#problem-description" id="id9">Problem Description</a><ul>
+<li><a class="reference internal" href="#symptom-1" id="id10">Symptom 1</a></li>
+<li><a class="reference internal" href="#verification" id="id11">Verification</a><ul>
+<li><a class="reference internal" href="#check-the-appropriate-process-log" id="id12">Check the appropriate process log:</a></li>
+<li><a class="reference internal" href="#check-what-activity-occurred-at-the-time-of-the-process-crash" id="id13">Check what activity occurred at the time of the process crash:</a></li>
+<li><a class="reference internal" href="#collect-techsupport-and-core-file-and-contact-the-tac" id="id14">Collect Techsupport and Core File and Contact the TAC:</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#symptom-2" id="id15">Symptom 2</a></li>
+<li><a class="reference internal" href="#id1" id="id16">Verification</a><ul>
+<li><a class="reference internal" href="#break-the-hap-reset-loop" id="id17">Break the HAP reset loop:</a></li>
+<li><a class="reference internal" href="#id2" id="id18">Check the appropriate process log:</a></li>
+<li><a class="reference internal" href="#id3" id="id19">Check what activity occurred at the time of the process crash:</a></li>
+<li><a class="reference internal" href="#collect-core-file-and-contact-the-cisco-tac" id="id20">Collect Core File and Contact the Cisco TAC:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="overview">
+<h2><a class="toc-backref" href="#id4">Overview</a><a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>The ACI switch node has numerous processes which control various functional
+aspects on the system. If the system has a software failure in a particular
+process, a core file will be generated and the process will be reloaded.</p>
+<p>If the process is a Data Management Engine (DME) process, the DME process will
+restart automatically. If the process is a non-DME process, it will not
+restart automatically and the switch will reboot to recover.</p>
+<p>This section presents an overview of the various processes, how to detect that
+a process has cored, and what actions should be taken when this occurs.</p>
+<div class="section" id="dme-processes">
+<h3><a class="toc-backref" href="#id5">DME Processes:</a><a class="headerlink" href="#dme-processes" title="Permalink to this headline">¶</a></h3>
+<p>The essential processes running on an APIC can be found through the CLI.
+Unlike the APIC, the processes that can be seen via the GUI in
+FABRIC-&gt;INVENTORY-&gt;Pod 1-&gt;(node) will show all processes running on the leaf.</p>
+</div>
+<div class="section" id="cli">
+<h3><a class="toc-backref" href="#id6">CLI:</a><a class="headerlink" href="#cli" title="Permalink to this headline">¶</a></h3>
+<p>With the command ps-ef | grep svc_ifc:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">rtp_leaf1# ps -ef |grep svc_ifc</span>
+<span class="go">root      3990  3087  1 Oct13 ?        00:43:36 /isan/bin/svc_ifc_policyelem --x</span>
+<span class="go">root      4039  3087  1 Oct13 ?        00:42:00 /isan/bin/svc_ifc_eventmgr --x</span>
+<span class="go">root      4261  3087  1 Oct13 ?        00:40:05 /isan/bin/svc_ifc_opflexelem --x -v dptcp:8000</span>
+<span class="go">root      4271  3087  1 Oct13 ?        00:44:21 /isan/bin/svc_ifc_observerelem --x</span>
+<span class="go">root      4277  3087  1 Oct13 ?        00:40:42 /isan/bin/svc_ifc_dbgrelem --x</span>
+<span class="go">root      4279  3087  1 Oct13 ?        00:41:02 /isan/bin/svc_ifc_confelem --x</span>
+<span class="go">rtp_leaf1#</span>
+</pre></div>
+</div>
+<p>Each of the processes running on the switch writes activity to a log file on
+the system. These log files are bundled as part of the techsupport file but
+can be found via CLI access in /tmp/logs/ directory. For example, the Policy
+Element process log output is written into /tmp/logs/svc_ifc_policyelem.log.</p>
+<p>The following is a brief description of the DME processes running on the
+system. This can help in understanding which log files to reference when
+troubleshooting a particular process or understand the impact to the system if
+a process crashed:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="83%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Process</th>
+<th class="head">Function</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>policyelem</td>
+<td>Policy Element: Process logical MO from APIC and push
+concrete model to the switch</td>
+</tr>
+<tr class="row-odd"><td>eventmgr</td>
+<td>Event Manager: Processes local faults, events, health score</td>
+</tr>
+<tr class="row-even"><td>opflexelem</td>
+<td>Opflex Element: Opflex server on switch</td>
+</tr>
+<tr class="row-odd"><td>observerelem</td>
+<td>Observer Element: Process local stats sent to APIC</td>
+</tr>
+<tr class="row-even"><td>dbgrelem</td>
+<td>Debugger Element: Core handler</td>
+</tr>
+<tr class="row-odd"><td>nginx</td>
+<td>Web server handling traffic between the switch and APIC</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="identify-when-a-process-crashes">
+<h3><a class="toc-backref" href="#id7">Identify When a Process Crashes:</a><a class="headerlink" href="#identify-when-a-process-crashes" title="Permalink to this headline">¶</a></h3>
+<p>When a process crashes and a core file is generated, a fault as well as an
+event is generated. The fault for the particular process is shown as a
+&#8220;process-crash&#8221; as shown in this syslog output from the APIC:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Oct 16 03:54:35 apic3 %LOG_LOCAL7-3-SYSTEM_MSG [E4208395][process-crash][major][subj-[dbgs/cores/node-102-card-1-svc-policyelem-ts-2014-10-16T03:54:55.000+00:00]/rec-12884905092]Process policyelem cored</span>
+</pre></div>
+</div>
+<p>When the process on the switch crashes, the core file is compressed and copied
+to the APIC. The syslog message notification comes from the APIC.</p>
+<p>The fault that is generated when the process crashes is cleared when the
+process is restarted. The fault can be viewed via the GUI in the fabric
+history tab at FABRIC-&gt;INVENTORY-&gt;Pod 1. In this example, node102 Policy
+Element crashed:</p>
+<a class="reference internal image-reference" href="_images/ProcessElem_Core.png"><img alt="_images/ProcessElem_Core.png" class="align-center" src="_images/ProcessElem_Core.png" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="collecting-the-core-files">
+<h3><a class="toc-backref" href="#id8">Collecting the Core Files:</a><a class="headerlink" href="#collecting-the-core-files" title="Permalink to this headline">¶</a></h3>
+<p>The APIC GUI provides a central location to collect the core files for the
+fabric nodes.</p>
+<p>An export policy can be created from ADMIN -&gt; IMPORT/EXPORT in Export Policies
+-&gt; Core. However, there is a default core policy where files can be downloaded
+directly. As shown in this example:</p>
+<a class="reference internal image-reference" href="_images/core_file2.png"><img alt="_images/core_file2.png" class="align-center" src="_images/core_file2.png" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>The core files can be accessed via SSH/SCP through the APIC at
+/data/techsupport on the APIC where the core file is located. Note that the
+core file will be available at /data/techsupport on one APIC in the cluster,
+the exact APIC that the core file resides can be found by the Export Location
+path as shown in the GUI. For example, if the Export Location begins with
+&#8220;files/3/&#8221;, the file is located on node 3 (APIC3).</p>
+</div>
+</div>
+<div class="section" id="problem-description">
+<h2><a class="toc-backref" href="#id9">Problem Description</a><a class="headerlink" href="#problem-description" title="Permalink to this headline">¶</a></h2>
+<p>Process on fabric node has crashed and either restarts automatically or leads
+to the switch restarting.</p>
+<div class="section" id="symptom-1">
+<h3><a class="toc-backref" href="#id10">Symptom 1</a><a class="headerlink" href="#symptom-1" title="Permalink to this headline">¶</a></h3>
+<p>Process on switch fabric crashes. Either the process restarts automatically or
+the switch reloads to recover.</p>
+</div>
+<div class="section" id="verification">
+<h3><a class="toc-backref" href="#id11">Verification</a><a class="headerlink" href="#verification" title="Permalink to this headline">¶</a></h3>
+<p>As indicated in the overview section, if a DME process crashes, it should
+restart automatically without the switch restarting. If a non-DME process
+crashes, the process will not automatically restart and the switch will reboot
+to recover.</p>
+<p>Depending on which process crashes, the impact of the process core will vary.</p>
+<p>When a non-DME process crashes, this will typical lead to a HAP reset as seen
+on the console:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">[ 1130.593388] nvram_klm wrote rr=16 rr_str=ntp hap reset to nvram</span>
+<span class="go">[ 1130.599990] obfl_klm writing reset reason 16, ntp hap reset</span>
+<span class="go">[ 1130.612558] Collected 8 ext4 filesystems</span>
+</pre></div>
+</div>
+<div class="section" id="check-the-appropriate-process-log">
+<h4><a class="toc-backref" href="#id12">Check the appropriate process log:</a><a class="headerlink" href="#check-the-appropriate-process-log" title="Permalink to this headline">¶</a></h4>
+<p>The process which crashes should have at some level of log output prior to the
+crash. The output of the logs on the switch are written into the /tmp/logs
+directory. The process name will be part of the file name. For example, for
+the Policy Element process, the file is svc_ifc_policyelem.log</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">rtp_leaf2# ls -l |grep policyelem</span>
+<span class="go">-rw-r--r-- 2 root root 13767569 Oct 16 00:37 svc_ifc_policyelem.log</span>
+<span class="go">-rw-r--r-- 1 root root  1413246 Oct 14 22:10 svc_ifc_policyelem.log.1.gz</span>
+<span class="go">-rw-r--r-- 1 root root  1276434 Oct 14 22:15 svc_ifc_policyelem.log.2.gz</span>
+<span class="go">-rw-r--r-- 1 root root  1588816 Oct 14 23:12 svc_ifc_policyelem.log.3.gz</span>
+<span class="go">-rw-r--r-- 1 root root  2124876 Oct 15 14:34 svc_ifc_policyelem.log.4.gz</span>
+<span class="go">-rw-r--r-- 1 root root  1354160 Oct 15 22:30 svc_ifc_policyelem.log.5.gz</span>
+<span class="go">-rw-r--r-- 2 root root 13767569 Oct 16 00:37 svc_ifc_policyelem.log.6</span>
+<span class="go">-rw-rw-rw- 1 root root        2 Oct 14 22:06 svc_ifc_policyelem.log.PRESERVED</span>
+<span class="go">-rw-rw-rw- 1 root root      209 Oct 14 22:06 svc_ifc_policyelem.log.stderr</span>
+<span class="go">rtp_leaf2#</span>
+</pre></div>
+</div>
+<p>There will be several files for each process located at /tmp/logs. As the log
+file increases in size, it will be compressed and older log files will be
+rotated off. Check the core file creation time (as shown in the GUI and the
+core file name) to understand where to look in the file. Also, when the
+process first attempts to come up, there be an entry in the log file that
+indicates &#8220;Process is restarting after a crash&#8221; that can be used to search
+backwards as to what might have happened prior to the crash.</p>
+</div>
+<div class="section" id="check-what-activity-occurred-at-the-time-of-the-process-crash">
+<h4><a class="toc-backref" href="#id13">Check what activity occurred at the time of the process crash:</a><a class="headerlink" href="#check-what-activity-occurred-at-the-time-of-the-process-crash" title="Permalink to this headline">¶</a></h4>
+<p>A process which has been running has had some change which then caused it to
+crash. In many cases the changes may have been some configuration activity on
+the system. What activity occurred on the system can be found in the audit log
+history of the system.</p>
+<p>For example, if the ntp process crashes, going back around the time of the
+crash, in this example there was a change where a ntp provider was deleted:</p>
+<a class="reference internal image-reference" href="_images/ntp_change.png"><img alt="_images/ntp_change.png" class="align-center" src="_images/ntp_change.png" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="collect-techsupport-and-core-file-and-contact-the-tac">
+<h4><a class="toc-backref" href="#id14">Collect Techsupport and Core File and Contact the TAC:</a><a class="headerlink" href="#collect-techsupport-and-core-file-and-contact-the-tac" title="Permalink to this headline">¶</a></h4>
+<p>A process crashing should not normally occur. In order to understand better
+why beyond the above steps it will be necessary to decode the core file. At
+this point, the file will need to be collected and provided to the TAC for
+further processing.</p>
+<p>Collect the core file (as indicated above how to do this) and open up a case
+with the TAC.</p>
+</div>
+</div>
+<div class="section" id="symptom-2">
+<h3><a class="toc-backref" href="#id15">Symptom 2</a><a class="headerlink" href="#symptom-2" title="Permalink to this headline">¶</a></h3>
+<p>Fabric switch continuously reloads or is stuck at the BIOS loader prompt.</p>
+</div>
+<div class="section" id="id1">
+<h3><a class="toc-backref" href="#id16">Verification</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>As indicated in the overview section, if a DME process crashes, it should
+restart automatically without the switch restarting. If a non-DME process
+crashes, the process will not automatically restart and the switch will reboot
+to recover. However in either case if the process continuously crashes, the
+switch may get into a continuous reload loop or end up in the BIOS loader
+prompt.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">[ 1130.593388] nvram_klm wrote rr=16 rr_str=policyelem hap reset to nvram</span>
+<span class="go">[ 1130.599990] obfl_klm writing reset reason 16, policyelem hap reset</span>
+<span class="go">[ 1130.612558] Collected 8 ext4 filesystems</span>
+</pre></div>
+</div>
+<div class="section" id="break-the-hap-reset-loop">
+<h4><a class="toc-backref" href="#id17">Break the HAP reset loop:</a><a class="headerlink" href="#break-the-hap-reset-loop" title="Permalink to this headline">¶</a></h4>
+<p>First step is to attempt to get the switch back into a state where further
+information can be collected.</p>
+<p>If the switch is continuously rebooting, when the switch is booting up, break
+into the BIOS loader prompt through the console by typing CTRL C when the
+switch is first part of the boot cycle.</p>
+<p>Once the switch is at the loader prompt, enter in the following commands:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">cmdline no_hap_reset</span>
+<span class="go">boot &lt;file&gt;</span>
+</pre></div>
+</div>
+<p>The cmdline command will prevent the switch from reloading with a hap reset is
+called. The second command will boot the system. Note that the boot command is
+needed instead of a reload at the loader as a reload will remove the cmdline
+option entered.</p>
+<p>Though the system should now remain up to allow better access to collect data,
+whatever process is crashing will impact the functionality of the switch.</p>
+</div>
+<div class="section" id="id2">
+<h4><a class="toc-backref" href="#id18">Check the appropriate process log:</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<p>The process which crashes should have at some level of log output prior to the
+crash. The output of the logs on the switch are written into the /tmp/logs
+directory. The process name will be part of the file name. For example, for
+the Policy Element process, the file is svc_ifc_policyelem.log</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">rtp_leaf2# ls -l |grep policyelem</span>
+<span class="go">-rw-r--r-- 2 root root 13767569 Oct 16 00:37 svc_ifc_policyelem.log</span>
+<span class="go">-rw-r--r-- 1 root root  1413246 Oct 14 22:10 svc_ifc_policyelem.log.1.gz</span>
+<span class="go">-rw-r--r-- 1 root root  1276434 Oct 14 22:15 svc_ifc_policyelem.log.2.gz</span>
+<span class="go">-rw-r--r-- 1 root root  1588816 Oct 14 23:12 svc_ifc_policyelem.log.3.gz</span>
+<span class="go">-rw-r--r-- 1 root root  2124876 Oct 15 14:34 svc_ifc_policyelem.log.4.gz</span>
+<span class="go">-rw-r--r-- 1 root root  1354160 Oct 15 22:30 svc_ifc_policyelem.log.5.gz</span>
+<span class="go">-rw-r--r-- 2 root root 13767569 Oct 16 00:37 svc_ifc_policyelem.log.6</span>
+<span class="go">-rw-rw-rw- 1 root root        2 Oct 14 22:06 svc_ifc_policyelem.log.PRESERVED</span>
+<span class="go">-rw-rw-rw- 1 root root      209 Oct 14 22:06 svc_ifc_policyelem.log.stderr</span>
+<span class="go">rtp_leaf2#</span>
+</pre></div>
+</div>
+<p>There will be several files for each process located at /tmp/logs. As the log
+file increases in size, it will be compressed and older log files will be
+rotated off. Check the core file creation time (as shown in the GUI and the
+core file name) to understand where to look in the file. Also, when the
+process first attempts to come up, there be an entry in the log file that
+indicates &#8220;Process is restarting after a crash&#8221; that can be used to search
+backwards as to what might have happened prior to the crash.</p>
+</div>
+<div class="section" id="id3">
+<h4><a class="toc-backref" href="#id19">Check what activity occurred at the time of the process crash:</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<p>A process which has been running has had some change which then caused it to
+crash. In many cases the changes may have been some configuration activity on
+the system. What activity occurred on the system can be found in the audit log
+history of the system.</p>
+<p>For example, if the ntp process crashes, going back around the time of the
+crash, in this example there was a change where a ntp provider was deleted:</p>
+<a class="reference internal image-reference" href="_images/ntp_change.png"><img alt="_images/ntp_change.png" class="align-center" src="_images/ntp_change.png" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="collect-core-file-and-contact-the-cisco-tac">
+<h4><a class="toc-backref" href="#id20">Collect Core File and Contact the Cisco TAC:</a><a class="headerlink" href="#collect-core-file-and-contact-the-cisco-tac" title="Permalink to this headline">¶</a></h4>
+<p>A process crashing should not normally occur. In order to understand better
+why, beyond the above steps, it will be necessary to decode the core file. At
+this point, the file will need to be collected and provided to the Cisco TAC
+for further processing.</p>
+<p>Collect the core file (as indicated above how to do this) and open up a
+support case with the Cisco TAC.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="apic_crash_ts.html" class="btn btn-neutral float-right" title="APIC Process Crash Troubleshooting">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="l4l7.html" class="btn btn-neutral" title="L4-L7 Service Insertion"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Andres Vega, Bryan Deaver, Jerry Ye, Kannan Ponnuswamy, Loy Evans, Mike Timm, Paul Lesiak and Paul Raytick.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

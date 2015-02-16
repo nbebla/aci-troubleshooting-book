@@ -1,0 +1,763 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Policies and Contracts &mdash; ACI Troubleshooting Book 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="ACI Troubleshooting Book 0.0.1 documentation" href="index.html"/>
+        <link rel="next" title="Bridged Connectivity to External Networks" href="bridged2ext.html"/>
+        <link rel="prev" title="Unicast Data Plane Forwarding and Reachability" href="unicast.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="index.html" class="fa fa-home"> ACI Troubleshooting Book</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="preface.html">Preface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#authors-and-contributors">Authors and Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#authors">Authors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#distinguished-contributors">Distinguished Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#dedications">Dedications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#acknowledgments">Acknowledgments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#book-writing-methodology">Book Writing Methodology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#who-should-read-this-book">Who Should Read This Book?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#organization-of-this-book">Organization of this Book</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="aci.html">Application Centric Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aci_policy_model.html">ACI Policy Model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#abstraction-model">Abstraction Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#everything-is-an-object">Everything is an Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#relevant-objects-and-relationships">Relevant Objects and Relationships</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#hierarchical-aci-object-model-and-the-infrastructure">Hierarchical ACI Object Model and the Infrastructure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#infrastructure-as-objects">Infrastructure as Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#build-object-use-object-to-build-policy-reuse-policy">Build object, use object to build policy, reuse policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#rest-api-just-exposes-the-object-model">REST API just exposes the object model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#logical-model-resolved-model-concrete-model">Logical model, Resolved model, concrete model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#formed-and-unformed-relationships">Formed and Unformed Relationships</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#declarative-end-state-and-promise-theory">Declarative End State and Promise Theory</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Troubleshooting Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#apic-access-methods">APIC Access Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#programmatic-configuration-python">Programmatic Configuration (Python)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#fabric-node-access-methods">Fabric Node Access Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#exporting-information-from-the-fabric">Exporting information from the Fabric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#external-data-collection-syslog-snmp-call-home">External Data Collection – Syslog, SNMP, Call-Home</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#health-scores">Health Scores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#atomic-counters">Atomic Counters</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ts_methodology.html">Troubleshooting Methodology</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ts_methodology.html#overall-methodology">Overall Methodology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="topology.html">Sample Reference Topology</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="topology.html#physical-fabric-topology">Physical Fabric Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="topology.html#logical-application-topology">Logical Application Topology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#naming-conventions">Naming Conventions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hw_bringup.html">Initial Hardware Bringup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="hw_bringup.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw_bringup.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw_bringup.html#id2">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fabric_init.html">Fabric Initialization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fabric_init.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fabric_init.html#fabric-verification">Fabric Verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fabric_init.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="apic.html">Application Policy Infrastructure Controller (APIC) High Availability and Clustering</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#cluster-formation">Cluster Formation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#majority-and-minority-handling-clustering-split-brains">Majority and Minority - Handling Clustering Split Brains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id1">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id4">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id6">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id9">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id12">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id15">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="firmware.html">Firmware and Image Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html#id1">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html#id5">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="health.html">Faults / Health Scores</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="health.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="health.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="health.html#id1">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rest.html">REST Interface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rest.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rest.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mgmt_tn.html">Management Tenant</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mgmt_tn.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mgmt_tn.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mgmt_tn.html#id1">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="common.html">Common Network Services</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="common.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common.html#id15">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="unicast.html">Unicast Data Plane Forwarding and Reachability</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="unicast.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unicast.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unicast.html#id1">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Policies and Contracts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bridged2ext.html">Bridged Connectivity to External Networks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="bridged2ext.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bridged2ext.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bridged2ext.html#id3">Problem Description:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bridged2ext.html#id5">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="routed2ext.html">Routed Connectivity to External Networks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#fabric-verification">Fabric Verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#problem-description">Problem description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#id1">Problem description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#id3">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vmm_ucs.html">Virtual Machine Manager and UCS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#id2">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#id6">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#id9">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="l4l7.html">L4-L7 Service Insertion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="l4l7.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="l4l7.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fn_crash_ts.html">ACI Fabric Node and Process Crash Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fn_crash_ts.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fn_crash_ts.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="apic_crash_ts.html">APIC Process Crash Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="apic_crash_ts.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic_crash_ts.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix.html#overview">Overview</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">ACI Troubleshooting Book</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div></div>
+          <div role="main" class="document">
+            
+  <div class="section" id="policies-and-contracts">
+<h1>Policies and Contracts<a class="headerlink" href="#policies-and-contracts" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#overview" id="id7">Overview</a><ul>
+<li><a class="reference internal" href="#verification-of-zoning-policies" id="id8">Verification of Zoning Policies</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#problem-description" id="id9">Problem Description</a><ul>
+<li><a class="reference internal" href="#symptom-1" id="id10">Symptom 1</a></li>
+<li><a class="reference internal" href="#verification" id="id11">Verification</a></li>
+<li><a class="reference internal" href="#resolution" id="id12">Resolution</a></li>
+<li><a class="reference internal" href="#symptom-2" id="id13">Symptom 2</a></li>
+<li><a class="reference internal" href="#id1" id="id14">Verification</a></li>
+<li><a class="reference internal" href="#id2" id="id15">Resolution</a></li>
+<li><a class="reference internal" href="#symptom-3" id="id16">Symptom 3</a></li>
+<li><a class="reference internal" href="#id3" id="id17">Verification</a></li>
+<li><a class="reference internal" href="#id4" id="id18">Resolution</a></li>
+<li><a class="reference internal" href="#symptom-4" id="id19">Symptom 4</a></li>
+<li><a class="reference internal" href="#id5" id="id20">Verification</a></li>
+<li><a class="reference internal" href="#id6" id="id21">Resolution</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="overview">
+<h2><a class="toc-backref" href="#id7">Overview</a><a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>Within the ACI abstraction model, Contracts are objects built to represent the
+communications allowed or denied between objects, such as EPGs. In order to
+resolve and configure the infrastructure, the contract objects get resolved
+into Zoning Rules on the fabric nodes. Zoning Rules are the ACI equivalent of
+Access Control Lists in traditional infrastructure terms. This chapter
+provides an overview and some troubleshooting topics related to the
+Zoning-Rules Policy Control in the ACI fabric. The ACI zoning-rule policy
+architecture consists of 4 main components, Policy Manager, ACLQOS, Filter and
+Filter Entries, Scopes and classIDs as described below.</p>
+<p>Policy Manager</p>
+<ul class="simple">
+<li>Policy Manager is a supervisor component that processes objectStore
+notifications when Data Management Engine (DME)/Policy Element (PE) pushes
+zoning configuration to a leaf.</li>
+<li>Policy Manager uses the PPF (Policy Propagation Facility) library to push
+configuration to the linecards.</li>
+<li>Policy Manager follows an atomic &#8220;verify/commit&#8221; model where lack of
+hardware resources will cause a failure in the verify ‘stage’ of the process.</li>
+<li>Sets operational state as “Enabled” or “Disabled”</li>
+</ul>
+<p>ACLQOS</p>
+<ul class="simple">
+<li>ACLQOS is a linecard component that receives the PPF configuration from the
+supervisor.</li>
+<li>This component is responsible for programming the hardware resources
+(Ternary Content Addressable Memory - TCAM) on the linecards on the leafs.</li>
+</ul>
+<p>Filters and Filter Entries</p>
+<ul class="simple">
+<li>Filters act as containers for the filter entries</li>
+<li>Filter entries specify the Layer 4 (L4) information</li>
+</ul>
+<p>Scopes and classIDs</p>
+<ul class="simple">
+<li>Each Context (VRF) uses a specific scope identified by &#8220;scopeID&#8221;</li>
+<li>&#8220;actrlRules&#8221; and &#8220;mgmtRules&#8221; are children that exist under a given scope</li>
+<li>EPGs are identified by the classID or PcTag.</li>
+<li>Rules are specified in terms of scope, source class ID, dest class ID and
+the filter</li>
+<li>The actrlRules exist only on leafs, while actrl.MgmtRules exist on both leaf
+and spine switches.</li>
+</ul>
+<p>At a very high level, the interaction of the components on the APIC and leaf
+for policy can be summarized as follows</p>
+<ul class="simple">
+<li>Policy Manager on APIC communicates with Policy Element Manager on the leaf</li>
+<li>Policy Element Manager on the leaf programs the Object Store on the leaf</li>
+<li>Policy Manager on the leaf communicates with ACLQOS client on the leaf</li>
+<li>ACLQOS client programs the hardware</li>
+</ul>
+<div class="section" id="verification-of-zoning-policies">
+<h3><a class="toc-backref" href="#id8">Verification of Zoning Policies</a><a class="headerlink" href="#verification-of-zoning-policies" title="Permalink to this headline">¶</a></h3>
+<p>Zoning rules on the leaf can either be displayed directly on the leaf using
+CLI, or through the GUI on the APIC. The zoning policies that were examined as
+part of this chapter were configured as part of the below reference topology.</p>
+<a class="reference internal image-reference" href="_images/logical.jpg"><img alt="_images/logical.jpg" class="align-center" src="_images/logical.jpg" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>The following CLI command can be used to display the zoning rules configured
+on the switch. This provides several key pieces of information when
+troubleshooting zoning rule policies. The Rule ID, SrcEPG/DstEPG, FilterID,
+and Scope can be used in future displays.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">rtp_leaf1# show zoning-rule</span>
+
+<span class="go">Rule ID         SrcEPG          DstEPG          FilterID        operSt          Scope           Action</span>
+
+<span class="go">=======         ======          ======          ========        ======          =====           ======</span>
+
+<span class="go">4096            0               0               implicit        enabled         16777200        deny,log</span>
+<span class="go">4106            0               0               implicit        enabled         2523136         deny,log</span>
+<span class="go">4107            0               16386           implicit        enabled         2523136         deny,log</span>
+<span class="go">4147            0               32773           implicit        enabled         2523136         permit</span>
+<span class="go">4148            0               16388           implicit        enabled         2523136         permit</span>
+<span class="go">4149            0               32774           implicit        enabled         2523136         permit</span>
+<span class="go">4150            0               16393           implicit        enabled         2523136         permit</span>
+<span class="go">4151            0               32770           implicit        enabled         2523136         permit</span>
+<span class="go">4152            16400           16391           17              enabled         2523136         permit</span>
+<span class="go">4153            16391           16400           17              enabled         2523136         permit</span>
+<span class="go">4154            16400           16391           18              enabled         2523136         permit</span>
+<span class="go">4155            16391           16400           18              enabled         2523136         permit</span>
+<span class="go">4097            16398           16394           default         enabled         2523136         permit</span>
+<span class="go">4112            16394           16398           default         enabled         2523136         permit</span>
+<span class="go">4120            16398           16399           default         enabled         2523136         permit</span>
+<span class="go">4121            16399           16398           default         enabled         2523136         permit</span>
+<span class="go">4126            16389           16387           default         enabled         2523136         permit</span>
+<span class="go">4127            16387           16389           default         enabled         2523136         permit</span>
+<span class="go">4128            16389           16401           default         enabled         2523136         permit</span>
+<span class="go">4129            16401           16389           default         enabled         2523136         permit</span>
+<span class="go">4130            16387           16401           default         enabled         2523136         permit</span>
+<span class="go">4131            16401           16387           default         enabled         2523136         permit</span>
+<span class="go">4117            0               0               implicit        enabled         2457600         deny,log</span>
+<span class="go">4118            0               0               implicit        enabled         2883584         deny,log</span>
+<span class="go">4119            0               32770           implicit        enabled         2883584         deny,log</span>
+</pre></div>
+</div>
+<p>As is evidenced by the above output, even in a small test fabric, a number of
+rules are installed. In order to identify which Rule IDs apply to which
+configured contexts and EPGs, it is necessary to first identify the scope for
+the configured context. This can be done by using Visore to search for the
+configured context on the APIC using the Distinguish Name (DN) &#8220;fvCtx&#8221;. Once
+all the contexts are displayed, search on the specific context that is
+configured, and identify the scope for that context.</p>
+<a class="reference internal image-reference" href="_images/visore-contract1.png"><img alt="_images/visore-contract1.png" class="align-center" src="_images/visore-contract1.png" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>The scope information is circled below. This is important as it will be used
+in future displays to verify the contract/policy has been pushed to the leaf.</p>
+<a class="reference internal image-reference" href="_images/visore-contract2.png"><img alt="_images/visore-contract2.png" class="align-center" src="_images/visore-contract2.png" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Notice that the scope identified in the above capture (2523136) matches the
+scope that appears in the show zoning-rule output displayed and highlighted
+below.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">rtp_leaf1# show zoning-rule</span>
+
+<span class="go">Rule ID         SrcEPG          DstEPG          FilterID        operSt          Scope           Action</span>
+
+<span class="go">=======         ======          ======          ========        ======          =====           ======</span>
+<span class="go">4096            0               0               implicit        enabled         16777200        deny,log</span>
+<span class="go">4106            0               0               implicit        enabled         2523136         deny,log</span>
+<span class="go">4107            0               16386           implicit        enabled         2523136         deny,log</span>
+<span class="go">4147            0               32773           implicit        enabled         2523136         permit</span>
+<span class="go">4148            0               16388           implicit        enabled         2523136         permit</span>
+<span class="go">4149            0               32774           implicit        enabled         2523136         permit</span>
+<span class="go">4150            0               16393           implicit        enabled         2523136         permit</span>
+<span class="go">4151            0               32770           implicit        enabled         2523136         permit</span>
+<span class="go">4152            16400           16391           17              enabled         2523136         permit</span>
+<span class="go">4153            16391           16400           17              enabled         2523136         permit</span>
+<span class="go">4154            16400           16391           18              enabled         2523136         permit</span>
+<span class="go">4155            16391           16400           18              enabled         2523136         permit</span>
+<span class="go">4097            16398           16394           default         enabled         2523136         permit</span>
+<span class="go">4112            16394           16398           default         enabled         2523136         permit</span>
+<span class="go">4120            16398           16399           default         enabled         2523136         permit</span>
+<span class="go">4121            16399           16398           default         enabled         2523136         permit</span>
+<span class="go">4122            32772           16387           default         enabled         2523136         permit</span>
+<span class="go">4123            16387           32772           default         enabled         2523136         permit</span>
+<span class="go">4124            32772           16389           default         enabled         2523136         permit</span>
+<span class="go">4125            16389           32772           default         enabled         2523136         permit</span>
+<span class="go">4126            16389           16387           default         enabled         2523136         permit</span>
+<span class="go">4127            16387           16389           default         enabled         2523136         permit</span>
+<span class="go">4117            0               0               implicit        enabled         2457600         deny,log</span>
+<span class="go">4118            0               0               implicit        enabled         2883584         deny,log</span>
+<span class="go">4119            0               32770           implicit        enabled         2883584         deny,log</span>
+</pre></div>
+</div>
+<p>Once the Scope ID information has been identified, as well as the rule and
+filter IDs, the following command can be used to verify what Rule IDs and
+filters are being used for the scope previously identified. From the below
+display it can be seen that rule 4149 with source any (s-any) and destination
+(d-32774) is being used.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">rtp_leaf1# show system internal policy-mgr stats | grep 2523136</span>
+<span class="go">Rule (4097) DN (sys/actrl/scope-2523136/rule-2523136-s-16398-d-16394-f-default) Ingress: 206, Egress: 0</span>
+<span class="go">Rule (4106) DN (sys/actrl/scope-2523136/rule-2523136-s-any-d-any-f-implicit) Ingress: 35, Egress: 0</span>
+<span class="go">[snip]</span>
+<span class="go">Rule (4148) DN (sys/actrl/scope-2523136/rule-2523136-s-any-d-16388-f-implicit) Ingress: 9, Egress: 0</span>
+<span class="go">Rule (4149) DN (sys/actrl/scope-2523136/rule-2523136-s-any-d-32774-f-implicit) Ingress: 8925, Egress: 0</span>
+<span class="go">Rule (4150) DN (sys/actrl/scope-2523136/rule-2523136-s-any-d-16393-f-implicit) Ingress: 30, Egress: 4</span>
+<span class="go">[snip]</span>
+</pre></div>
+</div>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">rtp_leaf1# show system internal policy-mgr stats | grep 2523136</span>
+<span class="go">Rule (4097) DN (sys/actrl/scope-2523136/rule-2523136-s-16398-d-16394-f-default) Ingress: 206, Egress: 0</span>
+<span class="go">Rule (4106) DN (sys/actrl/scope-2523136/rule-2523136-s-any-d-any-f-implicit) Ingress: 35, Egress: 0</span>
+<span class="go">[snip]</span>
+<span class="go">Rule (4148) DN (sys/actrl/scope-2523136/rule-2523136-s-any-d-16388-f-implicit) Ingress: 9, Egress: 0</span>
+<span class="go">Rule (4149) DN (sys/actrl/scope-2523136/rule-2523136-s-any-d-32774-f-implicit) Ingress: 8935, Egress: 0</span>
+<span class="go">Rule (4150) DN (sys/actrl/scope-2523136/rule-2523136-s-any-d-16393-f-implicit) Ingress: 30, Egress: 4</span>
+<span class="go">[snip]</span>
+</pre></div>
+</div>
+<p>Is this the rule id that is expected to be incrementing? If so another very
+useful command is the show system internal aclqos zoning-rules display. Use of
+this command will require the direction of Cisco TAC&#8217;s, but this command
+provides for a confirmation that hardware on the leaf has been programmed
+correctly.</p>
+<p>The Source EPG and Destination EPG combination of interest is (0 and 32774).
+Next step is to identify all the hardware entries for these source and
+destination classes that match the rule IDs in question (4149). The rules are
+numbered sequentially. The rule ID of interest is highlighted below. It can be
+observed that a hardware index (hw_index) of 150 and 151 is there which
+indicates that there is a hardware entry for this rule.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">module-1# show system internal aclqos zoning-rules</span>
+
+<span class="go">===========================================</span>
+<span class="go">Rule ID: 1 Scope 4 Src EPG: 0 Dst EPG: 16386 Filter 65534</span>
+<span class="go">  Curr TCAM resource:</span>
+<span class="go"> =============================</span>
+<span class="go">   unit_id: 0</span>
+<span class="go">   === Region priority: 2307 (rule prio: 9 entry: 3)===</span>
+<span class="go">       sw_index = 23 | hw_index = 132</span>
+<span class="go">   === Region priority: 2307 (rule prio: 9 entry: 3)===</span>
+<span class="go">       sw_index = 24 | hw_index = 133</span>
+
+<span class="go">[snip]</span>
+</pre></div>
+</div>
+<p>Dumping the hardware entry and examining the accuracy of the content is beyond
+the scope of this book, but at this point there is sufficient information to
+contact the Cisco Technical Assistance Center (TAC) if there is a zoning rule
+but no corresponding hardware entry.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">===========================================</span>
+<span class="go">Rule ID: 4149 Scope 4 Src EPG: 0 Dst EPG: 32774 Filter 65534</span>
+<span class="go">  Curr TCAM resource:</span>
+<span class="go"> =============================</span>
+<span class="go">   unit_id: 0</span>
+<span class="go">   === Region priority: 2311 (rule prio: 9 entry: 7)===</span>
+<span class="go">       sw_index = 38 | hw_index = 150</span>
+<span class="go">   === Region priority: 2311 (rule prio: 9 entry: 7)===</span>
+<span class="go">       sw_index = 39 | hw_index = 151</span>
+</pre></div>
+</div>
+<p>The GUI can also be used to verify contracts/zoning-rules. All the rules on
+the leaf can be examined as shown below. By going to Fabric-&gt;Inventory-&gt;Rules.
+Then double click on a particular rule of interest.</p>
+<a class="reference internal image-reference" href="_images/ui-rules1.png"><img alt="_images/ui-rules1.png" class="align-center" src="_images/ui-rules1.png" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>The existing policy state can be verified using the GUI. Remember in the
+overview section it was the responsibility of Policy Manager to set the
+operation state of the rule. In the below display it can be verified if the
+operational state is disabled or enabled, whether the action is permit or
+deny, and the direction of the rule.</p>
+<a class="reference internal image-reference" href="_images/ui-rules2.png"><img alt="_images/ui-rules2.png" class="align-center" src="_images/ui-rules2.png" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>The statistics for each rule can also be examined to make a determination that
+the rule is being used. This was demonstrated earlier using the CLI. Click on
+stats, and then the check mark as shown below to view stats in the GUI.</p>
+<a class="reference internal image-reference" href="_images/ui-rules3.png"><img alt="_images/ui-rules3.png" class="align-center" src="_images/ui-rules3.png" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Select the packet counters of interest and the sampling interval to be
+monitored.</p>
+<a class="reference internal image-reference" href="_images/ui-contract4.png"><img alt="_images/ui-contract4.png" class="align-center" src="_images/ui-contract4.png" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>If the health score for that specific rule is not 100, its health status can
+be further drilled down upon. This provides insight as to what problems may be
+occurring. Running out of hardware resources is just one factor that can cause
+the health score to decrease. The use of Health Score as an aid in
+troubleshooting is covered in more detail in the Health Score/Faults specific
+chapter.</p>
+<a class="reference internal image-reference" href="_images/ui-rules4.png"><img alt="_images/ui-rules4.png" class="align-center" src="_images/ui-rules4.png" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Faults that have been generated as a direct result of this rule being applied
+to the leaf can also be analyzed. This is one of the most important items to
+check when troubleshooting zoning-rules, or any other ACI policy. The use of
+Health Score as an aid in troubleshooting is covered in more detail in the
+Health Score/Faults specific chapter.</p>
+<a class="reference internal image-reference" href="_images/ui-rules5.png"><img alt="_images/ui-rules5.png" class="align-center" src="_images/ui-rules5.png" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="problem-description">
+<h2><a class="toc-backref" href="#id9">Problem Description</a><a class="headerlink" href="#problem-description" title="Permalink to this headline">¶</a></h2>
+<p>Some of the Policy Zoning Rules problems that can be encountered during the
+ACI deployment process include, but are not limited to, the items below. The
+commands already shown in the verification section above can be used to help
+identify the problems below.</p>
+<div class="section" id="symptom-1">
+<h3><a class="toc-backref" href="#id10">Symptom 1</a><a class="headerlink" href="#symptom-1" title="Permalink to this headline">¶</a></h3>
+<p>End Point Groups can communicate when there is no contract configured.</p>
+</div>
+<div class="section" id="verification">
+<h3><a class="toc-backref" href="#id11">Verification</a><a class="headerlink" href="#verification" title="Permalink to this headline">¶</a></h3>
+<p>Check the GUI to see if any faults were generated if the rule/contract was
+recently removed Verify in the GUI that the rule does not exist after
+identifying the scope for the context Verify with show zoning-rules CLI
+command that the rule does not exist Verify in Visore that the rule does not
+exist on the APIC For example using the following highlighted Rule Id:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">rtp_leaf1# show zoning-rule</span>
+
+<span class="go">Rule ID         SrcEPG          DstEPG          FilterID        operSt          Scope           Action</span>
+<span class="go">=======         ======          ======          ========        ======          =====           ======</span>
+<span class="go">4096            0               0               implicit        enabled         16777200        deny,log</span>
+
+<span class="go">[snip]</span>
+
+<span class="go">4130            16388           32775           25              enabled         2523136         permit</span>
+<span class="go">4131            32775           16388           21              enabled         2523136         permit</span>
+</pre></div>
+</div>
+<p>Visore can be used to verify the rule is there or not by searching &#8220;actrlRule&#8221;
+and filtering on the rule id as shown below.</p>
+<a class="reference internal image-reference" href="_images/rule-visore1.png"><img alt="_images/rule-visore1.png" class="align-center" src="_images/rule-visore1.png" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Visore can also be used to search on a specific filter (actrlFlt). It can be
+seen that the rule exists in this case, and is applied to node 101 or leaf1.</p>
+<a class="reference internal image-reference" href="_images/rule-visore2.png"><img alt="_images/rule-visore2.png" class="align-center" src="_images/rule-visore2.png" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>It can be verified that the filter entries are correct by drilling down on the
+arrows as shown below.</p>
+<a class="reference internal image-reference" href="_images/rule-visore3.png"><img alt="_images/rule-visore3.png" class="align-center" src="_images/rule-visore3.png" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<a class="reference internal image-reference" href="_images/rule-visore4.png"><img alt="_images/rule-visore4.png" class="align-center" src="_images/rule-visore4.png" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Statistics can also be checked directly from Visore as shown below.</p>
+<a class="reference internal image-reference" href="_images/rule-visore5.png"><img alt="_images/rule-visore5.png" class="align-center" src="_images/rule-visore5.png" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<a class="reference internal image-reference" href="_images/rule-visore6.png"><img alt="_images/rule-visore6.png" class="align-center" src="_images/rule-visore6.png" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li>Verify using the commands in the verification section that the leaf does not
+have a hardware entry for that rule.</li>
+</ul>
+</div>
+<div class="section" id="resolution">
+<h3><a class="toc-backref" href="#id12">Resolution</a><a class="headerlink" href="#resolution" title="Permalink to this headline">¶</a></h3>
+<p>If a rule (contract) is found to be configured, remove it to block
+communication between the EPGs. If there is no rule configured, or the rule is
+unable to be verified, contact the Cisco Technical Assistance Center for help
+in diagnosing the problem.</p>
+</div>
+<div class="section" id="symptom-2">
+<h3><a class="toc-backref" href="#id13">Symptom 2</a><a class="headerlink" href="#symptom-2" title="Permalink to this headline">¶</a></h3>
+<p>End Point Groups cannot communicate when there is a contract configured.</p>
+</div>
+<div class="section" id="id1">
+<h3><a class="toc-backref" href="#id14">Verification</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>As shown in the previous verification steps:</p>
+<ul class="simple">
+<li>Check the GUI for faults associated to the rule in question</li>
+<li>Verify in the GUI that the operational state is enabled</li>
+<li>Verify with show zoning-rules CLI command that the rule exists after
+identifing the scope for the context</li>
+<li>Verify in the GUI or CLI that the rule entry counters are incrementing</li>
+<li>Verify the health score for that rule</li>
+<li>Verify in Visore that the rule exists (See above)</li>
+<li>Verify there is a corresponding hardware entry for that rule id in the CLI</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h3><a class="toc-backref" href="#id15">Resolution</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>If a rule (contract) is found to be configured, contains the proper filter
+content (ports), and is found to have a corresponding hardware entry then
+check for forwarding problems. If further assistance is required contact the
+Cisco Technical Assistance Center for help in diagnosing the problem.</p>
+</div>
+<div class="section" id="symptom-3">
+<h3><a class="toc-backref" href="#id16">Symptom 3</a><a class="headerlink" href="#symptom-3" title="Permalink to this headline">¶</a></h3>
+<p>Hardware resource exhaustion when rules are being pushed and programmed on the
+leaf.</p>
+</div>
+<div class="section" id="id3">
+<h3><a class="toc-backref" href="#id17">Verification</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>Check the GUI for faults associated to the rule in question.</p>
+<p>This will be Fault F1203 - Rule failed due to hardware programming error.</p>
+<a class="reference internal image-reference" href="_images/tcam-fault.png"><img alt="_images/tcam-fault.png" class="align-center" src="_images/tcam-fault.png" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<a class="reference internal image-reference" href="_images/tcam-fault1.png"><img alt="_images/tcam-fault1.png" class="align-center" src="_images/tcam-fault1.png" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>The following fault will be observed: Fault F105504 - TCA: policy CAM entries
+usage current value(eqptcapacityPolEntry5min:normalizedLast) value 93 raised
+above threshold 90</p>
+<p>This fault will be generated on the leaf.</p>
+<a class="reference internal image-reference" href="_images/tcam-fault2.png"><img alt="_images/tcam-fault2.png" class="align-center" src="_images/tcam-fault2.png" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li>Verify with show zoning-rules CLI command that the rule exists after
+identifying the scope for the context</li>
+<li>Verfiy the health score for that rule</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h3><a class="toc-backref" href="#id18">Resolution</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>Reduce the amount of zoning rules (contracts) required. Explore the option of
+using &#8220;vzAny&#8221;, as well as any other contract optimization techniques. Contact
+the Cisco TAC if further assistance is required.</p>
+</div>
+<div class="section" id="symptom-4">
+<h3><a class="toc-backref" href="#id19">Symptom 4</a><a class="headerlink" href="#symptom-4" title="Permalink to this headline">¶</a></h3>
+<p>Configured rules are not being deployed on the leaf.</p>
+</div>
+<div class="section" id="id5">
+<h3><a class="toc-backref" href="#id20">Verification</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>As shown in the previous verification steps:</p>
+<ul class="simple">
+<li>Check the GUI for faults associated to the rule in question</li>
+<li>Verify in the GUI that the operational state is enabled</li>
+<li>Verify in Visore that the rule exists (See above)</li>
+<li>Verify with show zoning-rules CLI command that the rule exists after
+identifying the scope for the context</li>
+<li>Verify using the commands in the verification section that the leaf has a
+hardware entry for the rule</li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h3><a class="toc-backref" href="#id21">Resolution</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>If a rule (contract) is present in the GUI and Visore, does not exist on the
+leaf, and there are no corresponding faults for the policy that is being
+deployed, contact the Cisco Technical Assistance Center for help in diagnosing
+the problem. Otherwise correct the configuration that is causing the fault and
+redeploy the policy.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="bridged2ext.html" class="btn btn-neutral float-right" title="Bridged Connectivity to External Networks">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="unicast.html" class="btn btn-neutral" title="Unicast Data Plane Forwarding and Reachability"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Andres Vega, Bryan Deaver, Jerry Ye, Kannan Ponnuswamy, Loy Evans, Mike Timm, Paul Lesiak and Paul Raytick.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
