@@ -1,0 +1,1357 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Common Network Services &mdash; ACI Troubleshooting Book 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="ACI Troubleshooting Book 0.0.1 documentation" href="index.html"/>
+        <link rel="next" title="Unicast Data Plane Forwarding and Reachability" href="unicast.html"/>
+        <link rel="prev" title="Management Tenant" href="mgmt_tn.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="index.html" class="fa fa-home"> ACI Troubleshooting Book</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="preface.html">Preface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#authors-and-contributors">Authors and Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#authors">Authors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#distinguished-contributors">Distinguished Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#dedications">Dedications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#acknowledgments">Acknowledgments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#book-writing-methodology">Book Writing Methodology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#who-should-read-this-book">Who Should Read This Book?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#organization-of-this-book">Organization of this Book</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="aci.html">Application Centric Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aci_policy_model.html">ACI Policy Model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#abstraction-model">Abstraction Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#everything-is-an-object">Everything is an Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#relevant-objects-and-relationships">Relevant Objects and Relationships</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#hierarchical-aci-object-model-and-the-infrastructure">Hierarchical ACI Object Model and the Infrastructure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#infrastructure-as-objects">Infrastructure as Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#build-object-use-object-to-build-policy-reuse-policy">Build object, use object to build policy, reuse policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#rest-api-just-exposes-the-object-model">REST API just exposes the object model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#logical-model-resolved-model-concrete-model">Logical model, Resolved model, concrete model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#formed-and-unformed-relationships">Formed and Unformed Relationships</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#declarative-end-state-and-promise-theory">Declarative End State and Promise Theory</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Troubleshooting Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#apic-access-methods">APIC Access Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#programmatic-configuration-python">Programmatic Configuration (Python)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#fabric-node-access-methods">Fabric Node Access Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#exporting-information-from-the-fabric">Exporting information from the Fabric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#external-data-collection-syslog-snmp-call-home">External Data Collection – Syslog, SNMP, Call-Home</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#health-scores">Health Scores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#atomic-counters">Atomic Counters</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ts_methodology.html">Troubleshooting Methodology</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ts_methodology.html#overall-methodology">Overall Methodology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="topology.html">Sample Reference Topology</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="topology.html#physical-fabric-topology">Physical Fabric Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="topology.html#logical-application-topology">Logical Application Topology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#naming-conventions">Naming Conventions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hw_bringup.html">Initial Hardware Bringup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="hw_bringup.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw_bringup.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw_bringup.html#id2">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fabric_init.html">Fabric Initialization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fabric_init.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fabric_init.html#fabric-verification">Fabric Verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fabric_init.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="apic.html">Application Policy Infrastructure Controller (APIC) High Availability and Clustering</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#cluster-formation">Cluster Formation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#majority-and-minority-handling-clustering-split-brains">Majority and Minority - Handling Clustering Split Brains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id1">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id4">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id6">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id9">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id12">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id15">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="firmware.html">Firmware and Image Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html#id1">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html#id5">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="health.html">Faults / Health Scores</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="health.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="health.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="health.html#id1">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rest.html">REST Interface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rest.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rest.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mgmt_tn.html">Management Tenant</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mgmt_tn.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mgmt_tn.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mgmt_tn.html#id1">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Common Network Services</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id15">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="unicast.html">Unicast Data Plane Forwarding and Reachability</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="unicast.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unicast.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unicast.html#id1">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pol_cntr.html">Policies and Contracts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pol_cntr.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pol_cntr.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bridged2ext.html">Bridged Connectivity to External Networks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="bridged2ext.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bridged2ext.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bridged2ext.html#id3">Problem Description:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bridged2ext.html#id5">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="routed2ext.html">Routed Connectivity to External Networks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#fabric-verification">Fabric Verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#problem-description">Problem description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#id1">Problem description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#id3">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vmm_ucs.html">Virtual Machine Manager and UCS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#id2">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#id6">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#id9">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="l4l7.html">L4-L7 Service Insertion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="l4l7.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="l4l7.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fn_crash_ts.html">ACI Fabric Node and Process Crash Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fn_crash_ts.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fn_crash_ts.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="apic_crash_ts.html">APIC Process Crash Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="apic_crash_ts.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic_crash_ts.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix.html#overview">Overview</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">ACI Troubleshooting Book</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div></div>
+          <div role="main" class="document">
+            
+  <div class="section" id="common-network-services">
+<h1>Common Network Services<a class="headerlink" href="#common-network-services" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#overview" id="id22">Overview</a><ul>
+<li><a class="reference internal" href="#fabric-verification" id="id23">Fabric Verification</a><ul>
+<li><a class="reference internal" href="#dns" id="id24">DNS</a><ul>
+<li><a class="reference internal" href="#apic" id="id25">APIC</a></li>
+<li><a class="reference internal" href="#fabric-nodes" id="id26">Fabric Nodes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ntp" id="id27">NTP</a><ul>
+<li><a class="reference internal" href="#id1" id="id28">APIC</a></li>
+<li><a class="reference internal" href="#id2" id="id29">Fabric nodes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#dchp-relay" id="id30">DCHP Relay</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id3" id="id31">APIC</a></li>
+<li><a class="reference internal" href="#id4" id="id32">Fabric nodes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#problem-description" id="id33">Problem Description</a><ul>
+<li><a class="reference internal" href="#symptom-1" id="id34">Symptom 1</a></li>
+<li><a class="reference internal" href="#verification" id="id35">Verification</a></li>
+<li><a class="reference internal" href="#resolution" id="id36">Resolution</a></li>
+<li><a class="reference internal" href="#symptom-2" id="id37">Symptom 2</a></li>
+<li><a class="reference internal" href="#id5" id="id38">Verification</a><ul>
+<li><a class="reference internal" href="#id6" id="id39">APIC</a></li>
+<li><a class="reference internal" href="#id7" id="id40">Fabric Nodes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id8" id="id41">Resolution</a></li>
+<li><a class="reference internal" href="#symptom-3" id="id42">Symptom 3</a></li>
+<li><a class="reference internal" href="#id9" id="id43">Verification</a><ul>
+<li><a class="reference internal" href="#apics" id="id44">APICs</a></li>
+<li><a class="reference internal" href="#id10" id="id45">Fabric Nodes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#symptom-4" id="id46">Symptom 4</a></li>
+<li><a class="reference internal" href="#id11" id="id47">Verification</a><ul>
+<li><a class="reference internal" href="#id12" id="id48">APICs</a></li>
+<li><a class="reference internal" href="#id13" id="id49">Fabric Nodes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id14" id="id50">Resolution</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id15" id="id51">Problem Description</a><ul>
+<li><a class="reference internal" href="#id16" id="id52">Symptom 1</a></li>
+<li><a class="reference internal" href="#id17" id="id53">Verification</a></li>
+<li><a class="reference internal" href="#id18" id="id54">Resolution</a></li>
+<li><a class="reference internal" href="#id19" id="id55">Symptom 2</a></li>
+<li><a class="reference internal" href="#id20" id="id56">Verification</a></li>
+<li><a class="reference internal" href="#id21" id="id57">Resolution</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="overview">
+<h2><a class="toc-backref" href="#id22">Overview</a><a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>This chapter covers the common network services like DNS, NTP, DHCP, etc. A
+common network service is any service that can be shared between the fabric
+nodes or tenants.</p>
+<p>These services are handled differently in the way they are configured within
+the fabric.</p>
+<blockquote>
+<div><ul class="simple">
+<li><strong>DNS</strong>: DNS profiles are configured globally as fabric policies and then
+can be applied as needed via a dns label at a EPG level.</li>
+<li><strong>NTP</strong>: This is configured as a pod level policy.</li>
+<li><strong>DHCP</strong>: DHCP relay is configured at a tenant level.</li>
+</ul>
+</div></blockquote>
+<div class="section" id="fabric-verification">
+<h3><a class="toc-backref" href="#id23">Fabric Verification</a><a class="headerlink" href="#fabric-verification" title="Permalink to this headline">¶</a></h3>
+<p>For most common network shared services configurations, if the management
+tenant or EPG is not configured or not working, the shared services policies
+will not be pushed down to the fabric nodes. Management tenant and EPG
+configuration should be verified along with shared services configuration.</p>
+<div class="section" id="dns">
+<h4><a class="toc-backref" href="#id24">DNS</a><a class="headerlink" href="#dns" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="apic">
+<h5><a class="toc-backref" href="#id25">APIC</a><a class="headerlink" href="#apic" title="Permalink to this headline">¶</a></h5>
+<p>It is verified first by looking at the management information tree then seeing
+how that policy is applied to the actual APIC configuration.</p>
+<p>Verify that a DNS profile has been created by traversing to the following
+directory and using the cat command on the summary file:</p>
+<blockquote>
+<div><strong>/aci/fabric/fabric-policies/global-policies/dns-profiles/default</strong></div></blockquote>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">admin@RTP_Apic1:~&gt; cd /aci/fabric/fabric-policies/global-policies/dns-profiles/default</span>
+<span class="go">admin@RTP_Apic1:default&gt; cat summary</span>
+<span class="gp">#</span> dns-profile
+<span class="go">name : default</span>
+<span class="go">description :</span>
+<span class="go">ownerkey :</span>
+<span class="go">ownertag :</span>
+<span class="go">management-epg : tenants/mgmt/node-management-epgs/default/out-of-band/default</span>
+
+<span class="go">dns-providers:</span>
+<span class="go">address preferred</span>
+<span class="go">-------------- ---------</span>
+<span class="go">171.70.168.183 yes</span>
+<span class="go">173.36.131.10 no</span>
+
+<span class="go">dns-domains:</span>
+<span class="go">name default description</span>
+<span class="go">--------- ------- -----------</span>
+<span class="go">cisco.com yes</span>
+</pre></div>
+</div>
+<p>It should be ensured that:</p>
+<blockquote>
+<div><ul class="simple">
+<li>The management-epg is pointing at a management EPG distinguished name</li>
+<li>There is at least one dns-provider configured</li>
+<li>There is a dns-domain configured</li>
+</ul>
+</div></blockquote>
+<p>Next the DNS label verification can be done by changing to the following
+directory and looking at the following summary file:</p>
+<blockquote>
+<div><strong>/aci/tenants/mgmt/networking/private-networks/oob/dns-profile-labels/default</strong></div></blockquote>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">admin@RTP_Apic1:default&gt; cd /aci/tenants/mgmt/networking/private-networks/oob/dns-profile-labels/default</span>
+<span class="go">admin@RTP_Apic1:default&gt; cat summary</span>
+<span class="gp">#</span> dns-lbl
+<span class="go">name : default</span>
+<span class="go">description :</span>
+<span class="go">ownerkey :</span>
+<span class="go">ownertag :</span>
+<span class="go">tag : yellow-green</span>
+</pre></div>
+</div>
+<p>When the policies are applied they push the DNS configuration down to Linux on
+the APIC. That configuration can be verified by looking at the
+<strong>/etc/resolv.conf</strong> file:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">admin@RTP_Apic1:default&gt; cat /etc/resolv.conf</span>
+<span class="gp">#</span> Generated by IFC
+<span class="go">search cisco.com</span>
+
+<span class="go">nameserver 171.70.168.183</span>
+
+<span class="go">nameserver 173.36.131.10</span>
+</pre></div>
+</div>
+<p>The last verification step for the APIC would be to actually resolve a host
+using the host command and then ping that host.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">admin@RTP_Apic1:default&gt; host www.cisco.com</span>
+<span class="go">www.cisco.com is an alias for www.cisco.com.akadns.net.</span>
+<span class="go">www.cisco.com.akadns.net is an alias for origin-www.cisco.com.</span>
+<span class="go">origin-www.cisco.com has address 72.163.4.161</span>
+<span class="go">origin-www.cisco.com has IPv6 address 2001:420:1101:1::a</span>
+</pre></div>
+</div>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">admin@RTP_Apic1:default&gt; ping www.cisco.com</span>
+<span class="go">PING origin-www.cisco.com (72.163.4.161) 56(84) bytes of data.</span>
+<span class="go">64 bytes from www1.cisco.com (72.163.4.161): icmp_seq=1 ttl=238 time=29.3 ms</span>
+<span class="go">64 bytes from www1.cisco.com (72.163.4.161): icmp_seq=2 ttl=238 time=29.0 ms</span>
+<span class="go">^C</span>
+<span class="go">--- origin-www.cisco.com ping statistics ---</span>
+<span class="go">2 packets transmitted, 2 received, 0% packet loss, time 1743ms</span>
+<span class="go">rtt min/avg/max/mdev = 29.005/29.166/29.328/0.235 ms</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="fabric-nodes">
+<h5><a class="toc-backref" href="#id26">Fabric Nodes</a><a class="headerlink" href="#fabric-nodes" title="Permalink to this headline">¶</a></h5>
+<p>The policy that is applied needs to be looked at by inspecting the raw
+management information tree. Once that is verified, next step is to look at
+the DNS configuration that is applied to the fabric node as a result of that
+policy.</p>
+<p>Verify that a DNS policy is applied by changing to the following directory and
+listing out the contents:</p>
+<blockquote>
+<div><strong>/mit/uni/fabric/dnsp-default</strong></div></blockquote>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">rtp_leaf1# cd /mit/uni/fabric/dnsp-default</span>
+<span class="go">rtp_leaf1# ls -1</span>
+<span class="go">dom-cisco.com</span>
+<span class="go">mo</span>
+<span class="go">prov-[171.70.168.183]</span>
+<span class="go">prov-[173.36.131.10]</span>
+<span class="go">rsProfileToEpg</span>
+<span class="go">rsProfileToEpg.link</span>
+<span class="go">rsProfileToEpp</span>
+<span class="go">rsProfileToEpp.link</span>
+<span class="go">rtdnsProfile-[uni--ctx-[uni--tn-mgmt--ctx-oob]--dnslbl-default]</span>
+<span class="go">summary</span>
+</pre></div>
+</div>
+<p>The following should be seen:</p>
+<blockquote>
+<div><ul class="simple">
+<li>The DNS providers listed as prov-[ipaddress]</li>
+<li>The DNS domains listed as dom-[domainname]</li>
+<li>The summary file in the rtdnsProfile-... directory has a tDn that points
+to a valid dnslabel</li>
+<li>The rsProfileToEpg.link should exist and resolve to a valid place in the
+management information tree</li>
+<li>The rsProfileToEpp.link should exist and resolve to a valid place in the
+management information tree</li>
+</ul>
+</div></blockquote>
+<p>Verifying the dnslabel on the fabric node can be done by looking at the
+summary file in the rtdsnProfile-... directory, taking the tDn reference and
+prefacing it with /mit, and and cat the summary file in the resulting
+directory.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">rtp_leaf1# cat rtdnsProfile-[uni--ctx-[uni--tn-mgmt--ctx-oob]--dnslbl-default]/summary</span>
+<span class="gp">#</span> DNS Profile Label
+<span class="go">tDn : uni/ctx-[uni/tn-mgmt/ctx-oob]/dnslbl-default</span>
+<span class="go">childAction :</span>
+<span class="go">dn : uni/fabric/dnsp-default/rtdnsProfile-[uni/ctx-[uni/tn-mgmt/ctx-oob]/dnslbl-default]</span>
+<span class="go">lcOwn : local</span>
+<span class="go">modTs : 2014-10-15T14:16:14.850-04:00</span>
+<span class="go">rn : rtdnsProfile-[uni/ctx-[uni/tn-mgmt/ctx-oob]/dnslbl-default]</span>
+<span class="go">status :</span>
+<span class="go">tCl : dnsLblDef</span>
+</pre></div>
+</div>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">rtp_leaf1# cat /mit/uni/ctx-\[uni--tn-mgmt--ctx-oob\]/dnslbl-default/summary</span>
+<span class="gp">#</span> DNS Profile Label
+<span class="go">name : default</span>
+<span class="go">childAction :</span>
+<span class="go">descr :</span>
+<span class="go">dn : uni/ctx-[uni/tn-mgmt/ctx-oob]/dnslbl-default</span>
+<span class="go">lcOwn : policy</span>
+<span class="go">modTs : 2014-10-15T14:16:14.850-04:00</span>
+<span class="go">monPolDn :</span>
+<span class="go">ownerKey :</span>
+<span class="go">ownerTag :</span>
+<span class="go">rn : dnslbl-default</span>
+<span class="go">status :</span>
+<span class="go">tag : yellow-green</span>
+</pre></div>
+</div>
+<p>The policy that is pushed to the fabric node results in the DNS configuration
+being applied to Linux. The DNS configuration can be verified by first looking
+at <strong>/etc/dcos_resolv.conf</strong> to verify DNS is enabled and /etc/resolv.conf to
+verify how DNS is configured.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">rtp_leaf1# cat /etc/dcos_resolv.conf</span>
+<span class="gp">#</span> DNS enabled
+<span class="go">rtp_leaf1# cat /etc/resolv.conf</span>
+<span class="go">search cisco.com</span>
+<span class="go">nameserver 171.70.168.183</span>
+<span class="go">nameserver 173.36.131.10</span>
+</pre></div>
+</div>
+<p>On the fabric nodes, the host command is not available so ping is the best way
+to try and resolve a host.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">rtp_leaf1# ping www.cisco.com</span>
+<span class="go">PING origin-www.cisco.com (72.163.4.161): 56 data bytes</span>
+<span class="go">64 bytes from 72.163.4.161: icmp_seq=0 ttl=238 time=29.153 ms</span>
+<span class="go">64 bytes from 72.163.4.161: icmp_seq=1 ttl=238 time=29.585 ms</span>
+<span class="go">^C--- origin-www.cisco.com ping statistics ---</span>
+<span class="go">2 packets transmitted, 2 packets received, 0% packet loss</span>
+<span class="go">round-trip min/avg/max/stddev = 29.153/29.369/29.585/0.216 ms</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="ntp">
+<h4><a class="toc-backref" href="#id27">NTP</a><a class="headerlink" href="#ntp" title="Permalink to this headline">¶</a></h4>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">NTP can be configured with either an IP address or a hostname, but when
+configured with a hostname DNS must be configured in order to resolve the
+hostname.</p>
+</div>
+<div class="section" id="id1">
+<h5><a class="toc-backref" href="#id28">APIC</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h5>
+<p>NTP policies are applied globally by first applying a global pod-selector
+policy which points to a policy-group. This can be verified by changing to
+<strong>/aci/fabric/fabric-policies/pod-policies/pod-selector-default-all</strong> and
+viewing the summary file. In this case the policy-group is set to RTPFabric1:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">admin@RTP_Apic1:~&gt; cd /aci/fabric/fabric-policies/pod-policies/pod-selector-default-all</span>
+<span class="go">admin@RTP_Apic1:pod-selector-default-all&gt; cat summary</span>
+<span class="gp">#</span> pod-selector
+<span class="go">name                 : default</span>
+<span class="go">type                 : all</span>
+<span class="go">description          :</span>
+<span class="go">ownerkey             :</span>
+<span class="go">ownertag             :</span>
+<span class="go">fabric-policy-group  : fabric/fabric-policies/pod-policies/policy-groups/RTPFabric1</span>
+</pre></div>
+</div>
+<p>Make note of the RTPFabric1.</p>
+<p>The Pod policy-group can be verified by changing to the directory to
+/aci/fabric/fabric-policies/pod-policies/policy-groups/ and viewing the
+summary file:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">admin@RTP_Apic1:pod-policies&gt; cd /aci/fabric/fabric-policies/pod-policies/policy-groups/</span>
+<span class="go">admin@RTP_Apic1:policy-groups&gt; cat summary</span>
+<span class="go">policy-groups:</span>
+<span class="go">name        date-time-policy  isis-policy  coop-group-policy  bgp-route-reflector-  communication-policy  snmp-policy</span>
+<span class="go">                                                              policy</span>
+<span class="go">----------  ----------------  -----------  -----------------  --------------------  --------------------  -----------</span>
+<span class="go">RTPFabric1  ntp.esl.cisco.com default      default            default               default               default</span>
+</pre></div>
+</div>
+<p>Ensure that the date-time-policy is pointed at the proper date-time-policy name</p>
+<p>Verify that a NTP policy has been created by traversing to the following
+directory and using the cat command on the summary file for the specific
+date-time policy configured:</p>
+<blockquote>
+<div><strong>/aci/fabric/fabric-policies/pod-policies/policies/date-and-time/</strong></div></blockquote>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">admin@RTP_Apic1:&gt; cd /aci/fabric/fabric-policies/pod-policies/policies/date-and-time/</span>
+<span class="go">admin@RTP_Apic1:&gt; cat date-and-time-policy-ntp.esl.cisco.com/summary</span>
+<span class="gp">#</span> date-and-time-policy
+<span class="go">name : default</span>
+<span class="go">description :</span>
+<span class="go">administrative-state : enabled</span>
+<span class="go">authentication-state : disabled</span>
+<span class="go">ownerkey :</span>
+<span class="go">ownertag :</span>
+<span class="go">ntp-servers:</span>
+<span class="go">host-name-ip-address preferred minimum-polling- maximum-polling- management-epg</span>
+<span class="go"> interval interval</span>
+<span class="go">-------------------- --------- ---------------- ---------------- ---------------------</span>
+<span class="go">ntp.esl.cisco.com yes 4 6 tenants/mgmt/</span>
+<span class="go"> node-management-epgs/</span>
+<span class="go"> default/out-of-band/</span>
+<span class="go"> default</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Ensure the administrative state is enabled</li>
+<li>Ensure the ntpserver is shown</li>
+<li>Ensure the management-epg is shown and resolves to a valid management epg.</li>
+<li>When the NTP policy is applied on the APIC it is pushed down to linux as an
+NTP configuration. This can be verified using the ntpstat command.</li>
+</ul>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">admin@RTP_Apic1:date-and-time&gt; ntpstat</span>
+<span class="go">synchronised to NTP server (171.68.38.66) at stratum 2</span>
+<span class="go">time correct to within 952 ms</span>
+<span class="go">polling server every 64 s</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>The NTP server should be synchronized.</li>
+<li>Netstat can also be checked on the APIC to ensure that the APIC is listening on port 123:</li>
+<li>The proper NTP server should be seen listed</li>
+</ul>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">admin@RTP_Apic1:date-and-time&gt; netstat -anu | grep :123</span>
+<span class="go">udp 0 0 172.16.0.1:123 0.0.0.0:*</span>
+<span class="go">udp 0 0 10.122.254.211:123 0.0.0.0:*</span>
+<span class="go">udp 0 0 169.254.1.1:123 0.0.0.0:*</span>
+<span class="go">udp 0 0 169.254.254.254:123 0.0.0.0:*</span>
+<span class="go">udp 0 0 127.0.0.1:123 0.0.0.0:*</span>
+<span class="go">udp 0 0 0.0.0.0:123 0.0.0.0:*</span>
+<span class="go">udp 0 0 ::1:123 :::*</span>
+<span class="go">udp 0 0 fe80::92e2:baff:fe4b:fc7:123 :::*</span>
+<span class="go">udp 0 0 fe80::38a5:a2ff:fe9a:4eb:123 :::*</span>
+<span class="go">udp 0 0 fe80::f88d:a5ff:fe4c:419:123 :::*</span>
+<span class="go">udp 0 0 fe80::ce7:b9ff:fe50:4481:123 :::*</span>
+<span class="go">udp 0 0 fe80::3c79:62ff:fef0:214:123 :::*</span>
+<span class="go">udp 0 0 fe80::26e9:b3ff:fe15:a0e:123 :::*</span>
+<span class="go">udp 0 0 fe80::e89f:1dff:fedf:1f6:123 :::*</span>
+<span class="go">udp 0 0 fe80::f491:1ff:fe9f:f1de:123 :::*</span>
+<span class="go">udp 0 0 fe80::dc2d:dfff:fe88:20d:123 :::*</span>
+<span class="go">udp 0 0 fe80::e4cb:caff:feec:5bd:123 :::*</span>
+<span class="go">udp 0 0 fe80::a83d:1ff:fe54:597:123 :::*</span>
+<span class="go">udp 0 0 fe80::8c71:63ff:feb2:f4a:123 :::*</span>
+<span class="go">udp 0 0 :::123 :::*</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h5><a class="toc-backref" href="#id29">Fabric nodes</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h5>
+<p>Verify that a NTP policy has been created by traversing to the following
+directory and using the cat command on the summary file and list out the
+directory:</p>
+<blockquote>
+<div><strong>/mit/uni/fabric/time-default</strong></div></blockquote>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">rtp_leaf1# cd /mit/uni/fabric/time-default</span>
+<span class="go">rtp_leaf1# cat summary</span>
+<span class="gp">#</span> Date and Time Policy
+<span class="go">name : default</span>
+<span class="go">adminSt : enabled</span>
+<span class="go">authSt : disabled</span>
+<span class="go">childAction :</span>
+<span class="go">descr :</span>
+<span class="go">dn : uni/fabric/time-default</span>
+<span class="go">lcOwn : resolveOnBehalf</span>
+<span class="go">modTs : 2014-10-15T13:11:19.747-04:00</span>
+<span class="go">monPolDn : uni/fabric/monfab-default</span>
+<span class="go">ownerKey :</span>
+<span class="go">ownerTag :</span>
+<span class="go">rn : time-default</span>
+<span class="go">status :</span>
+<span class="go">uid : 0</span>
+<span class="go">rtp_leaf1#</span>
+<span class="go">rtp_leaf1# ls -1</span>
+<span class="go">issues</span>
+<span class="go">mo</span>
+<span class="go">ntpprov-10.81.254.202</span>
+<span class="go">rtfabricTimePol-[uni--fabric--funcprof--podpgrp-RTPFabric1]</span>
+<span class="go">summary</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Ensure the adminSt is enabled</li>
+<li>Ensure the ntpprov-* directory is for the proper ntp provider.</li>
+<li>When the NTP policy is pushed to the fabric node it resolves to a NTP
+configuration in Linux that gets applied.</li>
+</ul>
+<p>It can be verified using both show ntp peers and show ntp peer status commands:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">rtp_leaf1# show ntp peers</span>
+<span class="go"> --------------------------------------------------</span>
+<span class="go">  Peer IP Address               Serv/Peer</span>
+<span class="go"> --------------------------------------------------</span>
+<span class="go">  10.81.254.202                 Server (configured)</span>
+<span class="go"> rtp_leaf1# show ntp peer-status</span>
+<span class="go"> Total peers : 1</span>
+<span class="go"> * - selected for sync, + - peer mode(active),</span>
+<span class="go"> - - peer mode(passive), = - polled in client mode</span>
+<span class="go">     remote                local                st   poll   reach delay    vrf</span>
+<span class="go"> -------------------------------------------------------------------------------</span>
+<span class="go"> *10.81.254.202           0.0.0.0               1    64     377   0.00041 management</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Ensure that the Peer IP Address is correct</li>
+<li>Ensure that the peer is a server</li>
+<li>Ensure that the vrf is shown as a management</li>
+</ul>
+</div>
+</div>
+<div class="section" id="dchp-relay">
+<h4><a class="toc-backref" href="#id30">DCHP Relay</a><a class="headerlink" href="#dchp-relay" title="Permalink to this headline">¶</a></h4>
+<p>There are two main components in the DHCP Relay configuration. The first is
+the policy which is configured under a tenant. The policy contains the DHCP
+server address as well as how (EPG) the DHCP server is reached.</p>
+<p>The second component is under the tenant BD with a DHCP Relay label to link to
+the DHCP Relay Policy.</p>
+<a class="reference internal image-reference" href="_images/Shared-services.jpg"><img alt="_images/Shared-services.jpg" class="align-center" src="_images/Shared-services.jpg" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h3><a class="toc-backref" href="#id31">APIC</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>The DHCP Relay policy can be verified through shell access by cd to
+/mit/uni/tn-&lt;tenant name&gt;/relayp-&lt;DHCP Relay Profile Name&gt;.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">admin@RTP_APIC1:relayp-DHCP_Relay_Profile&gt; ls</span>
+
+<span class="go">mo</span>
+<span class="go">provdhcp-[uni--tn-Prod--out-L3out--instP-ExtL3EPG]</span>
+<span class="go">rsprov-[uni--tn-Prod--out-L3out--instP-ExtL3EPG]</span>
+<span class="go">rsprov-[uni--tn-Prod--out-L3out--instP-ExtL3EPG].link</span>
+<span class="go">rtlblDefToRelayP-[uni--bd-[uni--tn-Prod--BD-MiddleWare]-isSvc-no--dhcplbldef-DHCP_Relay_Profile]</span>
+<span class="go">summary</span>
+
+<span class="go">admin@RTP_APIC1:relayp-DHCP_Relay_Profile&gt; cat summary</span>
+<span class="gp">#</span> DHCP Relay Policy
+<span class="go">name         : DHCP_Relay_Profile</span>
+<span class="go">childAction  :</span>
+<span class="go">descr        :</span>
+<span class="go">dn           : uni/tn-Prod/relayp-DHCP_Relay_Profile</span>
+<span class="go">lcOwn        : local</span>
+<span class="go">modTs        : 2014-10-16T15:43:03.139-07:00</span>
+<span class="go">mode         : visible</span>
+<span class="go">monPolDn     : uni/tn-common/monepg-default</span>
+<span class="go">owner        : infra</span>
+<span class="go">ownerKey     :</span>
+<span class="go">ownerTag     :</span>
+<span class="go">rn           : relayp-DHCP_Relay_Profile</span>
+<span class="go">status       :</span>
+<span class="go">uid          : 15374</span>
+</pre></div>
+</div>
+<p>In this last example, the DHCP relay policy name is DHCP_Relay_Profile. The
+provider is the EPG where the DHCP server is located. In this example the
+server is located through a layer 3 external routed domain named L3out.</p>
+<p>The dhcpRsProv contains the address of the server IP address. From the DHCP
+relay policy directory, cd to the rsprov-* directory which in this example is
+rsprov-[uni&#8211;tn-Prod&#8211;out-L3out&#8211;instP-ExtL3EPG]</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">admin@RTP_APIC1:relayp-DHCP_Relay_Profile&gt; cd rsprov-\[uni--tn-Prod--out-L3out--instP-ExtL3EPG\]</span>
+
+<span class="go">admin@RTP_APIC1:rsprov-[uni--tn-Prod--out-L3out--instP-ExtL3EPG]&gt; ls</span>
+<span class="go">mo  summary</span>
+
+<span class="go">admin@RTP_APIC1:rsprov-[uni--tn-Prod--out-L3out--instP-ExtL3EPG]&gt; cat summary</span>
+<span class="gp">#</span> DHCP Provider
+<span class="go">tDn          : uni/tn-Prod/out-L3out/instP-ExtL3EPG</span>
+<span class="go">addr         : 10.30.250.1</span>
+<span class="go">childAction  :</span>
+<span class="go">dn           : uni/tn-Prod/relayp-DHCP_Relay_Profile/rsprov-[uni/tn-Prod/out-L3out/instP-ExtL3EPG]</span>
+<span class="go">forceResolve : no</span>
+<span class="go">lcOwn        : local</span>
+<span class="go">modTs        : 2014-10-16T15:43:03.139-07:00</span>
+<span class="go">monPolDn     : uni/tn-common/monepg-default</span>
+<span class="go">rType        : mo</span>
+<span class="go">rn           : rsprov-[uni/tn-Prod/out-L3out/instP-ExtL3EPG]</span>
+<span class="go">state        : formed</span>
+<span class="go">stateQual    : none</span>
+<span class="go">status       :</span>
+<span class="go">tCl          : l3extInstP</span>
+<span class="go">tType        : mo</span>
+<span class="go">uid          : 15374</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h3><a class="toc-backref" href="#id32">Fabric nodes</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>From the fabric nodes, confirmation that the relay is configured properly is
+with the CLI command show dhcp internal info relay address. The command show
+ip dhcp relay presents similar information.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">rtp_leaf1# show dhcp internal info relay address</span>
+<span class="go">DHCP Relay Address Information:</span>
+<span class="go">DHCP relay intf Vlan9 has 3 relay addresses:</span>
+<span class="go">DHCP relay addr: 10.0.0.1, vrf: overlay-1, visible, gateway IP: 10.0.0.30</span>
+<span class="go">DHCP relay addr: 10.0.0.2, vrf: overlay-1, invisible, gateway IP:</span>
+<span class="go">DHCP relay addr: 10.0.0.3, vrf: overlay-1, invisible, gateway IP:</span>
+<span class="go">DHCP relay intf Vlan17 has 1 relay addresses:</span>
+<span class="go">DHCP relay addr: 10.30.250.1, vrf: Prod:Prod, visible, gateway IP: 10.0.0.101 10.30.250.2</span>
+<span class="go">DHCP relay intf loopback0 has 3 relay addresses:</span>
+<span class="go">DHCP relay addr: 10.0.0.1, vrf: overlay-1, invisible, gateway IP:</span>
+<span class="go">DHCP relay addr: 10.0.0.2, vrf: overlay-1, invisible, gateway IP:</span>
+<span class="go">DHCP relay addr: 10.0.0.3, vrf: overlay-1, invisible, gateway IP:</span>
+</pre></div>
+</div>
+<p>The DHCP relay statistics on the leaf can be viewed with show ip dhcp relay statistics:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Leaf-1# show ip dhcp relay statistics</span>
+<span class="go">----------------------------------------------------------------------</span>
+<span class="go">Message Type             Rx              Tx           Drops</span>
+<span class="go">----------------------------------------------------------------------</span>
+<span class="go">Discover                  5               5               0</span>
+<span class="go">Offer                     1               1               0</span>
+<span class="go">Request(*)                4               4               0</span>
+<span class="go">Ack                       7               7               0</span>
+<span class="go">Release(*)                0               0               0</span>
+<span class="go">Decline                   0               0               0</span>
+<span class="go">Nack                      0               0               0</span>
+<span class="go">Inform                    3               3               0</span>
+<span class="go">----------------------------------------------------------------------</span>
+<span class="go">Total                     28              28              0</span>
+<span class="go">----------------------------------------------------------------------</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="problem-description">
+<h2><a class="toc-backref" href="#id33">Problem Description</a><a class="headerlink" href="#problem-description" title="Permalink to this headline">¶</a></h2>
+<p>After configuring specific shared services (DNS, NTP, SNMP, etc) there are
+issues with connectivity to those services.</p>
+<div class="section" id="symptom-1">
+<h3><a class="toc-backref" href="#id34">Symptom 1</a><a class="headerlink" href="#symptom-1" title="Permalink to this headline">¶</a></h3>
+<p>The APICs can resolve hostnames via DNS but fabric nodes are not able to</p>
+</div>
+<div class="section" id="verification">
+<h3><a class="toc-backref" href="#id35">Verification</a><a class="headerlink" href="#verification" title="Permalink to this headline">¶</a></h3>
+<p>A fabric node is unable to to resolve a hostname.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">rtp_leaf1# ping www.cisco.com</span>
+<span class="go">ping: unknown host</span>
+<span class="go">rtp_leaf1#</span>
+</pre></div>
+</div>
+<p>An APIC is able to resolve a hostname.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">admin@RTP_Apic1:~&gt; ping www.cisco.com</span>
+<span class="go">PING origin-www.cisco.com (72.163.4.161) 56(84) bytes of data.</span>
+<span class="go">64 bytes from www1.cisco.com (72.163.4.161): icmp_seq=1 ttl=238 time=29.4 ms</span>
+<span class="go">64 bytes from www1.cisco.com (72.163.4.161): icmp_seq=2 ttl=238 time=29.1 ms</span>
+<span class="go">^C</span>
+<span class="go">--- origin-www.cisco.com ping statistics ---</span>
+<span class="go">2 packets transmitted, 2 received, 0% packet loss, time 1351ms</span>
+<span class="go">rtt min/avg/max/mdev = 29.173/29.334/29.495/0.161 ms</span>
+</pre></div>
+</div>
+<p>Since the problem seems isolated to the fabric nodes, let&#8217;s start there.
+Verify the policy is correct on the fabric node.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">rtp_leaf1# cd /mit/uni/fabric/dnsp-default</span>
+<span class="go">rtp_leaf1# ls -al</span>
+<span class="go">total 1</span>
+<span class="go">drw-rw---- 1 admin admin 512 Oct 15 17:46 .</span>
+<span class="go">drw-rw---- 1 admin admin 512 Oct 15 17:46 ..</span>
+<span class="go">-rw-rw---- 1 admin admin   0 Oct 15 17:46 mo</span>
+<span class="go">-r--r----- 1 admin admin   0 Oct 15 17:46 summary</span>
+</pre></div>
+</div>
+<p>The fabric node has no policy, the mo and summary files are empty, further
+inspection should take place at the policy on the APIC configuration. All
+policy for the fabric nodes comes from the APIC, so that&#8217;s where the problem
+is most likely to be found.</p>
+<p>From the APIC the policy is applied:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">admin@RTP_Apic1:default&gt; cat summary</span>
+<span class="gp">#</span> dns-profile
+<span class="go">name           : default</span>
+<span class="go">description    :</span>
+<span class="go">ownerkey       :</span>
+<span class="go">ownertag       :</span>
+<span class="go">management-epg : tenants/mgmt/node-management-epgs/default/out-of-band/default</span>
+
+<span class="go">dns-providers:</span>
+<span class="go">address         preferred</span>
+<span class="go">--------------  ---------</span>
+<span class="go">171.70.168.183  yes</span>
+<span class="go">173.36.131.10   no</span>
+
+<span class="go">dns-domains:</span>
+<span class="go">name       default  description</span>
+<span class="go">---------  -------  -----------</span>
+<span class="go">cisco.com  yes</span>
+</pre></div>
+</div>
+<p>The DNS label is missing however:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">admin@RTP_Apic1:default&gt; cd /aci/tenants/mgmt/node-management-epgs/default/out-of-band/default</span>
+<span class="go">admin@RTP_Apic1:default&gt; cat summary</span>
+<span class="gp">#</span> out-of-band-management-epg
+<span class="go">name                 : default</span>
+<span class="go">configuration-issues :</span>
+<span class="go">configuration-state  : applied</span>
+<span class="go">qos-priority         : unspecified</span>
+<span class="go">description          :</span>
+
+<span class="go">provided-out-of-band-contracts:</span>
+<span class="go">qos-priority  oob-contract  state</span>
+<span class="go">------------  ------------  ------</span>
+<span class="go">unspecified   oob_contract  formed</span>
+
+<span class="go">tags:</span>
+<span class="go">name</span>
+<span class="go">----</span>
+<span class="go">admin@RTP_Apic1:default&gt;</span>
+</pre></div>
+</div>
+<p>From the GUI the missing label from the out-of-band management can be seen:</p>
+<a class="reference internal image-reference" href="_images/DNS_label_missing.png"><img alt="_images/DNS_label_missing.png" class="align-center" src="_images/DNS_label_missing.png" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="resolution">
+<h3><a class="toc-backref" href="#id36">Resolution</a><a class="headerlink" href="#resolution" title="Permalink to this headline">¶</a></h3>
+<p>Once the DNS label &#8220;default&#8221; is added to the private network, the fabric node
+is able to resolve hostnames.</p>
+</div>
+<div class="section" id="symptom-2">
+<h3><a class="toc-backref" href="#id37">Symptom 2</a><a class="headerlink" href="#symptom-2" title="Permalink to this headline">¶</a></h3>
+<p>NTP is not functional on any of the fabric nodes but the APICs have NTP
+synchronized.</p>
+</div>
+<div class="section" id="id5">
+<h3><a class="toc-backref" href="#id38">Verification</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id6">
+<h4><a class="toc-backref" href="#id39">APIC</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>There are faults on the date-time policy for all of the fabric nodes that
+state that the config failed and: Datetime Policy Configuration Failed with
+issues: access-epg-not-specified</li>
+</ul>
+<a class="reference internal image-reference" href="_images/Date_time_no_mgmt_epg_fault.png"><img alt="_images/Date_time_no_mgmt_epg_fault.png" class="align-center" src="_images/Date_time_no_mgmt_epg_fault.png" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>The APIC does not have a management-egp assigned.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">admin@RTP_Apic1:~&gt; cd /aci/fabric/fabric-policies/pod-policies/policies/date-and-time/date-and-time-policy-ntp.esl.cisco.com</span>
+<span class="go">admin@RTP_Apic1:date-and-time-policy-ntp.esl.cisco.com&gt; cat summary</span>
+<span class="gp">#</span> date-and-time-policy
+<span class="go">name                 : ntp.esl.cisco.com</span>
+<span class="go">description          :</span>
+<span class="go">administrative-state : enabled</span>
+<span class="go">authentication-state : disabled</span>
+<span class="go">ownerkey             :</span>
+<span class="go">ownertag             :</span>
+
+<span class="go">ntp-servers:</span>
+<span class="go">host-name-ip-address  preferred  minimum-polling-  maximum-polling-  management-epg</span>
+<span class="go">                                 interval          interval</span>
+<span class="go">--------------------  ---------  ----------------  ----------------  --------------</span>
+<span class="go">ntp.esl.cisco.com     yes        4                 6</span>
+</pre></div>
+</div>
+<p>This can be seen the GUI as well:</p>
+<a class="reference internal image-reference" href="_images/NTP_mgmt_epg_missing.png"><img alt="_images/NTP_mgmt_epg_missing.png" class="align-center" src="_images/NTP_mgmt_epg_missing.png" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>This is likely why NTP is not synchronized on the fabric nodes. The fabric
+nodes are not being told which vrf to use to reach the NTP server.</p>
+<p>On the APICs, port 123 is being listened on and because this fabric only has
+out-of-band management configured the APICs are able to reach the NTP server
+over this interface.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">admin@RTP_Apic1:date-and-time-policy-ntp.esl.cisco.com&gt; ntpstat</span>
+<span class="go">synchronized to NTP server (171.68.38.65) at stratum 2</span>
+<span class="go"> time correct to within 976 ms</span>
+<span class="go"> polling server every 64 s</span>
+<span class="go">admin@RTP_Apic1:date-and-time-policy-ntp.esl.cisco.com&gt; netstat -anu | grep :123</span>
+<span class="go">udp 0 0 172.16.0.1:123 0.0.0.0:*</span>
+<span class="go">udp 0 0 10.122.254.211:123 0.0.0.0:*</span>
+<span class="go">udp 0 0 169.254.1.1:123 0.0.0.0:*</span>
+<span class="go">udp 0 0 169.254.254.254:123 0.0.0.0:*</span>
+<span class="go">udp 0 0 127.0.0.1:123 0.0.0.0:*</span>
+<span class="go">udp 0 0 0.0.0.0:123 0.0.0.0:*</span>
+<span class="go">udp 0 0 ::1:123 :::*</span>
+<span class="go">udp 0 0 fe80::92e2:baff:fe4b:fc7:123 :::*</span>
+<span class="go">udp 0 0 fe80::38a5:a2ff:fe9a:4eb:123 :::*</span>
+<span class="go">udp 0 0 fe80::f88d:a5ff:fe4c:419:123 :::*</span>
+<span class="go">udp 0 0 fe80::ce7:b9ff:fe50:4481:123 :::*</span>
+<span class="go">udp 0 0 fe80::3c79:62ff:fef0:214:123 :::*</span>
+<span class="go">udp 0 0 fe80::26e9:b3ff:fe15:a0e:123 :::*</span>
+<span class="go">udp 0 0 fe80::e89f:1dff:fedf:1f6:123 :::*</span>
+<span class="go">udp 0 0 fe80::f491:1ff:fe9f:f1de:123 :::*</span>
+<span class="go">udp 0 0 fe80::dc2d:dfff:fe88:20d:123 :::*</span>
+<span class="go">udp 0 0 fe80::e4cb:caff:feec:5bd:123 :::*</span>
+<span class="go">udp 0 0 fe80::a83d:1ff:fe54:597:123 :::*</span>
+<span class="go">udp 0 0 fe80::8c71:63ff:feb2:f4a:123 :::*</span>
+<span class="go">udp 0 0 :::123 :::*</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h4><a class="toc-backref" href="#id40">Fabric Nodes</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
+<p>The leafs do not have any NTP policy:</p>
+<blockquote>
+<div><div class="highlight-console"><div class="highlight"><pre><span class="go">rtp_leaf1# cd /mit/uni/fabric/time-default</span>
+<span class="go">rtp_leaf1# cat summary</span>
+<span class="go">cat: summary: No such file or directory</span>
+<span class="go">rtp_leaf1# cat mo</span>
+<span class="go">cat: mo: No such file or directory</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Because the leafs do not have any policy, they also do not have any NTP configuration or peers.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">rtp_leaf1# show ntp peer-status</span>
+<span class="go">Total peers : 1</span>
+<span class="go">* - selected for sync, + - peer mode(active),</span>
+<span class="go">- - peer mode(passive), = - polled in client mode</span>
+<span class="go">    remote                local                st   poll   reach delay   vrf</span>
+<span class="go">-------------------------------------------------------------------------------</span>
+<span class="go">=0.0.0.0                 0.0.0.0               0    1      0     0.00000</span>
+<span class="go">rtp_leaf1# show ntp peers</span>
+<span class="go">--------------------------------------------------</span>
+<span class="go"> Peer IP Address Serv/Peer</span>
+<span class="go">--------------------------------------------------</span>
+<span class="go"> 0.0.0.0 Server (configured)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id8">
+<h3><a class="toc-backref" href="#id41">Resolution</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p>By adding a management EPG of default (Out-of-band) to the date-time policy,
+NTP is able to synchronize on the fabric nodes.</p>
+</div>
+<div class="section" id="symptom-3">
+<h3><a class="toc-backref" href="#id42">Symptom 3</a><a class="headerlink" href="#symptom-3" title="Permalink to this headline">¶</a></h3>
+<p>The APICs do not synchronize with NTP but the fabric nodes do</p>
+</div>
+<div class="section" id="id9">
+<h3><a class="toc-backref" href="#id43">Verification</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="apics">
+<h4><a class="toc-backref" href="#id44">APICs</a><a class="headerlink" href="#apics" title="Permalink to this headline">¶</a></h4>
+<p>The ntp daemon is not running.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">admin@RTP_Apic1:pod-selector-default-all&gt; ntpstat</span>
+<span class="go">Unable to talk to NTP daemon. Is it running?</span>
+<span class="go">admin@RTP_Apic1:pod-selector-default-all&gt;</span>
+</pre></div>
+</div>
+<p>The APICs have the date-time policy configured properly.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">admin@RTP_Apic1:date-and-time-policy-ntp.esl.cisco.com&gt; cat summary</span>
+<span class="gp">#</span> date-and-time-policy
+<span class="go">name                 : ntp.esl.cisco.com</span>
+<span class="go">description          :</span>
+<span class="go">administrative-state : enabled</span>
+<span class="go">authentication-state : disabled</span>
+<span class="go">ownerkey             :</span>
+<span class="go">ownertag             :</span>
+
+
+<span class="go">ntp-servers:</span>
+<span class="go">host-name-ip-address  preferred  minimum-polling-  maximum-polling-  management-epg</span>
+<span class="go">                                 interval          interval</span>
+<span class="go">--------------------  ---------  ----------------  ----------------  ---------------------</span>
+<span class="go">ntp.esl.cisco.com     yes        4                 6                 tenants/mgmt/</span>
+<span class="go">                                                                     node-management-epgs/</span>
+<span class="go">                                                                     default/out-of-band/</span>
+<span class="go">                                                                     default</span>
+</pre></div>
+</div>
+<p>The APICs do have the proper fabric-policy-group as well.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">admin@RTP_Apic1:~&gt; cd /aci/fabric/fabric-policies/pod-policies/pod-selector-default-all</span>
+<span class="go">admin@RTP_Apic1:pod-selector-default-all&gt; cat summary</span>
+<span class="gp">#</span> pod-selector
+<span class="go">name                 : default</span>
+<span class="go">type                 : all</span>
+<span class="go">description          :</span>
+<span class="go">ownerkey             :</span>
+<span class="go">ownertag             :</span>
+<span class="go">fabric-policy-group  : fabric/fabric-policies/pod-policies/policy-groups/RTPFabric1</span>
+</pre></div>
+</div>
+<p>The APICs do not have the proper date-time-policy specified in the
+policy-group.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">admin@RTP_Apic1:pod-policies&gt; cd /aci/fabric/fabric-policies/pod-policies/policy-groups/</span>
+<span class="go">admin@RTP_Apic1:policy-groups&gt; cat summary</span>
+<span class="go">policy-groups:</span>
+<span class="go">name        date-time-policy  isis-policy  coop-group-policy  bgp-route-reflector-  communication-policy  snmp-policy</span>
+<span class="go">                                                              policy</span>
+<span class="go">----------  ----------------  -----------  -----------------  --------------------  --------------------  -----------</span>
+<span class="go">RTPFabric1  default           default      default            default               default               default</span>
+</pre></div>
+</div>
+<p>This should be ntp.esl.cisco.com but it is incorrectly set to default. There
+should be a fault for this.</p>
+<p>The fault is on the Pod policy and states: Failed to form relation to MO
+time-default of class datetimePol in context</p>
+<a class="reference internal image-reference" href="_images/NTP_no_date_time_on_pod_policy.png"><img alt="_images/NTP_no_date_time_on_pod_policy.png" class="align-center" src="_images/NTP_no_date_time_on_pod_policy.png" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id10">
+<h4><a class="toc-backref" href="#id45">Fabric Nodes</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
+<p>The fabric nodes are synchronized with the NTP server.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">rtp_leaf1# show ntp peers</span>
+<span class="go">--------------------------------------------------</span>
+<span class="go">  Peer IP Address               Serv/Peer</span>
+<span class="go">--------------------------------------------------</span>
+<span class="go">  171.68.38.65                  Server (configured)</span>
+<span class="go">rtp_leaf1# show ntp peer-status</span>
+<span class="go">Total peers : 1</span>
+<span class="go">* - selected for sync, + - peer mode(active),</span>
+<span class="go">- - peer mode(passive), = - polled in client mode</span>
+<span class="go">    remote                local                st   poll   reach delay   vrf</span>
+<span class="go">-------------------------------------------------------------------------------</span>
+<span class="go">=171.68.38.65            0.0.0.0               1    64     377   0.07144 management</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="symptom-4">
+<h3><a class="toc-backref" href="#id46">Symptom 4</a><a class="headerlink" href="#symptom-4" title="Permalink to this headline">¶</a></h3>
+<p>The APICs and the fabric nodes do not synchronize with NTP</p>
+</div>
+<div class="section" id="id11">
+<h3><a class="toc-backref" href="#id47">Verification</a><a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id12">
+<h4><a class="toc-backref" href="#id48">APICs</a><a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h4>
+<p>The ntp daemon is not running on the APICs:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">admin@RTP_Apic1:pod-selector-default-all&gt; ntpstat</span>
+<span class="go">Unable to talk to NTP daemon. Is it running?</span>
+<span class="go">admin@RTP_Apic1:pod-selector-default-all&gt;</span>
+<span class="go">The pod selector policy is missing the fabric-policy-group:</span>
+
+<span class="go">admin@RTP_Apic1:~&gt; cd /aci/fabric/fabric-policies/pod-policies/pod-selector-default-all</span>
+<span class="go">admin@RTP_Apic1:pod-selector-default-all&gt; cat summary</span>
+<span class="gp">#</span> pod-selector
+<span class="go">name                 : default</span>
+<span class="go">type                 : all</span>
+<span class="go">description          :</span>
+<span class="go">ownerkey             :</span>
+<span class="go">ownertag             :</span>
+<span class="go">fabric-policy-group  :</span>
+</pre></div>
+</div>
+<p>Without a fabric-policy-group applied to the pod-selector, the date-time
+policy will not be applied to the pod-policy-group and the NTP daemon will not
+start up. This is a problem that needs to be corrected. However, verification
+needs to be continued to other parts of the config to ensure that nothing else
+is broken.</p>
+<p>The policy-group config does look proper and points to the date-time-policy:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">admin@RTP_Apic1:date-and-time&gt; cd /aci/fabric/fabric-policies/pod-policies/policy-groups/</span>
+<span class="go">admin@RTP_Apic1:policy-groups&gt; cat summary</span>
+<span class="go">policy-groups:</span>
+<span class="go">name        date-time-policy   isis-policy  coop-group-policy  bgp-route-reflector-  communication-policy  snmp-policy</span>
+<span class="go">                                                               policy</span>
+<span class="go">----------  -----------------  -----------  -----------------  --------------------  --------------------  -----------</span>
+<span class="go">RTPFabric1  ntp.esl.cisco.com  default      default            default               default               default</span>
+</pre></div>
+</div>
+<p>The date-and-time policy is configured correctly:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">admin@RTP_Apic1:date-and-time&gt; cat date-and-time-policy-ntp.esl.cisco.com/summary</span>
+<span class="gp">#</span> date-and-time-policy
+<span class="go">name                 : ntp.esl.cisco.com</span>
+<span class="go">description          :</span>
+<span class="go">administrative-state : enabled</span>
+<span class="go">authentication-state : disabled</span>
+<span class="go">ownerkey             :</span>
+<span class="go">ownertag             :</span>
+
+<span class="go">ntp-servers:</span>
+<span class="go">host-name-ip-address  preferred  minimum-polling-  maximum-polling-  management-epg</span>
+<span class="go">                                 interval          interval</span>
+<span class="go">--------------------  ---------  ----------------  ----------------  ---------------------</span>
+<span class="go">ntp.esl.cisco.com     yes        4                 6                 tenants/mgmt/</span>
+<span class="go">                                                                     node-management-epgs/</span>
+<span class="go">                                                                     default/out-of-band/</span>
+<span class="go">                                                                     default</span>
+</pre></div>
+</div>
+<p>So the only thing that needs to be corrected is that the fabric policy group
+needs to be applied to the pod selector:</p>
+<a class="reference internal image-reference" href="_images/Pod_selector_missing_fabric_policy_group.png"><img alt="_images/Pod_selector_missing_fabric_policy_group.png" class="align-center" src="_images/Pod_selector_missing_fabric_policy_group.png" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id13">
+<h4><a class="toc-backref" href="#id49">Fabric Nodes</a><a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h4>
+<p>The fabric nodes do not have any NTP configuration:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">rtp_leaf1# show ntp peers</span>
+<span class="go">dn &quot;sys/time&quot; could not be found</span>
+<span class="go">Error executing command, check logs for details</span>
+<span class="go">rtp_leaf1# show ntp peer-status</span>
+<span class="go">dn &quot;sys/time&quot; could not be found</span>
+<span class="go">Error executing command, check logs for details</span>
+</pre></div>
+</div>
+<p>There are no time-date policies on the fabric nodes:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">rtp_leaf1# cd /mit/uni/fabric/time-default</span>
+<span class="go">bash: cd: /mit/uni/fabric/time-default: No such file or directory</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id14">
+<h3><a class="toc-backref" href="#id50">Resolution</a><a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<p>Once the Fabric Policy Group is set, the NTP daemon is started and NTP is
+synchronized on the APICs. In this case, no fault is shown anywhere.</p>
+</div>
+</div>
+<div class="section" id="id15">
+<h2><a class="toc-backref" href="#id51">Problem Description</a><a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
+<p>Devices connected to the fabric are not able to get the expected IP address
+via DHCP.</p>
+<div class="section" id="id16">
+<h3><a class="toc-backref" href="#id52">Symptom 1</a><a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<p>DHCP client is not getting an IP address from DHCP server</p>
+</div>
+<div class="section" id="id17">
+<h3><a class="toc-backref" href="#id53">Verification</a><a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+<p>Several issues could be the cause of this. There are several steps that can be
+run to verify the cause of the issue. This is listed in a logical order moving
+from the policy through the leaf to the DHCP server:</p>
+<ul class="simple">
+<li>The DHCP relay policy is properly applied as indicated in the overview
+section</li>
+<li>The endpoint is part of the EPG that is in the BD that contains the correct
+DHCP relay policy. This can be verified with the switch CLI command show
+endpoint interface &lt;interface ID&gt; detail.</li>
+</ul>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">rtp_leaf1# show endpoint interface ethernet 1/13 detail</span>
+<span class="go">+---------------+---------------+-----------------+--------------+-------------+---------------------------</span>
+
+<span class="go">     VLAN/       Encap           MAC Address       MAC Info/       Interface     Endpoint Group</span>
+<span class="go">     Domain      VLAN            IP Address        IP Info                       Info</span>
+<span class="go">+---------------+---------------+-----------------+--------------+-------------+----------------------------</span>
+<span class="go">20                     vlan-1301    0024.81b5.d22b L                     eth1/13 Prod:commerceworkspace:MiddleWare</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>If the endpoint is not present, confirm the fabric interface status with the
+switch CLI command show interface ethernet 1/13.</li>
+<li>If the interface status is not Up, check the physical connection</li>
+<li>If the interface status is Up but is &#8220;out-of-service&#8221;, this is typically an
+indication that there is an misconfiguration. Confirm that the EPG points to
+the proper domain and the domain is configured with the proper fabric vlan
+pool and AEP.</li>
+<li>Check for faults and refer to the section Faults and Health Scores.</li>
+</ul>
+<p>The DHCP relay policy on the leaf where the client is attached is properly
+configured as shown with the leaf CLI command show dhcp internal info relay
+address shown in the overview section.</p>
+<p>The DHCP server can be reached from the leaf. One way to verify this is using
+the leaf CLI command iping originated from the leaf using the tenant context.</p>
+<p>Check the DHCP relay statistics on the leaf with the leaf CLI command show ip
+dhcp relay statistics:</p>
+<ul class="simple">
+<li>If the Discover is not incrementing, check the fabric interface status where
+the client is connected</li>
+<li>If the Discover stats are incrementing but the Offer is not, confirm that
+the server can reach the BD SVI address</li>
+<li>If the Discover stats are incrementing but the Offer is not, confirm that
+a proper contract is in place to not drop the DHCP Offer</li>
+</ul>
+<p>Confirm from the DHCP server side that the DHCP Discover is received.</p>
+<p>From the DHCP server, confirm the GIADDR (relay agent) address is the expected
+address and the proper DHCP scope for that subnet has been defined.</p>
+<p>From the DHCP server, confirm that the DHCP Offer is sent and the destination
+IP address of the relay where it is sent</p>
+<p>Confirm from the DHCP server that the DHCP relay agent address can be
+reached/ping.</p>
+</div>
+<div class="section" id="id18">
+<h3><a class="toc-backref" href="#id54">Resolution</a><a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
+<p>The above verification steps should isolate whether the issue is with the
+policy, the physical layer, the network or the DHCP server.</p>
+</div>
+<div class="section" id="id19">
+<h3><a class="toc-backref" href="#id55">Symptom 2</a><a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
+<p>DHCP client is getting an address but not for the expected subnet</p>
+</div>
+<div class="section" id="id20">
+<h3><a class="toc-backref" href="#id56">Verification</a><a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
+<p>Several issues could be the cause of this. One possibility is that if there
+are multiple subnets on a BD, the relay agent address (GIADDR) used will be
+the primary BD SVI address. This is typically the first SVI configured on the
+BD which may be the subnet from which the DHCP server scope has allocated the
+address.</p>
+<p>Other steps to verify are:</p>
+<ul class="simple">
+<li>The DHCP relay policy is properly applied as indicated in the overview
+section</li>
+<li>The endpoint is part of the EPG that is in the BD that contains the correct
+DHCP relay policy. This can be verified with the leaf CLI command show
+endpoint interface &lt;interface ID&gt; detail.</li>
+</ul>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">rtp_leaf1# show endpoint interface ethernet 1/13 detail</span>
+<span class="go">+---------------+---------------+-----------------+--------------+-------------+----------------------------</span>
+<span class="go">     VLAN/       Encap           MAC Address       MAC Info/       Interface     Endpoint Group</span>
+<span class="go">     Domain      VLAN            IP Address        IP Info                       Info</span>
+<span class="go">+---------------+---------------+-----------------+--------------+-------------+----------------------------</span>
+
+<span class="go">20                     vlan-1301    0024.81b5.d22b L                     eth1/13 Prod:commerceworkspace:MiddleWare</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>If the endpoint is not present, confirm the fabric interface status with the
+leaf CLI command show interface ethernet 1/13.</li>
+<li>If the interface status is not Up, check the physical connection</li>
+<li>If the interface status is Up but is &#8220;out-of-service&#8221;, this is typically an
+indication that there is an misconfiguration. Confirm that the EPG points to
+the proper domain and the domain is configured with the proper fabric vlan
+pool and AEP.</li>
+<li>Check for faults and refer to the section Faults and Health Scores.</li>
+</ul>
+<p>From the DHCP server, confirm the GIADDR (relay agent) address is the expected
+address and the proper DHCP scope for that subnet has been defined.</p>
+</div>
+<div class="section" id="id21">
+<h3><a class="toc-backref" href="#id57">Resolution</a><a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
+<p>The above verification steps should isolate whetherthe issue is with the
+policy, the physical layer, the network or the DHCP server.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="unicast.html" class="btn btn-neutral float-right" title="Unicast Data Plane Forwarding and Reachability">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="mgmt_tn.html" class="btn btn-neutral" title="Management Tenant"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Andres Vega, Bryan Deaver, Jerry Ye, Kannan Ponnuswamy, Loy Evans, Mike Timm, Paul Lesiak and Paul Raytick.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-60418502-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+   
+
+</body>
+</html>

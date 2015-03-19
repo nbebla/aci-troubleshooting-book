@@ -1,0 +1,624 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>L4-L7 Service Insertion &mdash; ACI Troubleshooting Book 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="ACI Troubleshooting Book 0.0.1 documentation" href="index.html"/>
+        <link rel="next" title="ACI Fabric Node and Process Crash Troubleshooting" href="fn_crash_ts.html"/>
+        <link rel="prev" title="Virtual Machine Manager and UCS" href="vmm_ucs.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="index.html" class="fa fa-home"> ACI Troubleshooting Book</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="preface.html">Preface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#authors-and-contributors">Authors and Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#authors">Authors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#distinguished-contributors">Distinguished Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#dedications">Dedications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#acknowledgments">Acknowledgments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#book-writing-methodology">Book Writing Methodology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#who-should-read-this-book">Who Should Read This Book?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#organization-of-this-book">Organization of this Book</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="aci.html">Application Centric Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aci_policy_model.html">ACI Policy Model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#abstraction-model">Abstraction Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#everything-is-an-object">Everything is an Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#relevant-objects-and-relationships">Relevant Objects and Relationships</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#hierarchical-aci-object-model-and-the-infrastructure">Hierarchical ACI Object Model and the Infrastructure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#infrastructure-as-objects">Infrastructure as Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#build-object-use-object-to-build-policy-reuse-policy">Build object, use object to build policy, reuse policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#rest-api-just-exposes-the-object-model">REST API just exposes the object model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#logical-model-resolved-model-concrete-model">Logical model, Resolved model, concrete model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#formed-and-unformed-relationships">Formed and Unformed Relationships</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#declarative-end-state-and-promise-theory">Declarative End State and Promise Theory</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Troubleshooting Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#apic-access-methods">APIC Access Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#programmatic-configuration-python">Programmatic Configuration (Python)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#fabric-node-access-methods">Fabric Node Access Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#exporting-information-from-the-fabric">Exporting information from the Fabric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#external-data-collection-syslog-snmp-call-home">External Data Collection – Syslog, SNMP, Call-Home</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#health-scores">Health Scores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#atomic-counters">Atomic Counters</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ts_methodology.html">Troubleshooting Methodology</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ts_methodology.html#overall-methodology">Overall Methodology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="topology.html">Sample Reference Topology</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="topology.html#physical-fabric-topology">Physical Fabric Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="topology.html#logical-application-topology">Logical Application Topology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#naming-conventions">Naming Conventions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hw_bringup.html">Initial Hardware Bringup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="hw_bringup.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw_bringup.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw_bringup.html#id2">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fabric_init.html">Fabric Initialization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fabric_init.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fabric_init.html#fabric-verification">Fabric Verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fabric_init.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="apic.html">Application Policy Infrastructure Controller (APIC) High Availability and Clustering</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#cluster-formation">Cluster Formation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#majority-and-minority-handling-clustering-split-brains">Majority and Minority - Handling Clustering Split Brains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id1">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id4">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id6">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id9">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id12">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id15">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="firmware.html">Firmware and Image Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html#id1">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html#id5">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="health.html">Faults / Health Scores</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="health.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="health.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="health.html#id1">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rest.html">REST Interface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rest.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rest.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mgmt_tn.html">Management Tenant</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mgmt_tn.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mgmt_tn.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mgmt_tn.html#id1">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="common.html">Common Network Services</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="common.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common.html#id15">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="unicast.html">Unicast Data Plane Forwarding and Reachability</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="unicast.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unicast.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unicast.html#id1">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pol_cntr.html">Policies and Contracts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pol_cntr.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pol_cntr.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bridged2ext.html">Bridged Connectivity to External Networks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="bridged2ext.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bridged2ext.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bridged2ext.html#id3">Problem Description:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bridged2ext.html#id5">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="routed2ext.html">Routed Connectivity to External Networks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#fabric-verification">Fabric Verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#problem-description">Problem description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#id1">Problem description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#id3">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vmm_ucs.html">Virtual Machine Manager and UCS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#id2">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#id6">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#id9">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">L4-L7 Service Insertion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fn_crash_ts.html">ACI Fabric Node and Process Crash Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fn_crash_ts.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fn_crash_ts.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="apic_crash_ts.html">APIC Process Crash Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="apic_crash_ts.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic_crash_ts.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix.html#overview">Overview</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">ACI Troubleshooting Book</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div></div>
+          <div role="main" class="document">
+            
+  <div class="section" id="l4-l7-service-insertion">
+<h1>L4-L7 Service Insertion<a class="headerlink" href="#l4-l7-service-insertion" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>This chapter covers the common troubles encountered during L4-L7 service
+insertion with the ACI fabric. An overview of what should happen and the
+verification steps used to confirm a working L4-L7 service insertion are
+covered first. The displays taken on a working fabric can then be used as an
+aid in troubleshooting issues when service graph and device cluster deployment
+failed.</p>
+<p>The Cisco ACI and the APIC controller are designed with the ability to provide
+automated service insertion while acting as a central point of policy control
+within the ACI fabric. ACI policies manage both the network fabric and
+services appliances such as firewalls, load balancers, etc. The policy
+controller has the ability to configure the network automatically to allow
+traffic to flow through the service devices. In addition, the policy
+controller can also automatically configure the service devices according to
+the application service requirements. This approach allows organizations to
+automate infrastructure configuration coordinated with service insertion and
+eliminate the challenge of managing all the complex traffic-steering
+techniques that are used by traditional service insertion configuration
+methods.</p>
+<p>When a service graph is defined though the APIC GUI, the concept of
+&#8220;functions&#8221; are used to specify how traffic should flow between the consumer
+EPG and the provider EPG. These functions can be exposed as firewall, load
+balancer, SSL offload, etc. and APIC will translate these function definitions
+into selectable elements of a service graph through a technique called
+rendering. Rendering involves the allocation of the fabric resources, such as
+bridge domain, service device IP addresses, etc. to ensure the consumer and
+provider EPGs will have all necessary resources and configuration to be
+functional.</p>
+<div class="section" id="device-package">
+<h3>Device Package<a class="headerlink" href="#device-package" title="Permalink to this headline">¶</a></h3>
+<p>The APIC needs to communicate with the service devices to define and configure
+the user-specific functions according to the “communcations method” the
+service device understands. This method of translation happens between the
+APIC and service devices by utilizing a plug-in or device package installed by
+the administrator. The device package also includes a description of the
+functions supported by the device package and the mode that the service device
+is utilizing. In ACI terminology, a service appliance can operate in two modes:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Go-To Mode - aka Routed mode. Examples include L3 routed firewall or
+load balancer, or one-arm load balancer.</li>
+<li>Go-Through Mode - Transparent mode. An example would be a transparent
+L2, or bridged) firewall.</li>
+</ol>
+</div></blockquote>
+<p>The illustration below shows some examples of device package functions.</p>
+<a class="reference internal image-reference" href="_images/devpkg.png"><img alt="_images/devpkg.png" class="align-center" src="_images/devpkg.png" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="service-graph-definition">
+<h3>Service Graph Definition<a class="headerlink" href="#service-graph-definition" title="Permalink to this headline">¶</a></h3>
+<p>When the service graph definitions are being configured, the abstract graph
+needs to stitch together the consumer and provider contract. The connectors
+between the Function Node have two connector types:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>L2 - Layer 2 connector. Example includes ACI fabric that has L2
+adjacency between EPG and the transparent firewall&#8217;s inside interface.</li>
+<li>L3 - Layer 3 connector with Unicast routing. Example: ACI fabric will
+act as the default gateway the outside interface of the ASA transparent
+firewall.</li>
+</ol>
+</div></blockquote>
+<p>Node name - this will be used later on during before the service graph is
+rendered.</p>
+<p>Adjacency</p>
+<p>Function Type</p>
+<p>BD Selection</p>
+<p>L2</p>
+<p>Go-To</p>
+<p>Disable routing on BD if the routing is disabled for the connection.</p>
+<p>L3</p>
+<p>Go-To</p>
+<p>Routing must also be enabled within the BD.</p>
+<p>L2</p>
+<p>Go-Through</p>
+<p>Disable routing on BD if the routing is disabled for the connection.</p>
+<p>L3</p>
+<blockquote>
+<div><p>Go-Through</p>
+<p>Routing settings on “shadow” BD is set as per the routing on connection.</p>
+</div></blockquote>
+<p>Once the abstract graph is instantiated, the function of the service devices
+can be configured via GUI, REST or CLI. These functions include firewall or
+load balancer configurations such as IP addresses of the interfaces,
+access-list, load balancer monitoring policy, virtual IP, etc.</p>
+<p>The illustration below shows the L4-L7 Function mode and empty Service
+Parameters.</p>
+<a class="reference internal image-reference" href="_images/nodeconfig.png"><img alt="_images/nodeconfig.png" class="align-center" src="_images/nodeconfig.png" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="concrete-device-and-logical-device">
+<h3>Concrete Device and Logical Device<a class="headerlink" href="#concrete-device-and-logical-device" title="Permalink to this headline">¶</a></h3>
+<p>The service graph also contains the abstract node information. The APIC will
+translate the definition and functions from the abstract graph into the
+concrete devices that are connected onto the ACI fabric. This may raise the
+question of why there is a logical device and a concrete device. The way this
+works is the concrete devices are the standalone appliance nodes, but the
+devices are typically deployed as a cluster, or pair, which is represented as
+a logical clustered device.</p>
+<p>The following parameters are mandatory to create the Concrete Device:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Device identity such as IP address and login credential of the concrete
+device.</li>
+<li>Logical interface to actual interface mapping, including guest VM
+virtual network adapter name.</li>
+</ol>
+</div></blockquote>
+<p>The following parameters are mandatory to create the Logical Device Cluster:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Select the device type - physical or virtual.</li>
+<li>Device identity such as IP address and login credential of the logical
+device.</li>
+<li>Logical interface name and function.</li>
+</ol>
+</div></blockquote>
+<p>The illustration below shows the Logical Device Cluster configuration screen.</p>
+<a class="reference internal image-reference" href="_images/devicecluster.png"><img alt="_images/devicecluster.png" class="align-center" src="_images/devicecluster.png" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="device-cluster-selector-policies">
+<h3>Device Cluster Selector Policies<a class="headerlink" href="#device-cluster-selector-policies" title="Permalink to this headline">¶</a></h3>
+<p>The last step before the service graph can be rendered is to associate the
+service graph with the appropriate contract and logical device. For example,
+the Create Logical Device Context screen is where the association of contract,
+graph, node and cluster is built between the &#8220;PermitWeb&#8221; contract, &#8220;Web&#8221;
+graph, &#8220;Web-FW&#8221; node, &#8220;Prod/Web-FW&#8221; device cluster.</p>
+<p>The illustration below shows the Logical Device Context configuration.</p>
+<a class="reference internal image-reference" href="_images/createlogicalcontext.png"><img alt="_images/createlogicalcontext.png" class="align-center" src="_images/createlogicalcontext.png" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="rendering-the-service-graph">
+<h3>Rendering the Service Graph<a class="headerlink" href="#rendering-the-service-graph" title="Permalink to this headline">¶</a></h3>
+<p>In order to render the service graph, association needs to happen between the
+appropriate contract and subject to the correct L4-L7 Service Graph.</p>
+<p>If the service graph is able to deploy, the service graph instance and virtual
+device will be seen as deployed in &#8220;Deployed Service Graphs&#8221; and &#8220;Deployed
+Device Clusters&#8221;. The illustration shows the working and rendered service
+graph.</p>
+<p>The illustration below shows where to attach the service graph to the contract.</p>
+<a class="reference internal image-reference" href="_images/deployedsganddc.png"><img alt="_images/deployedsganddc.png" class="align-center" src="_images/deployedsganddc.png" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="problem-description">
+<h2>Problem Description<a class="headerlink" href="#problem-description" title="Permalink to this headline">¶</a></h2>
+<p>The service graph is not rendering and will not deploy after the service graph
+is attached to a contract.</p>
+<div class="section" id="symptom-1">
+<h3>Symptom 1<a class="headerlink" href="#symptom-1" title="Permalink to this headline">¶</a></h3>
+<p>When clicking the logical device cluster, the Device State is in &#8220;init&#8221; state.</p>
+</div>
+<div class="section" id="verification">
+<h3>Verification<a class="headerlink" href="#verification" title="Permalink to this headline">¶</a></h3>
+<p>The &#8220;init&#8221; state indicates there is a communication issue - the APIC
+controller cannot communicate with the service device. Faults under the
+Logical Device context should be seen. A following fault code from an ASA
+logical device context shows communication between APIC and service device:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">F0324 Major script error : Connection error : HTTPSConnectionPool(host=&#39;10.122.254.39&#39;, port=443): Max retries exceeded with url: /admin/exec/show%20version%20%7C%20grep%20Cisco%20Adaptive%20Security%20Appliance%20Software%20Version (Caused by &lt;class &#39;socket.error&#39;&gt;: [Errno 101] Network is unreachable)</span>
+</pre></div>
+</div>
+<p>This fault can be resolved by verifying the connectivity between the APIC and
+the service device with the following:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Ping the service device from the APIC CLI to verify reachability</li>
+<li>Verify login credentials to the service device with the username and
+password supplied in the device configuration</li>
+<li>Verify the device&#8217;s virtual IP and port is open</li>
+<li>Verify username and password is correct in the APIC configuration</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="symptom-2">
+<h3>Symptom 2<a class="headerlink" href="#symptom-2" title="Permalink to this headline">¶</a></h3>
+<p>After correcting connectivity issues between the APIC and the service device,
+it can be seen that a F0765 CDev configuration is invalid due to
+cdev-missing-virtual-info fault has occurred.</p>
+</div>
+<div class="section" id="id1">
+<h3>Verification<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>After verification of the network connectivity between APIC and the service
+appliance (in this case the service appliance is a VM), it is necessary to
+ensure the service VM name matches the vCenter console, and the vCenter name
+matches the Data Center name.</p>
+</div>
+<div class="section" id="symptom-3">
+<h3>Symptom 3<a class="headerlink" href="#symptom-3" title="Permalink to this headline">¶</a></h3>
+<p>Seeing a fault defined as F0772 LIf configuration is invalid due to
+LIf-invalid-CIf in the Logical Device context.</p>
+</div>
+<div class="section" id="id2">
+<h3>Verification<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>First, it is necessary to define what are the items indicated called the LIf
+and the CIf. LIf is the logical interface and CIf is a concrete interface.
+With this particular fault, the Logical interface is the element that is not
+rendering properly. This is where the Function Node maps the logical interface
+to the actual, or concrete, interface to form a relationship. F0772 means one
+of the following:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>The Logical interface is not created</li>
+<li>The Logical interface is not mapped to the correct concrete interface.</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="symptom-4">
+<h3>Symptom 4<a class="headerlink" href="#symptom-4" title="Permalink to this headline">¶</a></h3>
+<p>After fixing the previous fault, F0772, there may be an additional fault,
+F0765 Cdev configuration is invalid due to cdev-missing-cif.</p>
+</div>
+<div class="section" id="id3">
+<h3>Verification<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>This fault indicates that the CIf, concrete interface, is missing from the
+concrete device. This can be checked under the concrete device configuration
+under L4-L7 Services-&gt;Device Clusters-&gt;Logical Device-&gt;Device-&gt;Policy to
+verify the necessary concrete interfaces have been configured.</p>
+</div>
+<div class="section" id="symptom-5">
+<h3>Symptom 5<a class="headerlink" href="#symptom-5" title="Permalink to this headline">¶</a></h3>
+<p>When deploying the service graph, it is possible to see a fault defined as
+F0758 Service graph could not be rendered due to following:
+id-allocation-failure.</p>
+</div>
+<div class="section" id="id4">
+<h3>Verification<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>When deploying service device VMs in a hypervisor, these devices are like the
+normal virtual machine creation in that they will be placed into their own EPG
+that is mapped to the BD where the VM resides. When the service graph is
+rendered by the APIC, it will allocate the VLANs from the VMM pool assigned
+during logical device cluster creation. If the dynamic VLAN pool that is
+associated with the VMM does not have enough VLANs allocated, it will fail and
+raise fault F0758.</p>
+<p>This error can be corrected by allocating additional VLANs into the dynamic
+VLAN pool that is used by the VMM.</p>
+</div>
+<div class="section" id="symptom-6">
+<h3>Symptom 6<a class="headerlink" href="#symptom-6" title="Permalink to this headline">¶</a></h3>
+<p>All faults seem to be cleared but the service graph will still not render, and
+no faults are raised. In addition, verification of the contract shows it has
+been associated with the appropriate service graph. The filter is also defined
+and associated to the correct contract.</p>
+</div>
+<div class="section" id="id5">
+<h3>Verification<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>Go to consumer EPG or External Bridge Network and the provider EPG. It needs
+to have configured the correct EPG or External Bridge Network as the consumer
+and provider. If the EPG is configured as both consumer and provider, the
+L4-L7 graph will not be rendered.</p>
+</div>
+<div class="section" id="symptom-7">
+<h3>Symptom 7<a class="headerlink" href="#symptom-7" title="Permalink to this headline">¶</a></h3>
+<p>The service graph is trying to render, but it fails and raises the fault F0758
+Service graph could not be rendered due to following: missing-mandatory-param.</p>
+</div>
+<div class="section" id="id6">
+<h3>Verification<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>This fault is associated with the Function Node configuration. It would be
+caused by one or more missing mandatory parameters, or one or more missing
+mandatory device configuration parameters:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Check the Function Node configuration and verify if any Mandatory
+parameter with “true” is missing.</li>
+<li>Check under the actual service device configuration and identify if any
+Mandatory parameter is missing. One example might be seen when
+configuring the ASA firewall and the “order” parameter the access
+control entry is a required field even thought it is not marked as
+required.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="symptom-8">
+<h3>Symptom 8<a class="headerlink" href="#symptom-8" title="Permalink to this headline">¶</a></h3>
+<p>In the example the Cisco ASAv is being used, and traffic is not passing
+through the service device. After inspecting the Deployed Device Cluster,
+there is a fault, F0324 Major script error: Configuration error:.</p>
+</div>
+<div class="section" id="id7">
+<h3>Verification<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>This fault is related to the Function Node configuration and it indicates that
+a passed configured parameter in rendering was not accepted by the service
+device. Examples might include configuring ASAv transparent mode in the policy
+while the firewall is configured in routed mode, or configuring the ASAv
+security level to 200 when the only acceptable values are from 0 to 100.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="fn_crash_ts.html" class="btn btn-neutral float-right" title="ACI Fabric Node and Process Crash Troubleshooting">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="vmm_ucs.html" class="btn btn-neutral" title="Virtual Machine Manager and UCS"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Andres Vega, Bryan Deaver, Jerry Ye, Kannan Ponnuswamy, Loy Evans, Mike Timm, Paul Lesiak and Paul Raytick.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-60418502-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+   
+
+</body>
+</html>

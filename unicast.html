@@ -1,0 +1,1002 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Unicast Data Plane Forwarding and Reachability &mdash; ACI Troubleshooting Book 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="ACI Troubleshooting Book 0.0.1 documentation" href="index.html"/>
+        <link rel="next" title="Policies and Contracts" href="pol_cntr.html"/>
+        <link rel="prev" title="Common Network Services" href="common.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="index.html" class="fa fa-home"> ACI Troubleshooting Book</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="preface.html">Preface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#authors-and-contributors">Authors and Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#authors">Authors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#distinguished-contributors">Distinguished Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#dedications">Dedications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#acknowledgments">Acknowledgments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#book-writing-methodology">Book Writing Methodology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#who-should-read-this-book">Who Should Read This Book?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#organization-of-this-book">Organization of this Book</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="aci.html">Application Centric Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aci_policy_model.html">ACI Policy Model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#abstraction-model">Abstraction Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#everything-is-an-object">Everything is an Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#relevant-objects-and-relationships">Relevant Objects and Relationships</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#hierarchical-aci-object-model-and-the-infrastructure">Hierarchical ACI Object Model and the Infrastructure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#infrastructure-as-objects">Infrastructure as Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#build-object-use-object-to-build-policy-reuse-policy">Build object, use object to build policy, reuse policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#rest-api-just-exposes-the-object-model">REST API just exposes the object model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#logical-model-resolved-model-concrete-model">Logical model, Resolved model, concrete model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#formed-and-unformed-relationships">Formed and Unformed Relationships</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#declarative-end-state-and-promise-theory">Declarative End State and Promise Theory</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Troubleshooting Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#apic-access-methods">APIC Access Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#programmatic-configuration-python">Programmatic Configuration (Python)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#fabric-node-access-methods">Fabric Node Access Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#exporting-information-from-the-fabric">Exporting information from the Fabric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#external-data-collection-syslog-snmp-call-home">External Data Collection – Syslog, SNMP, Call-Home</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#health-scores">Health Scores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#atomic-counters">Atomic Counters</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ts_methodology.html">Troubleshooting Methodology</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ts_methodology.html#overall-methodology">Overall Methodology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="topology.html">Sample Reference Topology</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="topology.html#physical-fabric-topology">Physical Fabric Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="topology.html#logical-application-topology">Logical Application Topology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#naming-conventions">Naming Conventions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hw_bringup.html">Initial Hardware Bringup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="hw_bringup.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw_bringup.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw_bringup.html#id2">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fabric_init.html">Fabric Initialization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fabric_init.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fabric_init.html#fabric-verification">Fabric Verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fabric_init.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="apic.html">Application Policy Infrastructure Controller (APIC) High Availability and Clustering</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#cluster-formation">Cluster Formation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#majority-and-minority-handling-clustering-split-brains">Majority and Minority - Handling Clustering Split Brains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id1">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id4">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id6">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id9">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id12">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id15">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="firmware.html">Firmware and Image Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html#id1">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html#id5">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="health.html">Faults / Health Scores</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="health.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="health.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="health.html#id1">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rest.html">REST Interface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rest.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rest.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mgmt_tn.html">Management Tenant</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mgmt_tn.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mgmt_tn.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mgmt_tn.html#id1">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="common.html">Common Network Services</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="common.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common.html#id15">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Unicast Data Plane Forwarding and Reachability</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pol_cntr.html">Policies and Contracts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pol_cntr.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pol_cntr.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bridged2ext.html">Bridged Connectivity to External Networks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="bridged2ext.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bridged2ext.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bridged2ext.html#id3">Problem Description:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bridged2ext.html#id5">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="routed2ext.html">Routed Connectivity to External Networks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#fabric-verification">Fabric Verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#problem-description">Problem description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#id1">Problem description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#id3">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vmm_ucs.html">Virtual Machine Manager and UCS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#id2">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#id6">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#id9">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="l4l7.html">L4-L7 Service Insertion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="l4l7.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="l4l7.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fn_crash_ts.html">ACI Fabric Node and Process Crash Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fn_crash_ts.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fn_crash_ts.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="apic_crash_ts.html">APIC Process Crash Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="apic_crash_ts.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic_crash_ts.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix.html#overview">Overview</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">ACI Troubleshooting Book</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div></div>
+          <div role="main" class="document">
+            
+  <div class="section" id="unicast-data-plane-forwarding-and-reachability">
+<h1>Unicast Data Plane Forwarding and Reachability<a class="headerlink" href="#unicast-data-plane-forwarding-and-reachability" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#overview" id="id3">Overview</a><ul>
+<li><a class="reference internal" href="#verification-endpoints" id="id4">Verification - Endpoints</a></li>
+<li><a class="reference internal" href="#verification-vlans" id="id5">Verification - VLANs</a></li>
+<li><a class="reference internal" href="#verfication-forwarding-tables" id="id6">Verfication - Forwarding Tables</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#problem-description" id="id7">Problem Description</a><ul>
+<li><a class="reference internal" href="#symptom" id="id8">Symptom</a></li>
+<li><a class="reference internal" href="#verification" id="id9">Verification</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id1" id="id10">Problem Description</a><ul>
+<li><a class="reference internal" href="#symptom-1" id="id11">Symptom 1</a></li>
+<li><a class="reference internal" href="#id2" id="id12">Verification</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="overview">
+<h2><a class="toc-backref" href="#id3">Overview</a><a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>This chapter will cover unicast forwarding and reachability problems. This can
+be, but is not limited to, end points not showing up in the forwarding tables,
+end points not able to communicate with each other (non-zoning rule policy
+(contract) related problems), VLANs not being programmed, as well as incorrect
+configurations that can cause these problems and the subsequent faults that
+are raised.</p>
+<p>To troubleshoot packet forwarding issues multiple shells will need to be used
+on a given leaf or spine.</p>
+<ul class="simple">
+<li><strong>CLI</strong>: The CLI will be used to run the well-known VSH commands and check
+the concrete models on the switch. For example show vlan, show endpoint,
+etc...</li>
+<li><strong>vsh_lc</strong>: This is the line card shell and it will be used to check line
+card processes and forwarding tables specific to the Application Leaf Engine
+(ALE) ASIC.</li>
+</ul>
+<p>In the course of troubleshooting, several different VLAN types can be come
+across. A thorough deep dive on the different types of VLANs and their
+respective mappings is beyond the scope of this chapter and book, but
+summarized in the picture below are some of the more important concepts that
+are fundamental in understanding the use of VLANs in the ACI fabric. The
+output from the below command will be discussed in more detail later in this
+chapter, but the command was ran from the vsh_lc shell discussed above</p>
+<a class="reference internal image-reference" href="_images/vlan-overview4_1.png"><img alt="_images/vlan-overview4_1.png" class="align-center" src="_images/vlan-overview4_1.png" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>The show vlan extended command shows the VLANs described above map to the
+Bridge Domains and End Point Groups that have been configured on the fabric.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">rtp_leaf1# show vlan extended</span>
+<span class="go"> VLAN Name                             Status    Ports</span>
+<span class="go">---- --------------------------------- --------- -------------------------------</span>
+<span class="go">13   infra:default                     active    Eth1/1, Eth1/2, Eth1/5, Eth1/35 &lt;--- Infra VLAN</span>
+<span class="go">17   Prod:Web                          active    Eth1/27, Eth1/28, Po2, Po3 &lt;--- BD_VLAN</span>
+<span class="go">21   Prod:MiddleWare                   active    Eth1/27, Eth1/28, Po2, Po3 &lt;--- BD_VLAN</span>
+<span class="go">22   Prod:commerceworkspace:Middleware active    Eth1/27, Eth1/28, Po2, Po3 &lt;--- EPG FD_VLAN</span>
+<span class="go">23   Prod:commerceworkspace:Web        active    Eth1/27, Eth1/28, Po2, Po3 &lt;--- EPG FD_VLAN</span>
+
+<span class="go"> VLAN Type  Vlan-mode  Encap</span>
+<span class="go"> ---- ----- ---------- -------------------------------</span>
+<span class="go"> 13   enet  CE         vxlan-16777209, vlan-3500&lt;--- Encap VLAN for infra</span>
+<span class="go"> 17   enet  CE         vxlan-16089026</span>
+<span class="go"> 21   enet  CE         vxlan-16351138</span>
+<span class="go"> 22   enet  CE         vlan-634&lt;--- Encap VLAN</span>
+<span class="go"> 23   enet  CE         vlan-600&lt;---Encap VLAN</span>
+</pre></div>
+</div>
+<p>Additionally, an understanding of the forwarding tables in the ALE ASIC is
+useful when troubleshooting packet forwarding problems. The picture below
+depicts two tables, and the subsequent lookup that is performed on ingress and
+egress. There is a Local Station Table (LST) and a Global Station Table (GST).
+These two tables are unified for Layer 2 and Layer 3, and these entries can be
+displayed separately.</p>
+<a class="reference internal image-reference" href="_images/pipeline.jpg"><img alt="_images/pipeline.jpg" class="align-center" src="_images/pipeline.jpg" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="section" id="verification-endpoints">
+<h3><a class="toc-backref" href="#id4">Verification - Endpoints</a><a class="headerlink" href="#verification-endpoints" title="Permalink to this headline">¶</a></h3>
+<p>To verify end point reachability the following commands can be used from the
+CLI. Notice the legend that details how that end point was learned. The below
+sample output displays end points learned locally (direct attached to the
+leaf) as well vPC attached.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">rtp_leaf1# show endpoint</span>
+<span class="go">Legend:</span>
+<span class="go"> O - peer-attached    H - vtep             a - locally-aged     S - static</span>
+<span class="go"> V - vpc-attached     p - peer-aged        L - local            M - span</span>
+<span class="go"> s - static-arp       B - bounce</span>
+<span class="go">+---------------+---------------+-----------------+--------------+-------------+</span>
+<span class="go">      VLAN/       Encap           MAC Address       MAC Info/       Interface</span>
+<span class="go">      Domain      VLAN            IP Address        IP Info</span>
+<span class="go">+---------------+---------------+-----------------+--------------+-------------+</span>
+<span class="go">Prod:Prod                               10.0.0.101 L</span>
+<span class="go">27/Prod:Prod            vlan-700    0026.f064.0000 LpV                       po1</span>
+<span class="go">27/Prod:Prod            vlan-700    001b.54c2.2644 LpV                       po1</span>
+<span class="go">27/Prod:Prod            vlan-700    0026.980a.df44 LV                        po1</span>
+<span class="go">27/Prod:Prod            vlan-700    0000.0c9f.f2bc LV                        po1</span>
+<span class="go">35/Prod:Prod            vlan-670    0050.56bb.0164 LV                        po2</span>
+<span class="go">29/Prod:Prod            vlan-600    0050.56bb.cccf LV                        po2</span>
+<span class="go">34/Prod:Prod            vlan-636    0000.0c9f.f2bc LV                        po2</span>
+<span class="go">34/Prod:Prod            vlan-636    0026.980a.df44 LV                        po2</span>
+<span class="go">34/Prod:Prod            vlan-636    0050.56bb.ba9a LV                        po2</span>
+<span class="go">Test:Test                               10.1.0.101 L</span>
+<span class="go">overlay-1                            172.16.136.95 L</span>
+<span class="go">overlay-1                            172.16.136.96 L</span>
+<span class="go">13/overlay-1      vxlan-16777209    90e2.ba5a.9f30 L                      eth1/2</span>
+<span class="go">13/overlay-1      vxlan-16777209    90e2.ba4b.fc78 L                      eth1/1</span>
+</pre></div>
+</div>
+<p>The show mac address-table command can also can be used to confirm mac address
+learning and aging as shown below.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">rtp_leaf1# show mac address-table</span>
+<span class="go">Legend:</span>
+<span class="go">* - primary entry, G - Gateway MAC, (R) - Routed MAC, O - Overlay MAC</span>
+<span class="go">age - seconds since last seen,+ - primary entry using vPC Peer-Link,</span>
+<span class="go">(T) - True, (F) - False</span>
+<span class="go">   VLAN     MAC Address      Type      age     Secure NTFY Ports/SWID.SSID.LID</span>
+<span class="go">---------+-----------------+--------+---------+------+----+------------------</span>
+<span class="go">* 27       0026.f064.0000    dynamic      -       F    F    po1</span>
+<span class="go">* 27       001b.54c2.2644    dynamic      -       F    F    po1</span>
+<span class="go">* 27       0000.0c9f.f2bc    dynamic      -       F    F    po1</span>
+<span class="go">* 27       0026.980a.df44    dynamic      -       F    F    po1</span>
+<span class="go">* 16       0050.56bb.0164    dynamic      -       F    F    po2</span>
+<span class="go">* 16       0050.56bb.2577    dynamic      -       F    F    po2</span>
+<span class="go">* 16       0050.56bb.cccf    dynamic      -       F    F    po2</span>
+<span class="go">* 33       0050.56bb.cccf    dynamic      -       F    F    po2</span>
+<span class="go">* 17       0026.980a.df44    dynamic      -       F    F    po2</span>
+<span class="go">* 17       0050.56bb.ba9a    dynamic      -       F    F    po2</span>
+<span class="go">* 40       0050.56bb.f532    dynamic      -       F    F    po2</span>
+<span class="go">* 13       90e2.ba5a.9f30    dynamic      -       F    F    eth1/2</span>
+<span class="go">* 13       90e2.ba4b.fc78    dynamic      -       F    F    eth1/1</span>
+</pre></div>
+</div>
+<p>To verify end point reachability from the vsh_lc shell the following can be
+used command. Notice all the options that are available. To reduce the amount
+of output displayed, specific end points can be specified as the output can be
+quite extensive in a very large fabric. Alternatively output can be filter by
+using the Linux grep as well.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">rtp_leaf1# vsh_lc</span>
+<span class="go">module-1# show system internal epmc endpoint ?</span>
+<span class="go">all        Show information about all endpoints</span>
+<span class="go">interface  Display interface information</span>
+<span class="go">ip         IP address of the endpoint</span>
+<span class="go">key        Key of the endpoint</span>
+<span class="go">mac        MAC address of the endpoint</span>
+<span class="go">vlan       VLAN info</span>
+<span class="go">vrf        VRF of the endpoint</span>
+
+<span class="go">module-1# show system internal epmc endpoint all</span>
+<span class="go">VRF : overlay-1 ::: Context id : 4 ::: Vnid : 16777199</span>
+<span class="go">MAC : 90e2.ba4b.fc78 ::: Num IPs : 0</span>
+<span class="go">Vlan id : 13 ::: Vlan vnid : 16777209 ::: BD vnid : 16777209</span>
+<span class="go">VRF vnid : 16777199 ::: phy if : 0x1a000000 ::: tunnel if : 0</span>
+<span class="go">Interface : Ethernet1/1</span>
+<span class="go">VTEP tunnel if : N/A ::: Flags : 0x80004804</span>
+<span class="go">Ref count : 4 ::: sclass : 0</span>
+<span class="go">Timestamp : 01/02/1970 21:21:58.113891</span>
+<span class="go">EP Flags : local,MAC,class-set,timer,</span>
+<span class="go">Aging:Timer-type : Host-tracker timeout ::: Timeout-left : 399 ::: Hit-bit : Yes ::: Timer-reset count: 29</span>
+
+<span class="go">PD handles:</span>
+<span class="go">Bcm l2 hit-bit : Yes</span>
+<span class="go">[L2]: Asic : NS ::: BCM : Yes</span>
+
+<span class="go">::::</span>
+
+<span class="go">[snip]</span>
+
+<span class="go">------------------------------------------------</span>
+<span class="go">           EPMC Endpoint Summary</span>
+<span class="go">----------------------------------------------</span>
+<span class="go">Total number of local endpoints                   : 7</span>
+<span class="go">Total number of remote endpoints                  : 0</span>
+<span class="go">Total number of peer endpoints                    : 0</span>
+<span class="go">Total number of cached endpoints                  : 0</span>
+<span class="go">Total number of config endpoints                  : 5</span>
+<span class="go">Total number of MACs                              : 5</span>
+<span class="go">Total number of IPs                               : 2</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="verification-vlans">
+<h3><a class="toc-backref" href="#id5">Verification - VLANs</a><a class="headerlink" href="#verification-vlans" title="Permalink to this headline">¶</a></h3>
+<p>The following commands can be used in the CLI to verify the VLANs programmed
+on the leaf. The show vlan extended command is very useful as it provides the
+BD_VLAN, FD_VLAN (EPG), and the encap used for the EPG FD_VLAN.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">rtp_leaf1# show vlan</span>
+<span class="go"> &lt;CR&gt;       Carriage return</span>
+<span class="go"> all-ports  Show all ports on VLAN</span>
+<span class="go"> brief      All VLAN status in brief</span>
+<span class="go"> extended   VLAN extended info like encaps</span>
+<span class="go"> id         VLAN status by VLAN id</span>
+<span class="go"> internal   Show internal information of vlan-mgr</span>
+<span class="go"> reserved   Internal reserved VLANs</span>
+<span class="go"> summary    VLAN summary information</span>
+
+
+
+<span class="go">rtp_leaf1# show vlan extended</span>
+
+
+<span class="go">VLAN Name                             Status    Ports</span>
+<span class="go"> ---- -------------------------------- --------- -------------------------------</span>
+<span class="go"> 13   infra:default                    active    Eth1/1, Eth1/2, Eth1/5, Eth1/35</span>
+<span class="go"> 16   Prod:Web-FWctxProd               active    Eth1/27, Eth1/28, Po2, Po3</span>
+<span class="go"> 17   Prod:Web-FWctxProd               active    Eth1/27, Eth1/28, Po2, Po3</span>
+<span class="go"> 18   Prod:Web-LBctxProd               active    Eth1/27, Eth1/28, Po2, Po3</span>
+<span class="go"> 21   Prod:MiddleWare                  active    Eth1/27, Eth1/28, Po2, Po3</span>
+<span class="go"> 22   Prod:commerceworkspace:Middleware active    Eth1/27, Eth1/28, Po2, Po3</span>
+<span class="go"> 26   Prod:FWOutside                   active    Eth1/27, Eth1/28, Eth1/42,</span>
+<span class="go">                                                 Eth1/44, Po1, Po2, Po3</span>
+<span class="go"> 27   --                               active    Eth1/42, Eth1/44, Po1</span>
+<span class="go"> 32   Prod:FWInside                    active    Eth1/27, Eth1/28, Po2, Po3</span>
+<span class="go"> 33   Prod:commerceworkspace:FWInside  active    Eth1/27, Eth1/28, Po2, Po3</span>
+<span class="go"> 37   Prod:Web                         active    Eth1/27, Eth1/28, Po2, Po3</span>
+<span class="go"> 40   Prod:commerceworkspace:Web       active    Eth1/27, Eth1/28, Po2, Po3</span>
+
+
+
+<span class="go"> VLAN Type  Vlan-mode  Encap</span>
+<span class="go"> ---- ----- ---------- -------------------------------</span>
+<span class="go"> 13   enet  CE         vxlan-16777209, vlan-3500</span>
+<span class="go"> 16   enet  CE         vlan-637</span>
+<span class="go"> 17   enet  CE         vlan-671</span>
+<span class="go"> 18   enet  CE         vlan-603</span>
+<span class="go"> 21   enet  CE         vxlan-16351138</span>
+<span class="go"> 22   enet  CE         vlan-634</span>
+<span class="go"> 26   enet  CE         vxlan-15662984</span>
+<span class="go"> 27   enet  CE         vlan-700</span>
+<span class="go"> 32   enet  CE         vxlan-15597456</span>
+<span class="go"> 33   enet  CE         vlan-602</span>
+<span class="go"> 37   enet  CE         vxlan-16089026</span>
+<span class="go"> 40   enet  CE         vlan-600</span>
+</pre></div>
+</div>
+<p>The following commands can be used in vsh_lc shell to verify the VLANs are
+programmed on the ALE ASIC. The brief version of the VLAN command is also
+useful as it provides all the VLAN information in a single table.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">rtp_leaf1# vsh_lc</span>
+<span class="go">module-1# show system internal eltmc info vlan ?</span>
+<span class="go">  &lt;0-4095&gt;           Vlan value</span>
+<span class="go">  access_encap_vlan  Vlan on the wire</span>
+<span class="go">  access_encap_vnid  Vnid on the wire</span>
+<span class="go">  all                Show information for all instances of object</span>
+<span class="go">  brief              Show brief information for all objects</span>
+<span class="go">  fab_encap_vnid     Vnid in the fabric</span>
+<span class="go">  hw_vlan            Vlan value in HW</span>
+<span class="go">  summary            Show summary for object</span>
+
+<span class="go">module-1# show system internal eltmc info vlan brief</span>
+
+<span class="go">VLAN-Info</span>
+<span class="go">VlanId  HW_VlanId Type            Access_enc Access_enc Fabric_enc Fabric_enc BDVlan</span>
+<span class="go">                                  Type                 Type</span>
+<span class="go">==================================================================================</span>
+<span class="go">     13       15    BD_CTRL_VLAN    802.1q      3500     VXLAN  16777209       0</span>
+<span class="go">     16       28         FD_VLAN    802.1q       637     VXLAN      8429      26</span>
+<span class="go">     17       25         FD_VLAN    802.1q       671     VXLAN      8463      32</span>
+<span class="go">     18       29         FD_VLAN    802.1q       603     VXLAN      8395      32</span>
+<span class="go">     21       23         BD_VLAN   Unknown         0     VXLAN  16351138      21</span>
+<span class="go">     22       24         FD_VLAN    802.1q       634     VXLAN      8426      21</span>
+<span class="go">     26       26         BD_VLAN   Unknown         0     VXLAN  15662984      26</span>
+<span class="go">     27       27         FD_VLAN    802.1q       700     VXLAN      8192      26</span>
+<span class="go">     32       30         BD_VLAN   Unknown         0     VXLAN  15597456      32</span>
+<span class="go">     33       31         FD_VLAN    802.1q       602     VXLAN      8394      32</span>
+<span class="go">     37       21         BD_VLAN   Unknown         0     VXLAN  16089026      37</span>
+<span class="go">     40       32         FD_VLAN    802.1q       600     VXLAN      8392      37</span>
+</pre></div>
+</div>
+<p>The following command can be used in vsh_lc shell to verify the VLANs
+programmed on ALE ASIC. The output shows EPG FD_VLAN which has an encap value
+of 634. The FD_VLAN has a parent BD_VLAN of 21.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">module-1# show system internal eltmc info vlan 22</span>
+<span class="go">             vlan_id:             22   :::      hw_vlan_id:             24</span>
+<span class="go">           vlan_type:        FD_VLAN   :::         bd_vlan:             21</span>
+<span class="go">   access_encap_type:         802.1q   :::    access_encap:           634</span>
+<span class="go">   fabric_encap_type:          VXLAN   :::    fabric_encap:           8426</span>
+<span class="go">              sclass:          16389   :::           scope:              4</span>
+<span class="go">             bd_vnid:           8426   :::        untagged:              0</span>
+<span class="go">     acess_encap_hex:          0x27a   :::  fabric_enc_hex:         0x20ea</span>
+<span class="go">     pd_vlan_ft_mask:           0x4f</span>
+<span class="go">        bcm_class_id:             16   :::  bcm_qos_pap_id:           1024</span>
+<span class="go">          qq_met_ptr:              2   :::       seg_label:              0</span>
+<span class="go">      ns_qos_map_idx:              0   :::  ns_qos_map_pri:              1</span>
+<span class="go">     ns_qos_map_dscp:              0   :::   ns_qos_map_tc:              0</span>
+<span class="go">        vlan_ft_mask:           0x30</span>
+
+<span class="go">      NorthStar Info:</span>
+<span class="go">           qq_tbl_id:           1808   :::         qq_ocam:              0</span>
+<span class="go">     seg_stat_tbl_id:              0   :::        seg_ocam:              0</span>
+</pre></div>
+</div>
+<p>The same command can be used to display BD_VLAN 21 from the above display is
+the parent VLAN of FD_VLAN 22. Displaying this VLAN provides important
+information with regards to the forwarding behavior for this Bridge Domain. It
+can be seen that this BD has been left to the default forwarding L3 behavior.
+Remember that the BD_VLAN and FD_VLAN is only locally significant to a single
+leaf.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">module-1# show system internal eltmc info vlan 21</span>
+<span class="go">             vlan_id:             21   :::      hw_vlan_id:             23</span>
+<span class="go">           vlan_type:        BD_VLAN   :::         bd_vlan:             21</span>
+<span class="go">   access_encap_type:        Unknown   :::    access_encap:              0</span>
+<span class="go">   fabric_encap_type:          VXLAN   :::    fabric_encap:       16351138</span>
+<span class="go">              sclass:          32773   :::           scope:              4</span>
+<span class="go">             bd_vnid:       16351138   :::        untagged:              0</span>
+<span class="go">     acess_encap_hex:              0   :::  fabric_enc_hex:       0xf97fa2</span>
+<span class="go">         vrf_fd_list: 22,</span>
+<span class="go">     pd_vlan_ft_mask:              0</span>
+<span class="go">        bcm_class_id:              0   :::  bcm_qos_pap_id:              0</span>
+<span class="go">          qq_met_ptr:              0   :::       seg_label:              0</span>
+<span class="go">      ns_qos_map_idx:              0   :::  ns_qos_map_pri:              0</span>
+<span class="go">     ns_qos_map_dscp:              0   :::   ns_qos_map_tc:              0</span>
+<span class="go">        vlan_ft_mask:           0x7f</span>
+<span class="go">            fwd_mode:  bridge, route</span>
+<span class="go">            arp_mode:        unicast</span>
+<span class="go">        unk_mc_flood:              1</span>
+<span class="go">         unk_uc_mode:          proxy</span>
+
+<span class="go">      NorthStar Info:</span>
+<span class="go">          qq_tbl_id:           2040   :::         qq_ocam:              0</span>
+<span class="go">    seg_stat_tbl_id:            149   :::        seg_ocam:              0</span>
+<span class="go">        flood_encap:             29   :::  igmp_mld_encap:             33</span>
+</pre></div>
+</div>
+<p>Using the same command sequence and displaying FD_VLAN 33 shows that the
+parent BD_VLAN is 32. Displaying the BD_VLAN shows that this BD forwarding
+behavior has been changed for L2 forwarding and flooding.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">module-1# show system internal eltmc info vlan 33</span>
+
+<span class="go">                      vlan_id:             33   :::      hw_vlan_id:             31</span>
+<span class="go">                   vlan_type:        FD_VLAN   :::         bd_vlan:             32</span>
+<span class="go">     access_encap_type:         802.1q   :::    access_encap:            602</span>
+<span class="go">   fabric_encap_type:          VXLAN   :::    fabric_encap:           8394</span>
+<span class="go">              sclass:          16394   :::           scope:              4</span>
+<span class="go">             bd_vnid:           8394   :::        untagged:              0</span>
+<span class="go">     acess_encap_hex:          0x25a   :::  fabric_enc_hex:         0x20ca</span>
+<span class="go">     pd_vlan_ft_mask:           0x4f</span>
+<span class="go">        bcm_class_id:             16   :::  bcm_qos_pap_id:           1024</span>
+<span class="go">          qq_met_ptr:              7   :::       seg_label:              0</span>
+<span class="go">      ns_qos_map_idx:              0   :::  ns_qos_map_pri:              1</span>
+<span class="go">     ns_qos_map_dscp:              0   :::   ns_qos_map_tc:              0</span>
+<span class="go">        vlan_ft_mask:           0x30</span>
+
+<span class="go">      NorthStar Info:</span>
+<span class="go">           qq_tbl_id:           1417   :::         qq_ocam:              0</span>
+<span class="go">     seg_stat_tbl_id:              0   :::        seg_ocam:              0</span>
+</pre></div>
+</div>
+<p>This is the display of the BD_VLAN showing the forwarding has been changed for
+layer 2 (bridged):</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">module-1# show system internal eltmc info vlan 32</span>
+
+<span class="go">                      vlan_id:             32   :::      hw_vlan_id:             30</span>
+<span class="go">           vlan_type:        BD_VLAN   :::         bd_vlan:             32</span>
+<span class="go">   access_encap_type:        Unknown   :::    access_encap:              0</span>
+<span class="go">   fabric_encap_type:          VXLAN   :::    fabric_encap:       15597456</span>
+<span class="go">              sclass:          16393   :::           scope:              4</span>
+<span class="go">             bd_vnid:       15597456   :::        untagged:              0</span>
+<span class="go">     acess_encap_hex:              0   :::  fabric_enc_hex:       0xedff90</span>
+<span class="go">         vrf_fd_list: 18,17,33,</span>
+<span class="go">     pd_vlan_ft_mask:              0</span>
+<span class="go">        bcm_class_id:              0   :::  bcm_qos_pap_id:              0</span>
+<span class="go">          qq_met_ptr:              0   :::       seg_label:              0</span>
+<span class="go">      ns_qos_map_idx:              0   :::  ns_qos_map_pri:              0</span>
+<span class="go">     ns_qos_map_dscp:              0   :::   ns_qos_map_tc:              0</span>
+<span class="go">        vlan_ft_mask:           0x7f</span>
+<span class="go">            fwd_mode:         bridge</span>
+<span class="go">            arp_mode:          flood</span>
+<span class="go">        unk_mc_flood:              1</span>
+<span class="go">        unk_uc_mode:          flood</span>
+
+<span class="go">      NorthStar Info:</span>
+<span class="go">          qq_tbl_id:           1672   :::         qq_ocam:              0</span>
+<span class="go">    seg_stat_tbl_id:            452   :::        seg_ocam:              0</span>
+<span class="go">        flood_encap:             36   :::  igmp_mld_encap:             37</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="verfication-forwarding-tables">
+<h3><a class="toc-backref" href="#id6">Verfication - Forwarding Tables</a><a class="headerlink" href="#verfication-forwarding-tables" title="Permalink to this headline">¶</a></h3>
+<p>From the CLI the show endpoint command can be used determine how the endpoint
+are being learned. In the below example all the endpoints are locally learned
+(L).</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">rtp_leaf1# show endpoint</span>
+<span class="go">Legend:</span>
+<span class="go"> O - peer-attached    H - vtep             a - locally-aged     S - static</span>
+<span class="go"> V - vpc-attached     p - peer-aged        L - local            M - span</span>
+<span class="go"> s - static-arp       B - bounce</span>
+<span class="go">+---------------+---------------+-----------------+--------------+-------------+</span>
+<span class="go">      VLAN/       Encap           MAC Address       MAC Info/       Interface</span>
+<span class="go">      Domain      VLAN            IP Address        IP Info</span>
+<span class="go">+---------------+---------------+-----------------+--------------+-------------+</span>
+<span class="go">Prod:Prod                               10.0.0.101 L</span>
+<span class="go">27/Prod:Prod            vlan-700    0026.f064.0000 LpV                       po1</span>
+<span class="go">27/Prod:Prod            vlan-700    001b.54c2.2644 LpV                       po1</span>
+<span class="go">27/Prod:Prod            vlan-700    0026.980a.df44 LV                        po1</span>
+<span class="go">27/Prod:Prod            vlan-700    0000.0c9f.f2bc LV                        po1</span>
+<span class="go">35/Prod:Prod            vlan-670    0050.56bb.0164 LV                        po2</span>
+<span class="go">29/Prod:Prod            vlan-600    0050.56bb.cccf LV                        po2</span>
+<span class="go">34/Prod:Prod            vlan-636    0000.0c9f.f2bc LV                        po2</span>
+<span class="go">34/Prod:Prod            vlan-636    0026.980a.df44 LV                        po2</span>
+<span class="go">34/Prod:Prod            vlan-636    0050.56bb.ba9a LV                        po2</span>
+<span class="go">Test:Test                               10.1.0.101 L</span>
+<span class="go">overlay-1                            172.16.136.95 L</span>
+<span class="go">overlay-1                            172.16.136.96 L</span>
+<span class="go">13/overlay-1      vxlan-16777209    90e2.ba5a.9f30 L                      eth1/2</span>
+<span class="go">13/overlay-1      vxlan-16777209    90e2.ba4b.fc78 L                      eth1/1</span>
+</pre></div>
+</div>
+<p>From the vsh_lc shell the following commands can be used to examine the
+forwarding tables. Remember from the overview there are two forwarding tables
+of interest on the ALE ASIC, the GST and LST. These are unified tables for L2
+and L3. The ingress and egress pipelines can be displayed separately as shown
+below.</p>
+<p>For the output below, when the ingress direction is specified these are
+packets originating from the fabric, and when egress direction is specfied, it
+refers to packets originating from the front panel ports.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">module-1# show platform internal ns forwarding lst-l2 ingress</span>
+
+<span class="go">================================================================================</span>
+<span class="go">                          TABLE INSTANCE : 0</span>
+<span class="go">================================================================================</span>
+<span class="go">Legend:</span>
+<span class="go">POS: Entry Position             O: Overlay Instance</span>
+<span class="go">V: Valid Bit                    MD/PT: Mod/Port</span>
+<span class="go">PT: Pointer Type(A=Adj, E=ECMP, D=DstEncap N=Invalid)</span>
+<span class="go">PTR: ECMP/Adj/DstEncap/MET pointer</span>
+<span class="go">ML: MET Last</span>
+<span class="go">ST: Static                      PTH: Num Paths</span>
+<span class="go">BN: Bounce                      CP: Copy To CPU</span>
+<span class="go">PA: Policy Applied              PI: Policy Incomplete</span>
+<span class="go">DL: Dst Local                   SP: Spine Proxy</span>
+<span class="go">--------------------------------------------------------------------------------</span>
+<span class="go">                                   MO       SRC  P      M S     B C P P D S</span>
+<span class="go">POS   O VNID   Address           V DE MD/PT CLSS T PTR  L T PTH N P A I L P</span>
+<span class="go">--------------------------------------------------------------------------------</span>
+<span class="go">  253 0 eeff88 00:26:98:0a:df:44 1  0 00/15 4007 A    0 0 0   1 0 0 0 0 0 0</span>
+<span class="go">  479 0 edff90 00:00:0c:9f:f2:bc 1  0 00/13 400f A    0 0 0   1 0 0 0 0 0 0</span>
+<span class="go">  693 0 eeff88 00:00:0c:9f:f2:bc 1  0 00/15 4007 A    0 0 0   1 0 0 0 0 0 0</span>
+<span class="go">  848 0 edff90 00:50:56:bb:cc:cf 1  0 00/13 400a A    0 0 0   1 0 0 0 0 0 0</span>
+<span class="go">  919 0 edff90 00:26:98:0a:df:44 1  0 00/13 400f A    0 0 0   1 0 0 0 0 0 0</span>
+<span class="go"> 1271 0 f97fa2 00:22:bd:f8:19:ff 1  0 00/00    1 A    0 0 1   1 0 0 0 1 0 0</span>
+<span class="go"> 1306 0 eeff88 00:1b:54:c2:26:44 1  0 00/15 4007 A    0 0 0   1 0 0 0 0 0 0</span>
+<span class="go"> 1327 0 edff90 00:50:56:bb:ba:9a 1  0 00/13 400f A    0 0 0   1 0 0 0 0 0 0</span>
+<span class="go"> 2421 0 f57fc2 00:50:56:bb:f5:32 1  0 00/13 8004 A    0 0 0   1 0 0 0 0 0 0</span>
+<span class="go"> 3942 0 eeff88 00:26:f0:64:00:00 1  0 00/15 4007 A    0 0 0   1 0 0 0 0 0 0</span>
+<span class="go"> 4083 0 eeff88 00:50:56:bb:01:64 1  0 00/13 4010 A    0 0 0   1 0 0 0 0 0 0</span>
+</pre></div>
+</div>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">module-1# show platform internal ns forwarding lst-l2 egress</span>
+
+<span class="go">================================================================================</span>
+<span class="go">                          TABLE INSTANCE : 1</span>
+<span class="go">================================================================================</span>
+<span class="go">Legend:</span>
+<span class="go">POS: Entry Position             O: Overlay Instance</span>
+<span class="go">V: Valid Bit                    MD/PT: Mod/Port</span>
+<span class="go">PT: Pointer Type(A=Adj, E=ECMP, D=DstEncap N=Invalid)</span>
+<span class="go">PTR: ECMP/Adj/DstEncap/MET pointer</span>
+<span class="go">ML: MET Last</span>
+<span class="go">ST: Static                      PTH: Num Paths</span>
+<span class="go">BN: Bounce                      CP: Copy To CPU</span>
+<span class="go">PA: Policy Applied              PI: Policy Incomplete</span>
+<span class="go">DL: Dst Local                   SP: Spine Proxy</span>
+<span class="go">--------------------------------------------------------------------------------</span>
+<span class="go">                                   MO       SRC  P      M S     B C P P D S</span>
+<span class="go">POS   O VNID   Address           V DE MD/PT CLSS T PTR  L T PTH N P A I L P</span>
+<span class="go">--------------------------------------------------------------------------------</span>
+<span class="go">  253 0 eeff88 00:26:98:0a:df:44 1  0 00/00 4007 A   10 0 0   1 0 0 0 0 1 0</span>
+<span class="go">  479 0 edff90 00:00:0c:9f:f2:bc 1  0 00/00 400f A   13 0 0   1 0 0 0 0 1 0</span>
+<span class="go">  693 0 eeff88 00:00:0c:9f:f2:bc 1  0 00/00 4007 A   10 0 0   1 0 0 0 0 1 0</span>
+<span class="go">  848 0 edff90 00:50:56:bb:cc:cf 1  0 00/00 400a A   14 0 0   1 0 0 0 0 1 0</span>
+<span class="go">  919 0 edff90 00:26:98:0a:df:44 1  0 00/00 400f A   13 0 0   1 0 0 0 0 1 0</span>
+<span class="go"> 1306 0 eeff88 00:1b:54:c2:26:44 1  0 00/00 4007 A   10 0 0   1 0 0 0 0 1 0</span>
+<span class="go"> 1327 0 edff90 00:50:56:bb:ba:9a 1  0 00/00 400f A   13 0 0   1 0 0 0 0 1 0</span>
+<span class="go"> 2421 0 f57fc2 00:50:56:bb:f5:32 1  0 00/00 8004 A   12 0 0   1 0 0 0 0 1 0</span>
+<span class="go"> 3942 0 eeff88 00:26:f0:64:00:00 1  0 00/00 4007 A   10 0 0   1 0 0 0 0 1 0</span>
+<span class="go"> 4083 0 eeff88 00:50:56:bb:01:64 1  0 00/00 4010 A   11 0 0   1 0 0 0 0 1 0</span>
+</pre></div>
+</div>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">module-1# show platform internal ns forwarding lst-l3 ingress</span>
+
+<span class="go">===========================================================================</span>
+<span class="go">                         TABLE INSTANCE : 0</span>
+<span class="go">===========================================================================</span>
+<span class="go">Legend:</span>
+<span class="go">POS: Entry Position             O: Overlay Instance</span>
+<span class="go">V: Valid Bit                    MD/PT: Mod/Port</span>
+<span class="go">PT: Pointer Type(A=Adj, E=ECMP, D=DstEncap N=Invalid)</span>
+<span class="go">PTR: ECMP/Adj/DstEncap/MET pointer</span>
+<span class="go">ML: MET Last</span>
+<span class="go">ST: Static                      PTH: Num Paths</span>
+<span class="go">BN: Bounce                      CP: Copy To CPU</span>
+<span class="go">PA: Policy Applied              PI: Policy Incomplete</span>
+<span class="go">DL: Dst Local                   SP: Spine Proxy</span>
+<span class="go">--------------------------------------------------------------------------------</span>
+<span class="go">                                  MO       SRC  P      M S     B C P P D S</span>
+<span class="go">POS   O VNID   Address           V DE MD/PT CLSS T PTR  L T PTH N P A I L P</span>
+<span class="go">--------------------------------------------------------------------------------</span>
+<span class="go">3142 0 268000 10.1.2.1          1  0 00/00    1 A    0 0 1   1 0 0 0 1 0 0</span>
+</pre></div>
+</div>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">module-1# show platform internal ns forwarding lst-l3 egress</span>
+<span class="go">&lt;no output&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">module-1# show platform internal ns forwarding gst-l2 ingress</span>
+
+<span class="go">===========================================================================</span>
+<span class="go">                         TABLE INSTANCE : 0</span>
+<span class="go">===========================================================================</span>
+
+<span class="go">Legend:</span>
+<span class="go">POS: Entry Position             O: Overlay Instance</span>
+<span class="go">V: Valid Bit                    MD/PT: Mod/Port</span>
+<span class="go">PT: Pointer Type(A=Adj, E=ECMP, D=DstEncap N=Invalid)</span>
+<span class="go">PTR: ECMP/Adj/DstEncap/MET pointer</span>
+<span class="go">ML: MET Last</span>
+<span class="go">ST: Static                      PTH: Num Paths</span>
+<span class="go">BN: Bounce                      CP: Copy To CPU</span>
+<span class="go">PA: Policy Applied              PI: Policy Incomplete</span>
+<span class="go">DL: Dst Local                   SP: Spine Proxy</span>
+<span class="go">--------------------------------------------------------------------------------</span>
+<span class="go">                                  MO       SRC  P      M S     B C P P D S</span>
+<span class="go">POS   O VNID   Address           V DE MD/PT CLSS T PTR  L T PTH N P A I L P</span>
+<span class="go">--------------------------------------------------------------------------------</span>
+<span class="go">4095 0 eeff88 00:50:56:bb:01:64 1  0 00/00 4010 A   11 0 0   1 0 0 0 0 1 0</span>
+<span class="go">4261 0 edff90 00:26:98:0a:df:44 1  0 00/00 400f A   13 0 0   1 0 0 0 0 1 0</span>
+<span class="go">4354 0 edff90 00:50:56:bb:ba:9a 1  0 00/00 400f A   13 0 0   1 0 0 0 0 1 0</span>
+<span class="go">4476 0 eeff88 00:26:98:0a:df:44 1  0 00/00 4007 A   10 0 0   1 0 0 0 0 1 0</span>
+<span class="go">4672 0 f57fc2 00:50:56:bb:f5:32 1  0 00/00 8004 A   12 0 0   1 0 0 0 0 1 0</span>
+<span class="go">7190 0 eeff88 00:00:0c:9f:f2:bc 1  0 00/00 4007 A   10 0 0   1 0 0 0 0 1 0</span>
+<span class="go">7319 0 eeff88 00:26:f0:64:00:00 1  0 00/00 4007 A   10 0 0   1 0 0 0 0 1 0</span>
+<span class="go">7631 0 edff90 00:00:0c:9f:f2:bc 1  0 00/00 400f A   13 0 0   1 0 0 0 0 1 0</span>
+<span class="go">7742 0 edff90 00:50:56:bb:25:77 1  0 00/00 400f A   13 0 0   1 0 0 0 0 1 0</span>
+<span class="go">7910 0 edff90 00:1b:54:c2:26:44 1  0 00/00 400f A   13 0 0   1 0 0 0 0 1 0</span>
+<span class="go">7999 0 eeff88 00:1b:54:c2:26:44 1  0 00/00 4007 A   10 0 0   1 0 0 0 0 1 0</span>
+<span class="go">8167 0 eeff88 00:50:56:bb:25:77 1  0 00/00 4010 A   11 0 0   1 0 0 0 0 1 0</span>
+</pre></div>
+</div>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">module-1# show platform internal ns forwarding gst-l2 egress</span>
+<span class="go">&lt;no output&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">module-1# show platform internal ns forwarding gst-l3 ingress</span>
+
+<span class="go"> ==========================================================================</span>
+<span class="go">                       TABLE INSTANCE : 0</span>
+<span class="go">==========================================================================</span>
+
+<span class="go">Legend:</span>
+<span class="go">POS: Entry Position             O: Overlay Instance</span>
+<span class="go">V: Valid Bit                    MD/PT: Mod/Port</span>
+<span class="go">PT: Pointer Type(A=Adj, E=ECMP, D=DstEncap N=Invalid)</span>
+<span class="go">PTR: ECMP/Adj/DstEncap/MET pointer</span>
+<span class="go">ML: MET Last</span>
+<span class="go">ST: Static                      PTH: Num Paths</span>
+<span class="go">BN: Bounce                      CP: Copy To CPU</span>
+<span class="go">PA: Policy Applied              PI: Policy Incomplete</span>
+<span class="go">DL: Dst Local                   SP: Spine Proxy</span>
+<span class="go">--------------------------------------------------------------------------------</span>
+<span class="go">                                  MO       SRC  P      M S     B C P P D S</span>
+<span class="go">POS   O VNID   Address           V DE MD/PT CLSS T PTR  L T PTH N P A I L P</span>
+<span class="go">--------------------------------------------------------------------------------</span>
+<span class="go"> 562 0 268000 10.0.0.9          1  0 00/00    1 A    c 0 0   1 0 0 0 0 1 0</span>
+<span class="go"> 563 0 268000 10.0.0.1          1  0 00/00    1 A    e 0 0   1 0 0 0 0 1 0</span>
+<span class="go">2312 0 2c0000 10.0.1.11         1  0 00/00    1 A    2 0 0   1 0 0 0 0 1 0</span>
+<span class="go">2313 0 2c0000 10.0.1.3          1  0 00/00    1 A    2 0 0   1 0 0 0 0 1 0</span>
+<span class="go">4580 0 2c0000 10.0.1.9          1  0 00/00    1 A    d 0 0   1 0 0 0 0 1 0</span>
+<span class="go">4581 0 2c0000 10.0.1.1          1  0 00/00    1 A    f 0 0   1 0 0 0 0 1 0</span>
+<span class="go">6878 0 268000 10.0.0.11         1  0 00/00    1 A    2 0 0   1 0 0 0 0 1 0</span>
+<span class="go">6879 0 268000 10.0.0.3          1  0 00/00    1 A    2 0 0   1 0 0 0 0 1 0</span>
+</pre></div>
+</div>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">module-1# show platform internal ns forwarding gst-l3 egress</span>
+<span class="go">&lt;no output&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="problem-description">
+<h2><a class="toc-backref" href="#id7">Problem Description</a><a class="headerlink" href="#problem-description" title="Permalink to this headline">¶</a></h2>
+<p>Issues when using Atomic counters as an aid in troubleshooting</p>
+<div class="section" id="symptom">
+<h3><a class="toc-backref" href="#id8">Symptom</a><a class="headerlink" href="#symptom" title="Permalink to this headline">¶</a></h3>
+<p>Atomic Counters are configured, but do not seem to be working</p>
+</div>
+<div class="section" id="verification">
+<h3><a class="toc-backref" href="#id9">Verification</a><a class="headerlink" href="#verification" title="Permalink to this headline">¶</a></h3>
+<p>There are several areas to verify.</p>
+<ul class="simple">
+<li>NTP must be configured and working correctly within the fabric for Atomic
+Counters to work.</li>
+<li>Endpoints must be learned by the leaf switch. Attach to the leaf command
+line and issue show endpoint and confirm that there is a L next to the
+endpoints the Atomic Counter Policy will be configured.</li>
+<li>The endpoints must be sending traffic in one or both directions before
+Atomic Counters can display the packet counts.</li>
+<li>The endpoints must reside on different leafs. Counted packets must
+traverse the ACI Spine switches. Locally switched packets are not counted by
+Atomic Counters. The packet must traverse the ALE ASICs.</li>
+<li>Atomic Counters are not supported when the endpoints are in different VRFs
+(also known as different Contexts). This implies that Atomic Counters are
+not supported between endpoints that reside in different tenants.</li>
+</ul>
+<p>In the diagram below, On-demand Atomic Counters are available for
+troubleshooting between EPG-A and EPG-B, and between any of the EPs</p>
+<a class="reference internal image-reference" href="_images/atomic2.jpg"><img alt="_images/atomic2.jpg" class="align-center" src="_images/atomic2.jpg" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>In the diagram below On-demand Atomic Counters would only update the transmit
+counter. Drops or excess packets could not be counted.</p>
+<a class="reference internal image-reference" href="_images/atomic4a_2.jpg"><img alt="_images/atomic4a_2.jpg" class="align-center" src="_images/atomic4a_2.jpg" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Packet counts are updated in 30 second intervals, so wait at least 30 seconds
+before expecting to see any counters incrementing.</p>
+<p>Complete Atomic Counter restrictions are documented in the Cisco APIC
+Troubleshooting Guide.</p>
+<p>On Demand Atomic Counters are available in Fabric-&gt;Fabric Policies-&gt;
+Troubleshooting Policies-&gt;Traffic Map as shown below.</p>
+<a class="reference internal image-reference" href="_images/atomic6.png"><img alt="_images/atomic6.png" class="align-center" src="_images/atomic6.png" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Click on the Leaf to Leaf traffic as shown below.</p>
+<a class="reference internal image-reference" href="_images/atomic5.png"><img alt="_images/atomic5.png" class="align-center" src="_images/atomic5.png" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<a class="reference internal image-reference" href="_images/atomic8.png"><img alt="_images/atomic8.png" class="align-center" src="_images/atomic8.png" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2><a class="toc-backref" href="#id10">Problem Description</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>Layer 2 or layer 3 forwarding issues are occurring</p>
+<div class="section" id="symptom-1">
+<h3><a class="toc-backref" href="#id11">Symptom 1</a><a class="headerlink" href="#symptom-1" title="Permalink to this headline">¶</a></h3>
+<p>Layer 2 forwarding issues are occurring</p>
+</div>
+<div class="section" id="id2">
+<h3><a class="toc-backref" href="#id12">Verification</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Use the steps in the verification section, and verify<ul>
+<li>End point reachability</li>
+<li>VLAN Programming</li>
+<li>BD_VLAN forwarding behavior</li>
+<li>GST and LST L2 Forwarding Tables.</li>
+</ul>
+</li>
+<li>For additional Troubleshooting Tips see &#8220;Routed Connectivity to External
+Networks&#8221; chapter. This chapter demonstrates the use of other commands such
+as show vpc.</li>
+</ul>
+<p>Symptom 2
+Layer 3 forwarding issues are occurring</p>
+<p>Verification</p>
+<ul class="simple">
+<li>Use the steps in the verification section, and verify<ul>
+<li>End point reachability</li>
+<li>VLAN Programming</li>
+<li>BD_VLAN forwarding behavior</li>
+<li>GST and LST L3 Forwarding Tables.</li>
+</ul>
+</li>
+<li>For additional Troubleshooting Tips see &#8220;Bridged Connectivity to External
+Networks&#8221; chapter. This chapter demonstrates the use of other commands such
+as show ip route vrf.</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="pol_cntr.html" class="btn btn-neutral float-right" title="Policies and Contracts">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="common.html" class="btn btn-neutral" title="Common Network Services"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Andres Vega, Bryan Deaver, Jerry Ye, Kannan Ponnuswamy, Loy Evans, Mike Timm, Paul Lesiak and Paul Raytick.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-60418502-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+   
+
+</body>
+</html>

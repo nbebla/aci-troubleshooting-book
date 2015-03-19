@@ -1,0 +1,848 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Troubleshooting Cisco Application Centric Infrastructure &mdash; ACI Troubleshooting Book 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="ACI Troubleshooting Book 0.0.1 documentation" href="#"/>
+        <link rel="next" title="Preface" href="preface.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="#" class="fa fa-home"> ACI Troubleshooting Book</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="preface.html">Preface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#authors-and-contributors">Authors and Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#authors">Authors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#distinguished-contributors">Distinguished Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#dedications">Dedications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#acknowledgments">Acknowledgments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#book-writing-methodology">Book Writing Methodology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#who-should-read-this-book">Who Should Read This Book?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#organization-of-this-book">Organization of this Book</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="aci.html">Application Centric Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aci_policy_model.html">ACI Policy Model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#abstraction-model">Abstraction Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#everything-is-an-object">Everything is an Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#relevant-objects-and-relationships">Relevant Objects and Relationships</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#hierarchical-aci-object-model-and-the-infrastructure">Hierarchical ACI Object Model and the Infrastructure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#infrastructure-as-objects">Infrastructure as Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#build-object-use-object-to-build-policy-reuse-policy">Build object, use object to build policy, reuse policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#rest-api-just-exposes-the-object-model">REST API just exposes the object model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#logical-model-resolved-model-concrete-model">Logical model, Resolved model, concrete model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#formed-and-unformed-relationships">Formed and Unformed Relationships</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#declarative-end-state-and-promise-theory">Declarative End State and Promise Theory</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Troubleshooting Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#apic-access-methods">APIC Access Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#programmatic-configuration-python">Programmatic Configuration (Python)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#fabric-node-access-methods">Fabric Node Access Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#exporting-information-from-the-fabric">Exporting information from the Fabric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#external-data-collection-syslog-snmp-call-home">External Data Collection – Syslog, SNMP, Call-Home</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#health-scores">Health Scores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#atomic-counters">Atomic Counters</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ts_methodology.html">Troubleshooting Methodology</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ts_methodology.html#overall-methodology">Overall Methodology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="topology.html">Sample Reference Topology</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="topology.html#physical-fabric-topology">Physical Fabric Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="topology.html#logical-application-topology">Logical Application Topology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#naming-conventions">Naming Conventions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hw_bringup.html">Initial Hardware Bringup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="hw_bringup.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw_bringup.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw_bringup.html#id2">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fabric_init.html">Fabric Initialization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fabric_init.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fabric_init.html#fabric-verification">Fabric Verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fabric_init.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="apic.html">Application Policy Infrastructure Controller (APIC) High Availability and Clustering</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#cluster-formation">Cluster Formation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#majority-and-minority-handling-clustering-split-brains">Majority and Minority - Handling Clustering Split Brains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id1">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id4">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id6">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id9">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id12">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id15">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="firmware.html">Firmware and Image Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html#id1">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html#id5">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="health.html">Faults / Health Scores</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="health.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="health.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="health.html#id1">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rest.html">REST Interface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rest.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rest.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mgmt_tn.html">Management Tenant</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mgmt_tn.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mgmt_tn.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mgmt_tn.html#id1">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="common.html">Common Network Services</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="common.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common.html#id15">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="unicast.html">Unicast Data Plane Forwarding and Reachability</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="unicast.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unicast.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unicast.html#id1">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pol_cntr.html">Policies and Contracts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pol_cntr.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pol_cntr.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bridged2ext.html">Bridged Connectivity to External Networks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="bridged2ext.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bridged2ext.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bridged2ext.html#id3">Problem Description:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bridged2ext.html#id5">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="routed2ext.html">Routed Connectivity to External Networks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#fabric-verification">Fabric Verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#problem-description">Problem description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#id1">Problem description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#id3">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vmm_ucs.html">Virtual Machine Manager and UCS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#id2">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#id6">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#id9">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="l4l7.html">L4-L7 Service Insertion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="l4l7.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="l4l7.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fn_crash_ts.html">ACI Fabric Node and Process Crash Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fn_crash_ts.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fn_crash_ts.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="apic_crash_ts.html">APIC Process Crash Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="apic_crash_ts.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic_crash_ts.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix.html#overview">Overview</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="#">ACI Troubleshooting Book</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div></div>
+          <div role="main" class="document">
+            
+  <div class="section" id="troubleshooting-cisco-application-centric-infrastructure">
+<h1>Troubleshooting Cisco Application Centric Infrastructure<a class="headerlink" href="#troubleshooting-cisco-application-centric-infrastructure" title="Permalink to this headline">¶</a></h1>
+<a class="reference internal image-reference" href="_images/cover.png" id="cover"><img alt="_images/cover.png" class="align-center" id="cover" src="_images/cover.png" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p id="toc">Table of Contents:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="preface.html">Preface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#authors-and-contributors">Authors and Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#authors">Authors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#distinguished-contributors">Distinguished Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#dedications">Dedications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#acknowledgments">Acknowledgments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#book-writing-methodology">Book Writing Methodology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#who-should-read-this-book">Who Should Read This Book?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="preface.html#expected-audience">Expected Audience</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#organization-of-this-book">Organization of this Book</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="preface.html#section-1-introduction-to-aci-troubleshooting"><strong>Section 1: Introduction to ACI Troubleshooting</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="preface.html#section-2-sample-reference-topology"><strong>Section 2: Sample Reference Topology</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="preface.html#section-3-troubleshooting-application-centric-infrastructure"><strong>Section 3: Troubleshooting Application Centric Infrastructure</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="aci.html">Application Centric Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aci_policy_model.html">ACI Policy Model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#abstraction-model">Abstraction Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#everything-is-an-object">Everything is an Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#relevant-objects-and-relationships">Relevant Objects and Relationships</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#hierarchical-aci-object-model-and-the-infrastructure">Hierarchical ACI Object Model and the Infrastructure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#infrastructure-as-objects">Infrastructure as Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#build-object-use-object-to-build-policy-reuse-policy">Build object, use object to build policy, reuse policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#rest-api-just-exposes-the-object-model">REST API just exposes the object model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#logical-model-resolved-model-concrete-model">Logical model, Resolved model, concrete model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#formed-and-unformed-relationships">Formed and Unformed Relationships</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#declarative-end-state-and-promise-theory">Declarative End State and Promise Theory</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Troubleshooting Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#apic-access-methods">APIC Access Methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#gui">GUI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#api">API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#cli">CLI</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#programmatic-configuration-python">Programmatic Configuration (Python)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#fabric-node-access-methods">Fabric Node Access Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#exporting-information-from-the-fabric">Exporting information from the Fabric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#external-data-collection-syslog-snmp-call-home">External Data Collection – Syslog, SNMP, Call-Home</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#health-scores">Health Scores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#atomic-counters">Atomic Counters</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ts_methodology.html">Troubleshooting Methodology</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ts_methodology.html#overall-methodology">Overall Methodology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="topology.html">Sample Reference Topology</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="topology.html#physical-fabric-topology">Physical Fabric Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="topology.html#logical-application-topology">Logical Application Topology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#naming-conventions">Naming Conventions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="troubleshooting.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="troubleshooting.html#suggested-naming-templates">Suggested Naming Templates</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hw_bringup.html">Initial Hardware Bringup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="hw_bringup.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw_bringup.html#problem-description">Problem Description</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="hw_bringup.html#symptom-1">Symptom 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hw_bringup.html#verification-resolution">Verification/Resolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hw_bringup.html#symptom-2">Symptom 2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hw_bringup.html#id1">Verification/Resolution</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="hw_bringup.html#id2">Problem Description</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="hw_bringup.html#symptom">Symptom</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hw_bringup.html#verification">Verification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hw_bringup.html#resolution">Resolution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fabric_init.html">Fabric Initialization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fabric_init.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fabric_init.html#fabric-verification">Fabric Verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fabric_init.html#problem-description">Problem Description</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fabric_init.html#symptom-1">Symptom 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fabric_init.html#verification">Verification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fabric_init.html#symptom-2">Symptom 2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fabric_init.html#id1">Verification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fabric_init.html#resolution">Resolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fabric_init.html#symptom-3">Symptom 3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fabric_init.html#id2">Resolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fabric_init.html#symptom-4">Symptom 4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fabric_init.html#id3">Verification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fabric_init.html#id4">Resolution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="apic.html">Application Policy Infrastructure Controller (APIC) High Availability and Clustering</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#cluster-formation">Cluster Formation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#majority-and-minority-handling-clustering-split-brains">Majority and Minority - Handling Clustering Split Brains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#problem-description">Problem Description</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="apic.html#symptom">Symptom</a></li>
+<li class="toctree-l3"><a class="reference internal" href="apic.html#verification">Verification</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id1">Problem Description</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="apic.html#id2">Symptom</a></li>
+<li class="toctree-l3"><a class="reference internal" href="apic.html#id3">Verification</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id4">Problem Description</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="apic.html#id5">Symptom</a></li>
+<li class="toctree-l3"><a class="reference internal" href="apic.html#resolution">Resolution</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id6">Problem Description</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="apic.html#id7">Symptom</a></li>
+<li class="toctree-l3"><a class="reference internal" href="apic.html#id8">Resolution</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id9">Problem Description</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="apic.html#id10">Symptom</a></li>
+<li class="toctree-l3"><a class="reference internal" href="apic.html#id11">Resolution</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id12">Problem Description</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="apic.html#id13">Symptom</a></li>
+<li class="toctree-l3"><a class="reference internal" href="apic.html#id14">Resolution</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id15">Problem Description</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="apic.html#id16">Symptom</a></li>
+<li class="toctree-l3"><a class="reference internal" href="apic.html#id17">Resolution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="firmware.html">Firmware and Image Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html#overview">Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="firmware.html#apic-controller-and-switch-software">APIC Controller and Switch Software</a></li>
+<li class="toctree-l3"><a class="reference internal" href="firmware.html#firmware-management">Firmware Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="firmware.html#compatibility-check">Compatibility Check</a></li>
+<li class="toctree-l3"><a class="reference internal" href="firmware.html#firmware-upgrade-verification">Firmware Upgrade Verification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="firmware.html#verifying-the-firmware-version-and-the-upgrade-status-by-of-use-of-the-rest-api">Verifying the Firmware Version and the Upgrade Status by of use of the REST API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html#problem-description">Problem Description</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="firmware.html#symptom">Symptom</a></li>
+<li class="toctree-l3"><a class="reference internal" href="firmware.html#verification">Verification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="firmware.html#resolution">Resolution</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html#id1">Problem Description</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="firmware.html#id2">Symptom</a></li>
+<li class="toctree-l3"><a class="reference internal" href="firmware.html#id3">Verification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="firmware.html#id4">Resolution</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html#id5">Problem Description</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="firmware.html#id6">Symptom</a></li>
+<li class="toctree-l3"><a class="reference internal" href="firmware.html#id7">Verification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="firmware.html#id8">Resolution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="health.html">Faults / Health Scores</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="health.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="health.html#problem-description">Problem Description</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="health.html#symptom-1">Symptom 1:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="health.html#resolution-1">Resolution 1:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="health.html#id1">Problem Description</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="health.html#id2">Symptom 1:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="health.html#id3">Resolution 1:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="health.html#resolution-2">Resolution 2:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rest.html">REST Interface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rest.html#overview">Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="rest.html#aci-object-model">ACI Object Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rest.html#queries">Queries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rest.html#apic-rest-api">APIC REST API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rest.html#payload-encapsulation">Payload Encapsulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rest.html#read-operations">Read Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rest.html#write-operations">Write Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rest.html#authentication">Authentication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rest.html#filters">Filters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rest.html#browser">Browser</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rest.html#api-inspector">API Inspector</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rest.html#aci-software-development-kit-sdk">ACI Software Development Kit (SDK)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rest.html#establishing-a-session">Establishing a Session</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rest.html#working-with-objects">Working with Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rest.html#apic-rest-to-python-adapter">APIC REST to Python Adapter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rest.html#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="rest.html#problem-description">Problem Description</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="rest.html#symptom-1">Symptom 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rest.html#verification-1">Verification 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rest.html#resolution">Resolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rest.html#symptom-2">Symptom 2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rest.html#verification">Verification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rest.html#id1">Resolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rest.html#symptom-3">Symptom 3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rest.html#id2">Verification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rest.html#id3">Resolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rest.html#symptom-4">Symptom 4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rest.html#id4">Verification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rest.html#id5">Resolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rest.html#symptom-5">Symptom 5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rest.html#id6">Verification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rest.html#id7">Resolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rest.html#symptom-6">Symptom 6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rest.html#id8">Verification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rest.html#id9">Resolution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mgmt_tn.html">Management Tenant</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mgmt_tn.html#overview">Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mgmt_tn.html#fabric-management-routing">Fabric Management Routing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mgmt_tn.html#out-of-band-management">Out-Of-Band Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mgmt_tn.html#inband-management">Inband Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mgmt_tn.html#layer-2-inband-management">Layer 2 Inband Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mgmt_tn.html#layer-2-configuration-notes">Layer 2 Configuration Notes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mgmt_tn.html#layer-3">Layer 3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mgmt_tn.html#layer-3-inband-configuration-notes">Layer 3 Inband Configuration Notes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mgmt_tn.html#apic-management-routing">APIC Management Routing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mgmt_tn.html#fabric-node-switch-routing">Fabric Node (Switch) Routing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mgmt_tn.html#management-failover">Management Failover</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mgmt_tn.html#management-epg-configuration">Management EPG Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mgmt_tn.html#fabric-verification">Fabric Verification</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mgmt_tn.html#problem-description">Problem Description</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mgmt_tn.html#symptom">Symptom</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mgmt_tn.html#verification">Verification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mgmt_tn.html#resolution">Resolution</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mgmt_tn.html#id1">Problem Description</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mgmt_tn.html#id2">Symptom</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mgmt_tn.html#id3">Verification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mgmt_tn.html#id4">Resolution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="common.html">Common Network Services</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="common.html#overview">Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="common.html#fabric-verification">Fabric Verification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="common.html#id3">APIC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="common.html#id4">Fabric nodes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="common.html#problem-description">Problem Description</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="common.html#symptom-1">Symptom 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="common.html#verification">Verification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="common.html#resolution">Resolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="common.html#symptom-2">Symptom 2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="common.html#id5">Verification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="common.html#id8">Resolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="common.html#symptom-3">Symptom 3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="common.html#id9">Verification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="common.html#symptom-4">Symptom 4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="common.html#id11">Verification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="common.html#id14">Resolution</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="common.html#id15">Problem Description</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="common.html#id16">Symptom 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="common.html#id17">Verification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="common.html#id18">Resolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="common.html#id19">Symptom 2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="common.html#id20">Verification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="common.html#id21">Resolution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="unicast.html">Unicast Data Plane Forwarding and Reachability</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="unicast.html#overview">Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="unicast.html#verification-endpoints">Verification - Endpoints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="unicast.html#verification-vlans">Verification - VLANs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="unicast.html#verfication-forwarding-tables">Verfication - Forwarding Tables</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="unicast.html#problem-description">Problem Description</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="unicast.html#symptom">Symptom</a></li>
+<li class="toctree-l3"><a class="reference internal" href="unicast.html#verification">Verification</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="unicast.html#id1">Problem Description</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="unicast.html#symptom-1">Symptom 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="unicast.html#id2">Verification</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pol_cntr.html">Policies and Contracts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pol_cntr.html#overview">Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pol_cntr.html#verification-of-zoning-policies">Verification of Zoning Policies</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pol_cntr.html#problem-description">Problem Description</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pol_cntr.html#symptom-1">Symptom 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pol_cntr.html#verification">Verification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pol_cntr.html#resolution">Resolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pol_cntr.html#symptom-2">Symptom 2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pol_cntr.html#id1">Verification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pol_cntr.html#id2">Resolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pol_cntr.html#symptom-3">Symptom 3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pol_cntr.html#id3">Verification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pol_cntr.html#id4">Resolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pol_cntr.html#symptom-4">Symptom 4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pol_cntr.html#id5">Verification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pol_cntr.html#id6">Resolution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bridged2ext.html">Bridged Connectivity to External Networks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="bridged2ext.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bridged2ext.html#problem-description">Problem Description</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="bridged2ext.html#symptom-1">Symptom 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bridged2ext.html#verification">Verification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bridged2ext.html#resolution">Resolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bridged2ext.html#symptom-2">Symptom 2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bridged2ext.html#id1">Verification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bridged2ext.html#id2">Resolution</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="bridged2ext.html#id3">Problem Description:</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="bridged2ext.html#symptom-3">Symptom 3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bridged2ext.html#verification-resolution">Verification/Resolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bridged2ext.html#symptom-4">Symptom 4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bridged2ext.html#id4">Verification/Resolution</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="bridged2ext.html#id5">Problem Description</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="bridged2ext.html#id6">Symptom 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bridged2ext.html#id7">Verification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bridged2ext.html#id8">Resolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bridged2ext.html#id9">Symptom 2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bridged2ext.html#id10">Verification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bridged2ext.html#id11">Resolution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="routed2ext.html">Routed Connectivity to External Networks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#overview">Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="routed2ext.html#external-route-distribution-inside-fabric">External Route Distribution Inside Fabric</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#fabric-verification">Fabric Verification</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="routed2ext.html#output-from-spine-1"><strong>Output from Spine 1</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="routed2ext.html#output-from-spine-2"><strong>Output from Spine 2</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#problem-description">Problem description</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="routed2ext.html#symptom">Symptom</a></li>
+<li class="toctree-l3"><a class="reference internal" href="routed2ext.html#verification-resolution">Verification/Resolution</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#id1">Problem description</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="routed2ext.html#symptom-1">Symptom 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="routed2ext.html#verification-1">Verification 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="routed2ext.html#resolution">Resolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="routed2ext.html#verification-2">Verification 2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="routed2ext.html#resolution-1">Resolution 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="routed2ext.html#resolution-2">Resolution 2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="routed2ext.html#symptom-2">Symptom 2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="routed2ext.html#verification">Verification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="routed2ext.html#id2">Resolution</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#id3">Problem Description</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="routed2ext.html#id4">Symptom</a></li>
+<li class="toctree-l3"><a class="reference internal" href="routed2ext.html#id5">Verification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="routed2ext.html#id6">Resolution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vmm_ucs.html">Virtual Machine Manager and UCS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#problem-description">Problem Description</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vmm_ucs.html#symptom-1">Symptom 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vmm_ucs.html#verification">Verification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vmm_ucs.html#symptom-2">Symptom 2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vmm_ucs.html#id1">Verification</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#id2">Problem Description</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vmm_ucs.html#symptom">Symptom</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vmm_ucs.html#id3">Verification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vmm_ucs.html#id4">Symptom 2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vmm_ucs.html#id5">Verification</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#id6">Problem Description</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vmm_ucs.html#id7">Symptom</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vmm_ucs.html#id8">Verification</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#id9">Problem Description</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vmm_ucs.html#id10">Symptom</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vmm_ucs.html#id11">Verification</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="l4l7.html">L4-L7 Service Insertion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="l4l7.html#overview">Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="l4l7.html#device-package">Device Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="l4l7.html#service-graph-definition">Service Graph Definition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="l4l7.html#concrete-device-and-logical-device">Concrete Device and Logical Device</a></li>
+<li class="toctree-l3"><a class="reference internal" href="l4l7.html#device-cluster-selector-policies">Device Cluster Selector Policies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="l4l7.html#rendering-the-service-graph">Rendering the Service Graph</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="l4l7.html#problem-description">Problem Description</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="l4l7.html#symptom-1">Symptom 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="l4l7.html#verification">Verification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="l4l7.html#symptom-2">Symptom 2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="l4l7.html#id1">Verification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="l4l7.html#symptom-3">Symptom 3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="l4l7.html#id2">Verification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="l4l7.html#symptom-4">Symptom 4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="l4l7.html#id3">Verification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="l4l7.html#symptom-5">Symptom 5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="l4l7.html#id4">Verification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="l4l7.html#symptom-6">Symptom 6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="l4l7.html#id5">Verification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="l4l7.html#symptom-7">Symptom 7</a></li>
+<li class="toctree-l3"><a class="reference internal" href="l4l7.html#id6">Verification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="l4l7.html#symptom-8">Symptom 8</a></li>
+<li class="toctree-l3"><a class="reference internal" href="l4l7.html#id7">Verification</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fn_crash_ts.html">ACI Fabric Node and Process Crash Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fn_crash_ts.html#overview">Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fn_crash_ts.html#dme-processes">DME Processes:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fn_crash_ts.html#cli">CLI:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fn_crash_ts.html#identify-when-a-process-crashes">Identify When a Process Crashes:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fn_crash_ts.html#collecting-the-core-files">Collecting the Core Files:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fn_crash_ts.html#problem-description">Problem Description</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fn_crash_ts.html#symptom-1">Symptom 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fn_crash_ts.html#verification">Verification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fn_crash_ts.html#symptom-2">Symptom 2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fn_crash_ts.html#id1">Verification</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="apic_crash_ts.html">APIC Process Crash Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="apic_crash_ts.html#overview">Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="apic_crash_ts.html#dme-processes">DME Processes:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="apic_crash_ts.html#how-to-identify-when-a-process-crashes">How to Identify When a Process Crashes:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="apic_crash_ts.html#collecting-the-core-files">Collecting the Core Files:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="apic_crash_ts.html#problem-description">Problem Description</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="apic_crash_ts.html#symptom-1">Symptom 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="apic_crash_ts.html#verification">Verification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="apic_crash_ts.html#symptom-2">Symptom 2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="apic_crash_ts.html#id1">Verification</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix.html#overview">Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="appendix.html#a">A</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix.html#b">B</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix.html#c">C</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix.html#d">D</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix.html#e">E</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix.html#f">F</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix.html#g">G</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix.html#h">H</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix.html#i">I</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix.html#j">J</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix.html#l">L</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix.html#m">M</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix.html#o">O</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix.html#p">P</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix.html#r">R</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix.html#s">S</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix.html#t">T</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix.html#v">V</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix.html#x">X</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="indices-and-tables">
+<h2>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><em>Index</em></a></li>
+<li><a class="reference internal" href="py-modindex.html"><em>Module Index</em></a></li>
+<li><a class="reference internal" href="search.html"><em>Search Page</em></a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="preface.html" class="btn btn-neutral float-right" title="Preface">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Andres Vega, Bryan Deaver, Jerry Ye, Kannan Ponnuswamy, Loy Evans, Mike Timm, Paul Lesiak and Paul Raytick.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-60418502-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+   
+
+</body>
+</html>

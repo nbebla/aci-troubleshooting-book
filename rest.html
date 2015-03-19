@@ -1,0 +1,1210 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>REST Interface &mdash; ACI Troubleshooting Book 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="ACI Troubleshooting Book 0.0.1 documentation" href="index.html"/>
+        <link rel="next" title="Management Tenant" href="mgmt_tn.html"/>
+        <link rel="prev" title="Faults / Health Scores" href="health.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="index.html" class="fa fa-home"> ACI Troubleshooting Book</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="preface.html">Preface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#authors-and-contributors">Authors and Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#authors">Authors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#distinguished-contributors">Distinguished Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#dedications">Dedications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#acknowledgments">Acknowledgments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#book-writing-methodology">Book Writing Methodology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#who-should-read-this-book">Who Should Read This Book?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#organization-of-this-book">Organization of this Book</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="aci.html">Application Centric Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aci_policy_model.html">ACI Policy Model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#abstraction-model">Abstraction Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#everything-is-an-object">Everything is an Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#relevant-objects-and-relationships">Relevant Objects and Relationships</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#hierarchical-aci-object-model-and-the-infrastructure">Hierarchical ACI Object Model and the Infrastructure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#infrastructure-as-objects">Infrastructure as Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#build-object-use-object-to-build-policy-reuse-policy">Build object, use object to build policy, reuse policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#rest-api-just-exposes-the-object-model">REST API just exposes the object model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#logical-model-resolved-model-concrete-model">Logical model, Resolved model, concrete model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#formed-and-unformed-relationships">Formed and Unformed Relationships</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aci_policy_model.html#declarative-end-state-and-promise-theory">Declarative End State and Promise Theory</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Troubleshooting Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#apic-access-methods">APIC Access Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#programmatic-configuration-python">Programmatic Configuration (Python)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#fabric-node-access-methods">Fabric Node Access Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#exporting-information-from-the-fabric">Exporting information from the Fabric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#external-data-collection-syslog-snmp-call-home">External Data Collection – Syslog, SNMP, Call-Home</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#health-scores">Health Scores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#atomic-counters">Atomic Counters</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ts_methodology.html">Troubleshooting Methodology</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ts_methodology.html#overall-methodology">Overall Methodology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="topology.html">Sample Reference Topology</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="topology.html#physical-fabric-topology">Physical Fabric Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="topology.html#logical-application-topology">Logical Application Topology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#naming-conventions">Naming Conventions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hw_bringup.html">Initial Hardware Bringup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="hw_bringup.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw_bringup.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw_bringup.html#id2">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fabric_init.html">Fabric Initialization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fabric_init.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fabric_init.html#fabric-verification">Fabric Verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fabric_init.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="apic.html">Application Policy Infrastructure Controller (APIC) High Availability and Clustering</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#cluster-formation">Cluster Formation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#majority-and-minority-handling-clustering-split-brains">Majority and Minority - Handling Clustering Split Brains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id1">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id4">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id6">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id9">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id12">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic.html#id15">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="firmware.html">Firmware and Image Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html#id1">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html#id5">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="health.html">Faults / Health Scores</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="health.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="health.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="health.html#id1">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">REST Interface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mgmt_tn.html">Management Tenant</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mgmt_tn.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mgmt_tn.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mgmt_tn.html#id1">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="common.html">Common Network Services</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="common.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common.html#id15">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="unicast.html">Unicast Data Plane Forwarding and Reachability</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="unicast.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unicast.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unicast.html#id1">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pol_cntr.html">Policies and Contracts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pol_cntr.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pol_cntr.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bridged2ext.html">Bridged Connectivity to External Networks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="bridged2ext.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bridged2ext.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bridged2ext.html#id3">Problem Description:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bridged2ext.html#id5">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="routed2ext.html">Routed Connectivity to External Networks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#fabric-verification">Fabric Verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#problem-description">Problem description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#id1">Problem description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routed2ext.html#id3">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vmm_ucs.html">Virtual Machine Manager and UCS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#problem-description">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#id2">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#id6">Problem Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmm_ucs.html#id9">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="l4l7.html">L4-L7 Service Insertion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="l4l7.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="l4l7.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fn_crash_ts.html">ACI Fabric Node and Process Crash Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fn_crash_ts.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fn_crash_ts.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="apic_crash_ts.html">APIC Process Crash Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="apic_crash_ts.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apic_crash_ts.html#problem-description">Problem Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix.html#overview">Overview</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">ACI Troubleshooting Book</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div></div>
+          <div role="main" class="document">
+            
+  <div class="section" id="rest-interface">
+<h1>REST Interface<a class="headerlink" href="#rest-interface" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#overview" id="id10">Overview</a><ul>
+<li><a class="reference internal" href="#aci-object-model" id="id11">ACI Object Model</a></li>
+<li><a class="reference internal" href="#queries" id="id12">Queries</a></li>
+<li><a class="reference internal" href="#apic-rest-api" id="id13">APIC REST API</a></li>
+<li><a class="reference internal" href="#payload-encapsulation" id="id14">Payload Encapsulation</a></li>
+<li><a class="reference internal" href="#read-operations" id="id15">Read Operations</a></li>
+<li><a class="reference internal" href="#write-operations" id="id16">Write Operations</a></li>
+<li><a class="reference internal" href="#authentication" id="id17">Authentication</a></li>
+<li><a class="reference internal" href="#filters" id="id18">Filters</a></li>
+<li><a class="reference internal" href="#browser" id="id19">Browser</a></li>
+<li><a class="reference internal" href="#api-inspector" id="id20">API Inspector</a></li>
+<li><a class="reference internal" href="#aci-software-development-kit-sdk" id="id21">ACI Software Development Kit (SDK)</a></li>
+<li><a class="reference internal" href="#establishing-a-session" id="id22">Establishing a Session</a></li>
+<li><a class="reference internal" href="#working-with-objects" id="id23">Working with Objects</a></li>
+<li><a class="reference internal" href="#apic-rest-to-python-adapter" id="id24">APIC REST to Python Adapter</a></li>
+<li><a class="reference internal" href="#conclusion" id="id25">Conclusion</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#problem-description" id="id26">Problem Description</a><ul>
+<li><a class="reference internal" href="#symptom-1" id="id27">Symptom 1</a></li>
+<li><a class="reference internal" href="#verification-1" id="id28">Verification 1</a></li>
+<li><a class="reference internal" href="#resolution" id="id29">Resolution</a></li>
+<li><a class="reference internal" href="#symptom-2" id="id30">Symptom 2</a></li>
+<li><a class="reference internal" href="#verification" id="id31">Verification</a></li>
+<li><a class="reference internal" href="#id1" id="id32">Resolution</a></li>
+<li><a class="reference internal" href="#symptom-3" id="id33">Symptom 3</a></li>
+<li><a class="reference internal" href="#id2" id="id34">Verification</a></li>
+<li><a class="reference internal" href="#id3" id="id35">Resolution</a></li>
+<li><a class="reference internal" href="#symptom-4" id="id36">Symptom 4</a></li>
+<li><a class="reference internal" href="#id4" id="id37">Verification</a></li>
+<li><a class="reference internal" href="#id5" id="id38">Resolution</a></li>
+<li><a class="reference internal" href="#symptom-5" id="id39">Symptom 5</a></li>
+<li><a class="reference internal" href="#id6" id="id40">Verification</a></li>
+<li><a class="reference internal" href="#id7" id="id41">Resolution</a></li>
+<li><a class="reference internal" href="#symptom-6" id="id42">Symptom 6</a></li>
+<li><a class="reference internal" href="#id8" id="id43">Verification</a></li>
+<li><a class="reference internal" href="#id9" id="id44">Resolution</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="overview">
+<h2><a class="toc-backref" href="#id10">Overview</a><a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>This chapter will explain the basic concepts necessary to begin effectively
+utilizing ACI programmatic features for troubleshooting. This begins with
+recapitulating an overview the ACI Object Model, which describes how the
+system interprets configuration and represents state to internal and external
+entities. The REST API provides the means necessary to manipulate the object
+store, which contains the configured state of APIC using the object model as
+the metadata definition. The APIC SDK leverages the REST API to read and write
+the configuration of APIC, using the object model to describe the current and
+desired state.</p>
+<p>ACI provides a new approach to data center connectivity, innovative and
+different from the standard approach taken today, but astonishingly simple in
+its elegance and capacity to describe complete application topologies and
+holistically manage varying components of the data center. With the fabric
+behaving as a single logical switch, problems like managing scale, enabling
+application mobility, collecting uniform telemetry points and configuration
+automation are all solved in a straightforward approach. With the controller
+acting as a single point of management, but not a single point of failure,
+clustering offers the advantages of managing large data centers but none of
+the associated fragmented management challenges.</p>
+<p>The controller is responsible for all aspects of configuration. This includes
+configuration for a number of key areas:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Policy: defines how applications communicate, security zoning rules,
+quality of service attributes, service insertion and routing/switching</li>
+<li>Operation: protocols on the fabric for management and monitoring,
+integration with L4-7 services and virtual networking</li>
+<li>Hardware: maintaining fabric switch inventory and both physical and
+virtual interfaces</li>
+<li>Software: firmware revisions on switches and controllers</li>
+</ul>
+</div></blockquote>
+<p>With these pieces natively reflected in the object model, it is possible to
+change these through the REST API, further simplifying the process by
+utilizing the SDK.</p>
+<div class="section" id="aci-object-model">
+<h3><a class="toc-backref" href="#id11">ACI Object Model</a><a class="headerlink" href="#aci-object-model" title="Permalink to this headline">¶</a></h3>
+<p>Data modeling is a methodology used to define and analyze data requirements
+needed to support a process in relation to information systems. The ACI Object
+Model contains a modeled representation of applications, network constructs,
+services, virtualization, management and the relationships between all of the
+building blocks. Essentially, the object model is an abstracted version of the
+configuration and operational state that is applied individually to
+independent network entities. As an example, a switch may have interfaces and
+those interfaces can have characteristics, such as the mode of operation
+(L2/L3), speed, connector type, etc. Some of these characteristics are
+configurable, while others are read-only, however all of them are still
+properties of an interface.</p>
+<p>The object model takes this analytical breakdown of what defines a thing in
+the data center, and carefully determines how it can exist and how to
+represent that. Furthermore, since all of these things do not merely exist,
+but rather interact with one another, there can be relationships within the
+model, which includes containment hierarchy and references. An interface
+belongs to a switch, therefore is contained by the switch, however a virtual
+port channel can reference it. A virtual port channel does not necessarily
+belong to a single switch.</p>
+<p>The objects in the model can also utilize a concept called inheritance, where
+an interface can be a more generic concept and specific definitions can
+inherit characteristics from a base class. For example, a physical interface
+can be a data port or a management port, however both of these still have the
+same basic properties, so they can inherit from a single interface base class.
+Rather than redefine the same properties many times, inheritance can be used
+to define them in one base class, and then specialize them for a specific
+child class.</p>
+<a class="reference internal image-reference" href="_images/dmit.jpg"><img alt="_images/dmit.jpg" class="align-center" src="_images/dmit.jpg" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>All of these configurable entities and their structure are represented as
+classes. The classes define the entities that are instantiated as Managed
+Objects (MO) and stored within the Management Information Tree (MIT). The
+general concept is similar to the tree based hierarchy of a file system or the
+SNMP MIB tree. All classes have a single parent, and may contain multiple
+children. This is with exception to the root of the tree, which is a special
+class called topRoot. Within the model there are different packages that act
+as logical groupings of classes, so that similar entities are placed into the
+same package for easier navigation of the model. Each class has a name, which
+is made from the package and a class name, for example “top” is the package
+and “Root” is the class: “topRoot”; “fv” is the package (fabric
+virtualization) and “Tenant” is the class: “fvTenant”. A more generic form of
+this would be:</p>
+<blockquote>
+<div>Package:classname == packageClassName</div></blockquote>
+<p>Managed objects make up the management information tree, and everything that
+can be configured in ACI is an object. MOs have relative names (Rn), which are
+built according to well-defined rules in the model. For the most part, the Rn
+is a prefix prepended to some naming properties, so for example the prefix for
+an fvTenant is “tn-“ and the naming property for a fvTenant would be the name,
+“Cisco”. Combining these gives an Rn of tn-Cisco for a particular MO. Relative
+names are unique within their namespace, meaning that within the local scope
+of an MO, there can only ever be one using that name. By using this rule
+paired with the tree-based hierarchy of the MIT, concatenate the relative
+names of objects to derive their Distinguished Name (Dn), providing a unique
+address in the MIT for a specific object. For example, an fvTenant is
+contained by polUni (Policy Universe), and polUni is contained by topRoot.
+Concatenating the Rns for each of these from top down yields a Dn of
+“uni/tn-Cisco”. Note that topRoot is always implied and does not appear in the
+Dn.</p>
+<a class="reference internal image-reference" href="_images/rast-api-000.jpg"><img alt="_images/rast-api-000.jpg" class="align-center" src="_images/rast-api-000.jpg" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="queries">
+<h3><a class="toc-backref" href="#id12">Queries</a><a class="headerlink" href="#queries" title="Permalink to this headline">¶</a></h3>
+<p>With all of this information neatly organized, it’s possible to perform a
+number of tree based operations, including searching, traversal, insertion and
+deletion. One of the most common operations is a search to query information
+from the MIT.</p>
+<p>The following types of queries are supported:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Class-level query: Search the MIT for objects of a specific class</li>
+<li>Object-level query: Search the MIT for a specific Dn</li>
+</ul>
+</div></blockquote>
+<p>Each of these query types supports a plethora of filtering and subtree
+options, but the primary difference is how each type is utilized.</p>
+<p>A class-based query is useful for searching for a specific type of
+information, without knowing the details, or not all of the details. Since a
+class-based query can return 0 or many results, it can be a helpful way to
+query the fabric for information where the full details are not known. A
+class-based query combined with filtering can be a powerful tool to extract
+data from the MIT. As a simple example, a class-based query can be used to
+find all fabric nodes that are functioning as leafs, and extract their serial
+numbers, for a quick way to get a fabric inventory.</p>
+<p>An object based (Dn based) query returns zero or 1 matches, and the full Dn
+for an object must be provided for a match to be found. Combined with an
+initial class query, a Dn query can be helpful for finding more details on an
+object referenced from another, or as a method to update a local copy of
+information.</p>
+<p>Both query types support tree-level queries with scopes and filtering. This
+means that the MIT can be queried for all objects of a specific class or Dn,
+and then retrieve the children or complete subtree for the returned objects.
+Furthermore, the data sets can be filtered to only return specific information
+that is interesting to the purpose at hand.</p>
+<p>The next section on the REST API covers more details about how to build and
+execute these queries.</p>
+</div>
+<div class="section" id="apic-rest-api">
+<h3><a class="toc-backref" href="#id13">APIC REST API</a><a class="headerlink" href="#apic-rest-api" title="Permalink to this headline">¶</a></h3>
+<p>This section provides a brief overview of the REST API, however a more
+exhaustive description can be found in the Cisco APIC REST API User Guide
+document on Cisco.com</p>
+<p>The APIC REST API is a programmatic interface to the Application Policy
+Infrastructure Controller (APIC) that uses a Representational State Transfer
+(REST) architecture. The API accepts and returns HTTP or HTTPS messages that
+contain JavaScript Object Notation (JSON) or Extensible Markup Language (XML)
+documents. Any programming language can be used to generate the messages and
+the JSON or XML documents that contain the API methods or managed object (MO)
+descriptions.</p>
+<p>The REST API is the interface into the MIT and allows for manipulation of the
+object model state. The same REST interface is utilized by the APIC CLI, GUI
+and SDK, so that whenever information is displayed it is read via the REST API
+and when configuration changes are made, they are written via the REST API. In
+addition to configuration changes, the REST API also provides an interface by
+which other information can be retrieved, including statistics, faults, audit
+events and even provide a means of subscribing to push based event
+notification, so that when a change occurs in the MIT, an event can be sent
+via a Web Socket.</p>
+<p>Standard REST methods are supported on the API, which includes POSTs, GETs and
+DELETE operations through the HTTP protocol. The following table shows the
+actions of each of these and the behavior in case of multiple invocations.</p>
+<a class="reference internal image-reference" href="_images/REST_API_Table1.png"><img alt="_images/REST_API_Table1.png" class="align-center" src="_images/REST_API_Table1.png" style="width: 750px;" /></a>
+<p>Figure 3: REST HTTP(S) based CRUD methods</p>
+<p>The POST and DELETE methods are idempotent meaning that they have no
+additional effect if called more than once with the same input parameters. The
+GET method is nullipotent, meaning that it can be called 0 or more times
+without making any changes (or that it is a read-only operation).</p>
+</div>
+<div class="section" id="payload-encapsulation">
+<h3><a class="toc-backref" href="#id14">Payload Encapsulation</a><a class="headerlink" href="#payload-encapsulation" title="Permalink to this headline">¶</a></h3>
+<p>Payloads to and from the REST interface can be encapsulated via either XML or
+JSON encodings. In the case of XML, the encoding operation is simple: the
+element tag is the name of the package and class, and any properties of that
+object are specified as attributes on that element. Containment is defined by
+creating child elements. The following example shows a simple XML body
+defining a tenant, application profile, EPG and static port attachment.</p>
+<p>XML Managed Object Definition:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;polUni&gt;</span>
+    <span class="nt">&lt;fvTenant</span> <span class="na">name=</span><span class="s">&quot;NewTenant&quot;</span><span class="nt">&gt;</span>
+         <span class="nt">&lt;fvAp</span> <span class="na">name=</span><span class="s">&quot;NewApplication&quot;</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;fvAEPg</span> <span class="na">name=</span><span class="s">&quot;WebTier&quot;</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;fvRsPathAtt</span> <span class="na">encap=</span><span class="s">&quot;vlan-1&quot;</span> <span class="na">mode=</span><span class="s">&quot;regular&quot;</span> <span class="na">tDn=</span><span class="s">&quot;topology/pod-1/paths-101/pathep-[eth1/1]&quot;</span><span class="nt">/&gt;</span>
+              <span class="nt">&lt;/fvAEPg&gt;</span>
+         <span class="nt">&lt;/fvAp&gt;</span>
+    <span class="nt">&lt;/fvTenant&gt;</span>
+<span class="nt">&lt;/polUni&gt;</span>
+</pre></div>
+</div>
+<p>For JSON, encoding requires definition of certain entities to reflect the tree
+based hierarchy, however is repeated at all levels of the tree, so is fairly
+simple once initially understood.</p>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li>All objects are described as JSON dictionaries, where the key is the
+name of the package and class, and the value is another nested
+dictionary with two keys: attribute and children.</li>
+<li>The attribute key contains a further nested dictionary describing
+key/value pairs defining attributes on the object The children key
+contains a list that defines all of the child objects.</li>
+<li>The children in this list will be dictionaries containing any nested
+objects, that are defined as described in (a)</li>
+</ol>
+</div></blockquote>
+<p>The following example shows the XML defined above, in JSON format.</p>
+<p>JSON Managed Object Definition:</p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+  <span class="nt">&quot;polUni&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;attributes&quot;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="nt">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;fvTenant&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;attributes&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;NewTenant&quot;</span>
+          <span class="p">},</span>
+          <span class="nt">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+              <span class="nt">&quot;fvAp&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;attributes&quot;</span><span class="p">:</span> <span class="p">{</span>
+                  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;NewApplication&quot;</span>
+                <span class="p">},</span>
+                <span class="nt">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
+                  <span class="p">{</span>
+                    <span class="nt">&quot;fvAEPg&quot;</span><span class="p">:</span> <span class="p">{</span>
+                      <span class="nt">&quot;attributes&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;WebTier&quot;</span>
+                      <span class="p">},</span>
+                      <span class="nt">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
+                        <span class="p">{</span>
+                          <span class="nt">&quot;fvRsPathAtt&quot;</span><span class="p">:</span> <span class="p">{</span>
+                            <span class="nt">&quot;attributes&quot;</span><span class="p">:</span> <span class="p">{</span>
+                              <span class="nt">&quot;mode&quot;</span><span class="p">:</span> <span class="s2">&quot;regular&quot;</span><span class="p">,</span>
+                              <span class="nt">&quot;encap&quot;</span><span class="p">:</span> <span class="s2">&quot;vlan-1&quot;</span><span class="p">,</span>
+                              <span class="nt">&quot;tDn&quot;</span><span class="p">:</span> <span class="s2">&quot;topology/pod-1/paths-101/pathep-[eth1/1]&quot;</span>
+                            <span class="p">}</span>
+                          <span class="p">}</span>
+                        <span class="p">}</span>
+                      <span class="p">]</span>
+                    <span class="p">}</span>
+                  <span class="p">}</span>
+                <span class="p">]</span>
+              <span class="p">}</span>
+            <span class="p">}</span>
+          <span class="p">]</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Both the XML and JSON have been pretty printed to simplify visual
+understanding. Practically, it would make sense to compact both of them before
+exchanging with the REST interface, however it will make no functional impact.
+In the cases of the object examples shown here, the compacted XML results in
+213 bytes of data, and the compacted JSON results in 340 bytes of data.</p>
+</div>
+<div class="section" id="read-operations">
+<h3><a class="toc-backref" href="#id15">Read Operations</a><a class="headerlink" href="#read-operations" title="Permalink to this headline">¶</a></h3>
+<p>Once the object payloads are properly encoding as XML or JSON, they can be
+used in Create, Read, Update or Delete (CRUD) operations on the REST API.</p>
+<a class="reference internal image-reference" href="_images/rest-api.jpg"><img alt="_images/rest-api.jpg" class="align-center" src="_images/rest-api.jpg" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Since the REST API is HTTP based, defining the URI to access a certain
+resource type is important. The first two sections of the request URI simply
+define the protocol and access details of the APIC. Next in the request URI is
+the literal string “/api” indicating that the API will be invoked. Generally
+read operations will be for an object or class, as discussed earlier, so the
+next part of the URI defines if it will be for a “mo” or “class”. The next
+component defines either the fully qualified Dn being queried for object based
+queries, or the package and class name for class-based queries. The final
+mandatory part of the request URI is the encoding format, either .XML or
+.JSON. This is the only method by which the payload format is defined
+(Content-Type and other headers are ignored by APIC).</p>
+<p>The next optional part of the request URI is the query options, which can
+specify various types of filtering, which are explained extensively in the
+REST API User Guide.</p>
+<p>In the example shown above, first an object level query is shown, where an EPG
+named Download is queried. The second example shows how a query for all
+objects with classl1PhysIf can be queried, and the results filtered to only
+show those where the speed attribute is equal to 10G. For a complete reference
+to different objects, their properties and possible values please refer to the
+Cisco APIC API Model Documentation.</p>
+</div>
+<div class="section" id="write-operations">
+<h3><a class="toc-backref" href="#id16">Write Operations</a><a class="headerlink" href="#write-operations" title="Permalink to this headline">¶</a></h3>
+<p>Create and update operations to the REST API are actually both implemented
+using the POST method, so that if an object does not already exist it will be
+created, and if it does already exist, it will be updated to reflect any
+changes between its existing state and desired state.</p>
+<p>Both create and update operations can contain complex object hierarchies, so
+that a complete tree can be defined within a single command, so long as all
+objects are within the same context root and they are under the 1MB limit for
+data payloads to the REST API. This limit is in place to guarantee performance
+and protect the system under high load.</p>
+<p>The context root helps defines a method by which APIC distributes information
+to multiple controllers and ensures consistency. For the most part it should
+be transparent to the user, though very large configurations may need to be
+broken up into smaller pieces if they result in a distributed transaction.</p>
+<a class="reference internal image-reference" href="_images/REST_API_Fig4.png"><img alt="_images/REST_API_Fig4.png" class="align-center" src="_images/REST_API_Fig4.png" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Create/Update operations follow the same syntax as read operations, except
+that they will always be targeted at an object level because changes cannot be
+made to every object of a specific class. The create/update operation should
+target a specific managed object, so the literal string “/mo” indicates that
+the Dn of the managed object will be provided, followed next by the actual Dn.
+Filter strings can be applied to POST operations, to retrieve the results of a
+POST in the response, for example, pass the rsp-subtree=modified query string
+to indicate that the response should include any objects that have been
+modified by the POST.</p>
+<p>The payload of the POST operation will contain the XML or JSON encoded data
+representing the managed object defining the API command body.</p>
+</div>
+<div class="section" id="authentication">
+<h3><a class="toc-backref" href="#id17">Authentication</a><a class="headerlink" href="#authentication" title="Permalink to this headline">¶</a></h3>
+<p>Authentication to the REST API for username/password-based authentication uses
+a special subset of request URIs, including aaaLogin, aaaLogout and aaaRefresh
+as the Dn target of a POST operation. Their payloads contain a simple XML or
+JSON payload containing the MO representation of an aaaUser object with
+attributes name and pwd defining the username and password, for example:
+&lt;aaaUser name=&#8217;admin&#8217; pwd=&#8217;insieme&#8217;/&gt;. The response to the POSTs will contain
+an authentication token as both a Set-Cookie header as well as an attribute to
+the aaaLogin object in the response named token, for which the XPath is
+<a class="reference external" href="mailto:/imdata/aaaLogin/&#37;&#52;&#48;token">/imdata/aaaLogin/<span>&#64;</span>token</a> if encoded as XML. Subsequent operations on the REST
+API can use this token value as a Cookie named “APIC-cookie” to have future
+requests authenticated.</p>
+</div>
+<div class="section" id="filters">
+<h3><a class="toc-backref" href="#id18">Filters</a><a class="headerlink" href="#filters" title="Permalink to this headline">¶</a></h3>
+<p>The REST API supports a wide range of flexible filters, useful for narrowing
+the scope of a search to allow for information to be more quickly located. The
+filters themselves are appended as query URI options, started with a question
+mark (?) and concatenated with an ampersand (&amp;). Multiple conditions can be
+joined together to form complex filters</p>
+<p>The Cisco APIC RESTful API User Guide covers in great detail the specifics of
+how to use filters, their syntax, and provides examples. Some of the tools
+covered below, can be used to learn to build a query string, as well as
+uncover those being used by the native APIC interface, and build on top of
+those to create advanced filters.</p>
+</div>
+<div class="section" id="browser">
+<h3><a class="toc-backref" href="#id19">Browser</a><a class="headerlink" href="#browser" title="Permalink to this headline">¶</a></h3>
+<p>The MIT contains multitudes of valuable data points. Being able to browse that
+data can expose new ways to use the data, aid in troubleshooting, and inspect
+the current state of the object store. One of the available tools for browsing
+the MIT is called “visore” and is available on the APIC. Visore supports
+querying by class and object, as well as easily navigating the hierarchy of
+the tree.</p>
+<p>In order to access visore, open <a class="reference external" href="https:/">https:/</a>/&lt;apic&gt;/visore.html in a web browser,
+and then authenticate with credentials for the APIC. Once logged in, an
+initial set of data will be visible, however searching for information using
+filtered fields will also be available at the top of the screen. Within the
+“Class or DN” text input field, enter the name of a class, e.g. “fabricNode”
+or “topology/pod-1/node-1”; press the “Run Query” button and press OK when
+prompted to continue without a filter. The results will be provided in either
+a list of nodes on the fabric, or information for the first APIC depending on
+the input string.</p>
+<p>In the list of attributes for the objects, the Dn will have a set of icons
+next to it.</p>
+<a class="reference internal image-reference" href="_images/REST_API_Fig5.png"><img alt="_images/REST_API_Fig5.png" class="align-center" src="_images/REST_API_Fig5.png" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>The green arrows can be used for navigating up and down the tree, where
+pressing the left arrow will navigate to the parent of the object and the
+right arrow will navigate to a list of all children of the current object. The
+black staggered bars will display any statistics that are available for the
+object. If none are available, the resulting page will not contain any data.
+The red octagon with exclamation point will show any faults that are present
+on the current object and finally the blue circle with the letter H will show
+the health score for the object, if one is available.</p>
+<p>These tools provide access to all types of information in the MIT, and
+additionally use Visore to structure query strings. For example, entering
+“fabricNode” as the class, “id” for the property and “1” in the field labeled
+Val1, leaving the Op value to “==”, and execute the query to filter the class
+results on just those with an id equal to 1. Note that Visore does not contain
+the complete list of filters supported by the REST API, however can be a
+useful starting point.</p>
+<p>Visore provides the URI of the last query and the response body, and the data
+can be seen not only in a tabular format, but also as the natively encoded
+payload. This allows for quick access to determine the request URI for a class
+or Dn based query, and also see what the XML body of the response looks like.</p>
+</div>
+<div class="section" id="api-inspector">
+<h3><a class="toc-backref" href="#id20">API Inspector</a><a class="headerlink" href="#api-inspector" title="Permalink to this headline">¶</a></h3>
+<p>All operations that are made through the GUI will invoke REST calls to fetch
+and commit the information being accessed. The API Inspector further
+simplifies the process of examining what is taking place on the REST interface
+as the GUI is navigated by displaying in real time the URIs and payloads. When
+new configuration is committed, API inspector will display the resulting POST
+requests, and when information is displayed on the GUI, the GET request will
+be displayed.</p>
+<p>To get started with API inspector, access it from the account menu, visible in
+the top right of the APIC GUI. Click on “welcome, &lt;username&gt;” and then select
+the “Show API Inspector” option, as shown in the figure below.</p>
+<a class="reference internal image-reference" href="_images/api-inspector.png"><img alt="_images/api-inspector.png" class="align-center" src="_images/api-inspector.png" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Once the API Inspector is brought up, timestamps will be seen along with the
+REST method, URIs, and payloads. Occasional updates may also be seen in the
+list as the GUI refreshes subscriptions to data being shown on the screen.</p>
+<a class="reference internal image-reference" href="_images/REST_API_Fig7.png"><img alt="_images/REST_API_Fig7.png" class="align-center" src="_images/REST_API_Fig7.png" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>From the example output shown above, it can be seen that the last logged item
+has a POST with the JSON payload containing a tenant named Cisco, and some
+attributes defined on that object.</p>
+<div class="highlight-json"><div class="highlight"><pre>POST
+url: http://172.23.3.215/api/node/mo/uni/tn-Cisco.json
+{
+  &quot;fvTenant&quot;: {
+    &quot;attributes&quot;: {
+      &quot;name&quot;: &quot;Cisco&quot;,
+      &quot;status&quot;: &quot;created&quot;
+    },
+    &quot;children&quot;: []
+  }
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="aci-software-development-kit-sdk">
+<h3><a class="toc-backref" href="#id21">ACI Software Development Kit (SDK)</a><a class="headerlink" href="#aci-software-development-kit-sdk" title="Permalink to this headline">¶</a></h3>
+<p>The ACI Python SDK is named Cobra, and is a Python implementation of the API
+that provides native bindings for all the REST function. Cobra also has a
+complete copy of the object model so that data integrity can be ensured, and
+provides methods for performing lookups and queries and object creation,
+modification and deletion, which match the REST methods leveraged by the GUI,
+as well as those that can be found using API Inspector. As a result, policy
+created in the GUI can be used as a programming template for rapid development.</p>
+<p>The installation process for Cobra is straightforward, using standard Python
+distribution utilities. It is currently distributed as an egg and can be
+installed using easy_install. Please reference the APIC Python API
+Documentation for full details on installing Cobra on a variety of operating
+systems.</p>
+</div>
+<div class="section" id="establishing-a-session">
+<h3><a class="toc-backref" href="#id22">Establishing a Session</a><a class="headerlink" href="#establishing-a-session" title="Permalink to this headline">¶</a></h3>
+<p>The first step in any code that will use Cobra is to establish a login
+session. Cobra currently supports username and password based authentication,
+as well as certificate-based authentication. For this example, we’ll use
+username and password based authentication:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">cobra.mit.access</span>
+<span class="kn">import</span> <span class="nn">cobra.mit.session</span>
+
+<span class="n">apicUri</span> <span class="o">=</span> <span class="s">&#39;https://10.0.0.2&#39;</span>
+<span class="n">apicUser</span> <span class="o">=</span> <span class="s">&#39;username&#39;</span>
+<span class="n">apicPassword</span> <span class="o">=</span> <span class="s">&#39;password&#39;</span>
+
+<span class="n">ls</span> <span class="o">=</span> <span class="n">cobra</span><span class="o">.</span><span class="n">mit</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">LoginSession</span><span class="p">(</span><span class="n">apicUri</span><span class="p">,</span> <span class="n">apicUser</span><span class="p">,</span> <span class="n">apicPassword</span><span class="p">)</span>
+<span class="n">md</span> <span class="o">=</span> <span class="n">cobra</span><span class="o">.</span><span class="n">mit</span><span class="o">.</span><span class="n">access</span><span class="o">.</span><span class="n">MoDirectory</span><span class="p">(</span><span class="n">ls</span><span class="p">)</span>
+<span class="n">md</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This will provide an MoDirectory object named md, that is logged in and
+authenticated to an APIC. If for some reason this script is unable to
+authenticate, the script will get a cobra.mit.request.CommitError exception
+from Cobra. Once a session is allocated for the script things can move forward.</p>
+</div>
+<div class="section" id="working-with-objects">
+<h3><a class="toc-backref" href="#id23">Working with Objects</a><a class="headerlink" href="#working-with-objects" title="Permalink to this headline">¶</a></h3>
+<p>Utilizing the Cobra SDK to manipulate the MIT generally follows the workflow:</p>
+<ol class="arabic simple">
+<li>identify object to be manipulated</li>
+<li>build a request to change attributes, add or remove children</li>
+<li>commit changes made to that object</li>
+</ol>
+<p>For example, to create a new Tenant, where the tenant will be placed in the
+MIT must first be identified. In this case it will be a child of the Policy
+Universe object:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">cobra.model.pol</span>
+<span class="n">polUniMo</span> <span class="o">=</span> <span class="n">cobra</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">pol</span><span class="o">.</span><span class="n">Uni</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>With the policy universe Mo object defined, it is possible to create a tenant object as a child of polUniMo:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">cobra.model.fv</span>
+<span class="n">tenantMo</span> <span class="o">=</span> <span class="n">cobra</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">fv</span><span class="o">.</span><span class="n">Tenant</span><span class="p">(</span><span class="n">polUniMo</span><span class="p">,</span> <span class="s">&#39;cisco&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Since all of these operations have only resulted in Python objects being
+created, the configuration must be committed in order to apply it. This can do
+this using an object called a ConfigRequest. A ConfigRequests acts as a
+container for Managed Object based classes that fall into a single context,
+which can all be committed in a single atomic POST.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">cobra.mit.request</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">cobra</span><span class="o">.</span><span class="n">mit</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">ConfigRequest</span><span class="p">()</span>
+<span class="n">config</span><span class="o">.</span><span class="n">addMo</span><span class="p">(</span><span class="n">tenantMo</span><span class="p">)</span>
+<span class="n">md</span><span class="o">.</span><span class="n">commit</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The ConfigRequest is created, then the tenantMo is added to the request, and
+finally this is commited through the MoDirectory.</p>
+<p>For the above example, in the first step a local copy is built of the polUni
+object. Since it does not have any naming properties (reflected above by the
+empty double single-quotes), there is no need to look it up in the MIT to
+figure out what the full Dn for the object is, since it is always known as the
+“uni”. If something deeper in the MIT needs to be posted, where the object has
+naming properties, a lookup needs to be performed for that object. As an
+example, to post a configuration to an existing tenant, it is possible to
+query for that tenant, and create objects beneath it.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">tenantMo</span> <span class="o">=</span> <span class="n">md</span><span class="o">.</span><span class="n">lookupByClass</span><span class="p">(</span><span class="s">&#39;fvTenant&#39;</span><span class="p">,</span> <span class="n">propFilter</span><span class="o">=</span><span class="s">&#39;eq(fvTenant.name, &quot;cisco&quot;)&#39;</span><span class="p">)</span>
+<span class="n">tenantMo</span> <span class="o">=</span> <span class="n">tenantMo</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">tenantMo</span> <span class="k">else</span> <span class="bp">None</span>
+</pre></div>
+</div>
+<p>The resulting tenantMo object will be of class cobra.model.fv.Tenant, and
+contain properties such as .dn, .status, .name, etc, all describing the object
+itself. lookupByClass() returns an array, since it can return more than one
+object. In this case, the propFilter is specifying a fvTenant with a
+particular name. For a tenant, the name attribute is a special type of
+attribute called a naming attribute. The naming attribute is used to build the
+relative name, which must be unique within its local namespace. As a result of
+this, it can be guaranteed that what lookupByClass on an fvTenant with a
+filter on the name will always either return an array of length 1 or None,
+meaning nothing was found. The specific naming attributes and others can be
+looked up in the APIC Model Reference document.</p>
+<p>Another method to entirely avoid a lookup, is to build a Dn object and make an
+object a child of that Dn. This will only work in cases where the parent
+object already exists.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">topDn</span> <span class="o">=</span> <span class="n">cobra</span><span class="o">.</span><span class="n">mit</span><span class="o">.</span><span class="n">naming</span><span class="o">.</span><span class="n">Dn</span><span class="o">.</span><span class="n">fromString</span><span class="p">(</span><span class="s">&#39;uni/tn-cisco&#39;</span><span class="p">)</span>
+<span class="n">fvAp</span> <span class="o">=</span> <span class="n">cobra</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">fv</span><span class="o">.</span><span class="n">Ap</span><span class="p">(</span><span class="n">topMo</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;AppProfile&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>These fundamentals of interacting with Cobra will provide the building blocks
+necessary to create more complex workflows that will aid in the process of
+automating network configuration, troubleshooting and management.</p>
+</div>
+<div class="section" id="apic-rest-to-python-adapter">
+<h3><a class="toc-backref" href="#id24">APIC REST to Python Adapter</a><a class="headerlink" href="#apic-rest-to-python-adapter" title="Permalink to this headline">¶</a></h3>
+<p>The process of building a request can be time consuming. For example, the
+object data payload as Python code reflecting the object changes that are
+desired to be made must be represented. Given that the Cobra SDK is directly
+modeled off of the ACI Object Model, this means it should be possible to
+generate code directly from what resides in the object model. As expected,
+this is possible using a tool developed by Cisco Advanced Services named Arya,
+short for APIC REST to Python Adapter.</p>
+<a class="reference internal image-reference" href="_images/rest_api8.jpg"><img alt="_images/rest_api8.jpg" class="align-center" src="_images/rest_api8.jpg" style="width: 250px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<a class="reference internal image-reference" href="_images/REST_API_Fig8.png"><img alt="_images/REST_API_Fig8.png" class="align-center" src="_images/REST_API_Fig8.png" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>In the diagram above, it’s clearly shown how the input that might come from
+API Inspector, Visore or even the output of a REST query, can be quickly
+converted into Cobra SDK code, that can then be tokenized and re-used in more
+advanced ways. Installing Arya is relatively simple and has minimal external
+dependencies. Arya requires Python 2.7.5 and git installed. The following
+quick installation steps will install Arya and place it the system python.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">git clone https://github.com/datacenter/ACI.git</span>
+<span class="go">cd ACI/arya</span>
+<span class="go">sudo python setup.py install</span>
+</pre></div>
+</div>
+<p>After installation of Arya has completed, it is possible to take XML or JSON
+representing ACI modeled objects and convert them to Python code quickly. For
+example:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">arya.py -f /home/palesiak/simpletenant.xml</span>
+</pre></div>
+</div>
+<p>Will yield the following Python code:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">#!/usr/bin/env python</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Autogenerated code using /private/tmp/ACI/arya/lib/python2.7/site-packages/arya-1.0.0-py2.7.egg/EGG-INFO/scripts/arya.py</span>
+<span class="sd">Original Object Document Input:</span>
+<span class="sd">&lt;fvTenant name=&#39;bob&#39;/&gt;</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s">&#39;Please review the auto generated code before &#39;</span> <span class="o">+</span>
+                    <span class="s">&#39;executing the output. Some placeholders will &#39;</span> <span class="o">+</span>
+                    <span class="s">&#39;need to be changed&#39;</span><span class="p">)</span>
+
+<span class="c"># list of packages that should be imported for this code to work</span>
+<span class="kn">import</span> <span class="nn">cobra.mit.access</span>
+<span class="kn">import</span> <span class="nn">cobra.mit.session</span>
+<span class="kn">import</span> <span class="nn">cobra.mit.request</span>
+<span class="kn">import</span> <span class="nn">cobra.model.fv</span>
+<span class="kn">import</span> <span class="nn">cobra.model.pol</span>
+<span class="kn">from</span> <span class="nn">cobra.internal.codec.xmlcodec</span> <span class="kn">import</span> <span class="n">toXMLStr</span>
+
+<span class="c"># log into an APIC and create a directory object</span>
+<span class="n">ls</span> <span class="o">=</span> <span class="n">cobra</span><span class="o">.</span><span class="n">mit</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">LoginSession</span><span class="p">(</span><span class="s">&#39;https://1.1.1.1&#39;</span><span class="p">,</span> <span class="s">&#39;admin&#39;</span><span class="p">,</span> <span class="s">&#39;password&#39;</span><span class="p">)</span>
+<span class="n">md</span> <span class="o">=</span> <span class="n">cobra</span><span class="o">.</span><span class="n">mit</span><span class="o">.</span><span class="n">access</span><span class="o">.</span><span class="n">MoDirectory</span><span class="p">(</span><span class="n">ls</span><span class="p">)</span>
+<span class="n">md</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>
+
+<span class="c"># the top level object on which operations will be made</span>
+<span class="n">topMo</span> <span class="o">=</span> <span class="n">cobra</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">pol</span><span class="o">.</span><span class="n">Uni</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">)</span>
+
+
+<span class="c"># build the request using cobra syntax</span>
+<span class="n">fvTenant</span> <span class="o">=</span> <span class="n">cobra</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">fv</span><span class="o">.</span><span class="n">Tenant</span><span class="p">(</span><span class="n">topMo</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;bob&#39;</span><span class="p">)</span>
+
+
+<span class="c"># commit the generated code to APIC</span>
+<span class="k">print</span> <span class="n">toXMLStr</span><span class="p">(</span><span class="n">topMo</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">cobra</span><span class="o">.</span><span class="n">mit</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">ConfigRequest</span><span class="p">()</span>
+<span class="n">c</span><span class="o">.</span><span class="n">addMo</span><span class="p">(</span><span class="n">topMo</span><span class="p">)</span>
+<span class="n">md</span><span class="o">.</span><span class="n">commit</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The placeholder raising a RuntimeError must first be removed before this code
+can be executed, however it is purposely put in place to ensure that any other
+tokenized values that must be updated are corrected. For example, the APIC IP
+defaulting to 1.1.1.1 should be updated to reflect the actual APIC IP address.
+The same applies for the credentials and other possible placeholders.</p>
+<p>Note that if the input is XML or JSON that does not have a fully qualified
+hierarchy, it may be difficult or impossible for Arya to attempt to determine
+it through heuristics. In this case, a placeholder of &#8220;REPLACEME&#8221; will be
+populated with the text. This placeholder will need to be replaced with the
+correct distinguished names (Dn&#8217;s). These Dn&#8217;s by querying for the object in
+Visore, or inspecting the request URI for the object shown in API inspector.</p>
+</div>
+<div class="section" id="conclusion">
+<h3><a class="toc-backref" href="#id25">Conclusion</a><a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h3>
+<p>With an understanding of how ACI network and application information is
+represented, how to interact with that data, and a grasp on using the SDK, it
+is trivial to create powerful programs that can simplify the professional
+tasks and introduce higher levels of automation. Mastering the MIT, Cobra SDK
+and leveraging Arya to streamline operational workflows is just the beginning
+to leveraging ACI in ways that will increase the value to the business and
+business stakeholders.</p>
+</div>
+</div>
+<div class="section" id="problem-description">
+<h2><a class="toc-backref" href="#id26">Problem Description</a><a class="headerlink" href="#problem-description" title="Permalink to this headline">¶</a></h2>
+<p>Errors from the REST API do not generally generate faults on the system.
+Errors are returned directly to the source of the request. There are logs on
+the APIC that the request was sent to that can be examined to see what was
+queried, and if errors occur what may have resulted in that error. In 1.0(1e)
+the /var/log/dme/log/nginx.bin.log on the APIC will track requests coming to
+the APIC and show specific types of errors. In later versions the nginx
+error.log and access.log will be available at /var/log/dme/nginx/.</p>
+<div class="section" id="symptom-1">
+<h3><a class="toc-backref" href="#id27">Symptom 1</a><a class="headerlink" href="#symptom-1" title="Permalink to this headline">¶</a></h3>
+<p>Message &#8220;Connection refused&#8221; is presented when trying to connect to APIC over
+HTTP using the REST API.</p>
+</div>
+<div class="section" id="verification-1">
+<h3><a class="toc-backref" href="#id28">Verification 1</a><a class="headerlink" href="#verification-1" title="Permalink to this headline">¶</a></h3>
+<p>By default port HTTP is disabled on the APICs and HTTPS is enabled.</p>
+<a class="reference internal image-reference" href="_images/HTTP_disabled.png"><img alt="_images/HTTP_disabled.png" class="align-center" src="_images/HTTP_disabled.png" style="width: 750px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="resolution">
+<h3><a class="toc-backref" href="#id29">Resolution</a><a class="headerlink" href="#resolution" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li>HTTPS can be used or the communication policy can be changed to enable
+HTTP. However, please be aware that that APIC ships in the most secure
+mode possible.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="symptom-2">
+<h3><a class="toc-backref" href="#id30">Symptom 2</a><a class="headerlink" href="#symptom-2" title="Permalink to this headline">¶</a></h3>
+<p>REST API returns an error similar to, &#8220;Invalid DN [Dn] wrong rn prefix [Rn] at
+position [position]&#8221; or &#8220;Request failed, unresolved class for [string]&#8221;</p>
+</div>
+<div class="section" id="verification">
+<h3><a class="toc-backref" href="#id31">Verification</a><a class="headerlink" href="#verification" title="Permalink to this headline">¶</a></h3>
+<p>The REST API uses the Universal Resource Indicator (URI) to try and determine
+what to either configure (for a POST) or return back to the request (for a
+GET).</p>
+<p>For a GET of a class, if the APIC is unable to resolve that URI back to a
+valid class the error that the APIC returns is the &#8220;unable to resolve the
+class&#8221; error. Please refer back to the APIC Management Information Model
+Reference documentation to verify the name of the class.</p>
+<p>For a GET or POST for a managed object, if the APIC is unable to resolve the
+distinguished name, the APIC will return the error about an invalid DN and the
+APIC will specify which Rn is the problem. It is possible use this information
+to determine which part of the distinguished name has resulted in the failure.
+Please refer back to the APIC Management Information Model Reference
+documentation to verify the structure of the distinguished name if needed. It
+is also possible to use Visore to traverse the object store on the APIC and
+see which distinguished names exist.</p>
+</div>
+<div class="section" id="id1">
+<h3><a class="toc-backref" href="#id32">Resolution</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>To use the REST API, a fully qualified distinguished name must be used for
+either GET requests or POST queries to URI&#8217;s starting with &#8220;/api/mo/&#8221; and the
+class name when making GET requests to URI&#8217;s starting with &#8220;api/class.&#8221;</p>
+</div>
+<div class="section" id="symptom-3">
+<h3><a class="toc-backref" href="#id33">Symptom 3</a><a class="headerlink" href="#symptom-3" title="Permalink to this headline">¶</a></h3>
+<p>The REST API returns the error &#8220;Token was invalid (Error: Token timeout)&#8221;</p>
+</div>
+<div class="section" id="id2">
+<h3><a class="toc-backref" href="#id34">Verification</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>The REST API requires that a login is refreshed periodically. When logging in
+using the aaaLogin request, the response includes a refreshTimeoutSeconds
+attribute that defines how long the login cookie will remain valid. The cookie
+must be refreshed using a GET to api/aaaRefresh.xml or api/aaaRefresh.json
+prior to that timeout period. By default the timeout period is 300 seconds. If
+the token is not refreshed, it will expire and the REST API will return the
+token invalid error.</p>
+</div>
+<div class="section" id="id3">
+<h3><a class="toc-backref" href="#id35">Resolution</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>Refresh the token by using the aaaRefresh API before the token expires or get
+a new token by simply logging in again.</p>
+</div>
+<div class="section" id="symptom-4">
+<h3><a class="toc-backref" href="#id36">Symptom 4</a><a class="headerlink" href="#symptom-4" title="Permalink to this headline">¶</a></h3>
+<p>The REST API returns the error, &#8220;Failed to update multiple items in a single
+operation - request requires distributed transaction. Please modify request to
+process each item individually&#8221;</p>
+</div>
+<div class="section" id="id4">
+<h3><a class="toc-backref" href="#id37">Verification</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>When a POST transaction is sent to the REST API, ensure that the POST does not
+contain managed objects from different parts of the management information
+tree that may belong to different parts of the distributed management
+information tree that may be managed by different APICs. This can be a rather
+difficult thing to ensure on the surface if a rather large transaction is
+being created by just generating a huge configuration and committing it.
+However, if the POST is limited to objects within the same package it is
+generally possible to avoid this issue. For example the infraInfra object
+should not be included when doing a POST to api/uni.xml or api/uni.json for a
+fvTenant object.</p>
+</div>
+<div class="section" id="id5">
+<h3><a class="toc-backref" href="#id38">Resolution</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>Break up the REST API POST such that the request does not cover classes
+outside of packages at equal or higher levels of the management information
+tree. Please see the APIC Management Information Model Reference documentation
+for more information about the class hierarchy.</p>
+</div>
+<div class="section" id="symptom-5">
+<h3><a class="toc-backref" href="#id39">Symptom 5</a><a class="headerlink" href="#symptom-5" title="Permalink to this headline">¶</a></h3>
+<p>The REST API reports either &#8220;incomplete node at line [line number]&#8221; or
+&#8220;Invalid request. Cannot contain child [child] under parent [parent]&#8221; for POST
+requests.</p>
+</div>
+<div class="section" id="id6">
+<h3><a class="toc-backref" href="#id40">Verification</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>The REST API requires that the objects that are sent in a POST are well
+formed. XML objects simply require that the proper containment rules be
+followed, the proper attributes be included and the XML is well formed.
+Managed objects that are contained by other managed objects in the management
+information tree need to be contained in the same way in the XML POST. For
+example the following POST would fail because fvAP is cannot be contained by
+fvAEp:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;polUni&gt;</span>
+    <span class="nt">&lt;fvTenant</span> <span class="na">name=</span><span class="s">&quot;NewTenant&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;fvAEPg</span> <span class="na">name=</span><span class="s">&quot;WebTier&quot;</span><span class="nt">&gt;</span>
+            <span class="c">&lt;!-- This is wrong --&gt;</span>
+            <span class="nt">&lt;fvAp</span> <span class="na">name=</span><span class="s">&quot;NewApplication&quot;</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;fvRsPathAtt</span> <span class="na">encap=</span><span class="s">&quot;vlan-1&quot;</span> <span class="na">mode=</span><span class="s">&quot;regular&quot;</span> <span class="na">tDn=</span><span class="s">&quot;topology/pod-1/paths-101/pathep-[eth1/1]&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/fvAEPg&gt;</span>
+    <span class="nt">&lt;/fvTenant&gt;</span>
+<span class="nt">&lt;/polUni&gt;</span>
+</pre></div>
+</div>
+<p>For JSON POSTs, it becomes a little more difficult because the JSON is
+basically built from XML and XML attributes become an attributes field, and
+children become a children array in the JSON. The children and attributes have
+to be explicitly specified. For example:</p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+  <span class="nt">&quot;polUni&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;attributes&quot;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="nt">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;fvTenant&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;attributes&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;NewTenant&quot;</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>However, if the attributes and children specification are not included - the
+most common situation is that they are not included when there are no
+attributes, it is easy to forget them in such a case - the REST API will
+return the error about an incomplete node. This is an example of a poorly
+formed JSON query:</p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+  <span class="nt">&quot;polUni&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;fvTenant&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;attributes&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;NewTenant&quot;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h3><a class="toc-backref" href="#id41">Resolution</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>Ensure that the REST API query is properly formed.</p>
+</div>
+<div class="section" id="symptom-6">
+<h3><a class="toc-backref" href="#id42">Symptom 6</a><a class="headerlink" href="#symptom-6" title="Permalink to this headline">¶</a></h3>
+<p>The web server returns a response 200 but along with a body that states an
+error 400 Bad Request.</p>
+</div>
+<div class="section" id="id8">
+<h3><a class="toc-backref" href="#id43">Verification</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p>This will happen if the header or request sent to the webserver is malformed
+in such a way that the request cannot be parsed by the web server. For example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">httplib</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conn</span> <span class="o">=</span> <span class="n">httplib</span><span class="o">.</span><span class="n">HTTPConnection</span><span class="p">(</span><span class="s">&quot;10.122.254.211&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conn</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">&quot;get&quot;</span><span class="p">,</span> <span class="s">&quot;api/aaaListDomains.json&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r1</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">getresponse</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data1</span> <span class="o">=</span> <span class="n">r1</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">r1</span><span class="o">.</span><span class="n">status</span><span class="p">,</span> <span class="n">r1</span><span class="o">.</span><span class="n">reason</span>
+<span class="go">200</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">data1</span>
+<span class="go">&lt;html&gt;</span>
+<span class="go">&lt;head&gt;&lt;title&gt;400 Bad Request&lt;/title&gt;&lt;/head&gt;</span>
+<span class="go">&lt;body bgcolor=&quot;white&quot;&gt;</span>
+<span class="go">&lt;center&gt;&lt;h1&gt;400 Bad Request&lt;/h1&gt;&lt;/center&gt;</span>
+<span class="go">&lt;hr&gt;&lt;center&gt;nginx/1.4.0&lt;/center&gt;</span>
+<span class="go">&lt;/body&gt;</span>
+<span class="go">&lt;/html&gt;</span>
+
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<p>In this case the method used is &#8220;get&#8221; - all lower case. The web server the
+APIC uses requires methods be all upper case, &#8220;GET&#8221;.</p>
+</div>
+<div class="section" id="id9">
+<h3><a class="toc-backref" href="#id44">Resolution</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<p>Ensure that the header and request is not malformed in anyway and conforms to
+common web standards and practices by enabling debugging on the client side to
+inspect the headers being sent and received.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="mgmt_tn.html" class="btn btn-neutral float-right" title="Management Tenant">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="health.html" class="btn btn-neutral" title="Faults / Health Scores"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Andres Vega, Bryan Deaver, Jerry Ye, Kannan Ponnuswamy, Loy Evans, Mike Timm, Paul Lesiak and Paul Raytick.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-60418502-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+   
+
+</body>
+</html>
