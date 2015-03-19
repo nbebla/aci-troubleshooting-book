@@ -191,7 +191,7 @@ tagged on upon leaving the ESX host, however are being stripped and placed on
 the native VLAN. The UCS configuration, specifically VLAN manager, can be
 checked and verified if VLAN 602 is incorrectly set as the native VLAN.
 
-.. image:: /images/ScreenShot2014-10-15at6.49.50PM.png
+.. image:: /images/ScreenShot2014-10-15at6_49_50PM.png
    :width: 750 px
    :align: center
 
@@ -254,7 +254,7 @@ and then inspecting the Node Management Addresses. If out of band management
 node management addresses have been configured, verify that the proper default
 gateway has been entered in that location.
 
-.. image:: /images/ScreenShot2014-10-15at8.24.19PM.png
+.. image:: /images/ScreenShot2014-10-15at8_24_19PM.png
    :width: 750 px
    :align: center
 
@@ -371,7 +371,7 @@ Verification
 Ensure that the datacenter name in vCenter matches the "Datacenter" property
 configured in the VMM Controller policy configuration
 
-.. image:: /images/ScreenShot2014-10-16at12.37.11PM.png
+.. image:: /images/ScreenShot2014-10-16at12_37_11PM.png
    :width: 750 px
    :align: center
 
@@ -404,7 +404,7 @@ This can be verified from the vCenter GUI, by accessing the settings for a
 virtual machine and individually inspecting the network backing for the vNIC
 adapters
 
-.. image:: /images/ScreenShot2014-10-16at12.49.53PM.png
+.. image:: /images/ScreenShot2014-10-16at12_49_53PM.png
    :width: 750 px
    :align: center
 
@@ -413,7 +413,7 @@ adapters
 Another mechanism by which this can be verified is by inspecting the DVS
 settings, and viewing the Virtual Machines that are associated with the DVS.
 
-.. image:: /images/ScreenShot2014-10-16at12.51.06PM.png
+.. image:: /images/ScreenShot2014-10-16at12_51_06PM.png
    :width: 750 px
    :align: center
 
@@ -424,7 +424,7 @@ port group can also be found using the APIC GUI, by navigating to the VM
 Networking section, navigating into the Provider, the Domain, into the DVS,
 the expanding the port groups, and looking at each individual port group.
 
-.. image:: /images/ScreenShot2014-10-16at12.26.34PM.png
+.. image:: /images/ScreenShot2014-10-16at12_26_34PM.png
    :width: 750 px
    :align: center
 
@@ -461,7 +461,7 @@ the leaf to which the UCS is attached is learning any endpoints in the EPG.
 The MAC address for the VM in question is 00:50:56:BB:D5:08, and it is unable
 to reach its default gateway
 
-.. image:: /images/ScreenShot2014-10-16at2.14.18PM.png
+.. image:: /images/ScreenShot2014-10-16at2_14_18PM.png
    :width: 750 px
    :align: center
 
@@ -499,7 +499,7 @@ inherited from the AEP itself, and as a result will be configured to run LLDP
 using whatever link aggregation protocol is used on the upstream links. This
 will cause the VDS to inherit these properties, and thus run incorrectly.
 
-.. image:: /images/ScreenShot2014-10-16at2.51.07PM.png
+.. image:: /images/ScreenShot2014-10-16at2_51_07PM.png
    :width: 750 px
    :align: center
 
@@ -511,7 +511,7 @@ vSwitch. When using a UCS between the leaf and ESX hosts, these should be
 configured to disable LLDP, enable CDP and use Mac Pinning as the LACP policy,
 as shown below:
 
-.. image:: /images/ScreenShot2014-10-16at2.24.28PM.png
+.. image:: /images/ScreenShot2014-10-16at2_24_28PM.png
    :width: 750 px
    :align: center
 

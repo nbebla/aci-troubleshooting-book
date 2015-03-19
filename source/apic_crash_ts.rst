@@ -26,7 +26,7 @@ The essential processes running on an APIC can be found either through the GUI
 or the CLI. Using the GUI, the processes and the process ID running is found
 in System->Controllers->Processes as shown here:
 
-.. image:: /images/ScreenShot2014-10-14at3.55.04PM.png
+.. image:: /images/ScreenShot2014-10-14at3_55_04PM.png
    :width: 750 px
    :align: center
 
