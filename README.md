@@ -1,3 +1,8 @@
+Troubleshooting Cisco Application Centric Infrastructure
+========================================================
+
+[![Documentation Status](https://readthedocs.org/projects/aci-troubleshooting-book/badge/?version=latest)](https://readthedocs.org/projects/aci-troubleshooting-book/?badge=latest)
+
 A Cisco Application Centric Infrastructure troubleshooting book written over
 the course of 5 days using the [Booksprint](http://www.booksprints.net/)
 methodology.  The content of the book was then converted over to restructured
