@@ -286,7 +286,7 @@ epub_copyright = u'2015, Andres Vega, Bryan Deaver, Jerry Ye, Kannan Ponnuswamy,
 # for small screen space, using the same theme for HTML and epub output is
 # usually not wise. This defaults to 'epub', a theme designed to save visual
 # space.
-#epub_theme = 'epub'
+epub_theme = 'epub'
 
 # The language of the text. It defaults to the language option
 # or en if the language is not set.
@@ -303,7 +303,7 @@ epub_copyright = u'2015, Andres Vega, Bryan Deaver, Jerry Ye, Kannan Ponnuswamy,
 #epub_uid = ''
 
 # A tuple containing the cover image and cover page html template filenames.
-#epub_cover = ()
+epub_cover = ('_static/cover.png', 'epub-cover.html')
 
 # A sequence of (type, uri, title) tuples for the guide element of content.opf.
 #epub_guide = ()
