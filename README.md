@@ -5,5 +5,8 @@ text and turned into a digital version  using
 [Sphinx](http://sphinx-doc.org/) and the
 [Read the Docs Theme](https://github.com/snide/sphinx_rtd_theme) for Sphinx.
 
-[Read the book](http://datacenter.github.io/aci-troubleshooting-book/)
+[Read the book](http://aci-troubleshooting-book.readthedocs.org/en/latest/)
+[Download the entire book (HTML)](http://readthedocs.org/projects/aci-troubleshooting-book/downloads/htmlzip/latest/)
+[Download a PDF version](http://readthedocs.org/projects/aci-troubleshooting-book/downloads/pdf/latest/)
+[Download an Epub version](http://readthedocs.org/projects/aci-troubleshooting-book/downloads/epub/latest/)
 
