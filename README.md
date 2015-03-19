@@ -5,5 +5,5 @@ text and turned into a digital version  using
 [Sphinx](http://sphinx-doc.org/) and the
 [Read the Docs Theme](https://github.com/snide/sphinx_rtd_theme) for Sphinx.
 
-
+[Read the book](http://datacenter.github.io/aci-troubleshooting-book/)
 

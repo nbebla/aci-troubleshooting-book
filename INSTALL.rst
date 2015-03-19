@@ -7,7 +7,7 @@ To build:
     2. Run `python get-pip.py`
 4. Install sphinx - `pip install sphinx`
 5. Install rst2pdf: `pip install rst2pdf`
-6. Clone this repository: `git clone http://as-codehub-ci.cisco.com/mtimm/aci-troubleshooting-book.git`
+6. Clone this repository: `git clone https://github.com/datacenter/aci-troubleshooting-book.git`
 7. Cd into the aci-troubleshooting-book directory
 8. Run `make html`
 
