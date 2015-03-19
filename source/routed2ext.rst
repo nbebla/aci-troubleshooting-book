@@ -524,7 +524,7 @@ conditions being met for external route advertisements.
 
 The Bridge domain needs to be associated with L3 Out as shown below:
 
-.. image:: /images/5.PNG
+.. image:: /images/5.png
    :width: 750 px
    :align: center
 
@@ -553,7 +553,7 @@ advertised due to L3out association. Just for troubleshooting, this can be
 forced by having EPG association either by path or local binding on Leaf1 or
 Leaf3.
 
-.. image:: /images/7.PNG
+.. image:: /images/7.png
    :width: 750 px
    :align: center
 
@@ -628,7 +628,7 @@ the Database EPG and L3Out.
 The contract needs to be defined and associated both on the L3Out Networks,
 and Database EPG. Prior to associating contract:
 
-.. image:: /images/6.PNG
+.. image:: /images/6.png
    :width: 750 px
    :align: center
 
@@ -636,7 +636,7 @@ and Database EPG. Prior to associating contract:
 
 Associate contract:
 
-.. image:: /images/8.PNG
+.. image:: /images/8.png
    :width: 750 px
    :align: center
 
@@ -741,7 +741,7 @@ The subnet address to be leaked between contexts, Tenants, in addition to
 being defined under the Bridge Domain, needs to be marked as a as a shared
 subnet under the EPG. This is the first step in the resolution of this issue.
 
-.. image:: /images/10.PNG
+.. image:: /images/10.png
    :width: 750 px
    :align: center
 

@@ -49,7 +49,7 @@ Verification/Resolution
 * The APIC did not show the leaf in the output of "**acidiag fnvread**"
 * A physical examination of the setup shows:
 
-.. image:: /images/APIC_physical_connectivity.JPG
+.. image:: /images/APIC_physical_connectivity.jpg
    :width: 750 px
    :align: center
 

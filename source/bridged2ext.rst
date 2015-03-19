@@ -410,7 +410,7 @@ For this issue to be resolved, the EPG needs to be binded to a port/leaf, and
 also the L2Out domain needs to be attached. The L2Out would need to be
 associated to a VLAN pool consisting of VLAN 751.
 
-.. image:: /images/11.PNG
+.. image:: /images/11.png
    :width: 750 px
    :align: center
 
@@ -783,7 +783,7 @@ defining the extended bridged network.
 Since N7Ks are expecting VLAN-751 but the L2Out is configured with VLAN-750,
 the Layer 2 domains are not extended correctly.
 
-.. image:: /images/12.PNG
+.. image:: /images/12.png
    :width: 750 px
    :align: center
 
